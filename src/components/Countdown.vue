@@ -54,20 +54,21 @@ export default {
 </script>
 
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:100);
 .countdown {
   display:flex;
   justify-content: space-around;
   width:100%;
+  max-width:600px;
+  margin:auto;
+  letter-spacing:1px;
 }
 .block {
     margin: 20px;
 }
 
 .text {
-    color: #1abc9c;
-    font-size: 40px;
-    font-family: 'Roboto Condensed', serif;
+    color: #23b5af;
+    font-size: 24px;
     font-weight: 40;
     margin-top:10px;
     margin-bottom: 10px;
@@ -75,10 +76,9 @@ export default {
 }
 
 .digit {
-    color: #ecf0f1;
-    font-size: 150px;
+    color: #e5e5e5;
+    font-size: 50px;
     font-weight: 100;
-    font-family: 'Roboto', serif;
     margin: 10px;
     text-align: center;
 }
