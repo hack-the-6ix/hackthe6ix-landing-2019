@@ -5,7 +5,7 @@
         &copy; HackThe6ix 2017
       </div>
       <div class="links">
-        <a href="#">Facebook</a>
+        <a href="https://www.facebook.com/HackThe6ix/">Facebook</a>
         <a href="#">Twitter</a>
         <a href="https://github.com/lyninx/hackthe6ix">GitHub</a>
       </div>

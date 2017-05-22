@@ -33,7 +33,7 @@ h1 {
 	letter-spacing:1px;
 }
 .header {
-  background: url('../assets/hero3.jpg') no-repeat center center;
+  background: url('../assets/hero.jpg') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
