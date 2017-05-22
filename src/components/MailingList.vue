@@ -35,7 +35,7 @@ export default {
   methods: {
     submit: function () {
       if(validator.isEmail(this.email)) {
-        this.$http.post('http://ht6.lyninx.com/subscriber', {email: this.email }).then(() => {
+        this.$http.post('http://ht6.lyninx.com/subscribe', { email: this.email }).then(() => {
           this.valid = true
           this.message = "Awesome! We'll be in touch."
         }, () => {
