@@ -2,16 +2,19 @@
   <div id="app">
     <header-section></header-section>
     <router-view></router-view>
+    <social-section></social-section>
     <footer-section></footer-section>
   </div>
 </template>
 
 <script>
 import HeaderSection from './components/Header'
+import SocialSection from './components/Social'
 import FooterSection from './components/Footer'
 export default {
   components: {
     HeaderSection,
+    SocialSection,
     FooterSection
   },
   name: 'app'
@@ -34,6 +37,7 @@ html, body {
 .section {
   color:#333;
   max-width: 820px;
+  padding:20px;
   margin:auto;
 }
 p {
@@ -44,5 +48,6 @@ a {
 }
 a:hover {
   color:#000;
+  cursor:pointer;
 }
 </style>
