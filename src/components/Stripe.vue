@@ -29,16 +29,15 @@ export default {
   },
   methods: {
     submit: function() {
-      let message = this.message
       let organization = this.organization
       let amount = this.amount
       const http = this.$http
+      let self = this
       if(this.organization && this.amount){
         stripe.createToken(card).then(function(result) {
           if (result.error) {
-            message = result.error.message;
+            self.message = result.error.message;
           } else {
-            let self = this
             let data = { org: organization, amount: amount, token: result.token }
             http.post('https://ht6.lyninx.com/sponsor', data).then(res => {
               console.log(res)
@@ -52,7 +51,7 @@ export default {
           }
         });
       } else {
-        message = "Please fill in all fields."
+        self.message = "Please fill in all fields."
       }
     }
   }
