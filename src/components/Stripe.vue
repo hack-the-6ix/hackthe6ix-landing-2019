@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     submit: function() {
-      let message = ""
+      let message = this.message
       let organization = this.organization
       let amount = this.amount
       const http = this.$http
@@ -40,7 +40,7 @@ export default {
           } else {
             let data = { org: organization, amount: amount, token: result.token }
             http.post('https://ht6.lyninx.com/sponsor', data).then(res => {
-              console.log('success!')
+              console.log(res)
              message = "Thank you! We're processing your payment, and will be in touch with you shortly."
             }, err => {
               console.log('error!')
@@ -52,7 +52,6 @@ export default {
       } else {
         message = "Please fill in all fields."
       }
-      this.message = message
     }
   }
 
