@@ -40,12 +40,12 @@ export default {
           } else {
             let data = { org: organization, amount: amount, token: result.token }
             http.post('https://ht6.lyninx.com/sponsor', data).then(res => {
-              console.log(res)
-              console.log(this)
-             self.message = "Thank you! We're processing your payment, and will be in touch with you shortly."
+              if(res.body.success){
+                self.message = "Thank you! We're processing your payment, and will be in touch with you shortly."           
+              } else {
+                self.message = "Sorry, there was an error processing your payment."
+              }
             }, err => {
-              console.log('error!')
-              console.log(err)
               self.message = "Sorry, we've encountered an error. Please try again."
             });
           }
