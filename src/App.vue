@@ -40,6 +40,19 @@ html, body {
   padding:20px;
   margin:auto;
 }
+
+.row {
+  display:flex;
+  margin-bottom:8px;
+}
+.row .label {
+  min-width:200px;
+}
+.row input {
+  padding:6px;
+  border:0;
+  flex-grow:1;
+}
 p {
   margin-bottom:24px;
 }
