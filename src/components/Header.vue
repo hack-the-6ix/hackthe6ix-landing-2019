@@ -1,8 +1,12 @@
 <template>
   <div class="header">
     <div class="overlay">
-      <div class="top-level"><img src="../assets/logo.svg" height="240px"></div>
+      <router-link to="/">
+        <div class="top-level"><img src="../assets/logo.svg" height="240px"></div>
+      </router-link>
+      <router-link to="/">
       <div><h1 class="logotype">HACK THE 6IX</h1></div>
+      </router-link>
       <mailing-list></mailing-list>
       <!-- <countdown></countdown> -->
     </div>
