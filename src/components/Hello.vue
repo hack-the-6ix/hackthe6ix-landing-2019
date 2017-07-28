@@ -19,15 +19,24 @@
       <countdown></countdown>
       <img src="../assets/Earth.svg" height="480px">
     </div>
+    <about></about>
+    <FAQ></FAQ>
+    <sponsors></sponsors>
   </div>
 </template>
 
 <script>
 import Countdown from './Countdown'
+import About from './About'
+import FAQ from './FAQ'
+import Sponsors from './Sponsors'
 export default {
   name: 'hello',
   components: {
-    Countdown
+    Countdown,
+    About,
+    FAQ,
+    Sponsors
   },
   data () {
     return {
@@ -38,11 +47,6 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (max-width: 900px) {
-    .space {
-        display:none;
-    }
-}
 
 @keyframes float-in {
   from {

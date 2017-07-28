@@ -28,7 +28,6 @@ export default {
 
 <style scoped>
 .footer {
-  background: #232e4d;
   min-height:100px;
 }
 .section {
@@ -36,7 +35,7 @@ export default {
   display:flex;
 }
 .ht6 {
-  border-bottom:2px solid rgba(255,255,255, 0.2);
+/*  border-bottom:2px solid rgba(255,255,255, 0.2);*/
   padding-bottom:8px;
 }
 .links {

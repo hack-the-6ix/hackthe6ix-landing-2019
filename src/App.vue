@@ -21,6 +21,14 @@ export default {
 </script>
 
 <style>
+@media screen and (max-width: 900px) {
+    .space {
+        display:none;
+    }
+    .svg {
+        display:none;
+    }
+}
 html, body {
   margin:0;
   padding:0;
@@ -45,13 +53,14 @@ body {
   min-height:100vh;
 }
 .section {
-  max-width: 820px;
+  max-width: 900px;
   padding:20px;
   margin:auto;
 }
 .wrap {
   max-width:1024px;
   margin:auto;
+  margin-bottom:0;
 }
 .row {
   display:flex;
@@ -64,6 +73,20 @@ body {
   padding:6px;
   border:0;
   flex-grow:1;
+}
+.section {
+  margin: auto;
+  text-align:left;
+  color:#fff;
+}
+.card {
+  border:1px solid #fff;
+  border-radius:8px;
+  background-color: rgba(17, 26, 52, 0.6);
+  padding:24px 40px;
+  margin-bottom:24px;
+  line-height:140%;
+  overflow:hidden;
 }
 .btn {
   background: #E3493B;

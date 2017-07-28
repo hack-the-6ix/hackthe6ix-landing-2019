@@ -1,74 +1,79 @@
 <template>
   <div class="apply">
-    <div class="wrap">
-      <div class="sections">
-        <div class="section">
-          <div class="label">Full Name</div>
-          <input type="text"/>
+    <div class="bg">
+      <div class="wrap">
+        <div class="sections">
+          <div class="section">
+            <div class="label">Full Name</div>
+            <input type="text"/>
+          </div>
+          <div class="section">
+            <div class="label">Email Address</div>
+            <input type="text"/>
+          </div>
+          <div class="section">
+            <div class="label">Gender</div>
+            <select>
+              <option disabled selected value></option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="section">
+            <div class="label">Which school do you attend?</div>
+            <input type="text"/>
+          </div>
+          <div class="section">
+            <div class="label">When do you plan on graduating?</div>
+            <select>
+              <option disabled selected value></option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="grad">Already Graduated</option>
+              <option value="dont-know">Not Applicable</option>
+            </select>
+          </div>
+          <div class="section">
+            <div class="label">How many hackathons have you participated in?</div>
+            <select>
+              <option disabled selected value></option>
+              <option value="0">None yet</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5+</option>
+            </select>
+          </div>
+          <div class="section">
+            <div class="label">Tell us about an idea you’ve always wanted to realize but couldn’t.</div>
+            <textarea rows="4"></textarea>
+          </div>
+          <div class="section">
+            <div class="label">Do you already have a project in mind? If so, tell us about it!</div>
+            <textarea rows="4"></textarea>
+          </div>
+          <div class="section">
+            <div class="label">Do you have any dietary restrictions? <br>(Leave blank if none)</div>
+            <input type="text"/>
+          </div>
+          <div class="section">
+            <div class="label">Send us your resume!</div>
+            <button>{{resume_label}}</button>
+          </div>
+          <div class="section center">
+            <div class="btn submit">SUBMIT</div>
+          </div>
         </div>
-        <div class="section">
-          <div class="label">Email Address</div>
-          <input type="text"/>
-        </div>
-        <div class="section">
-          <div class="label">Gender</div>
-          <select>
-            <option disabled selected value></option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="section">
-          <div class="label">Which school do you attend?</div>
-          <input type="text"/>
-        </div>
-        <div class="section">
-          <div class="label">When do you plan on graduating?</div>
-          <select>
-            <option disabled selected value></option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="grad">Already Graduated</option>
-            <option value="dont-know">Not Applicable</option>
-          </select>
-        </div>
-        <div class="section">
-          <div class="label">How many hackathons have you participated in?</div>
-          <select>
-            <option disabled selected value></option>
-            <option value="0">None yet</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5+</option>
-          </select>
-        </div>
-        <div class="section">
-          <div class="label">Tell us about an idea you’ve always wanted to realize but couldn’t.</div>
-          <textarea rows="4"></textarea>
-        </div>
-        <div class="section">
-          <div class="label">Do you already have a project in mind? If so, tell us about it!</div>
-          <textarea rows="4"></textarea>
-        </div>
-        <div class="section">
-          <div class="label">Do you have any dietary restrictions? <br>(Leave blank if none)</div>
-          <input type="text"/>
-        </div>
-        <div class="section">
-          <div class="label">Send us your resume!</div>
-          <button>{{resume_label}}</button>
-        </div>
-      </div>
 
+      </div>
     </div>
   </div>
 </template>
@@ -86,11 +91,20 @@ export default {
 </script>
 
 <style scoped>
+.apply {
+  background: linear-gradient(180deg, rgba(255,0,0,0), rgba(255,0,0,0), rgba(52, 136, 180, 0.7), rgba(156, 219, 232, 0.8), rgba(230, 253, 248, 1));
+}
+.bg {
+  background:url(../assets/city.svg);
+  background-size:1024px;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding-bottom:600px;
+}
 .wrap {
   display:flex;
   flex-direction:column;
   align-items:center;
-  margin:20px auto;
 }
 .sections {
   width:100%;
@@ -98,10 +112,14 @@ export default {
   flex-direction:column;
 }
 .section {
+  margin-bottom:12px;
   width:500px;
   max-width:600px;
   display:flex;
   flex-direction:column;
+}
+.section.center {
+  align-items:center;
 }
 .label {
   line-height:140%;
@@ -109,6 +127,12 @@ export default {
   color:#fff;
   margin-bottom:12px;
   font-weight:bold;
+}
+.submit {
+  font-size:20px;
+  font-weight:bold;
+  text-align:center;
+  padding: 8px 24px;
 }
 button, input, select, textarea {
   border:1px solid #fff;
