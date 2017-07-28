@@ -1,11 +1,11 @@
 <template>
-  <div class="hello">
+  <div class="sponsor">
     <div class="section stripe">
     <h2>Thanks for partnering with us!</h2>
     <div class="row"><div class="label">Organization Name</div><input type="text" v-model="organization"></input></div>
     <div class="row"><div class="label">Contribution (CAD)</div><input type="number" v-model="amount"></input></div>
     <div id="card-element"></div>
-    <button v-on:click="submit">Submit</button>
+    <div class="btn" v-on:click="submit">Submit</div>
     <div class="message">{{message}}</div>
     </div>
   </div>
@@ -16,7 +16,7 @@ var stripe = Stripe('pk_test_c5bz0oMMi9yQsxdDmJ0rdA24')
 var elements = stripe.elements()
 var card = elements.create('card')
 export default {
-  name: 'hello',
+  name: 'stripe',
   data () {
     return {
         organization: "",
@@ -60,6 +60,9 @@ export default {
 </script>
 
 <style scoped>
+.sponsor {
+  color:#fff;
+}
 .message {
   padding:12px 0;
   font-size:16px;
@@ -78,17 +81,5 @@ p {
 .intro {
   background:#fff;
   line-height:1.5;
-}
-button {
-  margin:auto;
-  background:#a9ddd9;
-  font-weight:bold;
-  border:0;
-  padding:12px 20px;
-}
-button:hover {
-  background:#23b5af;
-  cursor:pointer;
-  transition: all 0.2s ease;
 }
 </style>

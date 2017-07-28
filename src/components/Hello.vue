@@ -1,21 +1,34 @@
 <template>
   <div class="hello">
-    <div class="intro">
-      <div class="section">
-        <p>Hack the 6ix is the largest hackathon taking place in the heart of downtown Toronto. Every year, developers, designers, and innovators from across the province congregate to brainstorm ideas and build creative projects. Over the course of 36 hours, participants will have access to technical and non-technical workshops, fantastic sponsors and an amazing community of tech enthusiasts.</p>
-
-        <p>This year, the weekend will be packed with great sponsorships, mentorships, workshops, food, swag, and much more. Best of all, everything will be free! We can't wait to meet you and offer this extraordinary chance to be truly immersed in Toronto’s tech community.</p>
-        <hr>
-        <p>Interested in attending? Sign up for our mailing list, and follow us on our social media for updates! If you’re interested in partnering with us, we’d love to hear from you at <a href="mailto:hello@hackthe6ix.com">hello@hackthe6ix.com</a>.</p>
-
+    <div class="wrap">
+      <div class="space">
+        <img src="../assets/Moon.svg" width="160px" class="moon">
+        <img src="../assets/Constellation.svg" width="160px" class="constellation">
+        <img src="../assets/Comet.svg" width="160px" class="comet">
+        <img src="../assets/Jupiter.svg" width="160px" class="jupiter">
+        <img src="../assets/Mars.svg" width="110px" class="mars">
+        <img src="../assets/Rocket.svg" width="150px" class="rocket">
+        <img src="../assets/UFO.svg" width="110px" class="ufo">
+        <img src="../assets/Uranus.svg" width="80px" class="uranus">
+        <img src="../assets/Satellite.svg" width="110px" class="satellite">
       </div>
+      <div class="top-level"><img class="anim" src="../assets/logo-solid.svg" height="240px"></div>
+      <h1>HACK THE 6IX</h1>
+      <h2>August 25-27, 2017</h2>
+      <router-link to="/apply"><div class="btn large">APPLY</div></router-link>
+      <countdown></countdown>
+      <img src="../assets/Earth.svg" height="480px">
     </div>
   </div>
 </template>
 
 <script>
+import Countdown from './Countdown'
 export default {
   name: 'hello',
+  components: {
+    Countdown
+  },
   data () {
     return {
     }
@@ -25,14 +38,111 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 900px) {
+    .space {
+        display:none;
+    }
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim {
+  animation: float-in 1s cubic-bezier(0.25, 0.7, 0.5, 1) forwards;
+}
+
+.top-level {
+  z-index:10;
+}
+.wrap {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin:20px auto;
+}
+.space {
+  z-index:0;
+  width:100%;
+  max-width:1024px;
+  margin:auto;
+  position:absolute;
+}
+.space img {
+  position:absolute;
+}
+.constellation {
+  left:0;
+  left:220px;
+}
+.moon {
+  top:10px;
+  left:0;
+}
+.comet {
+  right:0;
+  right:200px;
+}
+.jupiter {
+  right:0;
+  top:40px;
+}
+.mars {
+  left:10px;
+  top:400px;
+}
+.rocket {
+  left:170px;
+  top:220px;
+}
+.ufo {
+  right:180px;
+  top:320px;
+}
+.uranus {
+  right:20px;
+  top:20px;
+}
+.satellite {
+  right:10px;
+  top:500px;
+}
+h1 {
+  font-size:40px;
+  font-weight:bold;
+  margin-bottom:0;
+}
+h2 {
+  margin-bottom:24px;
+}
 hr {
   border:1px solid rgba(0,0,0,0.05);
 }
 p {
   padding:0 8px;
 }
-.intro {
-  background:#fff;
-  line-height:1.5;
+a {
+  color:#fff;
+  text-decoration:none;
+}
+.btn.large {
+  font-size:28px;
+  font-weight:bold;
+  border-radius:50px;
+  padding:8px 32px;
+  box-shadow: 8px 12px 6px 0 rgba(0, 0, 0, 0.3);
+  transition:all 0.15s ease-in-out;
+}
+.btn.large:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 2px 10px 12px 0 rgba(0, 0, 0, 0.3);
 }
 </style>

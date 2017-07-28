@@ -1,14 +1,24 @@
 <template>
   <div class="header">
     <div class="overlay">
+      <div class="nav">
+        <div class="social-media">
+          <a href="https://twitter.com/hackthe6ix"><img class="icon" src="../assets/twitter.svg"></a>
+          <a href="https://www.facebook.com/HackThe6ix/"><img class="icon" src="../assets/facebook.svg"></a>
+          <a href="https://www.instagram.com/hackthe6ix/"><img class="icon" src="../assets/instagram.svg"></a>
+        </div>
+        <div class="navigation">
+          <router-link to="/">ABOUT</router-link>
+          <router-link to="/">FAQ</router-link>
+          <router-link to="/">SPONSORS</router-link>
+          <router-link to="/">CONTACT</router-link>
+          <router-link to="/"><div class="btn">APPLY</div></router-link>
+        </div>
+      </div>
       <router-link to="/">
-        <div class="top-level"><img src="../assets/logo.svg" height="240px"></div>
+
       </router-link>
-      <router-link to="/">
-      <div><h1 class="logotype">HACK THE 6IX</h1></div>
-      </router-link>
-      <mailing-list></mailing-list>
-      <!-- <countdown></countdown> -->
+<!--       <countdown></countdown> -->
     </div>
   </div>
 </template>
@@ -18,7 +28,6 @@ import Countdown from './Countdown'
 import MailingList from './MailingList'
 
 export default {
-  name: 'hello',
   components: {
     Countdown,
     MailingList
@@ -32,31 +41,50 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-	color:#fff;
-	letter-spacing:1px;
-}
-
-.logotype {
-	display:inline-block;
-	padding:8px;
-	border-bottom:2px solid #23b5af;
-}
 
 .header {
-  background: url('../assets/hero.jpg') no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  color:#fff;
+  position:absolute;
+  width:100%;
   text-align:center;
 }
+a {
+  color:#fff;
+  transition:all 0.1s ease-in;
+}
+a:hover {
+  transform: translateY(-2px);
+}
+.nav {
+  display:flex;
+  max-width:1024px;
+  margin:auto;
+  align-items:center;
+  justify-content: space-between;
+}
+.navigation {
+  display:flex;
+  align-items:center;
+}
+.icon {
+  height:20px;
+  margin:0 8px;
+  transform: scale(1.2);
+}
+.navigation a {
+  font-weight:bold;
+  text-decoration:none;
+  margin:0 16px;
+}
+.navigation a:hover {
+  transition:all 0.2s ease-in-out;
+}
+.social-media{
+  display:flex;
+}
 .overlay {
-	background: rgba(0,0,0,0.5);
-	padding:24px 24px 48px 24px;
-	min-height:400px;
-	display:flex;
-	flex-direction:column;
-	justify-content: space-between;
+	background: rgba(0,0,0,0.0);
+	padding:20px;
+	height:20px;
 }
 </style>
