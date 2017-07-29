@@ -120,7 +120,7 @@ export default {
         data.append('resume', this.resume);
       }
       // send application
-      this.$http.post('http://localhost:4000/submission', formData).then(() => {
+      this.$http.post('http://localhost:4000/submission', data).then(() => {
         Router.push('/thanks')
       }, (err) => {
         this.message = "Sorry, we've encountered an error. Please try again later."
