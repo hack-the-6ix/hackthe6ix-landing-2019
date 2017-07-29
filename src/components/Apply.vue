@@ -5,15 +5,15 @@
         <div class="sections">
           <div class="section">
             <div class="label">Full Name</div>
-            <input type="text"/>
+            <input type="text" v-model="name"/>
           </div>
           <div class="section">
             <div class="label">Email Address</div>
-            <input type="text"/>
+            <input type="text" v-model="email"/>
           </div>
           <div class="section">
             <div class="label">Gender</div>
-            <select>
+            <select v-model="gender">
               <option disabled selected value></option>
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -22,11 +22,11 @@
           </div>
           <div class="section">
             <div class="label">Which school do you attend?</div>
-            <input type="text"/>
+            <input type="text" v-model="school"/>
           </div>
           <div class="section">
             <div class="label">When do you plan on graduating?</div>
-            <select>
+            <select v-model="grad_year">
               <option disabled selected value></option>
               <option value="2017">2017</option>
               <option value="2018">2018</option>
@@ -42,7 +42,7 @@
           </div>
           <div class="section">
             <div class="label">How many hackathons have you participated in?</div>
-            <select>
+            <select v-model="hack_count">
               <option disabled selected value></option>
               <option value="0">None yet</option>
               <option value="1">1</option>
@@ -54,22 +54,23 @@
           </div>
           <div class="section">
             <div class="label">Tell us about an idea you’ve always wanted to realize but couldn’t.</div>
-            <textarea rows="4"></textarea>
+            <textarea rows="4" v-model="idea"></textarea>
           </div>
           <div class="section">
             <div class="label">Do you already have a project in mind? If so, tell us about it!</div>
-            <textarea rows="4"></textarea>
+            <textarea rows="4" v-model="project"></textarea>
           </div>
           <div class="section">
             <div class="label">Do you have any dietary restrictions? <br>(Leave blank if none)</div>
-            <input type="text"/>
+            <input type="text" v-model="dietary"/>
           </div>
           <div class="section">
             <div class="label">Send us your resume!</div>
-            <button>{{resume_label}}</button>
+            <input type="file" @change="setFile">
           </div>
           <div class="section center">
-            <div class="btn submit">SUBMIT</div>
+            <div class="btn submit" v-on:click="submit()">SUBMIT</div>
+            <div class="warning">{{message}}</div>
           </div>
         </div>
 
@@ -79,20 +80,59 @@
 </template>
 
 <script>
+import Router from '../router/index';
 export default {
   name: 'apply',
   data () {
     return {
-      resume_label: "Click here to upload"
+      name: '',
+      email: '',
+      gender: '',
+      school: '',
+      grad_year: '',
+      hack_count: '',
+      idea: '',
+      project: '',
+      dietary: '',
+      resume: '',
+      message: ''
     }
   },
-
+  methods: {
+    setFile: function (event) { this.resume = event.target.files[0] },
+    submit: function() {
+      const required = ['name', 'email', 'gender', 'school', 'grad_year', 'hack_count', 'idea', 'project', 'resume']
+      const valid = required.every((elem, index, array) => {
+        return this[elem]
+      })
+      if(!valid){
+        this.message = 'Make sure to fill in the entire form!'
+      } else {
+        const data = new FormData();
+        data.append('name', this.name);
+        data.append('email', this.email);
+        data.append('gender', this.gender);
+        data.append('school', this.school);
+        data.append('gradYear', this.grad_year);
+        data.append('hackCount', this.hack_count);
+        data.append('ideas', this.idea);
+        data.append('interests', this.project);
+        data.append('resume', this.resume);
+      }
+      // send application
+      this.$http.post('http://localhost:4000/submission', formData).then(() => {
+        Router.push('/thanks')
+      }, (err) => {
+        this.message = "Sorry, we've encountered an error. Please try again later."
+      });
+    }
+  }
 }
 </script>
 
 <style scoped>
 .apply {
-  background: linear-gradient(180deg, rgba(255,0,0,0), rgba(255,0,0,0), rgba(52, 136, 180, 0.7), rgba(156, 219, 232, 0.8), rgba(230, 253, 248, 1));
+  background: linear-gradient(180deg, rgba(255,0,0,0), rgba(255,0,0,0), rgba(52, 136, 180, 0.7), rgba(156, 219, 232, 1), rgba(230, 253, 248, 1));
 }
 .bg {
   background:url(../assets/city.svg);
@@ -100,6 +140,12 @@ export default {
   background-position: bottom;
   background-repeat: no-repeat;
   padding-bottom:600px;
+}
+.warning {
+  margin-top:12px;
+  font-weight:bold;
+  position:absolute;
+  margin-top:60px;
 }
 .wrap {
   display:flex;
@@ -165,5 +211,12 @@ p {
 a {
   color:#fff;
   text-decoration:none;
+}
+.btn {
+  transition:all 0.15s ease-in-out;
+}
+.btn:hover {
+  box-shadow: 0px 8px 8px 0 rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px);
 }
 </style>
