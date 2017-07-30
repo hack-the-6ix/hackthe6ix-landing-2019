@@ -113,7 +113,7 @@ export default {
 }
 .uranus {
   right:20px;
-  top:20px;
+  top:220px;
 }
 .satellite {
   right:10px;
