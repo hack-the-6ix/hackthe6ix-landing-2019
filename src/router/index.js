@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Apply from '@/components/Apply'
 import Privacy from '@/components/Privacy'
+import Thanks from '@/components/Thanks'
 import NotFound from '@/components/NotFound'
 import Stripe from '@/components/Stripe'
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/sponsor',
       name: 'Sponsor',
       component: Stripe
+    },
+    {
+      path:'/thanks',
+      name: 'Thanks',
+      component: Thanks
     },
     {
       path:'*',
