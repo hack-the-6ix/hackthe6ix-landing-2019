@@ -8,11 +8,12 @@
           <a href="https://www.instagram.com/hackthe6ix/"><img class="icon" src="../assets/instagram.svg"></a>
         </div>
         <div class="navigation">
-          <router-link to="#about">ABOUT</router-link>
-          <router-link to="#faq">FAQ</router-link>
-          <router-link to="#sponsors">SPONSORS</router-link>
+          <router-link to="/" v-smooth-scroll>HOME</router-link>
+          <router-link to="/#about" v-smooth-scroll>ABOUT</router-link>
+          <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
+          <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
 <!--           <router-link to="#contact">CONTACT</router-link> -->
-          <router-link to="/"><div class="btn">APPLY</div></router-link>
+          <router-link to="/apply"><div class="btn">APPLY</div></router-link>
         </div>
       </div>
       <router-link to="/">

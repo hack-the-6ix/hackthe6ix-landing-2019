@@ -4,9 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
+import vueSmoothScroll from 'vue-smooth-scroll'
 
 Vue.use(VueResource);
-
+Vue.use(vueSmoothScroll)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
