@@ -29,6 +29,7 @@ export default {
 <style scoped>
 .footer {
   min-height:100px;
+  background:#273355;
 }
 .section {
   color:#aaa;
