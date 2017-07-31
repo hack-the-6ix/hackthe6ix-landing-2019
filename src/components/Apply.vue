@@ -118,7 +118,7 @@ export default {
         data.append('ideas', this.idea);
         data.append('interests', this.project);
         data.append('resume', this.resume);
-        this.$http.post('https://ht6.lyninx.com:4000/submission', data).then(() => {
+        this.$http.post('https://ht6.lyninx.com/submission', data).then(() => {
         Router.push('/thanks')
       }, (err) => {
         this.message = "Sorry, we've encountered an error. Please try again later."
