@@ -65,7 +65,7 @@
             <input type="text" v-model="dietary"/>
           </div>
           <div class="section">
-            <div class="label">Send us your resume!</div>
+            <div class="label">Send us your resume! (5MB max)</div>
             <input type="file" @change="setFile">
           </div>
           <div class="section center">
