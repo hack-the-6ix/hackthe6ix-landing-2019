@@ -15,6 +15,7 @@
       <div class="top-level"><img class="anim" src="../assets/logo-solid.svg" height="240px"></div>
       <h1>HACK THE 6IX</h1>
       <h2>August 25-27, 2017</h2>
+      <h3>Centre for Social Innovation - Annex</h3>
       <router-link to="/apply"><div class="btn large">APPLY</div></router-link>
       <countdown></countdown>
       <img src="../assets/Earth.svg" height="480px">
@@ -126,6 +127,10 @@ h1 {
 }
 h2 {
   margin-bottom:24px;
+}
+h3 {
+  margin-top:0;
+  color:rgba(255,255,255,0.7);
 }
 hr {
   border:1px solid rgba(0,0,0,0.05);
