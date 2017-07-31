@@ -21,7 +21,7 @@
     </div>
     <about></about>
     <FAQ></FAQ>
-    <sponsors></sponsors>
+<!--     <sponsors></sponsors> -->
   </div>
 </template>
 

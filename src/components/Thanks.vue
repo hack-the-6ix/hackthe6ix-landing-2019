@@ -2,8 +2,10 @@
   <div class="thanks">
     <div class="wrap">
     <h1>Thanks for applying!</h1>
+    <div class="card">    
     <p>We'll be in touch with you shortly after applications close to let you know if you're in.</p>
-    <p>In the mean time, be sure to follow our Facebook, Twitter, and Instagram pages for updates and announcments!</p>
+    <p>In the mean time, be sure to follow our Facebook, Twitter, and Instagram pages for updates and announcments!</p></div>
+
     </div>
   </div>
 </template>
@@ -20,6 +22,9 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  line-height:100%;
+}
 .wrap {
   display:flex;
   flex-direction:column;
@@ -30,7 +35,6 @@ export default {
 h1 {
   font-size:40px;
   font-weight:bold;
-  margin-bottom:0;
 }
 hr {
   border:1px solid rgba(0,0,0,0.05);

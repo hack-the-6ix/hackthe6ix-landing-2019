@@ -21,7 +21,17 @@ export default {
 </script>
 
 <style>
-@media screen and (max-width: 900px) {
+@media screen 
+  and (max-device-width: 900px){
+    .space {
+        display:none;
+    }
+    .svg {
+        display:none;
+    }
+}
+
+@media screen and (max-width: 900px){
     .space {
         display:none;
     }

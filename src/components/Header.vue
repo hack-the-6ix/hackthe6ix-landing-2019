@@ -11,7 +11,7 @@
           <router-link to="/" v-smooth-scroll>HOME</router-link>
           <router-link to="/#about" v-smooth-scroll>ABOUT</router-link>
           <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
-          <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
+          <!-- <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link> -->
 <!--           <router-link to="#contact">CONTACT</router-link> -->
           <router-link to="/apply"><div class="btn">APPLY</div></router-link>
         </div>
