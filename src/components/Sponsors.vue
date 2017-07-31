@@ -2,10 +2,10 @@
   <div class="sponsors" id="sponsors">
   	<div class="wrap">
 	    <div class="section">
-	      <img src="../assets/Moon 2.svg" width="160px" class="svg">
+	      <!-- <img src="../assets/Moon 2.svg" width="160px" class="svg"> -->
 	      <h1>Sponsors</h1>
 	      <div class="card">
-	      	None! <br><br><br><br><br><br><br><br>
+	      	        <h2>Coming soon!</h2>
 	      </div>
 	    </div>
     </div>
