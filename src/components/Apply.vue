@@ -137,7 +137,7 @@ export default {
 }
 .bg {
   background:url(../assets/city.svg);
-  background-size:1024px;
+  background-size:100%;
   background-position: bottom;
   background-repeat: no-repeat;
   padding-bottom:600px;
