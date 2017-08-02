@@ -9,7 +9,7 @@
                 <div class="col">
                     <h3>General</h3>
                     <div class="question">Who can attend?</div>
-                    <p>Any undergraduates, graduate students, or recent grads are able to attend. Unfortunately, we are not able to accommodate participants under the age of 18. Though we have preference towards those with previous experience with tech, we welcome applicants with all backgrounds.</p>
+                    <p>Any undergraduates, graduate students, or recent grads, as well as high school students are able to attend. Though we have preference towards those with previous experience with tech, we welcome applicants with all backgrounds.</p>
                     <div class="question">Are you accepting walk-ins?</div>
                     <p>Due to the limited capacity of the venue, we will not take walk-ins. However, if there are no-shows, we will be sending more acceptances the day of, so please keep an eye on your inbox.</p>
                     <div class="question">How much does this cost?</div>
