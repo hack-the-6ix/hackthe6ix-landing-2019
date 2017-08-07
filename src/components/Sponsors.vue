@@ -5,7 +5,12 @@
 	      <!-- <img src="../assets/Moon 2.svg" width="160px" class="svg"> -->
 	      <h1>Sponsors</h1>
 	      <div class="card">
-	      	        <h2>Coming soon!</h2>
+	      	        <!-- <h2>Coming soon!</h2> -->
+                  <div class="logos">
+                  <div class="shopify-logo logo"></div>
+                  <div class="nextcan-logo logo"></div>
+                  <!-- <div class="altera-logo logo"></div> -->
+                  </div>
 	      </div>
 	    </div>
     </div>
@@ -23,6 +28,31 @@ export default {
 }
 </script>
 <style scoped>
+/*.st1 {
+  fill:#d8292f;
+}
+.st0 {
+  fill:#fff;
+}*/
+.logos {
+  display:flex;
+  /*justify-content: space-between;*/
+}
+.altera-logo {
+  background-image: url(../assets/Altera.svg);
+}
+.shopify-logo {
+  background-image: url(../assets/Shopify.svg);
+}
+.nextcan-logo {
+  background-image: url(../assets/NextCan.svg);
+}
+.logo {
+  min-width:200px;
+  height:60px;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
 .sponsors {
 	background:rgba(255,255,255, 0.1);
 }
