@@ -39,7 +39,7 @@ export default {
   /*justify-content: space-between;*/
 }
 .altera-logo {
-  background-image: url(../assets/Altera.svg);
+/*  background-image: url(../assets/Altera.svg);*/
 }
 .shopify-logo {
   background-image: url(../assets/Shopify.svg);
