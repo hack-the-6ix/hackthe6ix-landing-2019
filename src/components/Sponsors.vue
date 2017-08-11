@@ -9,7 +9,7 @@
                   <div class="logos">
                   <div class="shopify-logo logo"></div>
                   <div class="nextcan-logo logo"></div>
-                  <!-- <div class="altera-logo logo"></div> -->
+                  <div class="altera-logo logo"></div>
                   </div>
 	      </div>
 	    </div>
@@ -36,10 +36,12 @@ export default {
 }*/
 .logos {
   display:flex;
+  flex-wrap:wrap;
   /*justify-content: space-between;*/
 }
 .altera-logo {
-/*  background-image: url(../assets/Altera.svg);*/
+  background-image: url(../assets/Altera.png);
+  width:240px;
 }
 .shopify-logo {
   background-image: url(../assets/Shopify.svg);
