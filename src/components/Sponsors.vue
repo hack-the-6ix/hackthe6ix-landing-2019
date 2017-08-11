@@ -40,7 +40,7 @@ export default {
   /*justify-content: space-between;*/
 }
 .altera-logo {
-  background-image: url(../assets/Altera.png);
+  background-image: url(../assets/altera.png);
   width:240px;
 }
 .shopify-logo {
