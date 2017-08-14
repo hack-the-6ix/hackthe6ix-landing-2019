@@ -68,7 +68,7 @@
             <div class="label">Send us your resume! (5MB max)</div>
             <input type="file" @change="setFile">
           </div>
-          <div class="section center">
+          <div class="section center" v-show="showButton">
             <div class="btn submit" v-on:click="submit()">SUBMIT</div>
             <div class="warning">{{message}}</div>
           </div>
@@ -95,7 +95,8 @@ export default {
       project: '',
       dietary: '',
       resume: '',
-      message: ''
+      message: '',
+      showButton: true
     }
   },
   methods: {
@@ -108,6 +109,7 @@ export default {
       if(!valid){
         this.message = 'Make sure to fill in the entire form!'
       } else {
+        this.showButton = false;
         const data = new FormData();
         data.append('name', this.name);
         data.append('email', this.email);
@@ -117,6 +119,7 @@ export default {
         data.append('hackCount', this.hack_count);
         data.append('ideas', this.idea);
         data.append('interests', this.project);
+        data.append('dietaryRestriction', this.dietary);
         data.append('resume', this.resume);
         this.$http.post('https://ht6.lyninx.com/submission', data).then(() => {
         Router.push('/thanks')
