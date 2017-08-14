@@ -3,10 +3,10 @@
 		<div class="top pad" v-on:click="show = !show">
 			<div class="col name">{{applicant.name}}</div>
 			<div class="col email">{{applicant.email}}</div>
-			<div class="col status">{{applicant.acceptedStatus}}</div>
+			<div class="col status">{{applicationStatus}}</div>
 		</div>
 		<div class="bottom pad" v-show="show">
-			<div class="row">Resume: {{applicant.resumeID}}</div>
+			<div class="row">Resume: <a target="_blank" :href="resumeLink">{{applicant.resumeID}}</a></div>
 			<div class="row">Gender: {{applicant.gender}}</div>
 			<div class="row">School: {{applicant.school}}</div>			
 			<div class="row">Grad Year: {{applicant.gradYear}}</div>
@@ -31,35 +31,38 @@
 export default {
   name: 'applicant',
   props: [
-  	'applicant',
-  	'password'
+	'applicant',
+	'password'
   ],
   data () {
-    return {
-    	show: false,
-    	applicationStatus: ""
-    }
+	return {
+		show: false,
+		applicationStatus: ""
+	}
   },
   created() {
-  	this.applicationStatus = this.applicant.acceptedStatus
+	this.applicationStatus = this.applicant.acceptedStatus
   },
   computed: {
-  	valid(){
-  		return this.applicant.acceptedStatus != 'invalid'
-  	}
+	valid(){
+		return this.applicant.acceptedStatus != 'invalid'
+	},
+	resumeLink(){
+		return "https://ht6.lyninx.com/resumes/"+this.applicant.resumeID
+	}
   },
   methods: {
-  	update() {
-  		const body = {
-  			password: this.password,
-  			id: this.applicant.id,
-  			status: this.applicationStatus
-  		}
-  		this.$http.post('https://ht6.lyninx.com/update_status', body).then((res)=> {
-  			this.applicant.acceptedStatus = this.applicationStatus;
-  			this.show = false;
-  		})
-  	}
+	update() {
+		const data = {
+			password: this.password,
+			_id: this.applicant._id,
+			status: this.applicationStatus
+		}
+		console.log(this.applicant.email + " updated to" + this.applicationStatus)
+		this.$http.post('https://ht6.lyninx.com/update_status', data).then(() => {
+			this.show = false;
+		})
+	}
   }
 }
 </script>
