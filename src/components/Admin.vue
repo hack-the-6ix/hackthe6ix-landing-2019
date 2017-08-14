@@ -48,7 +48,7 @@ export default {
   }
 }	
 </script>
-<style>
+<style scoped>
 #admin {
 	color:#fff;
 }
