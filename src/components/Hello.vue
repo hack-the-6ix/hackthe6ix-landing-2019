@@ -14,7 +14,7 @@
       </div>
       <div class="top-level"><img class="anim" src="../assets/logo-solid.svg" height="240px"></div>
       <h1>HACK THE 6IX</h1>
-      <h2>August 25-27, 2017</h2>
+      <h2>August 26-27, 2017</h2>
       <h3>Centre for Social Innovation - Annex</h3>
       <router-link to="/apply"><div class="btn large">APPLY</div></router-link>
       <a href="https://hackthe6ixvolunteers.typeform.com/to/o6Nptv"><div class="btn large volunteer">VOLUNTEER</div></a>
