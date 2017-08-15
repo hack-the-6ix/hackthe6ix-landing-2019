@@ -64,6 +64,7 @@ export default {
   			if (result.body.success){
   				this.applicant = result.body.applicant
   				this.status = this.applicant.acceptedStatus
+  				this.applicant.dietary = this.applicant.dietaryRestriction
   				this.loaded = true
   			} else {
   				this.message = 'Error: Applicant ID not found. Please contact us for assistance.'
@@ -102,11 +103,11 @@ export default {
   computed: {
   	statusMessage(){
   		switch(this.status){
-  			case "waitlist":
+  			case "accepted":
   				return "We’re very excited to invite you to Hack the 6ix 2017! Get ready for a weekend of fun, food, and free swag. Join our Facebook group and Slack channel to meet other people, make teams, and find friends. We’ll be sending out further details and schedules closer to the event."
   			case "rejected":
   				return "Thank you for applying to Hack the 6ix! Due to the unexpected surplus of talented and impressive applicants this year, we aren’t able to extend an invitation right now. However, we’ve added you to the waitlist and will notify you as soon as more spots open up! If you’d like be a volunteer, we’re currently accepting applications! We’d love to keep in touch with you, so make sure to follow us on our social media pages and definitely apply again next year."
-  			case "accepted":
+  			case "waitlist":
   				return "Thank you for applying to Hack the 6ix! Unfortunately, due to the unexpected surplus of talented and impressive applicants this year, we are unable to extend an invitation to you for Hack the 6ix 2017 at this time. Do not despair though! You can still get involved with our event. If you’d like be a volunteer, we’re currently accepting applications! We’d love to keep in touch with you, so make sure to follow us on our social media pages for upcoming contests and apply again next year!"
   		}
   	},
