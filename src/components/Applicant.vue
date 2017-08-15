@@ -14,6 +14,7 @@
 			<div class="row">Interests: {{applicant.interests}}</div>
 			<div class="row">Hack Idea: {{applicant.ideas}}</div>
 			<div class="row">Dietary Restriction: {{applicant.dietaryRestriction}}</div>
+			<div class="row">RSVP: {{applicant.rsvp}}</div>
 			<div class="controls">
 				<select v-model="applicationStatus">
 					<option value="waiting">waiting</option>
