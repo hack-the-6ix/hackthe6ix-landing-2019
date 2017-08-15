@@ -4,7 +4,9 @@ import Main from '@/components/Main'
 import Admin from '@/components/Admin'
 import Hello from '@/components/Hello'
 import Apply from '@/components/Apply'
+import Liability from '@/components/Liability'
 import Privacy from '@/components/Privacy'
+import Status from '@/components/Status'
 import Thanks from '@/components/Thanks'
 import NotFound from '@/components/NotFound'
 import Stripe from '@/components/Stripe'
@@ -41,6 +43,11 @@ export default new Router({
           component: Privacy
         },
         {
+          path: '/status/:id',
+          name: 'Status',
+          component: Status
+        },
+        {
           path: '/sponsor',
           name: 'Sponsor',
           component: Stripe
@@ -49,6 +56,11 @@ export default new Router({
           path:'/thanks',
           name: 'Thanks',
           component: Thanks
+        },
+        {
+          path:'/liability',
+          name: 'Liability',
+          component: Liability
         },
         {
           path:'*',
