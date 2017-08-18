@@ -32,11 +32,11 @@ export default new Router({
           name: 'Hello',
           component: Hello
         },
-        // {
-        //   path: '/apply',
-        //   name: 'Apply',
-        //   component: Apply
-        // },
+        {
+          path: '/apply',
+          name: 'Apply',
+          component: Apply
+        },
         {
           path: '/privacy',
           name: 'Privacy',
