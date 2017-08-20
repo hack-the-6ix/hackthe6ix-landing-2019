@@ -7,6 +7,13 @@
 		<div class="btn" v-on:click="auth()">AUTHENTICATE</div>
 		</div>
 		<div class="message"><h4>{{message}}</h4></div>
+    <div class="stats" v-show="authenticated">
+      Applicants: {{validApplicants}}<br>
+      Accepted: {{acceptedApplicants}}<br>
+      Rejected: {{rejectedApplicants}}<br>
+      Waitlist: {{waitlistApplicants}}<br>
+      RSVP: {{rsvpApplicants}}
+    </div>
 		<div class="applicants">
 			<applicant v-for="applicant in applicants" :applicant="applicant" :password="password" v-bind:key="applicant.id"></applicant>
 		</div>
@@ -39,12 +46,43 @@ export default {
   			if(res.body.success){
   				console.log(res)
   				this.applicants = res.body.applicants
-  				this.message = `${res.body.applicants.length} Applicants`
   			} else {
   			    this.message = res.body.msg
   			}
   		});
   	}
+  },
+  computed: {
+    validApplicants() {
+      const valid = this.applicants.filter((applicant) => {
+        return applicant.acceptedStatus != 'invalid'
+      })
+      return valid.length
+    },
+    acceptedApplicants() {
+      const accepted = this.applicants.filter((applicant) => {
+        return applicant.acceptedStatus == 'accepted'
+      })
+      return accepted.length
+    },
+    rejectedApplicants() {
+      const rejected = this.applicants.filter((applicant) => {
+        return applicant.acceptedStatus == 'rejected'
+      })
+      return rejected.length
+    },
+    waitlistApplicants() {
+      const waitlist = this.applicants.filter((applicant) => {
+        return applicant.acceptedStatus == 'waitlist'
+      })
+      return waitlist.length
+    },
+    rsvpApplicants() {
+      const rsvp = this.applicants.filter((applicant) => {
+        return applicant.rsvp
+      })
+      return rsvp.length
+    }
   }
 }	
 </script>
@@ -55,6 +93,10 @@ export default {
 .main {
   padding-top:64px;
 /*  background:#273355;*/
+}
+.stats {
+  font-size:20px;
+  margin-bottom:20px;
 }
 #app {
   -webkit-font-smoothing: antialiased;
