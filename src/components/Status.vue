@@ -9,6 +9,10 @@
 					<div class="section">
 						<div class="card">
 							<div>{{statusMessage}}</div>
+							<div class="attendee-links" v-show="accepted">
+								<a class="attendee" href="https://www.facebook.com/groups/1416038748480243/">Facebook Group</a><br>
+								<a class="attendee" href="https://hackthe6ix17.slack.com/join/shared_invite/MjI3NTI1NDAzMjIyLTE1MDI3Njk4MzAtYzMyNTM0ZWFjYg">Slack Channel</a>
+							</div>
 						</div>
 					</div>
 					<div class="section" v-show="accepted">
@@ -121,6 +125,9 @@ export default {
 	.wrap {
 		max-width:600px;
 	}
+	.attendee-links {
+		margin-top:12px;
+	}
 	.name {
 		color:#ccc;
 	}
@@ -185,6 +192,9 @@ export default {
 	}
 	a.mailto {
 		color:#23b5af;
+	}
+	a.attendee {
+		color:#23b5af;		
 	}
 	a:hover {
 		color:#fff;
