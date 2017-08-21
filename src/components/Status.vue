@@ -108,7 +108,7 @@ export default {
   	statusMessage(){
   		switch(this.status){
   			case "accepted":
-  				return "Congrats! We’re very excited to invite you to Hack the 6ix 2017! Get ready for a weekend of fun, food, and free swag. Join our Facebook group and Slack channel to meet other people, make teams, and find friends. We’ll be sending out further details and schedules closer to the event."
+  				return "Congrats! We’re very excited to invite you to Hack the 6ix 2017! Get ready for a weekend of fun, food, and free swag. Join our Facebook group and Slack channel to meet other people, make teams, and find friends. We’ll be sending out further details and schedules closer to the event. Please RSVP below by Wednesday, August 23rd, 11:59PM."
   			case "rejected":
   				return "Thank you for applying to Hack the 6ix! Due to the unexpected surplus of talented and impressive applicants this year, we aren’t able to extend an invitation right now. However, we’ve added you to the waitlist and will notify you as soon as more spots open up! We’d love to keep in touch with you, so make sure to follow us on our social media pages and definitely apply again next year."
   			case "waitlist":
