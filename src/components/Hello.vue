@@ -17,7 +17,7 @@
       <h2>August 26-27, 2017</h2>
       <h3>Centre for Social Innovation - Annex</h3>
       <!-- <router-link to="/apply"><div class="btn large">APPLY</div></router-link> -->
-      <a href="https://hackthe6ixvolunteers.typeform.com/to/o6Nptv"><div class="btn large volunteer">VOLUNTEER</div></a>
+<!--       <a href="https://hackthe6ixvolunteers.typeform.com/to/o6Nptv"><div class="btn large volunteer">VOLUNTEER</div></a> -->
       <countdown></countdown>
       <img src="../assets/Earth.svg" height="480px">
     </div>
