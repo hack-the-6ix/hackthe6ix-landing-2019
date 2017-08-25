@@ -8,14 +8,10 @@
 				<div class="sections">
 					<div class="section">
 						<div class="card">
-							<div>{{statusMessage}}</div>
-							<div class="attendee-links" v-show="accepted">
-								<a class="attendee" href="https://www.facebook.com/groups/1416038748480243/">Facebook Group</a><br>
-								<a class="attendee" href="https://hackthe6ix17.slack.com/join/shared_invite/MjI3NTI1NDAzMjIyLTE1MDI3Njk4MzAtYzMyNTM0ZWFjYg">Slack Channel</a>
-							</div>
+							RSVP's for the event have closed. Please contact us if you have any questions or concerns about your application status.
 						</div>
 					</div>
-					<div class="section" v-show="accepted">
+<!-- 					<div class="section" v-show="accepted">
 			            <div class="label">Will you be attending the event?</div>
 			            <select v-model="applicant.rsvp" v-on:change="change">
 			              <option value="true">Yes. I will be there!</option>
@@ -41,7 +37,7 @@
 					</div>
 					<div class="section center">
 						{{warning}}
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -106,14 +102,7 @@ export default {
   },
   computed: {
   	statusMessage(){
-  		switch(this.status){
-  			case "accepted":
-  				return "Congrats! We’re very excited to invite you to Hack the 6ix 2017! Get ready for a weekend of fun, food, and free swag. Join our Facebook group and Slack channel to meet other people, make teams, and find friends. We’ll be sending out further details and schedules closer to the event. Please RSVP below by Wednesday, August 23rd, 11:59PM."
-  			case "rejected":
-  				return "Thank you for applying to Hack the 6ix! Due to the unexpected surplus of talented and impressive applicants this year, we aren’t able to extend an invitation right now. We’d love to keep in touch with you, so make sure to follow us on our social media pages and definitely apply again next year."
-  			case "waitlist":
-  				return "Thank you for applying to Hack the 6ix! Unfortunately, due to the unexpected surplus of talented and impressive applicants this year, we are unable to extend an invitation to you for Hack the 6ix 2017 at this time. Do not despair though! You can still get involved with our event. We’d love to keep in touch with you, so make sure to follow us on our social media pages for upcoming contests and apply again next year!"
-  		}
+  		return ""
   	},
   	accepted(){
   		return this.status === 'accepted'
