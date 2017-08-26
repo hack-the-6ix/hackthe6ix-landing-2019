@@ -22,6 +22,7 @@
 					<option value="rejected">rejected</option>
 					<option value="waitlist">waitlist</option>
 					<option value="invalid">invalid</option>
+					<option value="signed-in">signed in</option>
 				</select>
 				<div class="btn" v-on:click="update">SAVE</div>
 			</div>
