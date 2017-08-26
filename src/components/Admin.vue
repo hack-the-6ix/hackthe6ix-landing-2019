@@ -10,6 +10,7 @@
     <div class="stats" v-show="authenticated">
       Applicants: {{validApplicants}}<br>
       Accepted: {{acceptedApplicants}}<br>
+      Signed In: {{signedInApplicants}}<br>
       Rejected: {{rejectedApplicants}}<br>
       Waitlist: {{waitlistApplicants}}<br>
       RSVP: {{rsvpApplicants}}
@@ -70,6 +71,12 @@ export default {
         return applicant.acceptedStatus == 'rejected'
       })
       return rejected.length
+    },
+    signedInApplicants() {
+      const signedIn = this.applicants.filter((applicant) => {
+        return applicant.acceptedStatus == 'signed-in'
+      })
+      return signedIn.length
     },
     waitlistApplicants() {
       const waitlist = this.applicants.filter((applicant) => {
