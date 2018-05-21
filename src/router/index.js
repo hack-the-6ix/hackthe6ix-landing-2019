@@ -10,6 +10,9 @@ import Status from '@/components/Status'
 import Thanks from '@/components/Thanks'
 import NotFound from '@/components/NotFound'
 import Stripe from '@/components/Stripe'
+import VueHead from 'vue-head'
+
+Vue.use(VueHead)
 
 Vue.use(Router)
 export default new Router({

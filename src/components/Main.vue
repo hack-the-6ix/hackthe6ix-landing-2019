@@ -18,21 +18,16 @@ export default {
     // FooterSection
     Social
   },
+  head: {
+    meta: [
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    ]
+  },
   name: 'app'
 }
 </script>
 
 <style>
-@media screen 
-  and (max-device-width: 900px){
-    .cloud {
-        display:none;
-    }
-    .svg {
-        display:none;
-    }
-}
-
 @media screen and (max-width: 900px){
     .cloud {
         display:none;
