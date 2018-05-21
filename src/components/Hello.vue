@@ -1,16 +1,16 @@
 <template>
   <div class="hello">
     <div class="wrap">
-      <div class="space">
-        <img src="../assets/Moon.svg" width="160px" class="moon">
-        <img src="../assets/Constellation.svg" width="160px" class="constellation">
-        <img src="../assets/Comet.svg" width="160px" class="comet">
-        <img src="../assets/Jupiter.svg" width="160px" class="jupiter">
-        <img src="../assets/Mars.svg" width="110px" class="mars">
+      <div class="cloud">
+        <img src="../assets/cloud1.svg" width="500px" class="cloud1">
+        <img src="../assets/cloud2.svg" width="400px" class="cloud2">
+        <img src="../assets/cloud3.svg" width="200px" class="cloud3">
+        <img src="../assets/cloud4.svg" width="120px" class="cloud4">
+        <!-- <img src="../assets/Mars.svg" width="110px" class="mars">
         <img src="../assets/Rocket.svg" width="150px" class="rocket">
         <img src="../assets/UFO.svg" width="110px" class="ufo">
         <img src="../assets/Uranus.svg" width="80px" class="uranus">
-        <img src="../assets/Satellite.svg" width="110px" class="satellite">
+        <img src="../assets/Satellite.svg" width="110px" class="satellite"> -->
       </div>
       <div class="top-level"><img class="anim" src="../assets/logo-solid.svg" height="240px"></div>
       <h1>HACK THE 6IX</h1>
@@ -80,56 +80,33 @@ export default {
   margin-top: 5em;
   margin-bottom:0;
 }
-.space {
+.cloud {
   z-index:0;
   width:100%;
   max-width:1024px;
   margin:auto;
   position:absolute;
 }
-.space img {
+.cloud img {
   position:absolute;
 }
-.volunteer {
-  margin-top:20px;
-  background:#23b5af;;
+.cloud1 {
+  top:150px;
+  left:-300px;
 }
-.constellation {
-  left:0;
-  left:220px;
+.cloud2 {
+  top: 100px;
+  right: -20px;
 }
-.moon {
-  top:10px;
-  left:0;
-}
-.comet {
-  right:0;
-  right:200px;
-}
-.jupiter {
-  right:0;
+.cloud3 {
+  right:-200px;
   top:40px;
 }
-.mars {
-  left:10px;
-  top:400px;
+.cloud4 {
+  left:250px;
+  top:20px;
 }
-.rocket {
-  left:170px;
-  top:220px;
-}
-.ufo {
-  right:180px;
-  top:320px;
-}
-.uranus {
-  right:20px;
-  top:220px;
-}
-.satellite {
-  right:10px;
-  top:500px;
-}
+
 h1 {
   color: #47A2A9;
   font-size:40px;

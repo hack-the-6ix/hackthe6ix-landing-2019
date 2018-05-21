@@ -25,7 +25,7 @@ export default {
 <style>
 @media screen 
   and (max-device-width: 900px){
-    .space {
+    .cloud {
         display:none;
     }
     .svg {
@@ -34,7 +34,7 @@ export default {
 }
 
 @media screen and (max-width: 900px){
-    .space {
+    .cloud {
         display:none;
     }
     .svg {
@@ -63,6 +63,8 @@ body {
   flex-direction:column;
   justify-content:space-between;
   align-items: center;
+  overflow: hidden;
+  position: relative;
 
   background-image: url("../assets/city.svg");
   background-repeat: no-repeat;

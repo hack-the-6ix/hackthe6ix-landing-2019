@@ -1,0 +1,22 @@
+
+<svg width="106px" height="40px" viewBox="0 0 106 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#D06400" stop-opacity="0.784703351" offset="0%"></stop>
+            <stop stop-color="#DA5256" stop-opacity="0.792997056" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy-3" transform="translate(-409.000000, -116.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <g id="clouds-copy" transform="translate(58.000000, 107.000000)">
+                <g id="Background">
+                    <g id="cloud-4" transform="translate(351.000000, 9.000000)">
+                        <path d="M86.1674683,25.4451421 C84.514648,25.4451421 82.9096808,25.6422213 81.3670485,26.0067862 C80.6989943,11.9820551 69.1185483,0.815916047 54.9282204,0.815916047 C42.4498994,0.815916047 31.9889637,9.45276782 29.1927066,21.0741408 C26.5853432,19.8349978 23.6700831,19.1392392 20.5904854,19.1392392 C9.50557062,19.1392392 0.519895059,28.1249147 0.519895059,39.2098295 L105.79164,39.2098295 C102.886454,31.1824749 95.1972191,25.4451421 86.1674683,25.4451421 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
