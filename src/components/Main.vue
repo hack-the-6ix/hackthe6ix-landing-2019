@@ -68,7 +68,7 @@ body {
 
   background-image: url("../assets/city.svg");
   background-repeat: no-repeat;
-  background-position: center right;
+  background-position: center bottom -200px;
   background-size: cover;
   height: 100vh;
 }

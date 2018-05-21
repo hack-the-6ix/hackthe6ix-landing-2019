@@ -22,15 +22,17 @@ export default {
 }
 </script>
 <style scoped>
-.questions {
-  padding-bottom: 20px;
-}
+
 .social {
   color:#fff;
   min-height:100px;
+  padding-bottom: 20px;
 }
 .section {
   text-align:center;
+}
+.questions {
+  /* color & font */
 }
 .items {
   max-width:240px;
