@@ -65,6 +65,7 @@ body {
   align-items: center;
   overflow: hidden;
   position: relative;
+  text-align: center;
 
   background-image: url("../assets/city.svg");
   background-repeat: no-repeat;

@@ -6,13 +6,8 @@
         <img src="../assets/cloud2.svg" width="400px" class="cloud2">
         <img src="../assets/cloud3.svg" width="200px" class="cloud3">
         <img src="../assets/cloud4.svg" width="120px" class="cloud4">
-        <!-- <img src="../assets/Mars.svg" width="110px" class="mars">
-        <img src="../assets/Rocket.svg" width="150px" class="rocket">
-        <img src="../assets/UFO.svg" width="110px" class="ufo">
-        <img src="../assets/Uranus.svg" width="80px" class="uranus">
-        <img src="../assets/Satellite.svg" width="110px" class="satellite"> -->
       </div>
-      <div class="top-level"><img class="anim" src="../assets/logo-solid.svg" height="240px"></div>
+      <div class="top-level"><img class="anim" src="../assets/logo.png" height="280px"></div>
       <h1>HACK THE 6IX</h1>
       <h2>TopHat, Toronto &nbsp;&nbsp; August 24-26th, 2018</h2>
       <!-- <router-link to="/apply"><div class="btn large">APPLY</div></router-link> -->
@@ -21,32 +16,20 @@
 
     </div>
     <email></email>
-    <!-- <about></about>
-    <FAQ></FAQ>
-    <sponsors></sponsors> -->
   </div>
 </template>
 
 <script>
-// import Countdown from './Countdown'
-// import About from './About'
-// import FAQ from './FAQ'
-// import Sponsors from './Sponsors'
 import Email from './Email'
 export default {
   name: 'hello',
   components: {
-    // Countdown,
-    // About,
-    // FAQ,
-    // Sponsors
     Email
   },
   data () {
     return {
     }
   },
-
 }
 </script>
 
@@ -75,8 +58,6 @@ export default {
   display:flex;
   flex-direction:column;
   align-items:center;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 5em;
   margin-bottom:0;
 }
@@ -114,8 +95,9 @@ h1 {
   margin-bottom:0;
 }
 h2 {
-  color: #77D3CC;
+  color: #47A2A9;
   margin-bottom:24px;
+  margin-top: 5px;
 }
 h3 {
   margin-top:0;

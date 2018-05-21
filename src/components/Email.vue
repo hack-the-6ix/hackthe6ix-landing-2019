@@ -18,9 +18,8 @@ export default {
 <style scoped>
 
 .wrapper {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  color: #303030;
+  margin-top: 50px;
 }
 
 </style>
