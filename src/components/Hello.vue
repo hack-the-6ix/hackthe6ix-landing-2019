@@ -47,6 +47,21 @@ export default {
   }
 }
 
+@media screen and (max-width: 580px){
+  .top-level img {
+    height: 150px;
+  }
+  .wrap {
+    margin-top: 2em;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  .cloud2, .cloud3 {
+      display:none;
+  }
+}
+
 .anim {
   animation: float-in 1s cubic-bezier(0.25, 0.7, 0.5, 1) forwards;
 }

@@ -28,14 +28,6 @@ export default {
 </script>
 
 <style>
-@media screen and (max-width: 900px){
-    .cloud {
-        display:none;
-    }
-    .svg {
-        display:none;
-    }
-}
 html, body {
   margin:0;
   padding:0;
