@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <header-section></header-section>
+    <!-- <header-section></header-section> -->
     <transition name="fade" mode="out-in">
       <router-view class="main"></router-view>
     </transition>
-    <footer-section></footer-section>
+    <!-- <footer-section></footer-section> -->
+    <social></social>
   </div>
 </template>
 
 <script>
-import HeaderSection from './Header'
-import FooterSection from './Footer'
+// import FooterSection from './Footer'
+import Social from './Social'
+
 export default {
   components: {
-    HeaderSection,
-    FooterSection
+    // FooterSection
+    Social
   },
   name: 'app'
 }
@@ -42,25 +44,31 @@ export default {
 html, body {
   margin:0;
   padding:0;
-  background:#273355;
+  background:#FFFFFF;
   font-family: 'Montserrat', sans-serif;
 }
 body {
   overflow-y:scroll;
 }
 .main {
-  padding-top:64px;
+
+  /* padding-top:64px; */
 /*  background:#273355;*/
 }
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #eee;
-  background-image:url("../assets/stars.svg");
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  min-height:100vh;
+  align-items: center;
+
+  background-image: url("../assets/city.svg");
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+  height: 100vh;
 }
 .section {
   max-width: 900px;
@@ -69,8 +77,6 @@ body {
 }
 .wrap {
   max-width:1024px;
-  margin:auto;
-  margin-bottom:0;
 }
 .row {
   display:flex;

@@ -14,31 +14,33 @@
       </div>
       <div class="top-level"><img class="anim" src="../assets/logo-solid.svg" height="240px"></div>
       <h1>HACK THE 6IX</h1>
-      <h2>August 26-27, 2017</h2>
-      <h3>Centre for Social Innovation - Annex</h3>
+      <h2>TopHat, Toronto &nbsp;&nbsp; August 24-26th, 2018</h2>
       <!-- <router-link to="/apply"><div class="btn large">APPLY</div></router-link> -->
 <!--       <a href="https://hackthe6ixvolunteers.typeform.com/to/o6Nptv"><div class="btn large volunteer">VOLUNTEER</div></a> -->
 <!--       <countdown></countdown> -->
-      <img src="../assets/Earth.svg" height="480px">
+
     </div>
-    <about></about>
+    <email></email>
+    <!-- <about></about>
     <FAQ></FAQ>
-    <sponsors></sponsors>
+    <sponsors></sponsors> -->
   </div>
 </template>
 
 <script>
-import Countdown from './Countdown'
-import About from './About'
-import FAQ from './FAQ'
-import Sponsors from './Sponsors'
+// import Countdown from './Countdown'
+// import About from './About'
+// import FAQ from './FAQ'
+// import Sponsors from './Sponsors'
+import Email from './Email'
 export default {
   name: 'hello',
   components: {
-    Countdown,
-    About,
-    FAQ,
-    Sponsors
+    // Countdown,
+    // About,
+    // FAQ,
+    // Sponsors
+    Email
   },
   data () {
     return {
@@ -73,7 +75,10 @@ export default {
   display:flex;
   flex-direction:column;
   align-items:center;
-  margin:20px auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5em;
+  margin-bottom:0;
 }
 .space {
   z-index:0;
@@ -126,11 +131,13 @@ export default {
   top:500px;
 }
 h1 {
+  color: #47A2A9;
   font-size:40px;
   font-weight:bold;
   margin-bottom:0;
 }
 h2 {
+  color: #77D3CC;
   margin-bottom:24px;
 }
 h3 {
