@@ -1,10 +1,15 @@
 <template>
   <div class="wrapper">
     <span class="signup">Sign up to be notified when applications open!</span>
-    <form>
+    <div>
+      <a href="">
+        <button class="btn">Sign Up</button>
+      </a>
+    </div>
+<!--     <form>
       <input class="email" type="text" name="email" placeholder="Email Address">
-      <!-- <button class="confirm" type="button"></button> -->
-    </form>
+      <button class="confirm" type="button"></button>
+    </form> -->
   </div>
 </template>
 
@@ -30,6 +35,20 @@ export default {
   color: #303030;
   margin-top: 50px;
   font-style: italic;
+}
+
+button {
+  padding:12px 24px;
+  font-size:14px;
+  border-radius:24px;
+  font-weight: bold;
+  margin-top:12px;
+  transition:.2s ease-in-out;
+}
+
+button:hover {
+  transform:translateY(-2px);
+  transform:scale(1.05);
 }
 
 .email {

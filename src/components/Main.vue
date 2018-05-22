@@ -4,18 +4,16 @@
     <transition name="fade" mode="out-in">
       <router-view class="main"></router-view>
     </transition>
-    <!-- <footer-section></footer-section> -->
     <social></social>
+    <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2018/events" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2018/gray.svg" alt="Major League Hacking 2018 Hackathon Season" style="width:100%" class="mCS_img_loaded"></a>
   </div>
 </template>
 
 <script>
-// import FooterSection from './Footer'
 import Social from './Social'
 
 export default {
   components: {
-    // FooterSection
     Social
   },
   head: {
@@ -99,6 +97,7 @@ body {
 }
 .btn {
   background: #E3493B;
+  border:0;
   border-radius:12px;
   padding:4px 10px;
   color:#fff;
