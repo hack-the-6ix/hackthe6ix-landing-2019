@@ -32,7 +32,8 @@ export default {
   text-align:center;
 }
 .questions {
-  /* color & font */
+  font-weight: bold;
+  font-size: 20px;
 }
 .items {
   max-width:240px;
