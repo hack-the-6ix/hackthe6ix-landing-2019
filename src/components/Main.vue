@@ -5,7 +5,8 @@
       <router-view class="main"></router-view>
     </transition>
     <social></social>
-    <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2018/events" target="_blank"><img src="../assets/MLH White 2018.svg" alt="Major League Hacking 2018 Hackathon Season" style="width:100%" class="mCS_img_loaded"></a>
+    <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-gray.svg" alt="Major League Hacking 2019 Hackathon Season" style="width:100%"></a>
+    
   </div>
 </template>
 
