@@ -15,7 +15,7 @@
 <!--       <countdown></countdown> -->
 
     </div>
-<!--     <email></email> -->
+      <email></email>
   </div>
 </template>
 

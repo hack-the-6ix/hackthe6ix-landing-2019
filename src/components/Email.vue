@@ -2,8 +2,8 @@
   <div class="wrapper">
     <span class="signup">Sign up to be notified when applications open!</span>
     <div>
-      <a href="">
-        <button class="btn">Sign Up</button>
+      <a href="https://goo.gl/forms/Hrk0LeDHPAwSUlPv2">
+        <button class="btn">Get Notified</button>
       </a>
     </div>
 <!--     <form>

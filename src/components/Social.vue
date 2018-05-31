@@ -7,7 +7,7 @@
         <a href="https://www.instagram.com/hackthe6ix/"><img class="icon" src="../assets/instagram.png"></a>
       </div>
     </div>
-    <span class="questions">Got Questions? Email us at hello@hackthe6ix.com</span>
+    <span class="questions">Got Questions? Email us at hello@hackthe6ix.com</span> | <span><a class="code-of-conduct" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></span>
   </div>
 </template>
 
@@ -35,10 +35,20 @@ export default {
 .section {
   text-align:center;
 }
-.questions {
+span {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 }
+
+.code-of-conduct {
+  text-decoration: none;
+  border-bottom:1px solid #ccc;
+  color:white;
+}
+.code-of-conduct:hover {
+  border-bottom:1px solid #fff; 
+}
+
 .items {
   max-width:240px;
   display:flex;
