@@ -1,12 +1,6 @@
 <template>
   <div class="hello">
     <div class="wrap">
-      <div class="cloud">
-        <img src="../assets/cloud1.svg" width="500px" class="cloud1">
-        <img src="../assets/cloud2.svg" width="400px" class="cloud2">
-        <img src="../assets/cloud3.svg" width="200px" class="cloud3">
-        <img src="../assets/cloud4.svg" width="120px" class="cloud4">
-      </div>
       <div class="top-level"><img class="anim" src="../assets/logo.png" height="280px"></div>
       <h1>HACK THE 6IX</h1>
       <h2>TopHat, Toronto &nbsp;&nbsp; August 24-26th, 2018</h2>
@@ -16,15 +10,24 @@
 
     </div>
       <email></email>
+      <about></about>
+      <FAQ></FAQ>
+      <sponsors></sponsors>
   </div>
 </template>
 
 <script>
 import Email from './Email'
+import About from './About'
+import FAQ from './FAQ'
+import Sponsors from './Sponsors'
 export default {
   name: 'hello',
   components: {
-    Email
+    Email,
+    About,
+    FAQ,
+    Sponsors
   },
   data () {
     return {
@@ -65,7 +68,6 @@ export default {
 .anim {
   animation: float-in 1s cubic-bezier(0.25, 0.7, 0.5, 1) forwards;
 }
-
 .top-level {
   z-index:10;
 }
@@ -75,32 +77,6 @@ export default {
   align-items:center;
   margin-top: 5em;
   margin-bottom:0;
-}
-.cloud {
-  z-index:0;
-  width:100%;
-  max-width:1024px;
-  margin:auto;
-  position:absolute;
-}
-.cloud img {
-  position:absolute;
-}
-.cloud1 {
-  top:150px;
-  left:-300px;
-}
-.cloud2 {
-  top: 100px;
-  right: -20px;
-}
-.cloud3 {
-  right:-200px;
-  top:40px;
-}
-.cloud4 {
-  left:250px;
-  top:20px;
 }
 
 h1 {

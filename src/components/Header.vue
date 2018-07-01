@@ -2,10 +2,8 @@
   <div class="header">
     <div class="overlay">
       <div class="nav">
-        <div class="social-media">
-          <a href="https://twitter.com/hackthe6ix"><img class="icon" src="../assets/twitter.svg"></a>
-          <a href="https://www.facebook.com/HackThe6ix/"><img class="icon" src="../assets/facebook.svg"></a>
-          <a href="https://www.instagram.com/hackthe6ix/"><img class="icon" src="../assets/instagram.svg"></a>
+        <div class="logo">
+          <img src="../assets/logo.png" class="icon"/>
         </div>
         <div class="navigation">
           <router-link to="/" v-smooth-scroll>HOME</router-link>
@@ -13,7 +11,7 @@
           <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
           <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
 <!--           <router-link to="#contact">CONTACT</router-link> -->
-          <!-- <router-link to="/apply"><div class="btn">APPLY</div></router-link> -->
+          <router-link to="/apply"><div class="btn teal">APPLY</div></router-link>
         </div>
       </div>
       <router-link to="/">
@@ -44,13 +42,15 @@ export default {
 <style scoped>
 
 .header {
-  color:#fff;
+  color: #23b5af;
   position:absolute;
   width:100%;
   text-align:center;
+  background:#fff;
+  font-weight:600;
 }
 a {
-  color:#fff;
+  color: #23b5af;
   transition:all 0.1s ease-in;
 }
 a:hover {
@@ -68,24 +68,24 @@ a:hover {
   align-items:center;
 }
 .icon {
-  height:20px;
-  margin:0 8px;
-  transform: scale(1.2);
+  height:32px;
+  margin:0;
+  transform: scale(1.4);
 }
 .navigation a {
-  font-weight:bold;
   text-decoration:none;
   margin:0 16px;
 }
 .navigation a:hover {
   transition:all 0.2s ease-in-out;
 }
-.social-media{
+.logo {
   display:flex;
 }
 .overlay {
 	background: rgba(0,0,0,0.0);
-	padding:20px;
+  padding:20px;
 	height:20px;
+  margin-bottom:10px;
 }
 </style>

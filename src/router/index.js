@@ -9,7 +9,6 @@ import Privacy from '@/components/Privacy'
 import Status from '@/components/Status'
 import Thanks from '@/components/Thanks'
 import NotFound from '@/components/NotFound'
-import Stripe from '@/components/Stripe'
 import VueHead from 'vue-head'
 
 Vue.use(VueHead)
@@ -35,11 +34,11 @@ export default new Router({
           name: 'Hello',
           component: Hello
         },
-        // {
-        //   path: '/apply',
-        //   name: 'Apply',
-        //   component: Apply
-        // },
+        {
+          path: '/apply',
+          name: 'Apply',
+          component: Apply
+        },
         {
           path: '/privacy',
           name: 'Privacy',
@@ -49,11 +48,6 @@ export default new Router({
           path: '/status/:id',
           name: 'Status',
           component: Status
-        },
-        {
-          path: '/sponsor',
-          name: 'Sponsor',
-          component: Stripe
         },
         {
           path:'/thanks',

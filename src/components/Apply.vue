@@ -174,7 +174,7 @@ export default {
 .label {
   line-height:140%;
   font-size:20px;
-  color:#fff;
+  color:#000;
   margin-bottom:12px;
   font-weight:bold;
 }

@@ -2,7 +2,7 @@
   <div class="faq" id="faq">
     <div class="wrap">
         <div class="section">
-          <img src="../assets/Satellite 2.svg" width="160px" class="svg">
+          <!-- <img src="../assets/Satellite 2.svg" width="160px" class="svg"> -->
           <h1>FAQ</h1>
           <div class="card">
             <div class="columns">

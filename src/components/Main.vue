@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <!-- <header-section></header-section> -->
+    <header-section></header-section>
+    <div class="hero"></div>
     <transition name="fade" mode="out-in">
       <router-view class="main"></router-view>
     </transition>
-    <social></social>
+<!--     <social></social> -->
     <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-gray.svg" alt="Major League Hacking 2019 Hackathon Season" style="width:100%"></a>
     
   </div>
@@ -12,17 +13,15 @@
 
 <script>
 import Social from './Social'
-
+import HeaderSection from './Header'
 export default {
   components: {
-    Social
+    Social,
+    HeaderSection
   },
   head: {
     meta: [
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-    ],
-    link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700' },
     ]
   },
   name: 'app'
@@ -33,11 +32,12 @@ export default {
 html, body {
   margin:0;
   padding:0;
-  background:#FFFFFF;
-  font-family: 'Montserrat', sans-serif;
+  background:#eee;
+  font-family: 'Nunito Sans', sans-serif;
 }
 body {
   overflow-y:scroll;
+  overflow-x:hidden;
 }
 .main {
 
@@ -52,20 +52,22 @@ body {
   flex-direction:column;
   justify-content:space-between;
   align-items: center;
-  overflow: hidden;
   position: relative;
   text-align: center;
-
-  background-image: url("../assets/city.svg");
-  background-repeat: no-repeat;
-  background-position: center bottom -200px;
-  background-size: cover;
-  height: 100vh;
 }
 .section {
   max-width: 900px;
   padding:20px;
   margin:auto;
+}
+.hero {
+  background-image: url(../assets/city.png);
+  background-repeat: no-repeat;
+  background-position: center top -60px;
+  background-size: 1440px 1024px;
+  height:1024px;
+  width:100%;
+  max-width:1440px;
 }
 .wrap {
   max-width:1024px;
@@ -104,6 +106,9 @@ body {
   color:#fff;
   display:inline-block;
   cursor:pointer;
+}
+.btn.teal {
+  background: #23b5af;
 }
 
 p {

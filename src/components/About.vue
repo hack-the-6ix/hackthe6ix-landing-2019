@@ -2,7 +2,7 @@
   <div class="about" id="about">
   	<div class="wrap">
 	    <div class="section">
-	      <img src="../assets/Telescope.svg" width="160px" class="svg">
+	      <!-- <img src="../assets/Telescope.svg" width="160px" class="svg"> -->
 	      <h1>About Us</h1>
 	      <div class="card">
 	      	<p>Hack the 6ix is the largest hackathon taking place in the heart of downtown Toronto. Every year, developers, designers, and innovators from across the province congregate to brainstorm ideas and build creative projects. Over the course of 36 hours, teams will have access to technical and non-technical workshops, fantastic sponsors and an amazing community of tech enthusiasts.</p>
