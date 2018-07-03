@@ -2,14 +2,12 @@
   <div id="app">
     <header-section></header-section>
     <div class="hero-image">
-      <div class="wrap">
+      <div class="hero-wrap">
         <div class="top-level"><img class="anim" src="../assets/logo.png" height="280px"></div>
         <h1>HACK THE 6IX</h1>
         <h2>August 24-26, 2018</h2>
         <h2>TopHat HQ</h2>
       </div>
-            <email></email>
-
     </div>
 
     <transition name="fade" mode="out-in">
@@ -60,6 +58,7 @@ body {
   color: #eee;
   position: relative;
   text-align: center;
+  background-color: #fff;
 }
 .section {
   max-width: 1200px;
@@ -82,8 +81,10 @@ body {
 .top-level {
   z-index:10;
 }
-.wrap {
-
+.hero-wrap {
+  position: absolute;
+  right: 120px;
+  bottom: 200px;
 }
 h1 {
   color: #47A2A9;

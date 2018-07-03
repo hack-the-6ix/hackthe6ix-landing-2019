@@ -78,14 +78,14 @@ a:hover {
   transition:all 0.2s ease-in-out;
 }
 .logo {
-    display: block;
-    position: fixed;
-    left: 50px;
+  display: block;
+  position: absolute;
+  left: 50px;
 }
 .overlay {
 	background: rgba(0,0,0,0.0);
   padding:20px;
 	height:20px;
-  margin-bottom:10px;
+  padding-bottom: 30px;
 }
 </style>
