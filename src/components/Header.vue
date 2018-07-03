@@ -1,10 +1,10 @@
 <template>
   <div class="header">
     <div class="overlay">
+      <div class="logo">
+        <img src="../assets/logo.png" class="icon"/>
+      </div>
       <div class="nav">
-        <div class="logo">
-          <img src="../assets/logo.png" class="icon"/>
-        </div>
         <div class="navigation">
           <router-link to="/" v-smooth-scroll>HOME</router-link>
           <router-link to="/#about" v-smooth-scroll>ABOUT</router-link>
@@ -59,8 +59,7 @@ a:hover {
   display:flex;
   max-width:1024px;
   margin:auto;
-  align-items:center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .navigation {
   display:flex;
@@ -73,13 +72,15 @@ a:hover {
 }
 .navigation a {
   text-decoration:none;
-  margin:0 16px;
+  margin:0 25px;
 }
 .navigation a:hover {
   transition:all 0.2s ease-in-out;
 }
 .logo {
-  display:flex;
+    display: block;
+    position: fixed;
+    left: 50px;
 }
 .overlay {
 	background: rgba(0,0,0,0.0);
