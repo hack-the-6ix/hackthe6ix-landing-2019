@@ -1,7 +1,17 @@
 <template>
   <div id="app">
     <header-section></header-section>
-    <div class="hero"></div>
+    <div class="hero-image">
+      <div class="wrap">
+        <div class="top-level"><img class="anim" src="../assets/logo.png" height="280px"></div>
+        <h1>HACK THE 6IX</h1>
+        <h2>August 24-26, 2018</h2>
+        <h2>TopHat HQ</h2>
+      </div>
+            <email></email>
+
+    </div>
+
     <transition name="fade" mode="out-in">
       <router-view class="main"></router-view>
     </transition>
@@ -48,19 +58,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #eee;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items: center;
   position: relative;
   text-align: center;
 }
 .section {
-  max-width: 900px;
+  max-width: 1200px;
   padding:20px;
   margin:auto;
 }
-.hero {
+.hero-image {
   background-image: url(../assets/city.png);
   background-repeat: no-repeat;
   background-position: center top -60px;
@@ -68,32 +74,30 @@ body {
   height:1024px;
   width:100%;
   max-width:1440px;
+  position: relative;
+}
+.anim {
+  animation: float-in 1s cubic-bezier(0.25, 0.7, 0.5, 1) forwards;
+}
+.top-level {
+  z-index:10;
 }
 .wrap {
-  max-width:1024px;
+
 }
-.row {
-  display:flex;
-  margin-bottom:8px;
+h1 {
+  color: #47A2A9;
+  font-size:35px;
+  font-weight:bold;
+  margin-bottom:0;
 }
-.row .label {
-  min-width:200px;
-}
-.row input {
-  padding:6px;
-  border:0;
-  flex-grow:1;
-}
-.section {
-  margin: auto;
-  text-align:left;
-  color:#fff;
+h2 {
+  color: #47A2A9;
+  margin-bottom:24px;
+  margin-top: 5px;
 }
 .card {
-  border:1px solid #fff;
-  border-radius:8px;
-  background-color: rgba(17, 26, 52, 0.6);
-  padding:24px 40px;
+  padding-right: 40px;
   margin-bottom:24px;
   line-height:140%;
   overflow:hidden;
@@ -113,6 +117,7 @@ body {
 
 p {
   margin-bottom:24px;
+  text-align: left;
 }
 a {
   color:#555;

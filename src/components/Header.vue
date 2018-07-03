@@ -43,7 +43,6 @@ export default {
 
 .header {
   color: #23b5af;
-  position:absolute;
   width:100%;
   text-align:center;
   background:#fff;

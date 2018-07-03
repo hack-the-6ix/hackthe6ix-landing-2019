@@ -1,14 +1,5 @@
 <template>
   <div class="hello">
-    <div class="wrap">
-      <div class="top-level"><img class="anim" src="../assets/logo.png" height="280px"></div>
-      <h1>HACK THE 6IX</h1>
-      <h2>TopHat, Toronto &nbsp;&nbsp; August 24-26th, 2018</h2>
-      <!-- <router-link to="/apply"><div class="btn large">APPLY</div></router-link> -->
-<!--       <a href="https://hackthe6ixvolunteers.typeform.com/to/o6Nptv"><div class="btn large volunteer">VOLUNTEER</div></a> -->
-<!--       <countdown></countdown> -->
-
-    </div>
       <email></email>
       <about></about>
       <FAQ></FAQ>
@@ -63,32 +54,6 @@ export default {
   .cloud2, .cloud3 {
       display:none;
   }
-}
-
-.anim {
-  animation: float-in 1s cubic-bezier(0.25, 0.7, 0.5, 1) forwards;
-}
-.top-level {
-  z-index:10;
-}
-.wrap {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  margin-top: 5em;
-  margin-bottom:0;
-}
-
-h1 {
-  color: #47A2A9;
-  font-size:35px;
-  font-weight:bold;
-  margin-bottom:0;
-}
-h2 {
-  color: #47A2A9;
-  margin-bottom:24px;
-  margin-top: 5px;
 }
 h3 {
   margin-top:0;
