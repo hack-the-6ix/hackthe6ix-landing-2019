@@ -62,6 +62,8 @@ export default {
 .faq {
     background:#fff;
     text-align: left;
+    padding-bottom: 100px;
+    padding-top: 50px;
 }
 .columns {
     display:flex;

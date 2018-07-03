@@ -5,12 +5,10 @@
 	      <!-- <img src="../assets/Moon 2.svg" width="160px" class="svg"> -->
 	      <h1>Sponsors</h1>
 	      <div class="card">
-	      	        <!-- <h2>Coming soon!</h2> -->
-                  <div class="logos">
-                  <div class="shopify-logo logo"></div>
-                  <div class="nextcan-logo logo"></div>
-                  <div class="altera-logo logo"></div>
-                  </div>
+          <!-- <h2>Coming soon!</h2> -->
+          <div class="logos">
+            <div class="stdlib-logo logo"></div>
+          </div>
 	      </div>
 	    </div>
     </div>
@@ -34,10 +32,17 @@ export default {
 .st0 {
   fill:#fff;
 }*/
+.sponsors {
+  background-color: #23b5af;
+}
+h1 {
+  color: #fff;;
+  font-size: 64px;
+}
 .logos {
-  display:flex;
+  /* display:flex;
   flex-wrap:wrap;
-  /*justify-content: space-between;*/
+  justify-content: space-between; */
 }
 .altera-logo {
   background-image: url(../assets/altera.png);
@@ -46,17 +51,18 @@ export default {
 .shopify-logo {
   background-image: url(../assets/Shopify.svg);
 }
+.stdlib-logo {
+  background-image: url(../assets/stdlib.png);
+  width: 500px;
+}
 .nextcan-logo {
-  background-image: url(../assets/NextCan.svg);
+  background-image: url(../assets/stdlib.png);
 }
 .logo {
   min-width:200px;
   height:60px;
   background-size:cover;
   background-repeat: no-repeat;
-}
-.sponsors {
-	background:rgba(255,255,255, 0.1);
 }
 .svg {
 	position:absolute;

@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-      <email></email>
+      <!-- <email></email> -->
       <about></about>
       <FAQ></FAQ>
       <sponsors></sponsors>
@@ -8,14 +8,14 @@
 </template>
 
 <script>
-import Email from './Email'
+// import Email from './Email'
 import About from './About'
 import FAQ from './FAQ'
 import Sponsors from './Sponsors'
 export default {
   name: 'hello',
   components: {
-    Email,
+    // Email,
     About,
     FAQ,
     Sponsors
