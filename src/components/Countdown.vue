@@ -30,7 +30,7 @@ export default {
   data () {
     return {
       now: Math.trunc((new Date()).getTime() / 1000),
-      date: Math.trunc(new Date(2017, 7, 26, 9) / 1000),
+      date: Math.trunc(new Date(2018, 7, 26, 9) / 1000),
     }
   },
   computed: {
@@ -63,23 +63,22 @@ export default {
   letter-spacing:1px;
 }
 .block {
-    margin: 20px;
+    margin: 10px;
 }
 
 .text {
-    color: #23b5af;
-    font-size: 24px;
-    font-weight: 40;
-    margin-top:10px;
+    color: #3a3d3f;
+    font-size: 16px;
+    font-weight:600;
     margin-bottom: 10px;
     text-align: center;
 }
 
 .digit {
-    color: #e5e5e5;
+    color: #3a3d3f;
+    font-weight:700;
     font-size: 50px;
-    font-weight: 100;
-    margin: 10px;
     text-align: center;
+    margin:0;
 }
 </style>

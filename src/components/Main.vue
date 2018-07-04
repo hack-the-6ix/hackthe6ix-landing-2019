@@ -1,14 +1,6 @@
 <template>
   <div id="app">
     <header-section></header-section>
-    <div class="hero-image">
-      <div class="hero-wrap">
-        <div class="top-level"><img class="anim" src="../assets/logo.png" height="280px"></div>
-        <h1>HACK THE 6IX</h1>
-        <h2>August 24-26, 2018</h2>
-        <h2>TopHat HQ</h2>
-      </div>
-    </div>
 
     <transition name="fade" mode="out-in">
       <router-view class="main"></router-view>
@@ -84,7 +76,7 @@ body {
 .hero-wrap {
   position: absolute;
   right: 120px;
-  bottom: 200px;
+  bottom: 100px;
 }
 h1 {
   color: #47A2A9;

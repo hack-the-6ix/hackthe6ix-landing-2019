@@ -1,6 +1,15 @@
 <template>
   <div class="hello">
       <!-- <email></email> -->
+      <div class="hero-image">
+        <div class="hero-wrap">
+          <div class="top-level"><img class="anim" src="../assets/logo.png" height="280px"></div>
+          <h1 class="ht6">HACK THE 6IX</h1>
+          <h2>August 24-26, 2018</h2>
+          <h2>TopHat HQ</h2>
+          <countdown></countdown>
+        </div>
+      </div>
       <about></about>
       <FAQ></FAQ>
       <sponsors></sponsors>
@@ -12,13 +21,15 @@
 import About from './About'
 import FAQ from './FAQ'
 import Sponsors from './Sponsors'
+import Countdown from './Countdown'
 export default {
   name: 'hello',
   components: {
     // Email,
     About,
     FAQ,
-    Sponsors
+    Sponsors,
+    Countdown
   },
   data () {
     return {
@@ -68,6 +79,9 @@ p {
 a {
   color:#fff;
   text-decoration:none;
+}
+.ht6 { 
+  color:#2d2f30;
 }
 .btn.large {
   font-size:28px;
