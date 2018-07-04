@@ -64,7 +64,6 @@ body {
   background-size: 1440px 1024px;
   height:1024px;
   width:100%;
-  max-width:1440px;
   position: relative;
 }
 .anim {
@@ -75,7 +74,7 @@ body {
 }
 .hero-wrap {
   position: absolute;
-  right: 120px;
+  right: 10%;
   bottom: 100px;
 }
 h1 {
