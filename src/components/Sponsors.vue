@@ -6,10 +6,42 @@
 	      <h1>Sponsors</h1>
 	      <div class="card">
           <!-- <h2>Coming soon!</h2> -->
-          <div class="logos">
+          <!-- <div class="logos">
             <div class="stdlib-logo logo"></div>
+          </div> -->
+          <img src="../assets/stdlib.png" alt="stdlib" class="stdlib-logo"/>
+          <!-- need tophat logo -->
+          <div class="logos-row">
+            <img src="../assets/informatica.png" alt="Informatica" class="logo"/>
+            <img src="../assets/index-exchange-with-r.png" alt="INDEX EXCHANGE" class="logo"/>
+            <img src="../assets/scotiabank.png" alt="Scotiabank" class="logo"/>
+          </div>
+          <div class="logos-row">
+            <img src="../assets/deloitte.png" alt="Deloitte" class="logo"/>
+            <img src="../assets/intel.png" alt="Intel" class="logo"/>
+            <img src="../assets/vena-logo.png" alt="Vena" class="logo"/>
+          </div>
+          <div class="logos-row">
+            <img src="../assets/bmo.png" alt="Bank of Montreal" class="logo-sub"/>
+            <img src="../assets/balsamiq.png" alt="balsamiq" class="logo-sub"/>
+            <img src="../assets/pageduty.png" alt="pageduty" class="logo-sub"/>
+            <img src="../assets/loyaltyone.png" alt="LoyaltyOne" class="logo-sub"/>
+          </div>
+          <div class="logos-row">
+            <img src="../assets/element-ai.png" alt="ELEMENT AI" class="logo-sub"/>
+            <img src="../assets/nextcanada.png" alt="NEXTCANADA" class="logo-sub"/>
+            <img src="../assets/wealthsimple.png" alt="Wealthsimple" class="logo-sub"/>
+          </div>
+          <div class="logos-row">
+            <img src="../assets/indico.png" alt="indico" class="logo-sub"/>
+            <img src="../assets/mlh.png" alt="MLH" class="logo-sub"/>
+            <img src="../assets/teabot.png" alt="teaBOT" class="logo-sub"/>
           </div>
 	      </div>
+
+        <hr>
+        <h2>Interested in being a sponsor?</h2>
+        <button type="button" class="sponsor-button">BECOME A SPONSOR</button>
 	    </div>
     </div>
   </div>
@@ -32,6 +64,9 @@ export default {
 .st0 {
   fill:#fff;
 }*/
+.section {
+  padding-bottom: 150px;
+}
 .sponsors {
   background-color: #23b5af;
 }
@@ -39,30 +74,38 @@ h1 {
   color: #fff;;
   font-size: 64px;
 }
-.logos {
-  /* display:flex;
-  flex-wrap:wrap;
-  justify-content: space-between; */
+h2 {
+  color: #fff;;
+  font-size: 32px;;
 }
-.altera-logo {
-  background-image: url(../assets/altera.png);
-  width:240px;
+hr {
+  border-style: solid;
+  width: 500px;
+  margin-bottom: 50px;
 }
-.shopify-logo {
-  background-image: url(../assets/Shopify.svg);
+.logos-row {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 70px;
+  margin-bottom: 70px;
 }
 .stdlib-logo {
-  background-image: url(../assets/stdlib.png);
   width: 500px;
 }
-.nextcan-logo {
-  background-image: url(../assets/stdlib.png);
-}
 .logo {
-  min-width:200px;
-  height:60px;
-  background-size:cover;
-  background-repeat: no-repeat;
+  height: 60px;
+}
+.logo-sub {
+  height: 30px;
+}
+.sponsor-button {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 25px 15px 25px;
+  font-size: 15px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
 }
 .svg {
 	position:absolute;
