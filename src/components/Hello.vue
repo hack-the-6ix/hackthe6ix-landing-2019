@@ -8,6 +8,7 @@
           <h2>August 24-26, 2018</h2>
           <h2>TopHat HQ</h2>
           <countdown></countdown>
+          <div class="btn apply">APPLY</div>
         </div>
       </div>
       <about></about>
@@ -70,6 +71,9 @@ h3 {
   margin-top:0;
   color:rgba(255,255,255,0.7);
 }
+h2 {
+  margin-bottom:8px;
+}
 hr {
   border:1px solid rgba(0,0,0,0.05);
 }
@@ -82,6 +86,17 @@ a {
 }
 .ht6 { 
   color:#2d2f30;
+}
+.apply {
+  font-size:30px;
+  border-radius:36px;
+  padding:12px 24px;
+  font-weight:bold;
+  transition: 0.1s ease-in-out;
+}
+.apply:hover {
+  transform: scale(1.1);
+  background:rgba(227, 73, 59, 0.9);
 }
 .btn.large {
   font-size:28px;

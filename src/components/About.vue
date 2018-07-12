@@ -10,9 +10,6 @@
   
             <p>We’ll provide you with all the resources, mentorship, and food to do your thing; all you need to bring is your creativity and ideas. Hack the 6ix is also a gathering of some of the top companies in North America. Whether you’re looking for start-up or corporate opportunities, come ready to flex your networking game! Hack the 6ix is open to hackers of all levels: no matter if you’re a beginner or veteran, it’s a weekend not to miss!</p>
           </div>
-          <div>
-            <img src="http://via.placeholder.com/600x400">
-          </div>
         </div>
 	    </div>
     </div>
@@ -30,6 +27,9 @@ export default {
 }
 </script>
 <style scoped>
+.card {
+  max-width:800px;
+}
 h1 {
   color: #fff;
   text-align: left;

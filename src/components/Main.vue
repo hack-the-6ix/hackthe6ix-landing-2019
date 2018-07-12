@@ -60,8 +60,8 @@ body {
 .hero-image {
   background-image: url(../assets/city.png);
   background-repeat: no-repeat;
-  background-position: center top -60px;
-  background-size: 1440px 1024px;
+  background-position: center -120px top -60px;
+  background-size: cover;
   height:1024px;
   width:100%;
   position: relative;
