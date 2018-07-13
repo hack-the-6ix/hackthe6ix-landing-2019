@@ -98,7 +98,9 @@ p {
     font-size:14px;
 }
 a {
-    color:#000;
+  color:#000;
+  margin: 0;
+  padding: 0;
 }
 a:hover {
     color:#ddd;
