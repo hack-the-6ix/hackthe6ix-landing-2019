@@ -6,7 +6,7 @@
       <h2>When and where is Hack the 6ix 2018?</h2> 
       <p>Hack the 6ix 2018 will be held at TopHat HQ in downtown Toronto from August 24-26, 2018.</p>
     
-      <button type="button" class="contact-button">CONTACT US</button>
+      <a href="mailto:hello@hackthe6ix.com" type="button" class="contact-button">CONTACT US</a>
     </div>
     <div class="map" id="map">
 
@@ -73,6 +73,7 @@ p {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: bold;
   color: #fff;
+  text-decoration: none;
 }
 .map {
   width: 500px;
