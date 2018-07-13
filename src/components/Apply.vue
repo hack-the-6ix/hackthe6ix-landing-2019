@@ -13,23 +13,58 @@
             <input type="text" placeholder="Email" v-model="email"/>
           </div>
           <div class="section">
-            <div class="label">Gender</div>
+            <div class="label">What is your phone number?</div>
+            <input type="text" placeholder="Phone Number" v-model="phone"/>
+          </div>
+          <div class="section">
+            <div class="label">When is your birthday?</div>
+            <input type="text" placeholder="MM-DD-YYYY" v-model="birthday"/>
+          </div>
+          <div class="section">
+            <div class="label">Which gender do you identify as?</div>
             <select v-model="gender">
               <option disabled selected value></option>
               <option value="male">Male</option>
               <option value="female">Female</option>
+              <option value="n/a">Prefer Not to Answer</option>
               <option value="other">Other</option>
             </select>
           </div>
           <div class="section">
+            <div class="label">What is your race / ethnicity?</div>
+              <select v-model="ethnicity">
+                <option disabled selected value></option>
+                <option value="american-native">American Indian or Alaskan Native</option>
+                <option value="asian">Asian / Pacific Islander</option>
+                <option value="black">Black or African American</option>
+                <option value="hispanic">Hispanic</option>
+                <option value="white">White / Caucasian</option>
+                <option value="multiple">Other</option>
+                <option value="n/a">Prefer Not to Answer</option>
+              </select>
+          </div>
+          <div class="section">
             <div class="label">Which school do you attend?</div>
-            <input type="text" v-model="school"/>
+            <input type="text" placeholder="School" v-model="school"/>
+          </div>
+          <div class="section">
+            <div class="label">What year will you be going in to?</div>
+            <select v-model="current_year">
+              <option disabled selected value></option>
+              <option value="1">2018</option>
+              <option value="2">2019</option>
+              <option value="3">2020</option>
+              <option value="4">2021</option>
+              <option value="5">2022</option>
+              <option value="6+">2023</option>
+              <option value="grad">Graduated</option>
+              <option value="n/a">Not Applicable</option>
+            </select>
           </div>
           <div class="section">
             <div class="label">When do you plan on graduating?</div>
             <select v-model="grad_year">
               <option disabled selected value></option>
-              <option value="2017">2017</option>
               <option value="2018">2018</option>
               <option value="2019">2019</option>
               <option value="2020">2020</option>
@@ -38,7 +73,7 @@
               <option value="2023">2023</option>
               <option value="2024">2024</option>
               <option value="grad">Already Graduated</option>
-              <option value="dont-know">Not Applicable</option>
+              <option value="n/a">Not Applicable</option>
             </select>
           </div>
           <div class="section">
@@ -54,11 +89,7 @@
             </select>
           </div>
           <div class="section">
-            <div class="label">Tell us about an idea you’ve always wanted to realize but couldn’t.</div>
-            <textarea rows="4" v-model="idea"></textarea>
-          </div>
-          <div class="section">
-            <div class="label">Do you already have a project in mind? If so, tell us about it!</div>
+            <div class="label">Describe a past project that you're passionate about.</div>
             <textarea rows="4" v-model="project"></textarea>
           </div>
           <div class="section">
@@ -87,12 +118,15 @@ export default {
   data () {
     return {
       name: '',
+      lname: '',
       email: '',
+      phone: '',
       gender: '',
+      ethnicity: '',
       school: '',
       grad_year: '',
+      current_year: '',
       hack_count: '',
-      idea: '',
       project: '',
       dietary: '',
       resume: '',
@@ -103,30 +137,46 @@ export default {
   methods: {
     setFile: function (event) { this.resume = event.target.files[0] },
     submit: function() {
-      const required = ['name', 'email', 'gender', 'school', 'grad_year', 'hack_count', 'idea', 'project', 'resume']
+      const required = [
+      'name', 
+      'lname', 
+      'email', 
+      'phone',
+      'gender', 
+      'ethnicity',
+      'school', 
+      'grad_year',
+      'current_year',
+      'hack_count', 
+      'project',
+      'dietary',
+      'resume']
       const valid = required.every((elem, index, array) => {
         return this[elem]
       })
       if(!valid){
         this.message = 'Make sure to fill in the entire form!'
       } else {
-        this.showButton = false;
-        const data = new FormData();
-        data.append('name', this.name);
-        data.append('email', this.email);
-        data.append('gender', this.gender);
-        data.append('school', this.school);
-        data.append('gradYear', this.grad_year);
-        data.append('hackCount', this.hack_count);
-        data.append('ideas', this.idea);
-        data.append('interests', this.project);
-        data.append('dietaryRestriction', this.dietary);
-        data.append('resume', this.resume);
+        this.showButton = false
+        const data = new FormData()
+        data.append('name', this.name)
+        data.append('lname', this.lname)
+        data.append('email', this.email)
+        data.append('phone', this.phone)
+        data.append('gender', this.gender)
+        data.append('ethnicity', this.ethnicity)
+        data.append('school', this.school)
+        data.append('grad_year', this.grad_year)
+        data.append('current_year', this.current_year)
+        data.append('hack_count', this.hack_count)
+        data.append('project', this.project)
+        data.append('dietary', this.dietary)
+        data.append('resume', this.resume)
         this.$http.post('https://ht6.lyninx.com/submission', data).then(() => {
         Router.push('/thanks')
       }, (err) => {
         this.message = "Sorry, we've encountered an error. Please try again later."
-      });
+      })
       }
       // send application
       
