@@ -19,6 +19,9 @@
       <about></about>
       <FAQ></FAQ>
       <sponsors></sponsors>
+      <contact></contact>
+      <hr>
+      <foot></foot>
   </div>
 </template>
 
@@ -28,6 +31,8 @@ import About from './About'
 import FAQ from './FAQ'
 import Sponsors from './Sponsors'
 import Countdown from './Countdown'
+import Contact from './Contact'
+import Foot from './Footer'
 export default {
   name: 'hello',
   components: {
@@ -35,7 +40,9 @@ export default {
     About,
     FAQ,
     Sponsors,
-    Countdown
+    Countdown,
+    Contact,
+    Foot
   },
   data () {
     return {
@@ -121,5 +128,11 @@ svg {
 .btn.large:hover {
   transform: translateY(-2px) scale(1.1);
   box-shadow: 2px 10px 12px 0 rgba(0, 0, 0, 0.3);
+}
+hr {
+  color: #ccc;
+  border-style: solid;
+  width: 100%;
+  /* margin-bottom: 50px; */
 }
 </style>

@@ -46,9 +46,9 @@
           </div>
 	      </div>
 
-        <hr>
+        <!-- <hr>
         <h2>Interested in being a sponsor?</h2>
-        <button type="button" class="sponsor-button">BECOME A SPONSOR</button>
+        <button type="button" class="sponsor-button">BECOME A SPONSOR</button> -->
 	    </div>
     </div>
   </div>
@@ -86,13 +86,13 @@ svg {
   position: relative;
 }
 h1 {
-  color: #fff;;
+  color: #fff;
   font-size: 64px;
   text-align: right;
   padding-top: 150px;
 }
 h2 {
-  color: #fff;;
+  color: #fff;
   font-size: 32px;;
 }
 hr {
