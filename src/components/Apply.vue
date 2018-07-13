@@ -51,12 +51,11 @@
             <div class="label">What year will you be going in to?</div>
             <select v-model="current_year">
               <option disabled selected value></option>
-              <option value="1">2018</option>
-              <option value="2">2019</option>
-              <option value="3">2020</option>
-              <option value="4">2021</option>
-              <option value="5">2022</option>
-              <option value="6+">2023</option>
+              <option value="1">1st year</option>
+              <option value="2">2nd year</option>
+              <option value="3">3rd year</option>
+              <option value="4">4th year</option>
+              <option value="5+">5th year or later</option>
               <option value="grad">Graduated</option>
               <option value="n/a">Not Applicable</option>
             </select>
@@ -122,6 +121,7 @@ export default {
       email: '',
       phone: '',
       gender: '',
+      birthday: '',
       ethnicity: '',
       school: '',
       grad_year: '',
@@ -138,11 +138,12 @@ export default {
     setFile: function (event) { this.resume = event.target.files[0] },
     submit: function() {
       const required = [
-      'name', 
+      'name',
       'lname', 
       'email', 
       'phone',
       'gender', 
+      'birthday',
       'ethnicity',
       'school', 
       'grad_year',
@@ -155,15 +156,17 @@ export default {
         return this[elem]
       })
       if(!valid){
-        this.message = 'Make sure to fill in the entire form!'
+        this.message = 'Please make sure to fill in the entire form!'
       } else {
         this.showButton = false
         const data = new FormData()
+        data.append('event_key', 'ht6-summer-2018')
         data.append('name', this.name)
         data.append('lname', this.lname)
         data.append('email', this.email)
         data.append('phone', this.phone)
         data.append('gender', this.gender)
+        data.append('birthday', this.birthday)
         data.append('ethnicity', this.ethnicity)
         data.append('school', this.school)
         data.append('grad_year', this.grad_year)
@@ -172,11 +175,19 @@ export default {
         data.append('project', this.project)
         data.append('dietary', this.dietary)
         data.append('resume', this.resume)
-        this.$http.post('https://ht6.lyninx.com/submission', data).then(() => {
-        Router.push('/thanks')
-      }, (err) => {
-        this.message = "Sorry, we've encountered an error. Please try again later."
-      })
+        this.$http.post('https://ht6.lyninx.com/submission', data).then((res) => {
+          console.log(res.body)
+          if(res.body.success) {
+            Router.push('/thanks')
+          } else {
+            this.showButton = true
+            this.message = res.body.msg
+          }
+          
+        }, (err) => {
+          this.showButton = true
+          this.message = "Sorry, we've encountered an error. Please try again later."
+        })
       }
       // send application
       
@@ -200,6 +211,7 @@ export default {
   padding-bottom:600px;*/
 }
 .warning {
+  color: #E3493B;
   margin-top:12px;
   font-weight:bold;
   position:absolute;
