@@ -15,7 +15,9 @@
             <div class="stdlib-logo logo"></div>
           </div> -->
           <img src="../assets/stdlib.png" alt="stdlib" class="stdlib-logo"/>
-          <!-- need tophat logo -->
+          <br>
+          <img src="../assets/tophat_logo.png" alt="TopHat" class="tophat-logo"/>
+
           <div class="logos-row">
             <img src="../assets/informatica.png" alt="Informatica" class="logo"/>
             <img src="../assets/index-exchange-with-r.png" alt="INDEX EXCHANGE" class="logo"/>
@@ -109,6 +111,9 @@ hr {
 }
 .stdlib-logo {
   width: 500px;
+}
+.tophat-logo {
+  margin-top: 100px;
 }
 .logo {
   height: 60px;
