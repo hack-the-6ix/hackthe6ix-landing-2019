@@ -4,12 +4,13 @@
       <div class="wrap">
         <div class="sections">
           <div class="section">
-            <div class="label">Full Name</div>
-            <input type="text" v-model="name"/>
+            <div class="label">What should we call you?</div>
+            <input class="margin-bottom" type="text" placeholder="First Name" v-model="name"/>
+            <input type="text" placeholder="Last Name" v-model="lname"/>
           </div>
           <div class="section">
-            <div class="label">Email Address</div>
-            <input type="text" v-model="email"/>
+            <div class="label">Which email can we reach you at?</div>
+            <input type="text" placeholder="Email" v-model="email"/>
           </div>
           <div class="section">
             <div class="label">Gender</div>
@@ -136,14 +137,17 @@ export default {
 
 <style scoped>
 .apply {
-  background: linear-gradient(180deg, rgba(255,0,0,0), rgba(255,0,0,0), rgba(52, 136, 180, 0.7), rgba(156, 219, 232, 1), rgba(230, 253, 248, 1));
+  background: #caf0ee;
+}
+.margin-bottom {
+  margin-bottom:12px;
 }
 .bg {
-  background:url(../assets/city.svg);
-  background-size:100%;
+/*  background:url(../assets/city.svg);*/
+/*  background-size:100%;
   background-position: bottom;
   background-repeat: no-repeat;
-  padding-bottom:600px;
+  padding-bottom:600px;*/
 }
 .warning {
   margin-top:12px;
@@ -172,11 +176,11 @@ export default {
   align-items:center;
 }
 .label {
+  text-align:left;
   line-height:140%;
-  font-size:20px;
+  font-size:16px;
   color:#000;
   margin-bottom:12px;
-  font-weight:bold;
 }
 .submit {
   font-size:20px;
@@ -185,12 +189,15 @@ export default {
   padding: 8px 24px;
 }
 button, input, select, textarea {
-  border:1px solid #fff;
+  border:2px solid #fff;
   border-radius:8px;
-  background-color: rgba(17, 26, 52, 0.6);
+  background-color: rgba(255, 255, 255, 1.0);
   padding:12px;
-  color:#fff;
+  color:#000;
   font-size:18px;
+}
+.highlight {
+  border:2px solid #E3493B;
 }
 button:hover {
   cursor: pointer;
@@ -220,7 +227,7 @@ a {
   transition:all 0.15s ease-in-out;
 }
 .btn:hover {
-  box-shadow: 0px 8px 8px 0 rgba(0, 0, 0, 0.3);
-  transform: translateY(-8px);
+/*  box-shadow: 0px 8px 8px 0 rgba(0, 0, 0, 0.3);*/
+  transform: scale(1.1);
 }
 </style>
