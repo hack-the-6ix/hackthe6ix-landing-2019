@@ -11,6 +11,7 @@
         <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
         <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
         <router-link to="/#contact" v-smooth-scroll>CONTACT</router-link>
+        <div class="placeholder">&nbsp;</div>
         <!-- <router-link to="/apply"><div class="btn teal">APPLY</div></router-link> -->
       </div>
       <!-- <router-link to="/">
@@ -39,7 +40,6 @@ export default {
 </script>
 
 <style scoped>
-
 .header {
   color: #23b5af;
   width:100%;
@@ -49,19 +49,19 @@ export default {
 }
 a {
   color: #23b5af;
-  transition:all 0.1s ease-in;
+  transition:all 0.2s ease-in;
   text-decoration:none;
   margin:0 25px;
 }
 a:hover {
   transform: translateY(-2px);
-  transition:all 0.2s ease-in-out;
 }
 .navigation {
   display:flex;
   align-items:center;
   justify-content: flex-end;
   margin: auto;
+  max-width: 1028px;
 }
 .logo {
   display: block;
@@ -78,16 +78,25 @@ a:hover {
   padding: 25px;
   height: 20px;
 }
+.placeholder {
+  width:100px;
+  /* right:50px;
+  top:0;
+  width:10%;
+  z-index:10000; */
+}
 @media screen and (max-width: 580px){
   a {
     font-size: 12px;
     margin: 0;
+    padding: 5px;
   }
   .logo {
     display: none;
   }
   .navigation {
-    justify-content: space-around
+    justify-content: space-around;
+    margin-right: 30px;
   }
 }
 @media (min-width: 581px) and (max-width: 768px) { 

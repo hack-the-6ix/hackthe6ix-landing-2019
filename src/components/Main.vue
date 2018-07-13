@@ -6,7 +6,7 @@
       <router-view class="main"></router-view>
     </transition>
 <!--     <social></social> -->
-    <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-gray.svg" alt="Major League Hacking 2019 Hackathon Season" style="width:100%"></a>
+    <a id="mlh-trust-badge" href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-gray.svg" alt="Major League Hacking 2019 Hackathon Season" style="width:100%"></a>
     
   </div>
 </template>
@@ -122,5 +122,26 @@ a:hover {
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+#mlh-trust-badge {
+  display:block;
+  max-width:100px;
+  min-width:60px;
+  position: absolute;
+  right:50px;
+  top:0;
+  width:10%;
+  z-index:10000;
+}
+@media screen and (max-width: 580px){
+  #mlh-trust-badge {
+    right: 0;
+  }
+}
+@media (min-width: 581px) and (max-width: 768px) { 
+  #mlh-trust-badge {
+    right: 10px;
+  }
 }
 </style>

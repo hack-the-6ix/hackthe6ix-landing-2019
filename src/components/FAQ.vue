@@ -103,7 +103,7 @@ a {
   padding: 0;
 }
 a:hover {
-    color:#ddd;
+  color:#23b5af;
 }
 .section {
     position: relative;
