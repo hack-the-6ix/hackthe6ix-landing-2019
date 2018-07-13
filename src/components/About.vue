@@ -1,5 +1,9 @@
 <template>
   <div class="about" id="about">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <polygon points="0,0 100,0 100,100" style="fill:white"/>
+    </svg>
+
   	<div class="wrap">
 	    <div class="section">
 	      <!-- <img src="../assets/Telescope.svg" width="160px" class="svg"> -->
@@ -27,6 +31,13 @@ export default {
 }
 </script>
 <style scoped>
+svg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 30vw;
+}
 .card {
   max-width:800px;
 }
@@ -40,6 +51,8 @@ p {
 }
 .about {
 	background: #23b5af;
+  position: relative;
+  padding-bottom: 80px;
 }
 /* .svg {
 	position:absolute;

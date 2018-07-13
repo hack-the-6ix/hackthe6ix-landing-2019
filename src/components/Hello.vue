@@ -10,7 +10,12 @@
           <countdown></countdown>
           <div class="btn apply">APPLY</div>
         </div>
+
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+          <polygon points="0,0 100,100 0, 100" style="fill:#23b5af"/>
+        </svg>
       </div>
+
       <about></about>
       <FAQ></FAQ>
       <sponsors></sponsors>
@@ -83,6 +88,13 @@ p {
 a {
   color:#fff;
   text-decoration:none;
+}
+svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  height: 30vw;
 }
 .ht6 { 
   color:#2d2f30;

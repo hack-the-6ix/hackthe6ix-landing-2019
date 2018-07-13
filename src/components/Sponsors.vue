@@ -1,5 +1,9 @@
 <template>
   <div class="sponsors" id="sponsors">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <polygon points="0,0 100,0 0, 100" style="fill:white"/>
+    </svg>
+
   	<div class="wrap">
 	    <div class="section">
 	      <!-- <img src="../assets/Moon 2.svg" width="160px" class="svg"> -->
@@ -64,15 +68,25 @@ export default {
 .st0 {
   fill:#fff;
 }*/
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30vw;
+}
 .section {
   padding-bottom: 150px;
 }
 .sponsors {
   background-color: #23b5af;
+  position: relative;
 }
 h1 {
   color: #fff;;
   font-size: 64px;
+  text-align: right;
+  padding-top: 150px;
 }
 h2 {
   color: #fff;;
@@ -82,6 +96,9 @@ hr {
   border-style: solid;
   width: 500px;
   margin-bottom: 50px;
+}
+.card {
+  padding-top: 250px;
 }
 .logos-row {
   display: flex;

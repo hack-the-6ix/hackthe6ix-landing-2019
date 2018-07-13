@@ -40,9 +40,7 @@ body {
   overflow-x:hidden;
 }
 .main {
-
-  /* padding-top:64px; */
-/*  background:#273355;*/
+  position: relative;
 }
 #app {
   -webkit-font-smoothing: antialiased;

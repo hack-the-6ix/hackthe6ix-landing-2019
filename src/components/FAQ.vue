@@ -62,8 +62,8 @@ export default {
 .faq {
     background:#fff;
     text-align: left;
-    padding-bottom: 100px;
     padding-top: 50px;
+    /* position: relative; */
 }
 .columns {
     display:flex;
@@ -112,11 +112,6 @@ a:hover {
   flex-grow: 1;
   flex-basis: 0;
   margin-right: 60px;
-}
-.svg {
-    position:absolute;
-    margin-top:10px;
-    margin-left:840px;
 }
 .items {
   max-width:240px;
