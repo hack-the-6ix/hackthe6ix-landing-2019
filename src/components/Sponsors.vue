@@ -1,5 +1,6 @@
 <template>
   <div class="sponsors" id="sponsors">
+    <img src="../assets/trees.png" class="trees"/>
     <svg viewBox="0 0 100 100" preserveAspectRatio="none">
       <polygon points="0,0 100,0 0, 100" style="fill:white"/>
     </svg>
@@ -146,5 +147,11 @@ hr {
   -ms-transform: scale(1.2);
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
+}
+.trees {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 </style>

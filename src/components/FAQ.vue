@@ -1,5 +1,9 @@
 <template>
   <div class="faq" id="faq">
+    <img src="../assets/cloud-1.png" class="cloud1"/>
+    <img src="../assets/cloud-2.png" class="cloud2"/>
+    <img src="../assets/cloud-3.png" class="cloud3"/>
+
     <div class="wrap">
       <div class="section">
           <!-- <img src="../assets/Satellite 2.svg" width="160px" class="svg"> -->
@@ -43,6 +47,13 @@
                 <p>No. To maintain competition integrity and fairness, all work on your hack must be done at the event. All projects with prior work done will be eliminated from judging. However, you are encouraged to touch-up on your skills or bring any hardware in preparation for the event.</p>
             </div>
         </div>
+
+        <div class="questions">
+            <div class="col">
+                <div class="question">I still have questions!</div>
+                <p>If you have any other questions, feel free to send us a message at hello@hackthe6ix.com or shoot us a message on Facebook here: https://www.facebook.com/HackThe6ix/!</p>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -63,7 +74,7 @@ export default {
     background:#fff;
     text-align: left;
     padding-top: 50px;
-    /* position: relative; */
+    position: relative;
 }
 .columns {
     display:flex;
@@ -94,16 +105,20 @@ a {
 a:hover {
     color:#ddd;
 }
+.wrap {
+    position: relative;
+    z-index: 1;
+}
 .questions {
     display: flex;
 }
 .question {
     font-weight:bold;
-    margin-top:12px;
-    margin-bottom:12px;
+    margin-top:16px;
+    margin-bottom:16px;
 }
 .card {
-      padding:12px 26px;
+    padding:12px 26px;
 }
 .col {
   color: #3a3d3f;
@@ -130,5 +145,20 @@ a:hover {
   -ms-transform: scale(1.2);
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
+}
+.cloud1 {
+  position: absolute;
+  top: 200px;
+  left: 0;
+}
+.cloud2 {
+  position: absolute;
+  top: -70px;
+  left: 0;
+}
+.cloud3 {
+  position: absolute;
+  right: 0;
+  top: 50px;
 }
 </style>
