@@ -13,7 +13,7 @@
             <div class="question">Do you really "hack" at a hackathon?</div>
             <p>No, we are not doing or encouraging illegal activities here.</p>
             <div class="question">So what is a hackathon then?</div>
-            <p>A hackathon is a live-event where participants, “hackers”, spend the course of 36 hours creating, developing, designing, and pitching a software or hardware project from scratch. We provide all the resources and mentorship you need in order to make this happen!</p>
+            <p>A hackathon is a live-event where participants, “hackers”, spend the course of 36 hours creating, developing, designing, and pitching a software or hardware project they build from scratch. We provide all the resources and mentorship you need in order to make this happen!</p>
             <div class="question">How much does it cost to attend?</div>
             <p>Absolutely nothing! Hack the 6ix is a completely free event run by a non-profit organization. All food, resources, and accommodations for the entire event will be provided free of charge.</p>
             <div class="question">How do I get to Hack the 6ix?</div>
