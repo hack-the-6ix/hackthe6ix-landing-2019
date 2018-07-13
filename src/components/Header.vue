@@ -4,19 +4,18 @@
       <div class="logo">
         <img src="../assets/logo.png" class="icon"/>
       </div>
-      <div class="nav">
-        <div class="navigation">
-          <router-link to="/" v-smooth-scroll>HOME</router-link>
-          <router-link to="/#about" v-smooth-scroll>ABOUT</router-link>
-          <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
-          <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
-<!--           <router-link to="#contact">CONTACT</router-link> -->
-          <!-- <router-link to="/apply"><div class="btn teal">APPLY</div></router-link> -->
-        </div>
-      </div>
-      <router-link to="/">
 
-      </router-link>
+      <div class="navigation">
+        <router-link to="/" v-smooth-scroll>HOME</router-link>
+        <router-link to="/#about" v-smooth-scroll>ABOUT</router-link>
+        <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
+        <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
+        <router-link to="/#contact" v-smooth-scroll>CONTACT</router-link>
+        <!-- <router-link to="/apply"><div class="btn teal">APPLY</div></router-link> -->
+      </div>
+      <!-- <router-link to="/">
+
+      </router-link> -->
 <!--       <countdown></countdown> -->
     </div>
   </div>
@@ -51,41 +50,50 @@ export default {
 a {
   color: #23b5af;
   transition:all 0.1s ease-in;
+  text-decoration:none;
+  margin:0 25px;
 }
 a:hover {
   transform: translateY(-2px);
-}
-.nav {
-  display:flex;
-  max-width:1024px;
-  margin:auto;
-  justify-content: flex-end;
+  transition:all 0.2s ease-in-out;
 }
 .navigation {
   display:flex;
   align-items:center;
-}
-.icon {
-  height:32px;
-  margin:0;
-  transform: scale(1.4);
-}
-.navigation a {
-  text-decoration:none;
-  margin:0 25px;
-}
-.navigation a:hover {
-  transition:all 0.2s ease-in-out;
+  justify-content: flex-end;
+  margin: auto;
 }
 .logo {
   display: block;
   position: absolute;
   left: 50px;
 }
+.icon {
+  height: 25px;
+  margin:0;
+  transform: scale(1.4);
+}
 .overlay {
 	background: rgba(0,0,0,0.0);
-  padding:20px;
-	height:20px;
-  padding-bottom: 30px;
+  padding: 25px;
+  height: 20px;
+}
+@media screen and (max-width: 580px){
+  a {
+    font-size: 12px;
+    margin: 0;
+  }
+  .logo {
+    display: none;
+  }
+  .navigation {
+    justify-content: space-around
+  }
+}
+@media (min-width: 581px) and (max-width: 768px) { 
+  a {
+    margin-left: 5px;
+    margin-right:5px;
+  }
 }
 </style>
