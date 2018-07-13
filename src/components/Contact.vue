@@ -8,7 +8,8 @@
     
       <button type="button" class="contact-button">CONTACT US</button>
     </div>
-    <div class="map">
+    <div class="map" id="map">
+
     </div>
   </div>
 </template>
@@ -20,9 +21,27 @@ export default {
     return {
     }
   },
-
+  methods: {
+    initMap() {
+      // The location of Uluru
+      var uluru = {lat: -25.344, lng: 131.036};
+      // The map, centered at Uluru
+      var map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 4, center: uluru});
+      // The marker, positioned at Uluru
+      var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+  },
+  created() {
+    let recaptchaScript = document.createElement('script')
+    recaptchaScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDDqavkK_L1ve3S9V3bBR0AfT8KXUqJAIw')
+    document.head.appendChild(recaptchaScript)
+  }
+  
 }
+
 </script>
+
 
 <style>
 .contact {

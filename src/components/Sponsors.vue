@@ -10,10 +10,6 @@
 	      <!-- <img src="../assets/Moon 2.svg" width="160px" class="svg"> -->
 	      <h1>Sponsors</h1>
 	      <div class="card">
-          <!-- <h2>Coming soon!</h2> -->
-          <!-- <div class="logos">
-            <div class="stdlib-logo logo"></div>
-          </div> -->
           <img src="../assets/stdlib.png" alt="stdlib" class="stdlib-logo"/>
           <br>
           <img src="../assets/tophat_logo.png" alt="TopHat" class="tophat-logo"/>
@@ -158,5 +154,27 @@ hr {
   top: 0;
   left: 0;
   z-index: 1;
+}
+@media screen and (max-width: 580px){
+  .card {
+    padding-top: 100px;
+    padding-right: 0;
+  }
+  .stdlib-logo {
+    width: 300px;
+  }
+  .tophat-logo {
+    margin-top: 60px;
+    width: 300px;
+  }
+  .logos-row {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+  .logo, .logo-sub {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 </style>

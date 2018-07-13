@@ -24,6 +24,9 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ]
   },
+  script: [
+    { type: 'text/javascript', src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDDqavkK_L1ve3S9V3bBR0AfT8KXUqJAIw&callback=initMap', async: true, body: true},
+  ],
   name: 'app'
 }
 </script>

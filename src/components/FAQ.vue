@@ -161,10 +161,11 @@ a:hover {
 }
 @media screen and (max-width: 580px){
   .question-block {
-      flex-direction: column;
+    flex-direction: column;
   }
   .col {
-      display: block;
+    display: block;
+    margin-right: 0;
   }
 }
 </style>
