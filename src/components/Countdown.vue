@@ -30,7 +30,7 @@ export default {
   data () {
     return {
       now: Math.trunc((new Date()).getTime() / 1000),
-      date: Math.trunc(new Date(2018, 7, 26, 9) / 1000),
+      date: Math.trunc(new Date(2018, 7, 24, 9) / 1000),
     }
   },
   computed: {
