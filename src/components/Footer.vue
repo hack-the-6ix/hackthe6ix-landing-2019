@@ -2,17 +2,17 @@
   <div class="section">
     <div class="footer">
       <div>
-        <div class="ht6">&copy; HackThe6ix 2018</div><br>
+        <div class="ht6">&copy; HackThe6ix 2018</div>
       </div>
       <div class="links">
         <a href="https://www.facebook.com/HackThe6ix/" alt="Facebook">
-          <img src="../assets/facebook.png"/>
+          <img src="../assets/facebook.svg" class="social-icon"/>
         </a>
         <a href="https://twitter.com/HackThe6ix" alt="Twitter">
-          <img src="../assets/twitter.png"/>
+          <img src="../assets/twitter.svg" class="social-icon"/>
         </a>
         <a href="https://www.instagram.com/hackthe6ix/" alt="Instagram">
-          <img src="../assets/instagram.png"/>
+          <img src="../assets/instagram.svg" class="social-icon"/>
         </a>
       </div>
     </div>
@@ -37,6 +37,7 @@ export default {
   color: #000;
   flex-grow:1;
   justify-content: space-between;
+  align-items: center;
 }
 .ht6 {
 /*  border-bottom:2px solid rgba(255,255,255, 0.2);*/
@@ -44,5 +45,19 @@ export default {
 }
 .links {
   display:flex;
+}
+a {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.social-icon {
+  width: 30px;
+  height: 30px;
+}
+@media screen and (max-width: 580px){
+  a {
+    padding-left: 10px;
+    padding-right: 10px;
+  } 
 }
 </style>
