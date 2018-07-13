@@ -3,7 +3,7 @@
       <!-- <email></email> -->
       <div class="hero-image">
         <div class="hero-wrap">
-          <div class="top-level"><img class="anim" src="../assets/logo.png" height="280px"></div>
+          <div class="hero-logo"><img class="anim" src="../assets/logo.png" height="280px"></div>
           <h1 class="ht6">HACK THE 6IX</h1>
           <h2>August 24-26, 2018</h2>
           <h2>TopHat HQ</h2>
@@ -64,20 +64,10 @@ export default {
     transform: translateY(0);
   }
 }
-
-@media screen and (max-width: 580px){
-  .top-level img {
-    height: 150px;
-  }
-  .wrap {
-    margin-top: 2em;
-  }
-  h2 {
-    font-size: 18px;
-  }
-  .cloud2, .cloud3 {
-      display:none;
-  }
+.hero-wrap {
+  position: absolute;
+  right: 10%;
+  bottom: 100px;
 }
 h3 {
   margin-top:0;
@@ -134,5 +124,25 @@ hr {
   border-style: solid;
   width: 100%;
   /* margin-bottom: 50px; */
+}
+@media screen and (max-width: 580px){
+  .hero-wrap {
+    position: static;
+  }
+  .hero-logo {
+    padding-top: 50px;
+  }
+  .hero-logo img {
+    height: 200px;
+  }
+  .wrap {
+    margin-top: 2em;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  .cloud2, .cloud3 {
+    display:none;
+  }
 }
 </style>

@@ -76,4 +76,9 @@ p {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
+@media screen and (max-width: 580px){
+  .card {
+    padding-right: 0;
+  }
+}
 </style>

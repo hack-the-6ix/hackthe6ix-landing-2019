@@ -70,13 +70,8 @@ body {
 .anim {
   animation: float-in 1s cubic-bezier(0.25, 0.7, 0.5, 1) forwards;
 }
-.top-level {
+.hero-logo {
   z-index:10;
-}
-.hero-wrap {
-  position: absolute;
-  right: 10%;
-  bottom: 100px;
 }
 h1 {
   color: #47A2A9;
