@@ -23,7 +23,7 @@
             <div class="question">Will you be providing travel reimbursements?</div>
             <p>Unfortunately, we will not be covering travel reimbursements at this time.</p>
             <div class="question">What kind of workshops and activities will be hosted?</div>
-            <p>We’ll be hosting a variety of workshops from beginner subjects, such as introduction to coding, to advanced courses, such as security penetration testing. No matter your interest, we guarantee we’ll have something for you. In addition, we have a ton of fun activities planned for you such as e-sports tournaments, chugging contests, and more! Hack the 6ix is much more than just a hackathon – we make sure that it’s an event you’ll thoroughly enjoy.</p>
+            <p>We’ll be hosting a variety of workshops from beginner subjects, such as introduction to coding, to advanced courses, such as security penetration testing. No matter your interest, we guarantee we’ll have something for you. In addition, we have a ton of fun activities planned for you such as e-sports tournaments, nugget-eating contests, and more! Hack the 6ix is much more than just a hackathon – we make sure that it’s an event you’ll thoroughly enjoy.</p>
             <div class="question">What should I bring?</div>
             <p>Make sure to bring your laptop (or desktop if you’ve got gains) and a piece of valid student ID or government ID. You can also bring a pillow and blanket if you want to get comfy. Everything else will be provided for you!</p>
         </div>
