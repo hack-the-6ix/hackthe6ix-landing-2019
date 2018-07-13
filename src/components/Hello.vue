@@ -8,7 +8,7 @@
           <h2>August 24-26, 2018</h2>
           <h2>TopHat HQ</h2>
           <countdown></countdown>
-          <div class="btn apply">APPLY</div>
+          <!-- <div class="btn apply">APPLY</div> -->
         </div>
 
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
