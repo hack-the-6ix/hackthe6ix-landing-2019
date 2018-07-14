@@ -50,7 +50,7 @@
     <div class="question-block">
         <div class="col">
             <div class="question">I still have questions!</div>
-            <p>If you have any other questions, feel free to send us a message at <a href="hello@hackthe6ix.com">hello@hackthe6ix.com</a> or shoot us a message on Facebook here: <a href="https://www.facebook.com/HackThe6ix/">https://www.facebook.com/HackThe6ix/</a>!</p>
+            <p>If you have any other questions, feel free to send us a message at <a href="mailto:hello@hackthe6ix.com">hello@hackthe6ix.com</a> or shoot us a message on Facebook here: <a href="https://www.facebook.com/HackThe6ix/">https://www.facebook.com/HackThe6ix/</a>!</p>
         </div>
     </div>
     </div>
