@@ -98,7 +98,7 @@
           </div>
           <div class="section">
             <div class="label">Please list the names of other applicants if you have already formed a team. (optional)</div>
-            <input type="text" placeholder="Team mates"  v-model="team"/>
+            <input type="text" placeholder="Teammates"  v-model="team"/>
           </div>
           <div class="section">
             <div class="label">Do you have any dietary restrictions? <br>(Leave blank if none)</div>
