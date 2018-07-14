@@ -205,19 +205,18 @@ export default {
         data.append('links', this.links)
         data.append('dietary', this.dietary)
         data.append('resume', this.resume)
-        console.log(data)
-        // this.$http.post('https://ht6.lyninx.com/submission', data).then((res) => {
-        //   if(res.body.success) {
-        //     Router.push('/thanks')
-        //   } else {
-        //     this.showButton = true
-        //     this.message = res.body.msg
-        //   }
+        this.$http.post('https://ht6.lyninx.com/submission', data).then((res) => {
+          if(res.body.success) {
+            Router.push('/thanks')
+          } else {
+            this.showButton = true
+            this.message = res.body.msg
+          }
           
-        // }, (err) => {
-        //   this.showButton = true
-        //   this.message = "Sorry, we've encountered an error. Please try again later."
-        // })
+        }, (err) => {
+          this.showButton = true
+          this.message = "Sorry, we've encountered an error. Please try again later."
+        })
       }
       // send application
       
