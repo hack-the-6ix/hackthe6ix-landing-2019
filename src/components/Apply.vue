@@ -177,9 +177,13 @@ export default {
         return this[elem]
       })
       let checkboxes = this.check1 && this.check2
-      if(!valid && !checkboxes){
+      console.log(this.check1)
+      console.log(this.check2)
+      console.log(checkboxes)
+      if(!valid || !checkboxes){
         this.message = 'Please make sure to fill in the entire form!'
       } else {
+
         this.showButton = false
         const data = new FormData()
         data.append('event_key', 'ht6-summer-2018')
