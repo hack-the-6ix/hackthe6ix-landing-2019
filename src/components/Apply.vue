@@ -108,6 +108,12 @@
             <div class="label">Send us your resume! (5MB max)</div>
             <input type="file" @change="setFile">
           </div>
+          <div class="section checkboxes">
+            <input type="checkbox" v-model="check1"> I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>.
+          </div>
+          <div class="section checkboxes">
+            <input type="checkbox" v-model="check2"> I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. I further agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>
+          </div>
           <div class="section center" v-show="showButton">
             <div class="btn submit" v-on:click="submit()">SUBMIT</div>
             <div class="warning">{{message}}</div>
@@ -143,6 +149,8 @@ export default {
       dietary: '',
       resume: '',
       message: '',
+      check1: null,
+      check2: null,
       showButton: true
     }
   },
@@ -164,6 +172,8 @@ export default {
       'hack_count', 
       'project',
       'dietary',
+      'check1',
+      'check2',
       'resume']
       const valid = required.every((elem, index, array) => {
         return this[elem]
@@ -231,6 +241,15 @@ export default {
   font-weight:bold;
   position:absolute;
   margin-top:60px;
+}
+.section.checkboxes {
+  display:initial;
+  color:#000;
+  align-items:left;
+}
+.section.checkboxes a {
+  color: #E3493B;
+  padding:0;
 }
 .wrap {
   display:flex;
