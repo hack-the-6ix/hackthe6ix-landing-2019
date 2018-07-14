@@ -39,7 +39,7 @@
                 <option value="black">Black or African American</option>
                 <option value="hispanic">Hispanic</option>
                 <option value="white">White / Caucasian</option>
-                <option value="multiple">Other</option>
+                <option value="multiple">Multiple Ethnicities / Other”</option>
                 <option value="n/a">Prefer Not to Answer</option>
               </select>
           </div>
@@ -48,14 +48,15 @@
             <input type="text" placeholder="School" v-model="school"/>
           </div>
           <div class="section">
-            <div class="label">What year will you be going in to?</div>
+            <div class="label">Which program are you in?</div>
+            <input type="text" placeholder="Program / Major" v-model="program"/>
+          </div>
+          <div class="section">
+            <div class="label">What is your most current level of study?</div>
             <select v-model="current_year">
               <option disabled selected value></option>
-              <option value="1">1st year</option>
-              <option value="2">2nd year</option>
-              <option value="3">3rd year</option>
-              <option value="4">4th year</option>
-              <option value="5+">5th year or later</option>
+              <option value="highschool">High school</option>
+              <option value="undergrad">Undergraduate</option>
               <option value="grad">Graduated</option>
               <option value="n/a">Not Applicable</option>
             </select>
@@ -92,6 +93,14 @@
             <textarea rows="4" v-model="project"></textarea>
           </div>
           <div class="section">
+            <div class="label">Please link your website, GitHub, or anything else you would like us to check out.</div>
+            <input type="text" placeholder="Portfolio / Projects"  v-model="links"/>
+          </div>
+          <div class="section">
+            <div class="label">Please list the names of other applicants if you have already formed a team. (optional)</div>
+            <input type="text" placeholder="Team mates"  v-model="team"/>
+          </div>
+          <div class="section">
             <div class="label">Do you have any dietary restrictions? <br>(Leave blank if none)</div>
             <input type="text" v-model="dietary"/>
           </div>
@@ -122,10 +131,13 @@ export default {
       phone: '',
       gender: '',
       birthday: '',
+      program: '',
       ethnicity: '',
       school: '',
       grad_year: '',
       current_year: '',
+      team: '',
+      links: '',
       hack_count: '',
       project: '',
       dietary: '',
@@ -144,6 +156,7 @@ export default {
       'phone',
       'gender', 
       'birthday',
+      'program',
       'ethnicity',
       'school', 
       'grad_year',
@@ -168,15 +181,17 @@ export default {
         data.append('gender', this.gender)
         data.append('birthday', this.birthday)
         data.append('ethnicity', this.ethnicity)
+        data.append('program', this.program)
         data.append('school', this.school)
         data.append('grad_year', this.grad_year)
         data.append('current_year', this.current_year)
         data.append('hack_count', this.hack_count)
         data.append('project', this.project)
+        data.append('team', this.team)
+        data.append('links', this.links)
         data.append('dietary', this.dietary)
         data.append('resume', this.resume)
         this.$http.post('https://ht6.lyninx.com/submission', data).then((res) => {
-          console.log(res.body)
           if(res.body.success) {
             Router.push('/thanks')
           } else {
@@ -226,6 +241,7 @@ export default {
   width:100%;
   display:flex;
   flex-direction:column;
+  padding:40px 0;
 }
 .section {
   margin-bottom:12px;

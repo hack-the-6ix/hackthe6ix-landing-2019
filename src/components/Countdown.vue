@@ -71,6 +71,7 @@ export default {
     font-size: 16px;
     font-weight:600;
     margin-bottom: 10px;
+    margin-top:0;
     text-align: center;
 }
 

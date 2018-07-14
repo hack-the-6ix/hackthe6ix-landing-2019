@@ -5,10 +5,11 @@
         <div class="hero-wrap">
           <div class="hero-logo"><img class="anim" src="../assets/logo.png" height="280px"></div>
           <h1 class="ht6">HACK THE 6IX</h1>
+          <h2 class="red">Presented by StdLib</h2>
           <h2>August 24-26, 2018</h2>
           <h2>TopHat HQ</h2>
           <countdown></countdown>
-          <!-- <div class="btn apply">APPLY</div> -->
+          <router-link to="/apply"><div class="btn apply">APPLY</div></router-link>
         </div>
 
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -69,12 +70,18 @@ export default {
   right: 10%;
   bottom: 100px;
 }
+h1 {
+  margin-bottom:0;
+}
 h3 {
   margin-top:0;
   color:rgba(255,255,255,0.7);
 }
 h2 {
   margin-bottom:8px;
+}
+.red {
+  color: #E3493B;
 }
 hr {
   border:1px solid rgba(0,0,0,0.05);

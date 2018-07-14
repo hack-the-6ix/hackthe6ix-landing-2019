@@ -11,8 +11,7 @@
         <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
         <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
         <router-link to="/#contact" v-smooth-scroll>CONTACT</router-link>
-        <div class="placeholder">&nbsp;</div>
-        <!-- <router-link to="/apply"><div class="btn teal">APPLY</div></router-link> -->
+        <router-link to="/apply">APPLY</router-link>
       </div>
       <!-- <router-link to="/">
 
