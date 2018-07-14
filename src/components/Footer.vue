@@ -4,6 +4,8 @@
       <div>
         <div class="ht6">&copy; HackThe6ix 2018</div>
       </div>
+      <router-link to="/privacy">Privacy Policy</router-link>
+      <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>
       <div class="links">
         <a href="https://www.facebook.com/HackThe6ix/" alt="Facebook">
           <img src="../assets/facebook.svg" class="social-icon"/>

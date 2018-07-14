@@ -114,6 +114,9 @@
           <div class="section checkboxes">
             <input type="checkbox" v-model="check2"> I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. I further agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
           </div>
+          <div class="section liability">
+            By submitting your application, you agree to our <router-link to="/liability">Liability Waiver</router-link>
+          </div>
           <div class="section center" v-show="showButton">
             <div class="btn submit" v-on:click="submit()">SUBMIT</div>
             <div class="warning">{{message}}</div>
@@ -250,6 +253,15 @@ export default {
   align-items:left;
 }
 .section.checkboxes a {
+  color: #E3493B;
+  padding:0;
+}
+.liability {
+  display:initial;
+  align-items:left;
+  color:#000;
+}
+.liability a{
   color: #E3493B;
   padding:0;
 }

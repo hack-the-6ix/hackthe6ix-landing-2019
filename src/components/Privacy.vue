@@ -4,6 +4,8 @@
     <h1>Privacy Policy</h1>
     <p>This Privacy Policy governs the manner in which HackThe6ix collects, uses, maintains and discloses information collected from applicants (each, a "User") of the hackthe6ix.com website ("Site"). This privacy policy applies to the Site and all products and services offered by HackThe6ix.</p>
 
+    Notice: Our privacy policy differs from the MLH Privacy Policy.
+
     <h3>Personal identification information</h3>
     <p>We may collect personal identification information from Users in a variety of ways, including, but not limited to, when Users visit our site, register on the site, subscribe to the newsletter, respond to a survey, fill out a form, and in connection with other activities, services, features or resources we make available on our Site. Users may be asked for, as appropriate, name, email address, gender, phone number, resume, credit card information, schooling, etc. Users may, however, visit our Site anonymously. We will collect personal identification information from Users only if they voluntarily submit such information to us. Users can always refuse to supply personally identification information, except that it may prevent them from taking part in our event as well as any related activities.</p>
 
@@ -43,7 +45,7 @@
     <p>Some of the ads may be served by Google. Google's use of the DART cookie enables it to serve ads to Users based on their visit to our Site and other sites on the Internet. DART uses "non personally identifiable information" and does NOT track personal information about you, such as your name, email address, physical address, etc. You may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy at <a href="http://www.google.com/privacy_ads.html">http://www.google.com/privacy_ads.html</a></p>
 
     <h3>Changes to this privacy policy</h3>
-    <p>HackThe6ixz has the discretion to update this privacy policy at any time. When we do, we will revise the updated date at the bottom of this page and send you an email. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. You acknowledge and agree that it is your responsibility to review this privacy policy periodically and become aware of modifications.</p>
+    <p>HackThe6ix has the discretion to update this privacy policy at any time. When we do, we will revise the updated date at the bottom of this page and send you an email. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. You acknowledge and agree that it is your responsibility to review this privacy policy periodically and become aware of modifications.</p>
 
     <h3>Your acceptance of these terms</h3>
     <p>By using this Site, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our Site. Your continued use of the Site following the posting of changes to this policy will be deemed your acceptance of those changes.</p>
@@ -51,7 +53,7 @@
     <h3>Contacting us</h3>
     <p>If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us by email at <a href="hello@hackthe6ix.com">hello@hackthe6ix.com</a>.</p>
 
-    <p>This document was last updated on July 28, 2017.</p>
+    <p>This document was last updated on July 14, 2018.</p>
     </div>
   </div>
 </template>
