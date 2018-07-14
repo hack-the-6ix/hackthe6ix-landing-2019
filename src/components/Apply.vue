@@ -57,7 +57,7 @@
               <option disabled selected value></option>
               <option value="highschool">High school</option>
               <option value="undergrad">Undergraduate</option>
-              <option value="grad">Graduated</option>
+              <option value="grad">Graduate</option>
               <option value="n/a">Not Applicable</option>
             </select>
           </div>
@@ -112,7 +112,7 @@
             <input type="checkbox" v-model="check1"> I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>.
           </div>
           <div class="section checkboxes">
-            <input type="checkbox" v-model="check2"> I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. I further agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>
+            <input type="checkbox" v-model="check2"> I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. I further agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
           </div>
           <div class="section center" v-show="showButton">
             <div class="btn submit" v-on:click="submit()">SUBMIT</div>
@@ -169,9 +169,7 @@ export default {
       'school', 
       'grad_year',
       'current_year',
-      'hack_count', 
-      'project',
-      'dietary',
+      'hack_count',
       'resume']
       let valid = required.every((elem, index, array) => {
         return this[elem]
@@ -204,18 +202,19 @@ export default {
         data.append('links', this.links)
         data.append('dietary', this.dietary)
         data.append('resume', this.resume)
-        this.$http.post('https://ht6.lyninx.com/submission', data).then((res) => {
-          if(res.body.success) {
-            Router.push('/thanks')
-          } else {
-            this.showButton = true
-            this.message = res.body.msg
-          }
+        console.log(data)
+        // this.$http.post('https://ht6.lyninx.com/submission', data).then((res) => {
+        //   if(res.body.success) {
+        //     Router.push('/thanks')
+        //   } else {
+        //     this.showButton = true
+        //     this.message = res.body.msg
+        //   }
           
-        }, (err) => {
-          this.showButton = true
-          this.message = "Sorry, we've encountered an error. Please try again later."
-        })
+        // }, (err) => {
+        //   this.showButton = true
+        //   this.message = "Sorry, we've encountered an error. Please try again later."
+        // })
       }
       // send application
       

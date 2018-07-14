@@ -41,7 +41,7 @@
         </div>
         <div class="col">
             <div class="question">What if I don’t have a team or idea?</div>
-            <p>No worries, all participants will have time to find a team in weeks leading up to Hack the 6ix, and we will also have team formation activities during our event. For ideas, check out our submissions from last year for some inspiration: https://hackthe6ix17.devpost.com/</p>
+            <p>No worries, all participants will have time to find a team in weeks leading up to Hack the 6ix, and we will also have team formation activities during our event. For ideas, check out our submissions from last year for some inspiration: <a href="https://hackthe6ix17.devpost.com/">https://hackthe6ix17.devpost.com/</a></p>
             <div class="question">Can I work on my hack before the event?</div>
             <p>No. To maintain competition integrity and fairness, all work on your hack must be done at the event. All projects with prior work done will be eliminated from judging. However, you are encouraged to touch-up on your skills or bring any hardware in preparation for the event.</p>
         </div>

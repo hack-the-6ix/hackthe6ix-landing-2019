@@ -32,6 +32,12 @@ export default {
 </script>
 
 <style>
+::selection {
+  background: #E3493B; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #E3493B; /* Gecko Browsers */
+}
 html, body {
   margin:0;
   padding:0;
