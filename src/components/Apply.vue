@@ -39,7 +39,7 @@
                 <option value="black">Black or African American</option>
                 <option value="hispanic">Hispanic</option>
                 <option value="white">White / Caucasian</option>
-                <option value="multiple">Multiple Ethnicities / Other”</option>
+                <option value="multiple">Multiple Ethnicities / Other</option>
                 <option value="n/a">Prefer Not to Answer</option>
               </select>
           </div>
@@ -172,13 +172,12 @@ export default {
       'hack_count', 
       'project',
       'dietary',
-      'check1',
-      'check2',
       'resume']
-      const valid = required.every((elem, index, array) => {
+      let valid = required.every((elem, index, array) => {
         return this[elem]
       })
-      if(!valid){
+      let checkboxes = this.check1 && this.check2
+      if(!valid && !checkboxes){
         this.message = 'Please make sure to fill in the entire form!'
       } else {
         this.showButton = false
