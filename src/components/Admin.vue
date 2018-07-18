@@ -1,7 +1,7 @@
 <template>
 	<div id="admin">
 		<div class="wrap">
-		<h1>Admin</h1>
+		<h1 class="title">Admin</h1>
 		<div class="auth" v-show="!authenticated">
 		<input type="text" v-model="password" placeholder="PASSWORD"/>
 		<div class="btn" v-on:click="auth()">AUTHENTICATE</div>
@@ -16,7 +16,7 @@
       RSVP: {{rsvpApplicants}}
     </div>
 		<div class="applicants">
-			<applicant v-for="applicant in applicants" :applicant="applicant" :password="password" v-bind:key="applicant.id"></applicant>
+			<applicant v-for="applicant in applicants" :applicant="applicant" v-bind:key="applicant.id"></applicant>
 		</div>
 		</div>
 	</div>
@@ -33,25 +33,34 @@ export default {
     	password: '',
     	authenticated: false,
     	message: '',
-    	applicants: []
+    	applicants: [],
+      session: window.sessionStorage
     }
   },
   methods: {
   	auth() {
-  		console.log(this.password)
-  		this.authenticated = true;
+  		this.authenticated = true
+      this.session.setItem('ht6-token', this.password)
   		this.fetch()
   	},
   	fetch() {
   		this.$http.get('https://ht6.lyninx.com/applicants?password='+this.password).then(res => {
   			if(res.body.success){
-  				console.log(res)
   				this.applicants = res.body.applicants
   			} else {
   			    this.message = res.body.msg
+            this.authenticated = false
+            sessionStorage.removeItem('ht6-token')
   			}
   		});
   	}
+  },
+  created() {
+    let password = this.session.getItem('ht6-token')
+    if(password) {
+      this.password = password
+      this.auth()
+    }
   },
   computed: {
     validApplicants() {
@@ -95,7 +104,11 @@ export default {
 </script>
 <style scoped>
 #admin {
-	color:#fff;
+	color:#eee;
+  background:#111;
+}
+.title {
+  color:#fff;
 }
 .main {
   padding-top:64px;
@@ -105,16 +118,7 @@ export default {
   font-size:20px;
   margin-bottom:20px;
 }
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #eee;
-  background-image:url("../assets/stars.svg");
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  min-height:100vh;
-}
+
 .auth {
 	display:inline-block;
 	padding:20px;

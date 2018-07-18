@@ -1,20 +1,20 @@
 <template>
 	<div class="applicant" v-show="valid">
 		<div class="top pad" v-on:click="show = !show">
-			<div class="col name">{{applicant.name}}</div>
+			<div class="col name">{{applicant.name}} {{applicant.lname}}</div>
 			<div class="col email">{{applicant.email}}</div>
 			<div class="col status">{{applicationStatus}}</div>
 		</div>
 		<div class="bottom pad" v-show="show">
-			<div class="row">Resume: <a target="_blank" :href="resumeLink">{{applicant.resumeID}}</a></div>
-			<div class="row">Gender: {{applicant.gender}}</div>
-			<div class="row">School: {{applicant.school}}</div>			
-			<div class="row">Grad Year: {{applicant.gradYear}}</div>
-			<div class="row">Hackathons Attended: {{applicant.hackCount}}</div>
-			<div class="row">Interests: {{applicant.interests}}</div>
-			<div class="row">Hack Idea: {{applicant.ideas}}</div>
-			<div class="row">Dietary Restriction: {{applicant.dietaryRestriction}}</div>
-			<div class="row">RSVP: {{applicant.rsvp}}</div>
+			<div class="row"><b>Resume</b> <a target="_blank" :href="resumeLink">{{applicant.resume_key}}</a></div>
+			<div class="row"><b>Gender</b> {{applicant.gender}}</div>
+			<div class="row"><b>School</b> {{applicant.school}}</div>
+			<div class="row"><b>Program</b> {{applicant.program}}</div>				
+			<div class="row"><b>Grad Year</b> {{applicant.grad_year}}</div>
+			<div class="row"><b>Hackathons Attended</b> {{applicant.hack_count}}</div>
+			<div class="row"><b>Project</b> {{applicant.project}}</div>
+			<div class="row"><b>Dietary Restriction</b> {{applicant.dietary}}</div>
+			<div class="row"><b>RSVP</b> {{applicant.rsvp}}</div>
 			<div class="controls">
 				<select v-model="applicationStatus">
 					<option value="waiting">waiting</option>
@@ -43,26 +43,31 @@ export default {
 	}
   },
   created() {
-	this.applicationStatus = this.applicant.acceptedStatus
+	this.applicationStatus = this.applicant.accepted_status
   },
   computed: {
 	valid(){
-		return this.applicant.acceptedStatus != 'invalid'
+		return this.applicant.accepted_status != 'invalid'
 	},
 	resumeLink(){
-		return "https://ht6.lyninx.com/resumes/"+this.applicant.resumeID
+		return "https://ht6.lyninx.com/resumes/"+this.applicant.resume_key
 	}
   },
   methods: {
 	update() {
+		let password = window.sessionStorage.getItem('ht6-token')
 		const data = {
-			password: this.password,
+			password: password,
 			_id: this.applicant._id,
 			status: this.applicationStatus
 		}
-		console.log(this.applicant.email + " updated to" + this.applicationStatus)
-		this.$http.post('https://ht6.lyninx.com/update_status', data).then(() => {
-			this.show = false;
+
+		let result = this.$http.post('https://ht6.lyninx.com/update_applicant_status', data).then((res) => {
+			console.log(this.applicant.email + " updated to " + this.applicationStatus)
+			this.show = false
+		}, (err) => {
+			console.log('error updating applicant status')
+			console.log(err)
 		})
 	}
   }
@@ -71,7 +76,7 @@ export default {
 <style scoped>
 	.applicant {
 		margin-bottom:8px;
-		background:rgba(0,0,0,0.2);
+		background:rgba(255,255,255,0.2);
 	}
 	.controls {
 		width:100%;
