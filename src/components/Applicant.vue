@@ -74,6 +74,10 @@ export default {
 }
 </script>
 <style scoped>
+	a {
+		margin:0;
+		padding:0;
+	}
 	.applicant {
 		margin-bottom:8px;
 		background:rgba(255,255,255,0.2);

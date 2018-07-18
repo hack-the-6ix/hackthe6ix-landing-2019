@@ -7,14 +7,7 @@
 		<div class="btn" v-on:click="auth()">AUTHENTICATE</div>
 		</div>
 		<div class="message"><h4>{{message}}</h4></div>
-    <div class="stats" v-show="authenticated">
-      Applicants: {{validApplicants}}<br>
-      Accepted: {{acceptedApplicants}}<br>
-      Signed In: {{signedInApplicants}}<br>
-      Rejected: {{rejectedApplicants}}<br>
-      Waitlist: {{waitlistApplicants}}<br>
-      RSVP: {{rsvpApplicants}}
-    </div>
+    <admin-dashboard v-show="authenticated" :applicants="applicants"></admin-dashboard>
 		<div class="applicants">
 			<applicant v-for="applicant in applicants" :applicant="applicant" v-bind:key="applicant.id"></applicant>
 		</div>
@@ -23,10 +16,12 @@
 </template>
 <script>
 import Applicant from './Applicant'
+import AdminDashboard from './AdminDashboard'
 export default {
   name: 'admin',
   components: {
-  	Applicant
+  	Applicant,
+    AdminDashboard
   },
   data () {
     return {
@@ -109,6 +104,7 @@ export default {
 }
 .title {
   color:#fff;
+  margin-top:40px;
 }
 .main {
   padding-top:64px;
