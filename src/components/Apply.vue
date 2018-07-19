@@ -44,14 +44,6 @@
               </select>
           </div>
           <div class="section">
-            <div class="label">Which school do you attend?</div>
-            <input type="text" placeholder="School" v-model="school"/>
-          </div>
-          <div class="section">
-            <div class="label">Which program are you in?</div>
-            <input type="text" placeholder="Program / Major" v-model="program"/>
-          </div>
-          <div class="section">
             <div class="label">What is your most current level of study?</div>
             <select v-model="current_year">
               <option disabled selected value></option>
@@ -60,6 +52,14 @@
               <option value="grad">Graduate</option>
               <option value="n/a">Not Applicable</option>
             </select>
+          </div>
+          <div class="section">
+            <div class="label">Which school do you attend?</div>
+            <input type="text" placeholder="School" v-model="school"/>
+          </div>
+          <div class="section">
+            <div class="label">Which program are you in?</div>
+            <input type="text" placeholder="Program / Major" v-model="program"/>
           </div>
           <div class="section">
             <div class="label">When do you plan on graduating?</div>

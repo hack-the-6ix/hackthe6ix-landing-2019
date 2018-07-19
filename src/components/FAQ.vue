@@ -33,7 +33,7 @@
     <div class="question-block">
         <div class="col">
             <div class="question">Am I eligible to participate?</div>
-            <p>Any post-secondary students or recent graduates are eligible to participate in our event!</p>
+            <p>Any high school students, post-secondary students, or recent graduates are eligible to participate in our event!</p>
             <div class="question">Do I need to know how to code?</div>
             <p>Nope! Our mentors and workshops make sure that even if you’re new to coding, you’ll definitely pick up enough skills at the event to make a project. In addition, if you’re a designer or business student, your design and pitching skills are also very valuable!</p>
             <div class="question">Can I sign up with a team?</div>
