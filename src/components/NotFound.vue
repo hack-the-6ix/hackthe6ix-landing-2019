@@ -31,6 +31,9 @@ h1 {
   font-weight:bold;
   margin-bottom:0;
 }
+h4 {
+  color:#E3493B;
+}
 hr {
   border:1px solid rgba(0,0,0,0.05);
 }
