@@ -56,13 +56,13 @@ export default {
   methods: {
 	update() {
 		let password = window.sessionStorage.getItem('ht6-token')
-		const data = {
+		let data = {
 			password: password,
-			_id: this.applicant._id,
+			id: this.applicant._id,
 			status: this.applicationStatus
 		}
-
-		let result = this.$http.post('https://ht6.lyninx.com/update_applicant_status', data).then((res) => {
+		console.log('updating...')
+		this.$http.post('https://ht6.lyninx.com/applicant_status', data).then((res) => {
 			console.log(this.applicant.email + " updated to " + this.applicationStatus)
 			this.show = false
 		}, (err) => {
