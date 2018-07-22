@@ -5,7 +5,7 @@
         <div class="hero-wrap">
           <div class="hero-logo"><img class="anim" src="../assets/logo.png" height="280px"></div>
           <h1 class="ht6">HACK THE 6IX</h1>
-          <h2 class="red">Presented by StdLib</h2>
+          <h2 class="red">Presented by <img src="../assets/stdlib.png" alt="stdlib" class="stdlib-small"/></h2>
           <h2>August 24-26, 2018</h2>
           <h2>TopHat HQ</h2>
           <countdown></countdown>
@@ -121,6 +121,11 @@ svg {
   padding:8px 32px;
   box-shadow: 8px 12px 6px 0 rgba(0, 0, 0, 0.3);
   transition:all 0.15s ease-in-out;
+}
+.stdlib-small {
+  width:100px;
+  margin:0 2px;
+  transform:translateY(3px);
 }
 .btn.large:hover {
   transform: translateY(-2px) scale(1.1);
