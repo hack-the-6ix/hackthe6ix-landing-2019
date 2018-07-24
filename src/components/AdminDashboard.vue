@@ -44,31 +44,31 @@ export default {
   computed: {
     validApplicants() {
       const valid = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus != 'invalid'
+        return applicant.accepted_status != 'invalid'
       })
       return valid.length
     },
     acceptedApplicants() {
       const accepted = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'accepted'
+        return applicant.accepted_status == 'accepted'
       })
       return accepted.length
     },
     rejectedApplicants() {
       const rejected = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'rejected'
+        return applicant.accepted_status == 'rejected'
       })
       return rejected.length
     },
     signedInApplicants() {
       const signedIn = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'signed-in'
+        return applicant.accepted_status == 'signed-in'
       })
       return signedIn.length
     },
     waitlistApplicants() {
       const waitlist = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'waitlist'
+        return applicant.accepted_status == 'waitlist'
       })
       return waitlist.length
     },
