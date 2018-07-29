@@ -14,6 +14,7 @@
 			<div class="row"><b>Hackathons Attended</b> {{applicant.hack_count}}</div>
 			<div class="row"><b>Project</b> {{applicant.project}}</div>
 			<div class="row"><b>Dietary Restriction</b> {{applicant.dietary}}</div>
+			<div class="row"><b>Team</b> {{applicant.team}}</div>
 			<div class="row"><b>RSVP</b> {{applicant.rsvp}}</div>
 			<div class="controls">
 				<select v-model="applicationStatus">
@@ -64,6 +65,7 @@ export default {
 		console.log('updating...')
 		this.$http.post('https://ht6.lyninx.com/applicant_status', data).then((res) => {
 			console.log(this.applicant.email + " updated to " + this.applicationStatus)
+			this.applicant.accepted_status = this.applicationStatus
 			this.show = false
 		}, (err) => {
 			console.log('error updating applicant status')

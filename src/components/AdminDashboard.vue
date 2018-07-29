@@ -30,7 +30,7 @@
 </template>
 <script>
 export default {
-  name: 'admin',
+  name: 'admin-dashboard',
   props: [
 	'applicants'
   ],
@@ -40,6 +40,14 @@ export default {
   methods: {},
   created() {
   	console.log('dashboard')
+  },
+  watch: {
+    applicants: {
+      handler: function() {
+        console.log('dashboard update')
+      },
+      deep: true
+    }
   },
   computed: {
     validApplicants() {

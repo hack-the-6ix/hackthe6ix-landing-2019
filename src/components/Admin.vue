@@ -57,42 +57,12 @@ export default {
       this.auth()
     }
   },
-  computed: {
-    validApplicants() {
-      const valid = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus != 'invalid'
-      })
-      return valid.length
-    },
-    acceptedApplicants() {
-      const accepted = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'accepted'
-      })
-      return accepted.length
-    },
-    rejectedApplicants() {
-      const rejected = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'rejected'
-      })
-      return rejected.length
-    },
-    signedInApplicants() {
-      const signedIn = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'signed-in'
-      })
-      return signedIn.length
-    },
-    waitlistApplicants() {
-      const waitlist = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'waitlist'
-      })
-      return waitlist.length
-    },
-    rsvpApplicants() {
-      const rsvp = this.applicants.filter((applicant) => {
-        return applicant.rsvp
-      })
-      return rsvp.length
+  watch: {
+    applicants: {
+      handler: function() {
+        console.log('applicants update!>!')
+      },
+      deep: true
     }
   }
 }	
