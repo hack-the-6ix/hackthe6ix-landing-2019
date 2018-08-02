@@ -11,69 +11,81 @@
 	      <h1>Sponsors</h1>
 	      <div class="card">
           <a href="https://stdlib.com/" target="_blank">
-            <img src="../assets/stdlib.png" alt="stdlib" class="stdlib-logo"/>
+            <img src="../assets/svg/stdlib.svg" alt="stdlib" class="stdlib-logo"/>
           </a>
           <br>
           <a href="https://tophat.com/" target="_blank">
-            <img src="../assets/tophat_logo.png" alt="TopHat" class="tophat-logo"/>
+            <img src="../assets/svg/tophat.svg" alt="TopHat" class="tophat-logo"/>
           </a>
 
           <div class="logos-row">
             <a href="https://www.informatica.com/ca/" target="_blank">
-              <img src="../assets/informatica.png" alt="Informatica" class="logo"/>
+              <img src="../assets/svg/informatica.svg" alt="Informatica" class="logo"/>
             </a>
             <a href="http://www.indexexchange.com/" target="_blank">
               <img src="../assets/index-exchange-with-r.png" alt="INDEX EXCHANGE" class="logo"/>
             </a>
             <a href="https://www.scotiabank.com/" target="_blank">
-              <img src="../assets/scotiabank.png" alt="Scotiabank" class="logo"/>
+              <img src="../assets/svg/scotiabank.svg" alt="Scotiabank" class="logo"/>
             </a>
           </div>
           <div class="logos-row">
             <a href="https://www2.deloitte.com/ca/en.html" target="_blank">
-              <img src="../assets/deloitte.png" alt="Deloitte" class="logo"/>
+              <img src="../assets/svg/deloitte.svg" alt="Deloitte" class="logo"/>
             </a>
             <a href="https://www.intel.com/content/www/us/en/homepage.html" target="_blank">
-              <img src="../assets/intel.png" alt="Intel" class="logo"/>
+              <img src="../assets/svg/intel.svg" alt="Intel" class="logo"/>
             </a>
             <a href="https://venasolutions.com/" target="_blank">
-              <img src="../assets/vena-logo.png" alt="Vena" class="logo"/>
+              <img src="../assets/svg/vena.svg" alt="Vena" class="logo"/>
             </a>
           </div>
           <div class="logos-row">
             <a href="https://www.bmo.com/main/personal" target="_blank">
-              <img src="../assets/bmo.png" alt="Bank of Montreal" class="logo-sub"/>
+              <img src="../assets/svg/bmo.svg" alt="Bank of Montreal" class="logo-sub"/>
             </a>
             <a href="https://balsamiq.com/" target="_blank">
-              <img src="../assets/balsamiq.png" alt="balsamiq" class="logo-sub"/>
+              <img src="../assets/svg/balsamiq.svg" alt="balsamiq" class="logo-sub"/>
             </a>
             <a href="https://www.pagerduty.com/" target="_blank">
-              <img src="../assets/pageduty.png" alt="pageduty" class="logo-sub"/>
+              <img src="../assets/svg/pagerduty.svg" alt="pageduty" class="logo-sub"/>
             </a>
             <a href="https://www.loyalty.com/" target="_blank">
-              <img src="../assets/loyaltyone.png" alt="LoyaltyOne" class="logo-sub"/>
+              <img src="../assets/svg/loyalty-one.svg" alt="LoyaltyOne" class="logo-sub"/>
+            </a>
+            <a href="https://www.rotman.utoronto.ca/" target="_blank">
+              <img src="../assets/svg/rotman.svg" alt="Rotman" class="logo-sub"/>
             </a>
           </div>
           <div class="logos-row">
             <a href="https://www.elementai.com/" target="_blank">
-              <img src="../assets/element-ai.png" alt="ELEMENT AI" class="logo-sub"/>
+              <img src="../assets/svg/element-ai.svg" alt="ELEMENT AI" class="logo-sub"/>
             </a>
             <a href="https://www.nextcanada.com/" target="_blank">
-              <img src="../assets/nextcanada.png" alt="NEXTCANADA" class="logo-sub"/>
+              <img src="../assets/svg/next-canada.svg" alt="NEXTCANADA" class="logo-sub"/>
             </a>
             <a href="https://www.wealthsimple.com/en-ca/" target="_blank">
-              <img src="../assets/wealthsimple.png" alt="Wealthsimple" class="logo-sub"/>
+              <img src="../assets/svg/wealthsimple.svg" alt="Wealthsimple" class="logo-sub"/>
+            </a>
+            <a href="https://www.github.com/" target="_blank">
+              <img src="../assets/svg/github.svg" alt="GitHub" class="logo-sub"/>
             </a>
           </div>
           <div class="logos-row">
             <a href="https://indico.io/" target="_blank">
               <img src="../assets/indico.png" alt="indico" class="logo-sub"/>
             </a>
+            <a href="https://hackp.ac/mlh-stickermule-hackathons" target="_blank">
+              <img src="../assets/svg/stickermule.svg" alt="StickerMule" class="logo-sub"/>
+            </a>
             <a href="https://mlh.io/" target="_blank">
-              <img src="../assets/mlh.png" alt="MLH" class="logo-sub"/>
+              <img src="../assets/svg/mlh.svg" alt="MLH" class="logo-sub"/>
             </a>
             <a href="https://teabot.com/" target="_blank">
-              <img src="../assets/teabot.png" alt="teaBOT" class="logo-sub"/>
+              <img src="../assets/svg/teabot.svg" alt="teaBOT" class="logo-sub"/>
+            </a>
+            <a href="https://www.pepsico.ca/" target="_blank">
+              <img src="../assets/svg/pepsico.svg" alt="pepsico" class="logo-sub"/>
             </a>
           </div>
 	      </div>
@@ -146,6 +158,7 @@ hr {
 }
 .tophat-logo {
   margin-top: 100px;
+  width:500px;
 }
 .logo {
   height: 60px;
