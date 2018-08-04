@@ -9,7 +9,8 @@
           <h2>August 24-26, 2018</h2>
           <h2>TopHat HQ</h2>
           <countdown></countdown>
-          <router-link to="/apply"><div class="btn apply">APPLY</div></router-link>
+          <!-- <router-link to="/apply"><div class="btn apply">APPLY</div></router-link> -->
+          <div class="apps-closed">Applications are now closed!</div>
         </div>
 
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -82,6 +83,10 @@ h2 {
 }
 .red {
   color: #E3493B;
+}
+.apps-closed {
+  color: rgb(35, 181, 175);
+  font-weight:bold;
 }
 hr {
   border:1px solid rgba(0,0,0,0.05);

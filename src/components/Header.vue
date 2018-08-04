@@ -11,7 +11,7 @@
         <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
         <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
         <router-link to="/#contact" v-smooth-scroll>CONTACT</router-link>
-        <router-link to="/apply">APPLY</router-link>
+        <!-- <router-link to="/apply">APPLY</router-link> -->
       </div>
       <!-- <router-link to="/">
 
@@ -58,7 +58,7 @@ a:hover {
 .navigation {
   display:flex;
   align-items:center;
-  justify-content: flex-end;
+  justify-content: center;
   margin: auto;
   max-width: 1028px;
 }
