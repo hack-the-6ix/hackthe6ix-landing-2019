@@ -75,7 +75,7 @@ export default {
 			console.log(err)
 		})
 	},
-	update() {
+	email() {
 		let password = window.sessionStorage.getItem('ht6-token')
 		let email = this.applicant.email
 		console.log('emailing...')
