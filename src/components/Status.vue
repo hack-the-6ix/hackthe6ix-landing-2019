@@ -37,7 +37,7 @@ export default {
     	message: '',
     	applicant: {},
     	loaded: false,
-    	status: 'accepted',
+    	status: 'Accepted',
     	warning: ''
     }
   },
@@ -47,11 +47,11 @@ export default {
   		this.$http.get('https://ht6.lyninx.com/applicant/' + this.id).then((result)=>{
   			if (result.body.success){
   				this.applicant = result.body.applicant
-  				//this.status = this.applicant.accepted_status
+  				this.status = this.applicant.accepted_status
   				this.applicant.dietary = this.applicant.dietaryRestriction
   				this.loaded = true
   			} else {
-  				this.message = 'Error: Applicant ID not found. Please contact us for assistance.'
+  				this.message = 'Error: Your application data was not found. Please contact us for assistance.'
   			}
   		})
   	}

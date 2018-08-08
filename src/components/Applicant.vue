@@ -1,5 +1,5 @@
 <template>
-	<div class="applicant" v-show="valid">
+	<div class="applicant" v-show="valid" v-bind:class="{ emailed: applicant.email_sent, rsvp: applicant.rsvp }">
 		<div class="top pad" v-on:click="show = !show">
 			<div class="col name">{{applicant.name}} {{applicant.lname}}</div>
 			<div class="col email">{{applicant.email}}</div>
@@ -13,11 +13,13 @@
 			<div class="row"><b>Grad Year</b> {{applicant.grad_year}}</div>
 			<div class="row"><b>Hackathons Attended</b> {{applicant.hack_count}}</div>
 			<div class="row"><b>Project</b> {{applicant.project}}</div>
-			<div class="row"><b>Dietary Restriction</b> {{applicant.dietary}}</div>
+			<div class="row"><b>Dietary Restriction</b> {{applicant.dietary_restriction}}</div>
 			<div class="row"><b>Links</b> {{applicant.links}}</div>
 			<div class="row"><b>Team</b> {{applicant.team}}</div>
+			<div class="row"><b>RSVP Email Sent</b> {{applicant.email_sent}}</div>
 			<div class="row"><b>RSVP</b> {{applicant.rsvp}}</div>
 			<div class="controls">
+				<div class="btn" v-on:click="email">SEND RSVP EMAIL</div>
 				<select v-model="applicationStatus">
 					<option value="waiting">waiting</option>
 					<option value="accepted">accepted</option>
@@ -69,7 +71,18 @@ export default {
 			this.applicant.accepted_status = this.applicationStatus
 			this.show = false
 		}, (err) => {
-			console.log('error updating applicant status')
+			console.warn('error updating applicant status')
+			console.log(err)
+		})
+	},
+	update() {
+		let password = window.sessionStorage.getItem('ht6-token')
+		let email = this.applicant.email
+		console.log('emailing...')
+		this.$http.post('https://ht6.lyninx.com/email_applicant/' + email, data).then((res) => {
+			this.show = false
+		}, (err) => {
+			console.warn('error emailing applicant')
 			console.log(err)
 		})
 	}
@@ -84,6 +97,13 @@ export default {
 	.applicant {
 		margin-bottom:8px;
 		background:rgba(255,255,255,0.2);
+		border-left:4px solid rgba(255,255,255,0.4);
+	}
+	.emailed {
+		border-left:4px solid #23b5af;
+	}
+	.rsvp {
+		border-left:4px solid #E3493B;
 	}
 	.controls {
 		width:100%;
