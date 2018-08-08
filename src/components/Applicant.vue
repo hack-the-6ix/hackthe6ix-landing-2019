@@ -77,9 +77,10 @@ export default {
 	},
 	email() {
 		let password = window.sessionStorage.getItem('ht6-token')
+		let data = { password: password }
 		let email = this.applicant.email
 		console.log('emailing...')
-		this.$http.post('https://ht6.lyninx.com/email_applicant/' + email, {}).then((res) => {
+		this.$http.post('https://ht6.lyninx.com/email_applicant/' + email, data).then((res) => {
 			this.show = false
 		}, (err) => {
 			console.warn('error emailing applicant')
