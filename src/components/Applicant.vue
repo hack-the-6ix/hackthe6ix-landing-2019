@@ -81,6 +81,8 @@ export default {
 		let email = this.applicant.email
 		console.log('emailing...')
 		this.$http.post('https://ht6.lyninx.com/email_applicant/' + email, data).then((res) => {
+			console.log(res)
+			this.applicant.email_sent = true
 			this.show = false
 		}, (err) => {
 			console.warn('error emailing applicant')
