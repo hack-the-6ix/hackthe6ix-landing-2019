@@ -3,7 +3,7 @@
 		<div class="wrap">
 		<h1 class="title">Admin</h1>
 		<div class="auth" v-show="!authenticated">
-		<input type="text" v-model="password" placeholder="PASSWORD"/>
+		<input type="password" v-model="password" placeholder="PASSWORD"/>
 		<div class="btn" v-on:click="auth()">AUTHENTICATE</div>
 		</div>
 		<div class="message"><h4>{{message}}</h4></div>

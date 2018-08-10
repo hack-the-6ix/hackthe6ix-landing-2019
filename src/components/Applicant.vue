@@ -1,5 +1,5 @@
 <template>
-	<div class="applicant" v-show="valid" v-bind:class="{ emailed: applicant.email_sent, rsvp: applicant.rsvp }">
+	<div class="applicant" v-show="valid" v-bind:class="{ emailed: applicant.email_sent, rsvp: responded(true), no_rsvp: responded(false) }">
 		<div class="top pad" v-on:click="show = !show">
 			<div class="col name">{{applicant.name}} {{applicant.lname}}</div>
 			<div class="col email">{{applicant.email}}</div>
@@ -17,9 +17,11 @@
 			<div class="row"><b>Links</b> {{applicant.links}}</div>
 			<div class="row"><b>Team</b> {{applicant.team}}</div>
 			<div class="row"><b>RSVP Email Sent</b> {{applicant.email_sent}}</div>
+			<div class="row"><b>RSVP Responded</b> {{applicant.responded}}</div>
 			<div class="row"><b>RSVP</b> {{applicant.rsvp}}</div>
 			<div class="controls">
-				<div class="btn" v-on:click="email">SEND RSVP EMAIL</div>
+				<a :href="rsvpLink" target="_blank"><div class="btn teal">RSVP Link</div></a>
+				<div v-show="shouldEmail()" class="btn" v-on:click="email">SEND RSVP EMAIL</div>
 				<select v-model="applicationStatus">
 					<option value="waiting">waiting</option>
 					<option value="accepted">accepted</option>
@@ -55,6 +57,9 @@ export default {
 	},
 	resumeLink(){
 		return "https://ht6.lyninx.com/resumes/"+this.applicant.resume_key
+	},
+	rsvpLink(){
+		return "https://hackthe6ix.com/status/"+this.applicant._id
 	}
   },
   methods: {
@@ -88,6 +93,17 @@ export default {
 			console.warn('error emailing applicant')
 			console.log(err)
 		})
+	},
+	responded(bool){
+		return this.applicant.responded && (this.applicant.rsvp == bool)
+	},
+	shouldEmail(){
+		let valid_statuses = ['accepted', 'rejected', 'waitlist']
+		let applicant_status = this.applicant.accepted_status
+		let valid = valid_statuses.find((elem) => {
+		  return elem == applicant_status
+		})
+		return !this.applicant.email_sent && Boolean(valid)
 	}
   }
 }
@@ -107,6 +123,9 @@ export default {
 	}
 	.rsvp {
 		border-left:4px solid #E3493B;
+	}
+	.no_rsvp {
+		border-left: 4px solid #f6d049;
 	}
 	.controls {
 		width:100%;
