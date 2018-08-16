@@ -19,6 +19,7 @@
       </div>
 
       <about></about>
+      <schedule></schedule>
       <FAQ></FAQ>
       <sponsors></sponsors>
       <contact></contact>
@@ -31,6 +32,7 @@
 // import Email from './Email'
 import About from './About'
 import FAQ from './FAQ'
+import Schedule from './Schedule'
 import Sponsors from './Sponsors'
 import Countdown from './Countdown'
 import Contact from './Contact'
@@ -41,6 +43,7 @@ export default {
     // Email,
     About,
     FAQ,
+    Schedule,
     Sponsors,
     Countdown,
     Contact,
