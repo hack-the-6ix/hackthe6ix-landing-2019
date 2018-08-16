@@ -13,7 +13,7 @@
 			<div class="row"><b>Grad Year</b> {{applicant.grad_year}}</div>
 			<div class="row"><b>Hackathons Attended</b> {{applicant.hack_count}}</div>
 			<div class="row"><b>Project</b> {{applicant.project}}</div>
-			<div class="row"><b>Dietary Restriction</b> {{applicant.dietary_restriction}}</div>
+			<div class="row"><b>Dietary Restriction</b> {{applicant.dietary}}</div>
 			<div class="row"><b>Links</b> {{applicant.links}}</div>
 			<div class="row"><b>Team</b> {{applicant.team}}</div>
 			<div class="row"><b>RSVP Email Sent</b> {{applicant.email_sent}}</div>

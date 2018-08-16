@@ -12,6 +12,8 @@
 			              <option value="true">Yes. I will be there!</option>
 			              <option value="false">No. I can no longer make it.</option>
 			            </select>
+			            <div class="label">Do you have any dietary restriction?</div>
+			            <input type="text" v-model="applicant.dietary" placeholder="No dietary restriction"/>
 			        </div>
 					<div class="section" v-show="accepted">
 					<div>If you are under the age of 18, you must have <a href="https://drive.google.com/file/d/0B4fuapiLpLlsb3hxSWk0bnluV28/view">this form</a> signed by a parent or guardian, with you at the event, or else we cannot let you participate.</div><br>
@@ -48,7 +50,7 @@ export default {
   			if (result.body.success){
   				this.applicant = result.body.applicant
   				this.status = this.applicant.accepted_status
-  				this.applicant.dietary = this.applicant.dietaryRestriction
+  				this.applicant.dietary = this.applicant.dietary
   				this.loaded = true
   			} else {
   				this.message = 'Error: Your application data was not found. Please contact us for assistance.'
@@ -60,7 +62,8 @@ export default {
   	submit() {
   		const body = {
   			id: this.id,
-  			rsvp: this.applicant.rsvp
+  			rsvp: this.applicant.rsvp,
+  			dietary: this.applicant.dietary
   		}
   		this.send(body)
   	},
@@ -136,6 +139,7 @@ export default {
 	  line-height:140%;
 	  font-size:20px;
 	  margin-bottom:12px;
+	  margin-top:12px;
 	  font-weight:bold;
 	}
 	.submit {

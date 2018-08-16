@@ -4,6 +4,7 @@ import Main from '@/components/Main'
 import Admin from '@/components/Admin'
 import Hello from '@/components/Hello'
 import Apply from '@/components/Apply'
+import RSVP from '@/components/RSVP'
 import Liability from '@/components/Liability'
 import Privacy from '@/components/Privacy'
 import Status from '@/components/Status'
@@ -38,6 +39,11 @@ export default new Router({
           path: '/apply-late',
           name: 'Apply',
           component: Apply
+        },
+        {
+          path: '/rsvp',
+          name: 'RSVP',
+          component: RSVP
         },
         {
           path: '/privacy',
