@@ -39,6 +39,9 @@
             <a href="https://venasolutions.com/" target="_blank">
               <img src="../assets/svg/vena.svg" alt="Vena" class="logo"/>
             </a>
+            <a href="https://digitalboundary.net/" target="_blank">
+              <img src="../assets/svg/dbg.svg" alt="Digital Boundary Group" class="logo"/>
+            </a>
           </div>
           <div class="logos-row">
             <a href="https://www.bmo.com/main/personal" target="_blank">
@@ -69,9 +72,6 @@
             </a>
             <a href="https://www.github.com/" target="_blank">
               <img src="../assets/svg/github.svg" alt="GitHub" class="logo-sub"/>
-            </a>
-            <a href="https://digitalboundary.net/" target="_blank">
-              <img src="../assets/svg/dbg.svg" alt="Digital Boundary Group" class="logo-sub"/>
             </a>
           </div>
           <div class="logos-row">
