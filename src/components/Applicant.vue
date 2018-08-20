@@ -9,7 +9,8 @@
 			<div class="row"><b>Resume</b> <a target="_blank" :href="resumeLink">{{applicant.resume_key}}</a></div>
 			<div class="row"><b>Gender</b> {{applicant.gender}}</div>
 			<div class="row"><b>School</b> {{applicant.school}}</div>
-			<div class="row"><b>Program</b> {{applicant.program}}</div>				
+			<div class="row"><b>Program</b> {{applicant.program}}</div>		
+			<div class="row"><b>Birthday</b> {{applicant.birthday}}</div>		
 			<div class="row"><b>Grad Year</b> {{applicant.grad_year}}</div>
 			<div class="row"><b>Hackathons Attended</b> {{applicant.hack_count}}</div>
 			<div class="row"><b>Project</b> {{applicant.project}}</div>
