@@ -53,7 +53,7 @@
             <a href="https://www.loyalty.com/" target="_blank">
               <img src="../assets/svg/loyalty-one.svg" alt="LoyaltyOne" class="logo-sub"/>
             </a>
-            <a href="https://www.rotman.utoronto.ca/" target="_blank">
+            <a href="http://www.rotman.utoronto.ca/Degrees/MastersPrograms/MMA" target="_blank">
               <img src="../assets/svg/rotman.svg" alt="Rotman" class="logo-sub"/>
             </a>
           </div>
@@ -69,6 +69,9 @@
             </a>
             <a href="https://www.github.com/" target="_blank">
               <img src="../assets/svg/github.svg" alt="GitHub" class="logo-sub"/>
+            </a>
+            <a href="https://digitalboundary.net/" target="_blank">
+              <img src="../assets/svg/dbg.svg" alt="Digital Boundary Group" class="logo-sub"/>
             </a>
           </div>
           <div class="logos-row">
