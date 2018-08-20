@@ -57,7 +57,7 @@
               <img src="../assets/svg/loyalty-one.svg" alt="LoyaltyOne" class="logo-sub"/>
             </a>
             <a href="http://www.rotman.utoronto.ca/Degrees/MastersPrograms/MMA" target="_blank">
-              <img src="../assets/svg/rotman.svg" alt="Rotman" class="logo-sub"/>
+              <img src="../assets/rotman.png" alt="Rotman" class="logo-sub"/>
             </a>
           </div>
           <div class="logos-row">
