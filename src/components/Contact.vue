@@ -4,7 +4,7 @@
       <h1>Contact Us</h1>
 
       <h2>When and where is Hack the 6ix 2018?</h2> 
-      <p>Hack the 6ix 2018 will be held at TopHat HQ in downtown Toronto from August 24-26, 2018.</p>
+      <p>Hack the 6ix 2018 will be held at TopHat HQ (151 Bloor St W, Suite 200) in downtown Toronto from August 24-26, 2018.</p>
     
       <a href="mailto:hello@hackthe6ix.com" type="button" class="contact-button">CONTACT US</a>
     </div>
