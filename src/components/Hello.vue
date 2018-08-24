@@ -9,7 +9,7 @@
           <h2>August 24-26, 2018</h2>
           <h2>TopHat HQ</h2>
           <h2>151 Bloor St W, Suite 200, Toronto</h2>
-          <countdown></countdown>
+<!--           <countdown></countdown> -->
           <!-- <router-link to="/apply"><div class="btn apply">APPLY</div></router-link> -->
           <div class="apps-closed">Applications are now closed!</div>
         </div>
