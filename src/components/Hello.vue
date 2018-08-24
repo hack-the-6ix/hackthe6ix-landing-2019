@@ -11,7 +11,7 @@
           <h2>151 Bloor St W, Suite 200, Toronto</h2>
 <!--           <countdown></countdown> -->
           <!-- <router-link to="/apply"><div class="btn apply">APPLY</div></router-link> -->
-          <div class="apps-closed">Applications are now closed!</div>
+<!--           <div class="apps-closed">Applications are now closed!</div> -->
         </div>
 
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
