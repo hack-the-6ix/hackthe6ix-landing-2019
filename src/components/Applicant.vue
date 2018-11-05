@@ -1,21 +1,28 @@
 <template>
-	<div class="applicant" v-show="valid">
+	<div class="applicant" v-show="valid" v-bind:class="{ emailed: applicant.email_sent, rsvp: responded(true), no_rsvp: responded(false) }">
 		<div class="top pad" v-on:click="show = !show">
-			<div class="col name">{{applicant.name}}</div>
+			<div class="col name">{{applicant.name}} {{applicant.lname}}</div>
 			<div class="col email">{{applicant.email}}</div>
 			<div class="col status">{{applicationStatus}}</div>
 		</div>
 		<div class="bottom pad" v-show="show">
-			<div class="row">Resume: <a target="_blank" :href="resumeLink">{{applicant.resumeID}}</a></div>
-			<div class="row">Gender: {{applicant.gender}}</div>
-			<div class="row">School: {{applicant.school}}</div>			
-			<div class="row">Grad Year: {{applicant.gradYear}}</div>
-			<div class="row">Hackathons Attended: {{applicant.hackCount}}</div>
-			<div class="row">Interests: {{applicant.interests}}</div>
-			<div class="row">Hack Idea: {{applicant.ideas}}</div>
-			<div class="row">Dietary Restriction: {{applicant.dietaryRestriction}}</div>
-			<div class="row">RSVP: {{applicant.rsvp}}</div>
+			<div class="row"><b>Resume</b> <a target="_blank" :href="resumeLink">{{applicant.resume_key}}</a></div>
+			<div class="row"><b>Gender</b> {{applicant.gender}}</div>
+			<div class="row"><b>School</b> {{applicant.school}}</div>
+			<div class="row"><b>Program</b> {{applicant.program}}</div>		
+			<div class="row"><b>Birthday</b> {{applicant.birthday}}</div>		
+			<div class="row"><b>Grad Year</b> {{applicant.grad_year}}</div>
+			<div class="row"><b>Hackathons Attended</b> {{applicant.hack_count}}</div>
+			<div class="row"><b>Project</b> {{applicant.project}}</div>
+			<div class="row"><b>Dietary Restriction</b> {{applicant.dietary}}</div>
+			<div class="row"><b>Links</b> {{applicant.links}}</div>
+			<div class="row"><b>Team</b> {{applicant.team}}</div>
+			<div class="row"><b>RSVP Email Sent</b> {{applicant.email_sent}}</div>
+			<div class="row"><b>RSVP Responded</b> {{applicant.responded}}</div>
+			<div class="row"><b>RSVP</b> {{applicant.rsvp}}</div>
 			<div class="controls">
+				<a :href="rsvpLink" target="_blank"><div class="btn teal">RSVP Link</div></a>
+				<div v-show="shouldEmail()" class="btn" v-on:click="email">SEND RSVP EMAIL</div>
 				<select v-model="applicationStatus">
 					<option value="waiting">waiting</option>
 					<option value="accepted">accepted</option>
@@ -43,35 +50,83 @@ export default {
 	}
   },
   created() {
-	this.applicationStatus = this.applicant.acceptedStatus
+	this.applicationStatus = this.applicant.accepted_status
   },
   computed: {
 	valid(){
-		return this.applicant.acceptedStatus != 'invalid'
+		return this.applicant.accepted_status != 'invalid'
 	},
 	resumeLink(){
-		return "https://ht6.lyninx.com/resumes/"+this.applicant.resumeID
+		return "https://ht6.lyninx.com/resumes/"+this.applicant.resume_key
+	},
+	rsvpLink(){
+		return "https://hackthe6ix.com/status/"+this.applicant._id
 	}
   },
   methods: {
 	update() {
-		const data = {
-			password: this.password,
-			_id: this.applicant._id,
+		let password = window.sessionStorage.getItem('ht6-token')
+		let data = {
+			password: password,
+			id: this.applicant._id,
 			status: this.applicationStatus
 		}
-		console.log(this.applicant.email + " updated to" + this.applicationStatus)
-		this.$http.post('https://ht6.lyninx.com/update_status', data).then(() => {
-			this.show = false;
+		console.log('updating...')
+		this.$http.post('https://ht6.lyninx.com/applicant_status', data).then((res) => {
+			console.log(this.applicant.email + " updated to " + this.applicationStatus)
+			this.applicant.accepted_status = this.applicationStatus
+			this.show = false
+		}, (err) => {
+			console.warn('error updating applicant status')
+			console.log(err)
 		})
+	},
+	email() {
+		let password = window.sessionStorage.getItem('ht6-token')
+		let data = { password: password }
+		let email = this.applicant.email
+		console.log('emailing...')
+		this.$http.post('https://ht6.lyninx.com/email_applicant/' + email, data).then((res) => {
+			console.log(res)
+			this.applicant.email_sent = true
+			this.show = false
+		}, (err) => {
+			console.warn('error emailing applicant')
+			console.log(err)
+		})
+	},
+	responded(bool){
+		return this.applicant.responded && (this.applicant.rsvp == bool)
+	},
+	shouldEmail(){
+		let valid_statuses = ['accepted', 'rejected', 'waitlist']
+		let applicant_status = this.applicant.accepted_status
+		let valid = valid_statuses.find((elem) => {
+		  return elem == applicant_status
+		})
+		return !this.applicant.email_sent && Boolean(valid)
 	}
   }
 }
 </script>
 <style scoped>
+	a {
+		margin:0;
+		padding:0;
+	}
 	.applicant {
 		margin-bottom:8px;
-		background:rgba(0,0,0,0.2);
+		background:rgba(255,255,255,0.2);
+		border-left:4px solid rgba(255,255,255,0.4);
+	}
+	.emailed {
+		border-left:4px solid #23b5af;
+	}
+	.rsvp {
+		border-left:4px solid #E3493B;
+	}
+	.no_rsvp {
+		border-left: 4px solid #f6d049;
 	}
 	.controls {
 		width:100%;

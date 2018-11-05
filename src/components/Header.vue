@@ -1,24 +1,22 @@
 <template>
   <div class="header">
     <div class="overlay">
-      <div class="nav">
-        <div class="social-media">
-          <a href="https://twitter.com/hackthe6ix"><img class="icon" src="../assets/twitter.svg"></a>
-          <a href="https://www.facebook.com/HackThe6ix/"><img class="icon" src="../assets/facebook.svg"></a>
-          <a href="https://www.instagram.com/hackthe6ix/"><img class="icon" src="../assets/instagram.svg"></a>
-        </div>
-        <div class="navigation">
-          <router-link to="/" v-smooth-scroll>HOME</router-link>
-          <router-link to="/#about" v-smooth-scroll>ABOUT</router-link>
-          <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
-          <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
-<!--           <router-link to="#contact">CONTACT</router-link> -->
-          <!-- <router-link to="/apply"><div class="btn">APPLY</div></router-link> -->
-        </div>
+      <div class="logo">
+        <img src="../assets/logo.png" class="icon"/>
       </div>
-      <router-link to="/">
 
-      </router-link>
+      <div class="navigation">
+        <router-link to="/" v-smooth-scroll>HOME</router-link>
+        <router-link to="/#about" v-smooth-scroll>ABOUT</router-link>
+        <router-link to="/#schedule" v-smooth-scroll>SCHEDULE</router-link>
+        <router-link to="/#faq" v-smooth-scroll>FAQ</router-link>
+        <router-link to="/#sponsors" v-smooth-scroll>SPONSORS</router-link>
+        <router-link to="/#contact" v-smooth-scroll>CONTACT</router-link>
+        <!-- <router-link to="/apply">APPLY</router-link> -->
+      </div>
+      <!-- <router-link to="/">
+
+      </router-link> -->
 <!--       <countdown></countdown> -->
     </div>
   </div>
@@ -42,50 +40,69 @@ export default {
 </script>
 
 <style scoped>
-
 .header {
-  color:#fff;
-  position:absolute;
+  color: #23b5af;
   width:100%;
   text-align:center;
+  background:#fff;
+  font-weight:600;
 }
 a {
-  color:#fff;
-  transition:all 0.1s ease-in;
+  color: #23b5af;
+  transition:all 0.2s ease-in;
+  text-decoration:none;
+  margin:0 25px;
 }
 a:hover {
   transform: translateY(-2px);
 }
-.nav {
-  display:flex;
-  max-width:1024px;
-  margin:auto;
-  align-items:center;
-  justify-content: space-between;
-}
 .navigation {
   display:flex;
   align-items:center;
+  justify-content: center;
+  margin: auto;
+  max-width: 1028px;
+}
+.logo {
+  display: block;
+  position: absolute;
+  left: 50px;
 }
 .icon {
-  height:20px;
-  margin:0 8px;
-  transform: scale(1.2);
-}
-.navigation a {
-  font-weight:bold;
-  text-decoration:none;
-  margin:0 16px;
-}
-.navigation a:hover {
-  transition:all 0.2s ease-in-out;
-}
-.social-media{
-  display:flex;
+  height: 25px;
+  margin:0;
+  transform: scale(1.4);
 }
 .overlay {
 	background: rgba(0,0,0,0.0);
-	padding:20px;
-	height:20px;
+  padding: 25px;
+  height: 20px;
+}
+.placeholder {
+  width:100px;
+  /* right:50px;
+  top:0;
+  width:10%;
+  z-index:10000; */
+}
+@media screen and (max-width: 580px){
+  a {
+    font-size: 12px;
+    margin: 0;
+    padding: 5px;
+  }
+  .logo {
+    display: none;
+  }
+  .navigation {
+    justify-content: space-around;
+    margin-right: 30px;
+  }
+}
+@media (min-width: 581px) and (max-width: 768px) { 
+  a {
+    margin-left: 5px;
+    margin-right:5px;
+  }
 }
 </style>

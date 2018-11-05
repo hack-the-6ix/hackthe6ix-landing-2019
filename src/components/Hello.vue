@@ -1,30 +1,54 @@
 <template>
   <div class="hello">
-    <div class="wrap">
-      <div class="cloud">
-        <img src="../assets/cloud1.svg" width="500px" class="cloud1">
-        <img src="../assets/cloud2.svg" width="400px" class="cloud2">
-        <img src="../assets/cloud3.svg" width="200px" class="cloud3">
-        <img src="../assets/cloud4.svg" width="120px" class="cloud4">
-      </div>
-      <div class="top-level"><img class="anim" src="../assets/logo.png" height="280px"></div>
-      <h1>HACK THE 6IX</h1>
-      <h2>TopHat, Toronto &nbsp;&nbsp; August 24-26th, 2018</h2>
-      <!-- <router-link to="/apply"><div class="btn large">APPLY</div></router-link> -->
-<!--       <a href="https://hackthe6ixvolunteers.typeform.com/to/o6Nptv"><div class="btn large volunteer">VOLUNTEER</div></a> -->
-<!--       <countdown></countdown> -->
+      <!-- <email></email> -->
+      <div class="hero-image">
+        <div class="hero-wrap">
+          <div class="hero-logo"><img class="anim" src="../assets/logo.png" height="280px"></div>
+          <h1 class="ht6">HACK THE 6IX</h1>
+          <h2 class="red">Presented by <img src="../assets/stdlib.png" alt="stdlib" class="stdlib-small"/></h2>
+          <h2>August 24-26, 2018</h2>
+          <h2>TopHat HQ</h2>
+          <h2>151 Bloor St W, Suite 200, Toronto</h2>
+<!--           <countdown></countdown> -->
+          <!-- <router-link to="/apply"><div class="btn apply">APPLY</div></router-link> -->
+<!--           <div class="apps-closed">Applications are now closed!</div> -->
+        </div>
 
-    </div>
-      <email></email>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+          <polygon points="0,0 100,100 0, 100" style="fill:#23b5af"/>
+        </svg>
+      </div>
+
+      <about></about>
+      <schedule></schedule>
+      <FAQ></FAQ>
+      <sponsors></sponsors>
+      <contact></contact>
+      <hr>
+      <foot></foot>
   </div>
 </template>
 
 <script>
-import Email from './Email'
+// import Email from './Email'
+import About from './About'
+import FAQ from './FAQ'
+import Schedule from './Schedule'
+import Sponsors from './Sponsors'
+import Countdown from './Countdown'
+import Contact from './Contact'
+import Foot from './Footer'
 export default {
   name: 'hello',
   components: {
-    Email
+    // Email,
+    About,
+    FAQ,
+    Schedule,
+    Sponsors,
+    Countdown,
+    Contact,
+    Foot
   },
   data () {
     return {
@@ -46,77 +70,27 @@ export default {
     transform: translateY(0);
   }
 }
-
-@media screen and (max-width: 580px){
-  .top-level img {
-    height: 150px;
-  }
-  .wrap {
-    margin-top: 2em;
-  }
-  h2 {
-    font-size: 18px;
-  }
-  .cloud2, .cloud3 {
-      display:none;
-  }
+.hero-wrap {
+  position: absolute;
+  right: 10%;
+  bottom: 100px;
 }
-
-.anim {
-  animation: float-in 1s cubic-bezier(0.25, 0.7, 0.5, 1) forwards;
-}
-
-.top-level {
-  z-index:10;
-}
-.wrap {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  margin-top: 5em;
-  margin-bottom:0;
-}
-.cloud {
-  z-index:0;
-  width:100%;
-  max-width:1024px;
-  margin:auto;
-  position:absolute;
-}
-.cloud img {
-  position:absolute;
-}
-.cloud1 {
-  top:150px;
-  left:-300px;
-}
-.cloud2 {
-  top: 100px;
-  right: -20px;
-}
-.cloud3 {
-  right:-200px;
-  top:40px;
-}
-.cloud4 {
-  left:250px;
-  top:20px;
-}
-
 h1 {
-  color: #47A2A9;
-  font-size:35px;
-  font-weight:bold;
   margin-bottom:0;
-}
-h2 {
-  color: #47A2A9;
-  margin-bottom:24px;
-  margin-top: 5px;
 }
 h3 {
   margin-top:0;
   color:rgba(255,255,255,0.7);
+}
+h2 {
+  margin-bottom:8px;
+}
+.red {
+  color: #E3493B;
+}
+.apps-closed {
+  color: rgb(35, 181, 175);
+  font-weight:bold;
 }
 hr {
   border:1px solid rgba(0,0,0,0.05);
@@ -128,6 +102,27 @@ a {
   color:#fff;
   text-decoration:none;
 }
+svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  height: 30vw;
+}
+.ht6 { 
+  color:#2d2f30;
+}
+.apply {
+  font-size:30px;
+  border-radius:36px;
+  padding:12px 24px;
+  font-weight:bold;
+  transition: 0.1s ease-in-out;
+}
+.apply:hover {
+  transform: scale(1.1);
+  background:rgba(227, 73, 59, 0.9);
+}
 .btn.large {
   font-size:28px;
   font-weight:bold;
@@ -136,8 +131,39 @@ a {
   box-shadow: 8px 12px 6px 0 rgba(0, 0, 0, 0.3);
   transition:all 0.15s ease-in-out;
 }
+.stdlib-small {
+  width:100px;
+  margin:0 2px;
+  transform:translateY(3px);
+}
 .btn.large:hover {
   transform: translateY(-2px) scale(1.1);
   box-shadow: 2px 10px 12px 0 rgba(0, 0, 0, 0.3);
+}
+hr {
+  color: #ccc;
+  border-style: solid;
+  width: 100%;
+  /* margin-bottom: 50px; */
+}
+@media screen and (max-width: 580px){
+  .hero-wrap {
+    position: static;
+  }
+  .hero-logo {
+    padding-top: 50px;
+  }
+  .hero-logo img {
+    height: 200px;
+  }
+  .wrap {
+    margin-top: 2em;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  .cloud2, .cloud3 {
+    display:none;
+  }
 }
 </style>

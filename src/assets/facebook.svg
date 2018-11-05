@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="159px" height="156px" viewBox="0 0 159 156" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
-    <title>Combined Shape</title>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/social/facebook/black</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M79.5,156 C35.5933624,156 0,121.07821 0,78 C0,34.9217895 35.5933624,0 79.5,0 C123.406638,0 159,34.9217895 159,78 C159,121.07821 123.406638,156 79.5,156 Z M102.648472,27.2089839 C102.648472,27.2089839 85.5990089,27.2089839 81.9433118,27.2089839 C78.2876148,27.2089839 73.2882708,29.6637774 71.7788839,31.4094046 C70.269497,33.1550318 67.4903861,37.0090272 67.4903861,41.7182878 L67.4903861,59.832916 L56.6289743,59.832916 L56.6289743,76.7972932 L67.4903861,76.7972932 L67.4903861,128.298901 L86.9968381,128.298901 L86.9968381,77.4334739 L102.648472,77.4334739 L102.648472,59.832916 L86.9968381,59.832916 C86.9968381,59.832916 86.9968381,48.4690357 86.9968381,47.5159093 C86.9968381,46.5627828 87.3263719,45.8181964 87.7425037,45.3495041 C88.1586356,44.8808117 88.6573605,44.6312641 89.6007403,44.5831153 C90.5441202,44.5349665 102.758364,44.5831153 102.758364,44.5831153 L102.648472,27.2089839 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+    <g id="website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ht6_2018_website_v1" transform="translate(-1179.000000, -7338.000000)" fill="#383B41" fill-rule="nonzero">
+            <g id="contact-us" transform="translate(0.000000, 6484.000000)">
+                <g id="footer" transform="translate(0.000000, 831.000000)">
+                    <g id="icons/social/facebook/black" transform="translate(1176.000000, 20.000000)">
+                        <path d="M15,21 L15,14 L17,14 L18,11 L15,11 L15,10 C15.1926355,9.01675746 15.4128613,8.49063662 17,8 L18,8 L18,6 C17.749083,6.07260647 16.88831,6 16,6 C13.7960768,6 12.3647157,7.24266113 12,10 L12,11 L10,11 L10,14 L12,14 L12,21 L4,21 C3.44465451,21 3,20.5552049 3,20 L3,4 C3,3.44472483 3.44465451,3 4,3 L20,3 C20.5550642,3 20.9999297,3.44472483 21,4 L21,20 C20.9999297,20.5552049 20.5550642,21 20,21 L15,21 Z" id="Combined-Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
     </g>
 </svg>

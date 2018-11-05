@@ -1,101 +1,80 @@
 <template>
 	<div id="admin">
 		<div class="wrap">
-		<h1>Admin</h1>
+		<h1 class="title">Admin</h1>
 		<div class="auth" v-show="!authenticated">
-		<input type="text" v-model="password" placeholder="PASSWORD"/>
+		<input type="password" v-model="password" placeholder="PASSWORD"/>
 		<div class="btn" v-on:click="auth()">AUTHENTICATE</div>
 		</div>
 		<div class="message"><h4>{{message}}</h4></div>
-    <div class="stats" v-show="authenticated">
-      Applicants: {{validApplicants}}<br>
-      Accepted: {{acceptedApplicants}}<br>
-      Signed In: {{signedInApplicants}}<br>
-      Rejected: {{rejectedApplicants}}<br>
-      Waitlist: {{waitlistApplicants}}<br>
-      RSVP: {{rsvpApplicants}}
-    </div>
+    <admin-dashboard v-show="authenticated" :applicants="applicants"></admin-dashboard>
 		<div class="applicants">
-			<applicant v-for="applicant in applicants" :applicant="applicant" :password="password" v-bind:key="applicant.id"></applicant>
+			<applicant v-for="applicant in applicants" :applicant="applicant" v-bind:key="applicant.id"></applicant>
 		</div>
 		</div>
 	</div>
 </template>
 <script>
 import Applicant from './Applicant'
+import AdminDashboard from './AdminDashboard'
 export default {
   name: 'admin',
   components: {
-  	Applicant
+  	Applicant,
+    AdminDashboard
   },
   data () {
     return {
     	password: '',
     	authenticated: false,
     	message: '',
-    	applicants: []
+    	applicants: [],
+      session: window.sessionStorage
     }
   },
   methods: {
   	auth() {
-  		console.log(this.password)
-  		this.authenticated = true;
+  		this.authenticated = true
+      this.session.setItem('ht6-token', this.password)
   		this.fetch()
   	},
   	fetch() {
   		this.$http.get('https://ht6.lyninx.com/applicants?password='+this.password).then(res => {
   			if(res.body.success){
-  				console.log(res)
   				this.applicants = res.body.applicants
   			} else {
   			    this.message = res.body.msg
+            this.authenticated = false
+            sessionStorage.removeItem('ht6-token')
   			}
   		});
   	}
   },
-  computed: {
-    validApplicants() {
-      const valid = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus != 'invalid'
-      })
-      return valid.length
-    },
-    acceptedApplicants() {
-      const accepted = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'accepted'
-      })
-      return accepted.length
-    },
-    rejectedApplicants() {
-      const rejected = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'rejected'
-      })
-      return rejected.length
-    },
-    signedInApplicants() {
-      const signedIn = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'signed-in'
-      })
-      return signedIn.length
-    },
-    waitlistApplicants() {
-      const waitlist = this.applicants.filter((applicant) => {
-        return applicant.acceptedStatus == 'waitlist'
-      })
-      return waitlist.length
-    },
-    rsvpApplicants() {
-      const rsvp = this.applicants.filter((applicant) => {
-        return applicant.rsvp
-      })
-      return rsvp.length
+  created() {
+    let password = this.session.getItem('ht6-token')
+    if(password) {
+      this.password = password
+      this.auth()
+    }
+  },
+  watch: {
+    applicants: {
+      handler: function() {
+        console.log('applicants update!>!')
+      },
+      deep: true
     }
   }
 }	
 </script>
 <style scoped>
 #admin {
-	color:#fff;
+	color:#eee;
+  background:#111;
+}
+.title {
+  color:#fff;
+  margin-top:40px;
 }
 .main {
   padding-top:64px;
@@ -105,16 +84,7 @@ export default {
   font-size:20px;
   margin-bottom:20px;
 }
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #eee;
-  background-image:url("../assets/stars.svg");
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  min-height:100vh;
-}
+
 .auth {
 	display:inline-block;
 	padding:20px;

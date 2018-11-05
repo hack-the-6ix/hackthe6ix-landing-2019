@@ -3,8 +3,8 @@
     <div class="wrap">
     <h1>Thanks for applying!</h1>
     <div class="card">    
-    <p>We'll be in touch with you shortly after applications close to let you know if you're in.</p>
-    <p>In the mean time, be sure to follow our Facebook, Twitter, and Instagram pages for updates and announcments!</p></div>
+    <p>We'll be in touch with you through email shortly after applications close to let you know if you're in.</p>
+    <p>In the meantime, be sure to follow our Facebook, Twitter, and Instagram pages for updates and announcements!</p></div>
 
     </div>
   </div>

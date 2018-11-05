@@ -1,14 +1,20 @@
 <template>
   <div class="about" id="about">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <polygon points="0,0 100,0 100,100" style="fill:white"/>
+    </svg>
+
   	<div class="wrap">
 	    <div class="section">
-	      <img src="../assets/Telescope.svg" width="160px" class="svg">
-	      <h1>About Us</h1>
-	      <div class="card">
-	      	<p>Hack the 6ix is the largest hackathon taking place in the heart of downtown Toronto. Every year, developers, designers, and innovators from across the province congregate to brainstorm ideas and build creative projects. Over the course of 36 hours, teams will have access to technical and non-technical workshops, fantastic sponsors and an amazing community of tech enthusiasts.</p>
-
-	      	<p>This year, the weekend will be packed with great sponsors, mentors, workshops, food, swag, and more! We can't wait to meet you and offer this extraordinary chance to be truly immersed in Toronto’s tech community.</p>
-	      </div>
+	      <!-- <img src="../assets/Telescope.svg" width="160px" class="svg"> -->
+	      <h1>About</h1>
+        <div class="items">
+          <div class="card">
+            <p>Hack the 6ix is Toronto’s largest summer hackathon. Every year, we bring together 400 of the best and brightest hackers from across North America for 36 hours of coding, designing, and jam-packed fun.</p>
+  
+            <p>We’ll provide you with all the resources, mentorship, and food to do your thing; all you need to bring is your creativity and ideas. Hack the 6ix is also a gathering of some of the top companies in North America. Whether you’re looking for start-up or corporate opportunities, come ready to flex your networking game! Hack the 6ix is open to hackers of all levels: no matter if you’re a beginner or veteran, it’s a weekend not to miss!</p>
+          </div>
+        </div>
 	    </div>
     </div>
   </div>
@@ -25,16 +31,35 @@ export default {
 }
 </script>
 <style scoped>
-.about {
-	background:rgba(255,255,255, 0.1);
+svg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 30vw;
 }
-.svg {
+.card {
+  max-width:800px;
+}
+h1 {
+  color: #fff;
+  text-align: left;
+  font-size: 64px;
+}
+p {
+  color: #fff;
+}
+.about {
+	background: #23b5af;
+  position: relative;
+  padding-bottom: 80px;
+}
+/* .svg {
 	position:absolute;
 	margin-left:-110px;
 	margin-top:40px;
-}
+} */
 .items {
-  max-width:240px;
   display:flex;
   justify-content:space-between;
   margin:auto;
@@ -50,5 +75,10 @@ export default {
   -ms-transform: scale(1.2);
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
+}
+@media screen and (max-width: 580px){
+  .card {
+    padding-right: 0;
+  }
 }
 </style>

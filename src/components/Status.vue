@@ -3,31 +3,18 @@
 		<div class="wrap">
 			{{message}}
 			<div class="applicant" v-show="loaded">
-				<h3 class="name">{{applicant.name}}</h3>
+				<h3 class="name">{{applicant.name}} {{applicant.lname}}</h3>
 				<h2>Application Status: <div class="status">{{status}}</div></h2>
 				<div class="sections">
-					<div class="section">
-						<div class="card">
-							RSVP's for the event have closed. Please contact us if you have any questions or concerns about your application status.
-						</div>
-					</div>
-<!-- 					<div class="section" v-show="accepted">
+					<div class="section" v-show="accepted">
 			            <div class="label">Will you be attending the event?</div>
-			            <select v-model="applicant.rsvp" v-on:change="change">
+			            <select v-model="applicant.rsvp">
 			              <option value="true">Yes. I will be there!</option>
 			              <option value="false">No. I can no longer make it.</option>
 			            </select>
+			            <div class="label">Do you have any dietary restriction?</div>
+			            <input type="text" v-model="applicant.dietary" placeholder="No dietary restriction"/>
 			        </div>
-					<div class="section" v-show="accepted">
-			            <div class="label">Please update us about any dietary restriction you may have.</div>
-			            <input type="text" v-model="applicant.dietary" v-on:change="change"/>
-					</div>
-					<div class="section liability" v-show="accepted">
-			            <input type="checkbox" v-model="liability" v-on:change="change"/>
-			            <div class="liability-text">I have read and agree to the 
-			            	<router-link to="/liability">liability waiver</router-link>.
-			            </div>
-					</div>
 					<div class="section" v-show="accepted">
 					<div>If you are under the age of 18, you must have <a href="https://drive.google.com/file/d/0B4fuapiLpLlsb3hxSWk0bnluV28/view">this form</a> signed by a parent or guardian, with you at the event, or else we cannot let you participate.</div><br>
 					<div>If you have any questions, don't hesitate to email us at <a class="mailto" href="mailto:hello@hackthe6ix.com">hello@hackthe6ix.com</a></div>
@@ -37,7 +24,7 @@
 					</div>
 					<div class="section center">
 						{{warning}}
-					</div> -->
+					</div>
 				</div>
 			</div>
 		</div>
@@ -52,8 +39,7 @@ export default {
     	message: '',
     	applicant: {},
     	loaded: false,
-    	status: '',
-    	liability: false,
+    	status: 'Accepted',
     	warning: ''
     }
   },
@@ -63,11 +49,11 @@ export default {
   		this.$http.get('https://ht6.lyninx.com/applicant/' + this.id).then((result)=>{
   			if (result.body.success){
   				this.applicant = result.body.applicant
-  				this.status = this.applicant.acceptedStatus
-  				this.applicant.dietary = this.applicant.dietaryRestriction
+  				this.status = this.applicant.accepted_status
+  				this.applicant.dietary = this.applicant.dietary
   				this.loaded = true
   			} else {
-  				this.message = 'Error: Applicant ID not found. Please contact us for assistance.'
+  				this.message = 'Error: Your application data was not found. Please contact us for assistance.'
   			}
   		})
   	}
@@ -76,28 +62,22 @@ export default {
   	submit() {
   		const body = {
   			id: this.id,
-  			dietary: this.applicant.dietary,
-  			rsvp: this.applicant.rsvp
+  			rsvp: this.applicant.rsvp,
+  			dietary: this.applicant.dietary
   		}
-  		if(this.liability){
-  			this.send(body)
- 		} else {
- 			if(this.applicant.rsvp == "true"){
- 				this.warning = "You must agree to the liability waiver in order to attend."
- 			} else {
-	  			this.send(body)
- 			}
- 		}
+  		this.send(body)
   	},
   	send(body) {
+  		console.log(this.applicant.rsvp)
   		return this.$http.post('https://ht6.lyninx.com/applicant/' + this.id, body).then((result)=>{
-  			this.warning = "Your information has been saved."
+  			if(this.applicant.rsvp == 'true'){
+  				this.warning = "Your information has been saved. See you at the event!"	
+  			} else {
+  				this.warning = "Your information has been saved."
+  			}
 		}, ()=>{
 			this.warning = "There was an error saving your information."
 		})
-  	},
-  	change() {
-  		this.warning = ''
   	}
   },
   computed: {
@@ -112,13 +92,17 @@ export default {
 </script>
 <style scoped>
 	.wrap {
-		max-width:600px;
+		background:#caf0ee;
+		color:#111;
+		margin: auto;
+		padding:20px;
+		border-radius:12px;
 	}
 	.attendee-links {
 		margin-top:12px;
 	}
 	.name {
-		color:#ccc;
+		color:#E3493B;
 	}
 	.status {
 		display:inline-block;
@@ -154,8 +138,8 @@ export default {
 	.label {
 	  line-height:140%;
 	  font-size:20px;
-	  color:#fff;
 	  margin-bottom:12px;
+	  margin-top:12px;
 	  font-weight:bold;
 	}
 	.submit {
@@ -167,26 +151,23 @@ export default {
 	button, input, select, textarea {
 	  border:1px solid #fff;
 	  border-radius:8px;
-	  background-color: rgba(17, 26, 52, 0.6);
 	  padding:12px;
-	  color:#fff;
+	  color:#000;
 	  font-size:18px;
 	}
 	select {
 	  height:47px;
 	}
 	a {
+		padding:0;
 		text-decoration: none;
 		color:#E3493B;
 	}
-	a.mailto {
+/*	a.mailto {
 		color:#23b5af;
-	}
+	}*/
 	a.attendee {
 		color:#23b5af;		
-	}
-	a:hover {
-		color:#fff;
 	}
 	.btn {
 	  transition:all 0.15s ease-in-out;

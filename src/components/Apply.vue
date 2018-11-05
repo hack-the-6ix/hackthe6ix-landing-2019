@@ -4,31 +4,67 @@
       <div class="wrap">
         <div class="sections">
           <div class="section">
-            <div class="label">Full Name</div>
-            <input type="text" v-model="name"/>
+            <div class="label">What should we call you?</div>
+            <input class="margin-bottom" type="text" placeholder="First Name" v-model="name"/>
+            <input type="text" placeholder="Last Name" v-model="lname"/>
           </div>
           <div class="section">
-            <div class="label">Email Address</div>
-            <input type="text" v-model="email"/>
+            <div class="label">Which email can we reach you at?</div>
+            <input type="text" placeholder="Email" v-model="email"/>
           </div>
           <div class="section">
-            <div class="label">Gender</div>
+            <div class="label">What is your phone number?</div>
+            <input type="text" placeholder="Phone Number" v-model="phone"/>
+          </div>
+          <div class="section">
+            <div class="label">When is your birthday?</div>
+            <input type="text" placeholder="MM-DD-YYYY" v-model="birthday"/>
+          </div>
+          <div class="section">
+            <div class="label">Which gender do you identify as?</div>
             <select v-model="gender">
               <option disabled selected value></option>
               <option value="male">Male</option>
               <option value="female">Female</option>
+              <option value="n/a">Prefer Not to Answer</option>
               <option value="other">Other</option>
             </select>
           </div>
           <div class="section">
+            <div class="label">What is your race / ethnicity?</div>
+              <select v-model="ethnicity">
+                <option disabled selected value></option>
+                <option value="american-native">American Indian or Alaskan Native</option>
+                <option value="asian">Asian / Pacific Islander</option>
+                <option value="black">Black or African American</option>
+                <option value="hispanic">Hispanic</option>
+                <option value="white">White / Caucasian</option>
+                <option value="multiple">Multiple Ethnicities / Other</option>
+                <option value="n/a">Prefer Not to Answer</option>
+              </select>
+          </div>
+          <div class="section">
+            <div class="label">What is your most current level of study?</div>
+            <select v-model="current_year">
+              <option disabled selected value></option>
+              <option value="highschool">High school</option>
+              <option value="undergrad">Undergraduate</option>
+              <option value="grad">Graduate</option>
+              <option value="n/a">Not Applicable</option>
+            </select>
+          </div>
+          <div class="section">
             <div class="label">Which school do you attend?</div>
-            <input type="text" v-model="school"/>
+            <input type="text" placeholder="School" v-model="school"/>
+          </div>
+          <div class="section">
+            <div class="label">Which program are you in?</div>
+            <input type="text" placeholder="Program / Major" v-model="program"/>
           </div>
           <div class="section">
             <div class="label">When do you plan on graduating?</div>
             <select v-model="grad_year">
               <option disabled selected value></option>
-              <option value="2017">2017</option>
               <option value="2018">2018</option>
               <option value="2019">2019</option>
               <option value="2020">2020</option>
@@ -37,7 +73,7 @@
               <option value="2023">2023</option>
               <option value="2024">2024</option>
               <option value="grad">Already Graduated</option>
-              <option value="dont-know">Not Applicable</option>
+              <option value="n/a">Not Applicable</option>
             </select>
           </div>
           <div class="section">
@@ -53,12 +89,16 @@
             </select>
           </div>
           <div class="section">
-            <div class="label">Tell us about an idea you’ve always wanted to realize but couldn’t.</div>
-            <textarea rows="4" v-model="idea"></textarea>
+            <div class="label">Describe a past project that you're passionate about.</div>
+            <textarea rows="4" v-model="project"></textarea>
           </div>
           <div class="section">
-            <div class="label">Do you already have a project in mind? If so, tell us about it!</div>
-            <textarea rows="4" v-model="project"></textarea>
+            <div class="label">Please link your website, GitHub, or anything else you would like us to check out.</div>
+            <input type="text" placeholder="Portfolio / Projects"  v-model="links"/>
+          </div>
+          <div class="section">
+            <div class="label">Please list the names of other applicants if you have already formed a team. (optional)</div>
+            <input type="text" placeholder="Teammates"  v-model="team"/>
           </div>
           <div class="section">
             <div class="label">Do you have any dietary restrictions? <br>(Leave blank if none)</div>
@@ -67,6 +107,15 @@
           <div class="section">
             <div class="label">Send us your resume! (5MB max)</div>
             <input type="file" @change="setFile">
+          </div>
+          <div class="section checkboxes">
+            <input type="checkbox" v-model="check1"> I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>.
+          </div>
+          <div class="section checkboxes">
+            <input type="checkbox" v-model="check2"> I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. I further agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
+          </div>
+          <div class="section liability">
+            By submitting your application, you agree to our <router-link to="/liability">Liability Waiver</router-link>
           </div>
           <div class="section center" v-show="showButton">
             <div class="btn submit" v-on:click="submit()">SUBMIT</div>
@@ -86,46 +135,88 @@ export default {
   data () {
     return {
       name: '',
+      lname: '',
       email: '',
+      phone: '',
       gender: '',
+      birthday: '',
+      program: '',
+      ethnicity: '',
       school: '',
       grad_year: '',
+      current_year: '',
+      team: '',
+      links: '',
       hack_count: '',
-      idea: '',
       project: '',
       dietary: '',
       resume: '',
       message: '',
+      check1: null,
+      check2: null,
       showButton: true
     }
   },
   methods: {
     setFile: function (event) { this.resume = event.target.files[0] },
     submit: function() {
-      const required = ['name', 'email', 'gender', 'school', 'grad_year', 'hack_count', 'idea', 'project', 'resume']
-      const valid = required.every((elem, index, array) => {
+      const required = [
+      'name',
+      'lname', 
+      'email', 
+      'phone',
+      'gender', 
+      'birthday',
+      'program',
+      'ethnicity',
+      'school', 
+      'grad_year',
+      'current_year',
+      'hack_count',
+      'resume']
+      let valid = required.every((elem, index, array) => {
         return this[elem]
       })
-      if(!valid){
-        this.message = 'Make sure to fill in the entire form!'
+      let checkboxes = this.check1 && this.check2
+      console.log(this.check1)
+      console.log(this.check2)
+      console.log(checkboxes)
+      if(!valid || !checkboxes){
+        this.message = 'Please make sure to fill in the entire form!'
       } else {
-        this.showButton = false;
-        const data = new FormData();
-        data.append('name', this.name);
-        data.append('email', this.email);
-        data.append('gender', this.gender);
-        data.append('school', this.school);
-        data.append('gradYear', this.grad_year);
-        data.append('hackCount', this.hack_count);
-        data.append('ideas', this.idea);
-        data.append('interests', this.project);
-        data.append('dietaryRestriction', this.dietary);
-        data.append('resume', this.resume);
-        this.$http.post('https://ht6.lyninx.com/submission', data).then(() => {
-        Router.push('/thanks')
-      }, (err) => {
-        this.message = "Sorry, we've encountered an error. Please try again later."
-      });
+
+        this.showButton = false
+        const data = new FormData()
+        data.append('event_key', 'ht6-summer-2018')
+        data.append('name', this.name)
+        data.append('lname', this.lname)
+        data.append('email', this.email)
+        data.append('phone', this.phone)
+        data.append('gender', this.gender)
+        data.append('birthday', this.birthday)
+        data.append('ethnicity', this.ethnicity)
+        data.append('program', this.program)
+        data.append('school', this.school)
+        data.append('grad_year', this.grad_year)
+        data.append('current_year', this.current_year)
+        data.append('hack_count', this.hack_count)
+        data.append('project', this.project)
+        data.append('team', this.team)
+        data.append('links', this.links)
+        data.append('dietary', this.dietary)
+        data.append('resume', this.resume)
+        this.$http.post('https://ht6.lyninx.com/submission', data).then((res) => {
+          if(res.body.success) {
+            Router.push('/thanks')
+          } else {
+            this.showButton = true
+            this.message = res.body.msg
+          }
+          
+        }, (err) => {
+          this.showButton = true
+          this.message = "Sorry, we've encountered an error. Please try again later."
+        })
       }
       // send application
       
@@ -136,20 +227,42 @@ export default {
 
 <style scoped>
 .apply {
-  background: linear-gradient(180deg, rgba(255,0,0,0), rgba(255,0,0,0), rgba(52, 136, 180, 0.7), rgba(156, 219, 232, 1), rgba(230, 253, 248, 1));
+  background: #caf0ee;
+}
+.margin-bottom {
+  margin-bottom:12px;
 }
 .bg {
-  background:url(../assets/city.svg);
-  background-size:100%;
+/*  background:url(../assets/city.svg);*/
+/*  background-size:100%;
   background-position: bottom;
   background-repeat: no-repeat;
-  padding-bottom:600px;
+  padding-bottom:600px;*/
 }
 .warning {
+  color: #E3493B;
   margin-top:12px;
   font-weight:bold;
   position:absolute;
   margin-top:60px;
+}
+.section.checkboxes {
+  display:initial;
+  color:#000;
+  align-items:left;
+}
+.section.checkboxes a {
+  color: #E3493B;
+  padding:0;
+}
+.liability {
+  display:initial;
+  align-items:left;
+  color:#000;
+}
+.liability a{
+  color: #E3493B;
+  padding:0;
 }
 .wrap {
   display:flex;
@@ -160,6 +273,7 @@ export default {
   width:100%;
   display:flex;
   flex-direction:column;
+  padding:40px 0;
 }
 .section {
   margin-bottom:12px;
@@ -172,11 +286,11 @@ export default {
   align-items:center;
 }
 .label {
+  text-align:left;
   line-height:140%;
-  font-size:20px;
-  color:#fff;
+  font-size:16px;
+  color:#000;
   margin-bottom:12px;
-  font-weight:bold;
 }
 .submit {
   font-size:20px;
@@ -185,12 +299,15 @@ export default {
   padding: 8px 24px;
 }
 button, input, select, textarea {
-  border:1px solid #fff;
+  border:2px solid #fff;
   border-radius:8px;
-  background-color: rgba(17, 26, 52, 0.6);
+  background-color: rgba(255, 255, 255, 1.0);
   padding:12px;
-  color:#fff;
+  color:#000;
   font-size:18px;
+}
+.highlight {
+  border:2px solid #E3493B;
 }
 button:hover {
   cursor: pointer;
@@ -220,7 +337,7 @@ a {
   transition:all 0.15s ease-in-out;
 }
 .btn:hover {
-  box-shadow: 0px 8px 8px 0 rgba(0, 0, 0, 0.3);
-  transform: translateY(-8px);
+/*  box-shadow: 0px 8px 8px 0 rgba(0, 0, 0, 0.3);*/
+  transform: scale(1.1);
 }
 </style>

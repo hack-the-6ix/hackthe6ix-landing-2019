@@ -4,12 +4,12 @@ import Main from '@/components/Main'
 import Admin from '@/components/Admin'
 import Hello from '@/components/Hello'
 import Apply from '@/components/Apply'
+import RSVP from '@/components/RSVP'
 import Liability from '@/components/Liability'
 import Privacy from '@/components/Privacy'
 import Status from '@/components/Status'
 import Thanks from '@/components/Thanks'
 import NotFound from '@/components/NotFound'
-import Stripe from '@/components/Stripe'
 import VueHead from 'vue-head'
 
 Vue.use(VueHead)
@@ -35,11 +35,16 @@ export default new Router({
           name: 'Hello',
           component: Hello
         },
-        // {
-        //   path: '/apply',
-        //   name: 'Apply',
-        //   component: Apply
-        // },
+        {
+          path: '/apply-late',
+          name: 'Apply',
+          component: Apply
+        },
+        {
+          path: '/rsvp',
+          name: 'RSVP',
+          component: RSVP
+        },
         {
           path: '/privacy',
           name: 'Privacy',
@@ -49,11 +54,6 @@ export default new Router({
           path: '/status/:id',
           name: 'Status',
           component: Status
-        },
-        {
-          path: '/sponsor',
-          name: 'Sponsor',
-          component: Stripe
         },
         {
           path:'/thanks',
