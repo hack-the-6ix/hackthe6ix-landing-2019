@@ -1,13 +1,14 @@
 <template>
-  <h1>YEEEEEEE</h1>
+  <h1>REEEEEEE</h1>
 </template>
 
 <script>
   export default {
-    name: 'Footer'
+    name: 'Home'
   }
 </script>
 
 
 <style lang='scss' scoped>
+
 </style>

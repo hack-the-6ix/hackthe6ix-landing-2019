@@ -1,0 +1,13 @@
+// Transitions
+$normal-ease: cubic-bezier(0.4, 0.0, 0.2, 1);
+$enter-ease: cubic-bezier(0.0, 0.0, 0.2, 1);
+$exit-ease: cubic-bezier(0.4, 0.0, 1, 1);
+
+// Speeds
+$fast-speed: 100ms;
+$normal-speed: 200ms;
+$slow-speed: 300ms;
+$page-speed: 500ms;
+
+// Dimensions
+$site-padding: 40px;

@@ -1,19 +1,25 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
-import VueResource from 'vue-resource'
-import vueSmoothScroll from 'vue-smooth-scroll'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import App from './App.vue';
+import { routes } from './pages';
 
-Vue.use(VueResource);
-Vue.use(vueSmoothScroll)
-Vue.config.productionTip = false
+Vue.use(VueRouter);
+Vue.config.productionTip = false;
 
-/* eslint-disable no-new */
+// 3. Create the router instance and pass the `routes` option
+// You can pass in additional options here, but let's
+// keep it simple for now.
+const router = new VueRouter({
+  hashbang: false,
+  mode: 'history',
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  },
+  routes // short for `routes: routes`
+})
+
 new Vue({
   el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
-})
+  render: h => h(App),
+  router
+});
