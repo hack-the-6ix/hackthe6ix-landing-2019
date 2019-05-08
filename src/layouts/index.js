@@ -1,3 +1,1 @@
-import _Landing from './Landing';
-
-export const Landing = _Landing;
+export { default as Landing } from './Landing';

@@ -1,50 +1,59 @@
 <template>
-  <nav class='nav'>
-    <div class='nav__items nav__items--left'>
-
-    </div>
-    <div class='nav__items nav__items--center'>
-      <span v-for='link in links' :key='link.url'>
-        <a :href='link.url'>{{ link.text }}</a>
-      </span>
-    </div>
-    <div class='nav__items nav__items--right'>
-      
-    </div>
-  </nav>
+  <Container block='nav' as='nav'>
+    <Logo class='nav__logo'/>
+    <ul class='nav__items'>
+      <router-link
+        tag='li'
+        class='nav__item'
+        active-class='nav__item--active'
+        v-for='item in items'
+        :to='item.path'
+        :key='item.path'
+      >{{
+        item.name
+      }}</router-link>
+    </ul>
+  </Container>
 </template>
 
 <script>
+  import { Container } from '.';
+  import { Logo } from '@assets';
+
   export default {
     name: 'Navigation',
-    data: () => ({
-      links: [
-        { text: 'Home', url: '/' }
-      ]
-    })
+    components: {
+      Container,
+      Logo
+    },
+    props: {
+      items: {
+        type: Array,
+        default: () => []
+      }
+    }
   }
 </script>
 
 
-<style lang='scss' scoped>
-  @import 'src/styles/mixins';
-  @import 'src/styles/variables';
+<style lang='scss'>
+  @import '~@styles/_mixins.scss';
+  @import '~@styles/_variables.scss';
 
   .nav {
+    &__container {
+      @include flex;
+    }
+
     &__items {
-      display: flex;
+      @include flex(flex-start, center);
+      margin: 0 0 0 auto;
       align-items: center;
-      &--left { justify-content: flex-start }
-      &--center { justify-content: center }
-      &--right { justify-content: flex-end }
     }
 
     &__logo {
-
-    }
-
-    &__banner {
-
+      width: auto;
+      height: 40px;
     }
   }
 

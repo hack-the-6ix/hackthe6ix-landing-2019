@@ -1,5 +1,3 @@
-import _Navigation from './Navigation';
-import _Footer from './Footer';
-
-export const Navigation = _Navigation;
-export const Footer = _Footer;
+export { default as Container } from './Container';
+export { default as Navigation } from './Navigation';
+export { default as Footer } from './Footer';
