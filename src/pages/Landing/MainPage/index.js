@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import '../../../styles/pages/Landing/MainPage.scss';
+import '@styles/pages/Landing/MainPage.scss';
 import * as components from './sections';
 
 const sections = Object.values(components);
