@@ -1,5 +1,5 @@
 <template>
-  <Container block='faq' as='main'>
+  <Container block='faq' as='section'>
     <h1>FAQ</h1>
   </Container>
 </template>

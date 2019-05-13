@@ -32,7 +32,16 @@
 
     &__content {
       max-width: 1200px;
-      width: 100%;
+      box-sizing: border-box;
+      width: 85%;
+    }
+  }
+
+  @include media(TABLET) {
+    .container {
+      &__content {
+        width: 95%;
+      }
     }
   }
 </style>

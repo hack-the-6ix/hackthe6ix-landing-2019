@@ -1,5 +1,5 @@
 <template>
-  <Container block='about' as='main'>
+  <Container id='about' block='about' as='section'>
     <h1>About</h1>
   </Container>
 </template>

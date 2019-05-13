@@ -1,5 +1,5 @@
 <template>
-  <Container block='contact' as='main'>
+  <Container block='contact' as='section'>
     <h1>Contact</h1>
   </Container>
 </template>
@@ -9,6 +9,7 @@
 
   export default {
     name: 'Contact',
+    displayName: 'Contact Us',
     path: '#contact',
     components: {
       Container

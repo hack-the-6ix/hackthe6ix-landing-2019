@@ -1,5 +1,5 @@
 <template>
-  <Container block='sponsor' as='main'>
+  <Container block='sponsor' as='section'>
     <h1>Sponsors</h1>
   </Container>
 </template>
