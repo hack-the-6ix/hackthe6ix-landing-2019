@@ -37,7 +37,7 @@
 }
 
 // Add tranisitions to attributes because im lazy
-@mixin transition($attrs: null, $speed: map-get($SPEED, NORMAL), $ease: map-get($EASE, NORMAL)) {
+@mixin transition($attrs: null, $speed: NORMAL, $ease: NORMAL) {
   $res: '';
 
   // Multiple attributes
@@ -58,18 +58,18 @@
 @function makeTransition($attr, $speed, $ease) {
 
   // Default (Please never do this)
-  $res: all map-get($SPEED, NORMAL) map-get($EASE, NORMAL);
+  $res: all map-get($SPEED, $speed) map-get($EASE, $ease);
 
   // Attribute with default props
   @if type-of($attr) == string {
-    $res: $attr map-get($SPEED, NORMAL) map-get($EASE, NORMAL);
+    $res: $attr map-get($SPEED, $speed) map-get($EASE, $ease);
   
   // Attribute with custom props
   } @else if type-of($attr) == map {
     $res:
       map-get($attr, name)
-      if(index($attr, speed) != null, map-get($SPEED, map-get($attr, speed)), $speed)
-      if(index($attr, ease) != null, map-get($EASE, map-get($attr, ease)), $ease)
+      if(index($attr, speed) != null, map-get($SPEED, map-get($attr, speed)), map-get($SPEED, $speed))
+      if(index($attr, ease) != null, map-get($EASE, map-get($attr, ease)), map-get($EASE, $ease))
     ;
   }
 

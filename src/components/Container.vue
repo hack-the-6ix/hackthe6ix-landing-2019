@@ -1,6 +1,6 @@
 <template>
-  <div class='container' :is='as' :class='block'>
-    <div class='container__content' :class='elementClass'>
+  <div class='container' :class='block'>
+    <div class='container__content' :is='as' :class='elementClass'>
       <slot/>
     </div>
   </div>
@@ -15,8 +15,9 @@
     },
     computed: {
       elementClass() {
+        const suffix = `${ this.block.includes('__') ? '-' : '__' }container`;
         return {
-          [this.block + '__container']: this.block
+          [this.block + suffix]: this.block
         }
       }
     }
@@ -29,6 +30,7 @@
 
   .container {
     @include flex(center);
+    box-sizing: border-box;
 
     &__content {
       max-width: 1200px;
@@ -39,8 +41,17 @@
 
   @include media(TABLET) {
     .container {
+      padding: 0 20px;
       &__content {
         width: 95%;
+      }
+    }
+  }
+
+  @include media(PHONE) {
+    .container {
+      &__content {
+        width: 100%;
       }
     }
   }

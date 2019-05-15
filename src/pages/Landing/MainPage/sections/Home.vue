@@ -78,11 +78,8 @@
 
   .home {
     @include flex;
+    padding-top: 80px;
     min-height: 100vh;
-
-    &__container {
-      padding: 80px 0;
-    }
 
     &__content {
       @include flex(column, center);
@@ -97,6 +94,12 @@
 
     &__logo {
       width: 30%;
+      animation: float 5s ease infinite;
+      @keyframes float {
+        0% { transform: translate3d(0, -5px, 0); }
+        50% { transform: translate3d(0, 5px, 0); }
+        100% { transform: translate3d(0, -5px, 0); }
+      }
     }
 
     &__title {
@@ -138,6 +141,43 @@
 
       &-text {
         font-size: 0.85rem;
+      }
+    }
+  }
+
+  @include media(TABLET) {
+    .home {
+      &__content {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  @include media(PHONE) {
+    .home {
+      padding-top: 70px;
+
+      &__logo {
+        width: 15%;
+      }
+
+      &__title {
+        font-size: 2.2rem;
+      }
+
+      &__text {
+        font-size: 1.1rem;
+      }
+
+      &__button {
+        font-size: 0.9rem;
+      }
+
+      &__clock {
+        font-size: 2.5rem;
+        &-text {
+          font-size: 0.75rem;
+        }
       }
     }
   }
