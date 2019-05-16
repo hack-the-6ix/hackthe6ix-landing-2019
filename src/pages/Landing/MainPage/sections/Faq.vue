@@ -1,14 +1,15 @@
 <template>
-  <Container block='footer' as='footer'>
-    <h1>Footer</h1>
+  <Container block='faq' as='section'>
+    <h1>FAQ</h1>
   </Container>
 </template>
 
 <script>
-  import { Container } from '.';
-
+  import { Container } from '@components';
+  
   export default {
-    name: 'Footer',
+    name: 'FAQ',
+    path: '#faq',
     components: {
       Container
     }

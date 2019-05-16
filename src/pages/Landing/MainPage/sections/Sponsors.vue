@@ -1,14 +1,15 @@
 <template>
-  <Container block='footer' as='footer'>
-    <h1>Footer</h1>
+  <Container block='sponsor' as='section'>
+    <h1>Sponsors</h1>
   </Container>
 </template>
 
 <script>
-  import { Container } from '.';
+  import { Container } from '@components';
 
   export default {
-    name: 'Footer',
+    name: 'Sponsors',
+    path: '#sponsors',
     components: {
       Container
     }
