@@ -122,7 +122,7 @@
       text-transform: uppercase;
       font-weight: bold;
       font-size: 1.1rem;
-      padding-top: 14px;
+      padding-top: 18px 14px 14px;
       pointer-events: none;
     }
 
@@ -131,7 +131,7 @@
       width: 100%;
       font-size: 3rem;
       margin-top: 20px;
-      color: black;
+      color: $TEXT;
       &-section {
         @include flex(column, center);
         padding-top: 4px;

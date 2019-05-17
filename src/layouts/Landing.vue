@@ -14,6 +14,7 @@
   export default {
     name: 'Landing',
     path: '/',
+    exact: true,
     components: {
       Navigation,
       Footer

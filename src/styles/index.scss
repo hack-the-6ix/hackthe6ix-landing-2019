@@ -5,11 +5,12 @@
 html, body {
   margin: 0;
   padding: 0;
+  color: $TEXT;
   font-size: 0.95rem;
 }
 
 #app {
-  font-family: 'Avenir', serif;
+  font-family: $FONT;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
