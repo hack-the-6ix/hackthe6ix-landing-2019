@@ -1,4 +1,12 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircleNotch,
+  faFeatherAlt,
+  faDoorOpen
+} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faCircleNotch);
+library.add(
+  faCircleNotch,
+  faFeatherAlt,
+  faDoorOpen
+);

@@ -61,8 +61,8 @@
 
     &__label {
       color: map-get($PRIMARY, TEAL);
-      font-size: 0.9rem;
-      margin-bottom: 4px;
+      font-size: 0.95rem;
+      margin-bottom: 3px;
     }
 
     &__form {

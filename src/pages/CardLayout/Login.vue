@@ -28,7 +28,7 @@
             :loading='login_loading'
             :click='login'
           >
-            Login
+            <icon icon='door-open' class='login__icon'/>Login
           </Button>
           <Button
             class='login__button'
@@ -37,7 +37,7 @@
             :click='register'
             secondary
           >
-            Register
+            <icon icon='feather-alt' class='login__icon'/>Register
           </Button>
         </div>
       </form>
@@ -102,7 +102,7 @@
 
     &__content {
       border-radius: 6px;
-      padding: 40px 25px 25px;
+      padding: 40px 25px 30px;
       width: 500px;
     }
 
@@ -123,6 +123,10 @@
       padding-left: 30px;
       padding-right: 30px;
       margin-right: 10px;
+    }
+
+    &__icon {
+      margin-right: 8px;
     }
   }
 </style>
