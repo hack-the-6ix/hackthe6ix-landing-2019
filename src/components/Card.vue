@@ -23,6 +23,7 @@
   .card {
     box-sizing: border-box;
     padding: 20px;
+    border-radius: 12px;
     background-color: white;
     box-shadow: 0 0 5px rgba(0,0,0,0.25);
   }

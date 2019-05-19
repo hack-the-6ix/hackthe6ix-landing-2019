@@ -24,20 +24,22 @@
         <div>
           <Button
             class='login__button'
+            icon='door-open'
             type='button'
             :loading='login_loading'
             :click='login'
           >
-            <icon icon='door-open' class='login__icon'/>Login
+            Login
           </Button>
           <Button
             class='login__button'
+            icon='feather-alt'
             type='button'
             :loading='register_loading'
             :click='register'
             secondary
           >
-            <icon icon='feather-alt' class='login__icon'/>Register
+            Register
           </Button>
         </div>
       </form>
@@ -83,7 +85,7 @@
         // Sudo API stuff
         window.setTimeout(() => {
           this.login_loading = false;
-          this.$router.push('/dash');
+          this.$router.push('/dash/notarealuserid');
         }, 2000);
       }
     }
@@ -101,7 +103,6 @@
     height: 100vh;
 
     &__content {
-      border-radius: 6px;
       padding: 40px 25px 30px;
       width: 500px;
     }
@@ -120,13 +121,9 @@
     &__button {
       font-weight: bold;
       margin-top: 12px;
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 26px;
+      padding-right: 26px;
       margin-right: 10px;
-    }
-
-    &__icon {
-      margin-right: 8px;
     }
   }
 

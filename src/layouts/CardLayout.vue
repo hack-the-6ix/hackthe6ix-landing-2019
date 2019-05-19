@@ -16,6 +16,5 @@
   @import '~@styles/_variables.scss';
 
   #app {
-
   }
 </style>

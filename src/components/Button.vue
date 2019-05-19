@@ -4,6 +4,7 @@
     @click='click'
     :class='{"button--secondary": secondary, "button--loading": loading}'
   >
+    <icon v-if='!loading && icon' class='button__icon' :icon='icon'/>
     <slot v-if='!loading'/>
     <icon v-if='loading' icon='circle-notch' spin/>
   </button>
@@ -15,6 +16,7 @@
     props: {
       secondary: Boolean,
       loading: Boolean,
+      icon: String,
       click: {
         type: Function,
         default: () => () => {},
@@ -44,16 +46,26 @@
     }
 
     &--secondary {
-      @include transition(background-color color);
+      @include transition(background-color border-color color);
       color: map-get($PRIMARY, TEAL);
       padding: 14.5px 18.5px 10.5px;
       border: 1.5px solid map-get($PRIMARY, TEAL);
       background-color: transparent;
 
-      &:hover, &:active {
+      &:hover {
         background-color: map-get($PRIMARY, TEAL);
         color: white;
       }
+
+      &:active {
+        background-color: darken($PRIMARY, TEAL);
+        border-color: darken($PRIMARY, TEAL);
+        color: white;
+      }
+    }
+
+    &__icon {
+      margin-right: 8px;
     }
   }
 </style>
