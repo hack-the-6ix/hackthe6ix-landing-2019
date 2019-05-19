@@ -129,4 +129,23 @@
       margin-right: 8px;
     }
   }
+
+  @include media(TABLET) {
+    .login {
+      &__content {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+      }
+    }
+  }
+
+  @include media(PHONE) {
+    .login {
+      &__button {
+        margin-right: 0;
+        width: 100%;
+      }
+    }
+  }
 </style>

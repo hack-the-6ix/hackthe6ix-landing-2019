@@ -14,7 +14,7 @@
         item.displayName || item.name
       }}</router-link>
       <li>
-        <Button class='nav__button' @click='apply'>Apply / Register</Button>
+        <Button class='nav__button' :click='apply'>Apply / login</Button>
       </li>
     </ul>
     <button class='nav__menu' v-on:click='() => this.show = !this.show'>
@@ -35,7 +35,7 @@
         item.displayName || item.name
       }}</router-link>
       <li>
-        <Button class='nav__mobile-button' @click='apply'>Apply / Register</Button>
+        <Button class='nav__mobile-button' :click='apply'>Apply / Login</Button>
       </li>
     </Container>
   </Container>
