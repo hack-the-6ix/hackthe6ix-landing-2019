@@ -12,7 +12,7 @@
         <p class='user__role'>Hacker</p>
         <div class='user__buttons'>
           <div class='user__buttons-row'>
-            <Button path='/apply' :click='navigate' class='user__button user__button--col'>Edit Application</Button>
+            <Button path='/apply' :click='navigate' class='user__button user__button--col' disabled>Edit Application</Button>
             <Button path='/info' :click='navigate' class='user__button user__button--col'>Edit Info</Button>
           </div>
           <div class='user__divider'/>
