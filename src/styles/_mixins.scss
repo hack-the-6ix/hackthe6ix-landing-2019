@@ -22,8 +22,12 @@
   }
 }
 
+@function darken-color($color, $adjustment: 10%) {
+  @return adjust-color($color, $lightness: -1 * $adjustment);
+}
+
 @function darken($set, $color, $adjustment: 10%) {
-  @return adjust-color(map-get($set, $color), $lightness: -1 * $adjustment);
+  @return darken-color(map-get($set, $color));
 }
 
 // Positioning with defaulting for non-relative positioning

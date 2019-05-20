@@ -44,7 +44,7 @@
         type: Boolean,
         default: () => null
       },
-      errorMsg: String
+      errorMsg: [ String, Boolean ]
     }
   }
 </script>
@@ -95,7 +95,8 @@
     }
 
     &__error {
-
+      margin-top: 8px;
+      color: map-get($STATE, ERROR);
     }
   }
 </style>

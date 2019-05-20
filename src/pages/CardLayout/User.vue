@@ -1,17 +1,22 @@
 <template>
   <main class='user'>
     <Card class='user__content'>
-      <img class='user__image' width='300' height='300' :src='user.image'/>
+      <div class='user__image-wrapper'>
+        <img class='user__image' width='300' height='300' :src='user.image'/>
+        <button class='user__qr'>
+          <icon class='user__qr-icon' icon='qrcode'/>
+        </button>
+      </div>
       <div class='user__footer'>
         <h1 class='user__name'>{{ user.firstname }} {{ user.lastname }}</h1>
         <p class='user__role'>Hacker</p>
         <div class='user__buttons'>
           <div class='user__buttons-row'>
             <Button path='/apply' :click='navigate' class='user__button user__button--col'>Edit Application</Button>
-            <Button path='/edit' :click='navigate' class='user__button user__button--col'>Edit Info</Button>
+            <Button path='/info' :click='navigate' class='user__button user__button--col'>Edit Info</Button>
           </div>
           <div class='user__divider'/>
-          <Button :click='logout' class='user__button user__button--logout' secondary>Logout</Button>
+          <Button :click='logout' icon='sign-out-alt' class='user__button user__button--logout' secondary>Logout</Button>
         </div>
       </div>
     </Card>
@@ -47,10 +52,6 @@
       }
     },
     async mounted() {
-      const id = this.$route.params.user;
-      if (!id) {
-        this.$router.push('/login');
-      }
       // Fetch info
     },
     destroyed() {
@@ -67,7 +68,7 @@
   .user {
     @include flex(center);
     background-color: rgba(0,0,0,0.12);
-    height: 100vh;
+    min-height: 100vh;
 
     &__content {
       @include flex(center);
@@ -79,6 +80,33 @@
     &__image {
       width: auto;
       height: 100%;
+
+      &-wrapper {
+        position: relative;
+        height: 100%;
+      }
+    }
+
+    &__qr {
+      @include position(absolute, 0, auto, 15px, 15px, auto);
+      @include transition(color);
+      @include flex(center);
+      border: none;
+      cursor: pointer;
+      color: $TEXT;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      background-color: white;
+      border-radius: 50%;
+      padding: 10px;
+
+      &:hover, &:active {
+        color: map-get($PRIMARY, TEAL);
+      }
+
+      &-icon {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     &__footer {
@@ -143,11 +171,14 @@
 
       &__footer {
         width: 100%;
+        text-align: center;
       }
 
       &__image {
-        width: 100%;
-        height: auto;
+        &, &-wrapper {
+          width: 100%;
+          height: auto;
+        }
       }
     }
   }
@@ -158,7 +189,7 @@
         max-width: 100%;
         justify-content: flex-start;
         width: 100%;
-        min-height: 100%;
+        min-height: 100vh;
         border-radius: 0;
       }
 
@@ -172,6 +203,15 @@
 
       &__divider {
         display: block;
+      }
+
+      &__qr {
+        padding: 15px;
+
+        &-icon {
+          width: 25px;
+          height: 25px;
+        }
       }
     }
   }

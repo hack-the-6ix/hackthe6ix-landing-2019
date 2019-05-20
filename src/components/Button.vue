@@ -2,6 +2,7 @@
   <button
     class='button'
     @click='click'
+    :disabled='disabled'
     :class='{"button--secondary": secondary, "button--loading": loading}'
   >
     <icon v-if='!loading && icon' class='button__icon' :icon='icon'/>
@@ -15,6 +16,7 @@
     name: 'Button',
     props: {
       secondary: Boolean,
+      disabled: Boolean,
       loading: Boolean,
       icon: String,
       click: {
@@ -66,6 +68,21 @@
 
     &__icon {
       margin-right: 8px;
+    }
+
+    &:disabled {
+      @include transition(background-color border-color color);
+      &, &:hover, &:active {
+        background-color: #d8d8d8;
+        border-color: #d8d8d8;
+        color: white;
+      }
+
+      &:hover {
+        cursor: not-allowed;
+        background-color: darken-color(#d8d8d8);
+        border-color: darken-color(#d8d8d8);
+      }
     }
   }
 </style>

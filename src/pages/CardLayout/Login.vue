@@ -10,6 +10,8 @@
           label='Email'
           placeholder='Email Address'
           type='email'
+          :state='hasError(emailState)'
+          :errorMsg='emailState'
           :onChange='onChange'
           :value='email'
         />
@@ -18,6 +20,8 @@
           label='Password'
           placeholder='Password'
           type='password'
+          :state='hasError(passwordState)'
+          :errorMsg='passwordState'
           :onChange='onChange'
           :value='password'
         />
@@ -49,6 +53,7 @@
 
 <script>
   import { Card, Input, Button } from '@components';
+  const emailValidator = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   export default {
     name: 'Login',
@@ -61,7 +66,9 @@
     data() {
       return {
         email: '',
+        emailState: undefined,
         password: '',
+        passwordState: undefined,
         login_loading: false,
         register_loading: false,
       };
@@ -70,23 +77,43 @@
       onChange({ target }) {
         this[ target.name ] = target.value;
       },
+      async validate() {
+        const { email, password } = this;
+        const isEmailValid = Boolean(email.match(emailValidator));
+        const isPasswordValid = password.length >= 8;
+
+        this.emailState = isEmailValid || 'Invalid Email'
+        this.passwordState = isPasswordValid || 'Password must be atleast 8 characters long';
+        return isEmailValid && isPasswordValid;
+      },
+      hasError(error) {
+        return typeof(error) === 'string' ? !error : error;
+      },
       async register(el) {
         el.preventDefault();
         this.register_loading = true;
-        // Sudo API stuff
-        window.setTimeout(() => {
+        if (await this.validate()) {
+          // Sudo API stuff
+          window.setTimeout(() => {
+            this.register_loading = false;
+            alert('Registered. Please check your email for next steps.');
+          }, 2000);
+        } else {
           this.register_loading = false;
-          alert('Registered. Please check your email for next steps.');
-        }, 2000);
+        }
       },
       async login(el) {
         el.preventDefault();
         this.login_loading = true;
-        // Sudo API stuff
-        window.setTimeout(() => {
+        if (await this.validate()) {
+          // Sudo API stuff
+          window.setTimeout(() => {
+            this.login_loading = false;
+            this.$router.push('/dash/notarealuserid');
+          }, 2000);
+        } else {
           this.login_loading = false;
-          this.$router.push('/dash/notarealuserid');
-        }, 2000);
+        }
       }
     }
   }
@@ -100,7 +127,7 @@
   .login {
     @include flex(center);
     background-color: rgba(0,0,0,0.12);
-    height: 100vh;
+    min-height: 100vh;
 
     &__content {
       padding: 40px 25px 30px;
@@ -127,18 +154,14 @@
     }
   }
 
-  @include media(TABLET) {
+  @include media(PHONE) {
     .login {
       &__content {
         width: 100%;
-        height: 100%;
+        min-height: 100vh;
         border-radius: 0;
       }
-    }
-  }
 
-  @include media(PHONE) {
-    .login {
       &__button {
         margin-right: 0;
         width: 100%;
