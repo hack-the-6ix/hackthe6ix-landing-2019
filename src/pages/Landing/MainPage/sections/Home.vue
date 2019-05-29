@@ -122,7 +122,6 @@
       text-transform: uppercase;
       font-weight: bold;
       font-size: 1.1rem;
-      padding-top: 18px 14px 14px;
       pointer-events: none;
     }
 

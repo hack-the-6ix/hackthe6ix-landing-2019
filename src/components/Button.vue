@@ -36,7 +36,7 @@
     background-color: map-get($PRIMARY, TEAL);
     outline: none;
     font-family: $FONT;
-    padding: 16px 20px 12px;
+    padding: 12px 20px;
     border: none;
     cursor: pointer;
     font-size: 0.95rem;
@@ -50,7 +50,7 @@
     &--secondary {
       @include transition(background-color border-color color);
       color: map-get($PRIMARY, TEAL);
-      padding: 14.5px 18.5px 10.5px;
+      padding: 10.5px 18.5px;
       border: 1.5px solid map-get($PRIMARY, TEAL);
       background-color: transparent;
 

@@ -74,7 +74,7 @@
       outline: none;
       font-size: 0.95rem;
       border-radius: 6px;
-      padding: 18px 14px 13px;
+      padding: 13px 14px;
       font-weight: bold;
 
       &:focus {
