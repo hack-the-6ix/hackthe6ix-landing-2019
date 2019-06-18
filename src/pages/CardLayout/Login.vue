@@ -28,12 +28,12 @@
         <div>
           <Button
             class='login__button'
-            icon='door-open'
+            icon='feather-alt'
             type='button'
             :loading='login_loading'
             :click='login'
           >
-            Login
+            Register
           </Button>
           <Button
             class='login__button'
@@ -43,7 +43,7 @@
             :click='register'
             secondary
           >
-            Register
+            Forgot Login
           </Button>
         </div>
       </form>
@@ -57,7 +57,7 @@
 
   export default {
     name: 'Login',
-    path: '/login',
+    path: '/register',
     components: {
       Card,
       Input,
@@ -69,8 +69,7 @@
         emailState: undefined,
         password: '',
         passwordState: undefined,
-        login_loading: false,
-        register_loading: false,
+        loading: false
       };
     },
     methods: {

@@ -67,7 +67,7 @@
     }
 
     &__icon {
-      margin-right: 8px;
+      margin-right: 4px;
     }
 
     &:disabled {

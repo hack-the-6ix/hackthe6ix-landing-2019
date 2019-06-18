@@ -80,6 +80,10 @@
     @include flex;
     padding-top: 80px;
     min-height: 100vh;
+    margin-bottom: -1px;
+    background-size: cover;
+    background-position: center bottom;
+    background-image: url('~@assets/background.svg?file');
 
     &__content {
       @include flex(column, center);
