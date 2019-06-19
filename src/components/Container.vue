@@ -1,8 +1,9 @@
 <template>
-  <div class='container' :class='block'>
-    <div class='container__content' :is='as' :class='elementClass'>
+  <div class='container' :is='as' :class='block'>
+    <div class='container__content' :class='elementClass'>
       <slot/>
     </div>
+    <slot name='pre'/>
   </div>
 </template>
 
@@ -41,8 +42,9 @@
 
   @include media(TABLET) {
     .container {
-      padding: 0 20px;
       &__content {
+        padding-left: 20px;
+        padding-right: 20px;
         width: 95%;
       }
     }
