@@ -132,7 +132,7 @@
       cursor: pointer;
       margin: 0 -12px 0 auto;
       background: none;
-      padding: 7.5px 12px;
+      padding: 8px 12px;
       border: none;
 
       &:hover {
