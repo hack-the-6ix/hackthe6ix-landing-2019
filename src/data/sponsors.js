@@ -12,5 +12,11 @@ export const sponsors = [
         url: 'https://bongo.cat/',
         image: images.bongo,
         size: SIZES.LARGE
+    },
+    {
+        title: 'Capital One',
+        url: 'https://www.capitalone.ca/',
+        image: images.capitalone,
+        size: SIZES.LARGE
     }
 ];

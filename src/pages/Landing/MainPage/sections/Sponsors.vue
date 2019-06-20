@@ -65,11 +65,12 @@
       list-style-type: none;
       flex-wrap: wrap;
       padding: 0;
-      margin: 40px 0 60px;
+      margin: 40px -20px 60px;
     }
 
     &__item {
       @include transition(opacity);
+      margin: 0 20px 20px;
       &:hover {
         opacity: 0.85;
       }
