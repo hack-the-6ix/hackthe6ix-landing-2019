@@ -1,3 +1,2 @@
-export * from './application';
-export * from './general';
+export * from './faq';
 export * from './sponsors';

@@ -1,9 +1,10 @@
 <template>
-  <div class='container' :is='as' :class='block'>
+  <div class='container' :is='as' :class='block' :id='id'>
+    <slot name='before'/>
     <div class='container__content' :class='elementClass'>
       <slot/>
     </div>
-    <slot name='pre'/>
+    <slot name='after'/>
   </div>
 </template>
 
@@ -12,7 +13,8 @@
     name: 'Container',
     props: {
       as: String,
-      block: String
+      block: String,
+      id: String
     },
     computed: {
       elementClass() {

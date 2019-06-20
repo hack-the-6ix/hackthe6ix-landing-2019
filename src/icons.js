@@ -6,7 +6,8 @@ import {
   faSave,
   faQrcode,
   faArrowLeft,
-  faDoorOpen
+  faDoorOpen,
+  faEnvelope
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -16,5 +17,6 @@ library.add(
   faSave,
   faQrcode,
   faArrowLeft,
-  faDoorOpen
+  faDoorOpen,
+  faEnvelope
 );

@@ -1,7 +1,7 @@
 <template>
   <Container block='home' as='section'>
+    <Blimp class='home__blimp'/>
     <div class='home__content'>
-      <Logo class='home__logo' width='80'/>
       <h1 class='home__title'>Hack The 6ix</h1>
       <p class='home__text'>August 23-25, 2019</p>
       <p class='home__text'>Venue TBD</p>
@@ -30,7 +30,7 @@
 
 <script>
   import { Container, Button } from '@components';
-  import { Logo } from '@assets';
+  import { Blimp } from '@assets';
 
   const END_TIME = new Date('2019-08-23T04:00:00.000Z');
   const intervals = [ 86400000, 3600000, 60000 ]; // Days, Hours, Minutes
@@ -41,7 +41,7 @@
     components: {
       Container,
       Button,
-      Logo
+      Blimp
     },
     data() {
       return {
@@ -72,33 +72,32 @@
 </script>
 
 
-<style lang='scss' scoped>
+<style lang='scss'>
   @import '~@styles/_mixins.scss';
   @import '~@styles/_variables.scss';
 
   .home {
-    @include flex;
-    padding-top: 80px;
     min-height: 100vh;
     margin-bottom: -1px;
     background-size: cover;
     background-position: center bottom;
     background-image: url('~@assets/background.svg?file');
 
-    &__content {
-      @include flex(column, center);
-      color: map-get($PRIMARY, TEAL);
-      font-weight: bold;
-      text-align: center;
-      text-transform: uppercase;
-      margin-left: auto;
-      width: 360px;
-      max-width: 100%;
+    &__container {
+      @include flex(center);
+      position: relative;
+      align-self: stretch;
     }
 
-    &__logo {
-      width: 30%;
-      animation: float 5s ease infinite;
+    &__blimp {
+      @include position(absolute, 120px 10px auto auto);
+      animation: enter 0.4s ease-in-out backwards, float 5s ease infinite;
+      width: 600px;
+      max-width: 50%;
+      @keyframes enter {
+        from { opacity: 0; } to { opacity: 1; }
+      }
+
       @keyframes float {
         0% { transform: translate3d(0, -5px, 0); }
         50% { transform: translate3d(0, 5px, 0); }
@@ -106,8 +105,23 @@
       }
     }
 
+    &__content {
+      @include flex(column, center);
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      margin: auto;
+      width: 500px;
+      max-width: 100%;
+    }
+
+    &__title, &__text {
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+
     &__title {
-      font-size: 3rem;
+      font-size: 4rem;
       margin: 30px 0 0;
     }
 
@@ -119,6 +133,7 @@
     &__timer {
       @include flex(column, center);
       margin-top: 30px;
+      max-width: 420px;
       width: 100%;
     }
 
@@ -127,14 +142,17 @@
       font-weight: bold;
       font-size: 1.1rem;
       pointer-events: none;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
     }
 
     &__clock {
       @include flex(center, flex-start);
       width: 100%;
-      font-size: 3rem;
+      font-size: 3.2rem;
       margin-top: 20px;
       color: $TEXT;
+      text-shadow: 0 0 14px rgba(0, 0, 0, 0.15);
+
       &-section {
         @include flex(column, center);
         padding-top: 4px;
@@ -143,13 +161,17 @@
       }
 
       &-text {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
       }
     }
   }
 
   @include media(TABLET) {
     .home {
+      &__blimp {
+        max-width: 70%;
+      }
+
       &__content {
         margin: 0 auto;
       }
@@ -159,6 +181,19 @@
   @include media(PHONE) {
     .home {
       padding-top: 70px;
+
+      &__blimp {
+        box-sizing: border-box;
+        margin-right: auto;
+        margin-top: 0;
+        max-width: 100%;
+        width: 100%;
+        padding: 0 15px;
+      }
+
+      &__content {
+        margin: 10vh auto auto;
+      }
 
       &__logo {
         width: 15%;
@@ -174,6 +209,10 @@
 
       &__button {
         font-size: 0.9rem;
+      }
+
+      &__timer {
+        max-width: 300px;
       }
 
       &__clock {

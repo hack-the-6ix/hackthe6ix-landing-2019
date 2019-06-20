@@ -17,7 +17,7 @@
       of all levels: no matter if you’re a beginner or veteran,
       it’s a weekend not to miss!
     </p>
-    <template v-slot:pre>
+    <template v-slot:after>
       <WaveMask class='about__wave' fill='white'/>
     </template>
   </Container>

@@ -13,8 +13,12 @@ Vue.config.productionTip = false;
 const router = new VueRouter({
   hashbang: false,
   mode: 'history',
-  scrollBehavior () {
-    return { x: 0, y: 0 }
+  scrollBehavior({ hash }) {
+    let top = 0;
+    if (hash && hash !== '#') {
+      top = document.querySelector(hash).offsetTop - 120;
+    }
+    return window.scrollTo({ top, behavior: 'smooth' });
   },
   routes
 })

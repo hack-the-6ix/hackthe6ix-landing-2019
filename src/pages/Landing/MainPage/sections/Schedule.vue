@@ -1,6 +1,7 @@
 <template>
-  <Container block='schedule' as='section'>
-    <h1>Schedule</h1>
+  <Container id='schedule' block='schedule' as='section'>
+    <h2 class='schedule__title'>Schedule</h2>
+    <p class='schedule__soon'>Coming soon...</p>
   </Container>
 </template>
 
@@ -20,4 +21,26 @@
 <style lang='scss' scoped>
   @import '~@styles/_mixins.scss';
   @import '~@styles/_variables.scss';
+
+  .schedule {
+    &__title {
+      font-size: 3.4rem;
+      margin: 0 0 20px;
+    }
+
+    &__soon {
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 0 0 60px;
+      color: map-get($PRIMARY, TEAL);
+    }
+  }
+
+  @include media(PHONE) {
+    .schedule {
+      &__title {
+        font-size: 2.4rem;
+      }
+    }
+  }
 </style>

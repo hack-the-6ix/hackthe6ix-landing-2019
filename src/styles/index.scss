@@ -10,6 +10,14 @@ html, body {
   @include scroll;
 }
 
+a {
+  @include transition(color);
+  color: map-get($PRIMARY, TEAL);
+  &:hover {
+    color: darken($PRIMARY, TEAL);
+  }
+}
+
 #app {
   font-family: $FONT;
   -webkit-font-smoothing: antialiased;

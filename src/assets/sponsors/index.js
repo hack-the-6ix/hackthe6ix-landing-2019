@@ -1,0 +1,1 @@
+export { default as bongo } from './test.gif';
