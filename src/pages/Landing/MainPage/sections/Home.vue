@@ -120,11 +120,6 @@
       max-width: 100%;
     }
 
-    &__title, &__text {
-      text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      color: white;
-    }
-
     &__title {
       font-size: 4rem;
       margin: 30px 0 0;
@@ -157,7 +152,6 @@
       font-weight: bold;
       font-size: 1.1rem;
       pointer-events: none;
-      box-shadow: 0 0 6px rgba(0,0,0,0.1);
     }
 
     &__clock {
@@ -165,8 +159,6 @@
       width: 100%;
       font-size: 3.2rem;
       margin-top: 20px;
-      color: $TEXT;
-      text-shadow: 0 0 14px rgba(0, 0, 0, 0.15);
 
       &-section {
         @include flex(column, center);
