@@ -82,7 +82,8 @@
   @import '~@styles/_variables.scss';
 
   .home {
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 950px;
     margin-bottom: -1px;
     background-size: cover;
     background-position: center bottom;
