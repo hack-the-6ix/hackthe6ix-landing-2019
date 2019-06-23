@@ -3,6 +3,9 @@
     <Blimp class='home__blimp'/>
     <div class='home__content'>
       <h1 class='home__title'>Hack The 6ix</h1>
+      <p class='home__text home__text--intact'>
+        Presented By <Intact class='home__intact'/>
+      </p>
       <p class='home__text'>August 23-25, 2019</p>
       <p class='home__text'>Venue TBD</p>
       <div class='home__timer'>
@@ -30,6 +33,7 @@
 
 <script>
   import { Container, Button } from '@components';
+  import Intact from '@assets/sponsors/intact-insurance.svg';
   import { Blimp } from '@assets';
 
   const END_TIME = new Date('2019-08-23T04:00:00.000Z');
@@ -41,6 +45,7 @@
     components: {
       Container,
       Button,
+      Intact,
       Blimp
     },
     data() {
@@ -128,6 +133,16 @@
     &__text {
       font-size: 1.6rem;
       margin: 8px 0 0;
+      &--intact {
+        @include flex(center);
+        color: #E31837;
+      }
+    }
+
+    &__intact {
+      width: 100px;
+      margin-left: 15px;
+      margin-bottom: 5px;
     }
 
     &__timer {
@@ -205,6 +220,11 @@
 
       &__text {
         font-size: 1.1rem;
+      }
+
+      &__intact {
+        width: 70px;
+        margin-left: 10px;
       }
 
       &__button {

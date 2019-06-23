@@ -1,8 +1,13 @@
 <template>
   <Container id='sponsors' block='sponsor' as='section'>
     <h1 class='sponsor__title'>Sponsors</h1>
-    <ul class='sponsor__items'>
-      <li class='sponsor__item' v-for='sponsor in sponsors' v-bind:key='sponsor.title'>
+    <ul class='sponsor__items' v-for='(category, i) in categories' v-bind:key='i'>
+      <li
+        class='sponsor__item'
+        :style='`max-width: ${ 100  - (20 * i) }%`'
+        v-for='sponsor in category'
+        v-bind:key='sponsor.title'
+      >
         <a class='sponsor__link' :href='sponsor.url'>
           <img
             class='sponsor__image'
@@ -35,6 +40,21 @@
       return {
         sponsors
       };
+    },
+    computed: {
+      categories: function () {
+        let prev;
+        return this.sponsors.reduce((acc, curr) => {
+          if (prev !== curr.size) {
+            acc.push([]);
+            prev = curr.size;
+          }
+          
+          const len = acc.length - 1;
+          acc[len].push(curr);
+          return acc;
+        }, []);
+      }
     }
   }
 </script>
@@ -71,6 +91,7 @@
     &__item {
       @include transition(opacity);
       margin: 0 20px 20px;
+      width: fit-content;
       &:hover {
         opacity: 0.85;
       }
@@ -79,6 +100,10 @@
     &__link {
       display: block;
       @include flex;
+    }
+
+    &__image {
+      max-width: 100%;
     }
   }
 
