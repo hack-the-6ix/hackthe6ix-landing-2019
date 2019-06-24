@@ -22,8 +22,12 @@
   }
 }
 
+@function darken-color($color, $adjustment: 10%) {
+  @return adjust-color($color, $lightness: -1 * $adjustment);
+}
+
 @function darken($set, $color, $adjustment: 10%) {
-  @return adjust-color(map-get($set, $color), $lightness: -1 * $adjustment);
+  @return darken-color(map-get($set, $color));
 }
 
 // Positioning with defaulting for non-relative positioning
@@ -79,12 +83,12 @@
 // Add custom scrollbar
 @mixin scroll() {
   &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     background-color: #e4e4e4;
 
     &-thumb {
-      background-color: adjust-color(map-get($PRIMARY, TEAL), $alpha: -0.4);
+      background-color: #a4a4a4;
       border-radius: 99px;
     }
   }

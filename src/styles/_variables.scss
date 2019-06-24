@@ -1,6 +1,9 @@
 // This is where you keep all your reuseable values
 
 // Colors
+$TEXT: #3a3a3a;
+$FONT: 'Avenir', serif;
+
 $PRIMARY: (
   TEAL: #23B5AF,
   AQUA: #A9DED9,
@@ -13,6 +16,11 @@ $SECONDARY: (
   LIGHT_BLUE: #88D2EE,
   SAND: #FAE0A1,
   MAGENTA: #8B3763
+);
+
+$STATE: (
+  ERROR: #f14646,
+  SUCCESS: #18b918
 );
 
 // Transitions

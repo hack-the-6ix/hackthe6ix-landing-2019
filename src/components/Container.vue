@@ -1,8 +1,10 @@
 <template>
-  <div class='container' :class='block'>
-    <div class='container__content' :is='as' :class='elementClass'>
+  <div class='container' :is='as' :class='block' :id='id'>
+    <slot name='before'/>
+    <div class='container__content' :class='elementClass'>
       <slot/>
     </div>
+    <slot name='after'/>
   </div>
 </template>
 
@@ -11,7 +13,8 @@
     name: 'Container',
     props: {
       as: String,
-      block: String
+      block: String,
+      id: String
     },
     computed: {
       elementClass() {
@@ -41,8 +44,9 @@
 
   @include media(TABLET) {
     .container {
-      padding: 0 20px;
       &__content {
+        padding-left: 20px;
+        padding-right: 20px;
         width: 95%;
       }
     }

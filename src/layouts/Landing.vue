@@ -2,7 +2,7 @@
   <div id='app'>
     <Navigation :items='items'/>
     <router-view/>
-    <Footer/>
+    <Footer :items='items'/>
   </div>
 </template>
 
@@ -14,6 +14,7 @@
   export default {
     name: 'Landing',
     path: '/',
+    exact: true,
     components: {
       Navigation,
       Footer

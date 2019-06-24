@@ -14,7 +14,7 @@
         item.displayName || item.name
       }}</router-link>
       <li>
-        <Button class='nav__button' v-on:click.native='apply'>Apply</Button>
+        <Button class='nav__button' :click='apply'>Apply Now</Button>
       </li>
     </ul>
     <button class='nav__menu' v-on:click='() => this.show = !this.show'>
@@ -29,13 +29,14 @@
         class='nav__mobile-item'
         active-class='nav__mobile-item--active'
         v-for='item in items'
+        v-on:click.native='close'
         :to='item.path'
         :key='item.path'
       >{{
         item.displayName || item.name
       }}</router-link>
       <li>
-        <Button class='nav__mobile-button' v-on:click.native='apply'>Apply Now!</Button>
+        <Button class='nav__mobile-button' :click='apply'>Apply Now</Button>
       </li>
     </Container>
   </Container>
@@ -59,7 +60,10 @@
     },
     methods: {
       apply() {
-        alert('APPLY');
+        this.$router.push('/register');
+      },
+      close() {
+        this.show = false;
       }
     },
     props: {
@@ -132,7 +136,7 @@
       cursor: pointer;
       margin: 0 -12px 0 auto;
       background: none;
-      padding: 7.5px 12px;
+      padding: 8px 12px;
       border: none;
 
       &:hover {
