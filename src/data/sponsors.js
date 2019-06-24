@@ -45,8 +45,8 @@ export const sponsors = [
         size: SIZES.SMALL
     },
 	{
-        title: 'Rotman Commerce',
-        url: 'https://rotmancommerce.utoronto.ca/',
+        title: 'Rotman Master of Management Analytics',
+        url: 'http://www.rotman.utoronto.ca/Degrees/MastersPrograms/MMA',
         image: images.rotman,
         size: SIZES.SMALL
     }
