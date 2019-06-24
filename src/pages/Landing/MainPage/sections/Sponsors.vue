@@ -42,7 +42,7 @@
       };
     },
     computed: {
-      categories: function () {
+      categories() {
         let prev;
         return this.sponsors.reduce((acc, curr) => {
           if (prev !== curr.size) {

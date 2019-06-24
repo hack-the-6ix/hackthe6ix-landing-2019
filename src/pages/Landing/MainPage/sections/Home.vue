@@ -7,7 +7,7 @@
         Presented By <Intact class='home__intact'/>
       </p>
       <p class='home__text'>August 23-25, 2019</p>
-      <p class='home__text'>Venue TBD</p>
+      <p class='home__text'>{{ venue }}</p>
       <div class='home__timer'>
         <Button class='home__button'>Countdown to Applications</Button>
         <div class='home__clock'>
@@ -34,6 +34,7 @@
 <script>
   import { Container, Button } from '@components';
   import Intact from '@assets/sponsors/intact-insurance.svg';
+  import { venue } from '@data';
   import { Blimp } from '@assets';
 
   const END_TIME = new Date('2019-08-23T04:00:00.000Z');
@@ -50,7 +51,8 @@
     },
     data() {
       return {
-        time: [0, 0, 0]
+        time: [0, 0, 0],
+        venue
       }
     },
     methods: {

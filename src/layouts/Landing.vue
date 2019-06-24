@@ -2,7 +2,7 @@
   <div id='app'>
     <Navigation :items='items'/>
     <router-view/>
-    <Footer/>
+    <Footer :items='items'/>
   </div>
 </template>
 

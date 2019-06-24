@@ -7,8 +7,15 @@ import {
   faQrcode,
   faArrowLeft,
   faDoorOpen,
-  faEnvelope
+  faEnvelope,
+  faHeart,
+  faArrowUp
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram
+} from '@fortawesome/free-brands-svg-icons';
 
 library.add(
   faCircleNotch,
@@ -18,5 +25,10 @@ library.add(
   faQrcode,
   faArrowLeft,
   faDoorOpen,
-  faEnvelope
+  faEnvelope,
+  faHeart,
+  faArrowUp,
+  faFacebook,
+  faTwitter,
+  faInstagram
 );

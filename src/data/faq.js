@@ -1,3 +1,5 @@
+import { venue, email, old_devpost } from './variables';
+
 export const faq = [
     {
         title: 'General',
@@ -21,8 +23,7 @@ export const faq = [
             },
             {
                 title: 'How do I get to Hack the 6ix?',
-                content: 'This year we will be hosted at Top Hat! The venue is \
-                accessible by TTC subway via Museum station.'
+                content: 'This year we will be hosted at ' + venue + '.'
             },
             {
                 title: 'Will you be providing travel reimbursements?',
@@ -35,7 +36,7 @@ export const faq = [
                 such as introduction to coding, to advanced courses, such as security \
                 penetration testing. No matter your interest, we guarantee we’ll have \
                 something for you. In addition, we have a ton of fun activities planned \
-                for you such as e- sports tournaments, chugging contests, and more! Hack \
+                for you such as e-sports tournaments, chugging contests, and more! Hack \
                 the 6ix is much more than just a hackathon – we make sure that it’s \
                 an event you’ll thoroughly enjoy.'
             },
@@ -74,8 +75,8 @@ export const faq = [
                 content: 'No worries, all participants will have time to find a team in \
                 weeks leading up to Hack the 6ix, and we will also have team formation \
                 activities during our event. For ideas, check out our submissions from \
-                last year for some inspiration: <a href=\'https://hackthe6ix19.devpost.com\'>\
-                https://hackthe6ix19.devpost.com</a>'
+                last year for some inspiration: <a href=\'' + old_devpost + '\'>\
+                ' + old_devpost + '</a>'
             },
             {
                 title: 'Can I work on my hack before the event?',
@@ -87,7 +88,7 @@ export const faq = [
             {
                 title: 'I still have questions!',
                 content: 'If you have any other questions, feel free to send us a message at \
-                <a href=\'mailto:hello@hackthe6ix.com\'>hello@hackthe6ix.com</a> or shoot us a \
+                <a href=\'' + email + '\'>' + email + '</a> or shoot us a \
                 message on Facebook here: <a href=\'https://www.facebook.com/HackThe6ix\'>\
                 https://www.facebook.com/HackThe6ix/</a>!'
             }
