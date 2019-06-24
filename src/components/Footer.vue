@@ -27,12 +27,12 @@
       <div class='footer__section footer__section--contact'>
         <h2 class='footer__heading'>Contact Us</h2>
         <h3 class='footer__label'>Email us</h3>
-        <a :href='email'>{{ email }}</a>
+        <a :href='"mailto:" + email'>{{ email }}</a>
         
         <h3 class='footer__label'>Follow us on social media</h3>
         <ul class='footer__media'>
           <li v-for='media in social_media' v-bind:key='media.icon'>
-            <a :href='media.url' class='footer__media-item'>
+            <a :href='media.link' target='_blank' class='footer__media-item'>
               <icon class='footer__icon' :icon='["fab", media.icon]'/>
             </a>
           </li>
@@ -44,7 +44,8 @@
         Copyright © 2019 <strong>Hack The 6ix</strong> | Made with <icon icon='heart'/> in Toronto
       </p>
       <div class='footer__legal'>
-        <a href='https://hackthe6ix.com/privacy'>Privacy Policy</a> | <a href='https://static.mlh.io/docs/mlh-code-of-conduct.pdf'>MLH Code of Conduct</a>
+        <a href='https://hackthe6ix.com/privacy' target='_blank'>Privacy Policy</a> |
+        <a href='https://static.mlh.io/docs/mlh-code-of-conduct.pdf' target='_blank'>MLH Code of Conduct</a>
       </div>
     </div>
   </Container>
