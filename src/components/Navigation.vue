@@ -29,6 +29,7 @@
         class='nav__mobile-item'
         active-class='nav__mobile-item--active'
         v-for='item in items'
+        v-on:click.native='close'
         :to='item.path'
         :key='item.path'
       >{{
@@ -60,6 +61,9 @@
     methods: {
       apply() {
         this.$router.push('/register');
+      },
+      close() {
+        this.show = false;
       }
     },
     props: {
