@@ -1,10 +1,10 @@
 <template>
-  <Container id='sponsors' block='sponsor' as='section'>
+  <Container id='sponsors' block='sponsor' as='section' :class='{ "sponsor--show": animate }'>
     <h1 class='sponsor__title'>Sponsors</h1>
     <ul class='sponsor__items' v-for='(category, i) in categories' v-bind:key='i'>
       <li
         class='sponsor__item'
-        :style='`max-width: ${ 100  - (20 * i) }%`'
+        :style='`max-width: ${ 100  - (20 * i) }%; transition-delay: ${ (i + 1) * 200 }ms`'
         v-for='sponsor in category'
         v-bind:key='sponsor.title'
       >
@@ -28,6 +28,7 @@
   import { Container } from '@components';
   import { WaveMask } from '@assets';
   import { sponsors } from '@data';
+  import { scroll } from '@utils';
 
   export default {
     name: 'Sponsors',
@@ -38,8 +39,15 @@
     },
     data() {
       return {
-        sponsors
+        sponsors,
+        animate: false
       };
+    },
+    mounted() {
+      scroll.add(this);
+    },
+    beforeDestroy() {
+      scroll.remove(this);
     },
     computed: {
       categories() {
@@ -89,11 +97,11 @@
     }
 
     &__item {
-      @include transition(opacity);
+      @include transition(opacity transform, PAGE);
       margin: 0 20px 20px;
       width: fit-content;
       &:hover {
-        opacity: 0.85;
+        opacity: 0.75;
       }
     }
 
@@ -104,6 +112,29 @@
 
     &__image {
       max-width: 100%;
+    }
+  }
+
+  .sponsor {
+    &__title {
+      opacity: 0;
+    }
+
+    &__item {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+
+    &--show & {
+      &__title {
+        @include transition(opacity, PAGE);
+        opacity: 1;
+      }
+
+      &__item {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   }
 

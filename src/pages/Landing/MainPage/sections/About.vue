@@ -1,5 +1,5 @@
 <template>
-  <Container id='about' block='about' as='section'>
+  <Container id='about' block='about' as='section' :class='{ "about--show": animate }'>
     <h2 class='about__title'>About</h2>
     <p class='about__text'>
       Hack the 6ix is Toronto's largest summer hackathon.
@@ -7,7 +7,7 @@
       brightest hackers from across North America for
       36 hours of coding, designing, and jam-packed fun.
     </p>
-    <p class='about__text'>
+    <p class='about__text about__text--second'>
       We’ll provide you with all the resources, mentorship,
       and food to do your thing; all you need to bring is your
       creativity and ideas. Hack the 6ix is also a gathering of
@@ -26,6 +26,7 @@
 <script>
   import { Container } from '@components';
   import { WaveMask } from '@assets';
+  import { scroll } from '@utils';
 
   export default {
     name: 'About',
@@ -33,6 +34,17 @@
     components: {
       Container,
       WaveMask
+    },
+    data() {
+      return {
+        animate: false
+      };
+    },
+    mounted() {
+      scroll.add(this);
+    },
+    beforeDestroy() {
+      scroll.remove(this);
     }
   }
 </script>
@@ -70,6 +82,28 @@
     &__title, &__text {
       max-width: 600px;
       margin-right: auto;
+    }
+  }
+
+  .about {
+    &__title, &__text {
+      transform: translateY(-40px);
+      opacity: 0;
+    }
+
+    &--show & {
+      &__title, &__text {
+        @include transition(opacity transform, PAGE);
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      &__text {
+        transition-delay: 300ms;
+        &--second {
+          transition-delay: 600ms;
+        }
+      }
     }
   }
 

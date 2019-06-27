@@ -1,8 +1,8 @@
 <template>
   <Container block='footer' as='footer'>
-    <router-link class='footer__top' to='#'>
+    <button class='footer__top' v-on:click='toTop'>
       <icon icon='arrow-up'/> Back to Top
-    </router-link>
+    </button>
     <div class='footer__content'>
       <Logo class='footer__logo'/>
       <div class='footer__section footer__section--nav'>
@@ -72,6 +72,9 @@
     methods: {
       apply() {
         this.$router.push('/register');
+      },
+      toTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     },
     props: {
@@ -97,11 +100,16 @@
     }
     
     &__top {
-      padding: 15px 0 20px;
+      @include transition(color);
       text-decoration: none;
-      color: #5d5d5d;
+      font-family: $FONT;
       font-weight: bold;
       margin-left: auto;
+      background: none;
+      color: #5d5d5d;
+      padding: 15px 0;
+      cursor: pointer;
+      border: none;
       
       &:hover {
         color: map-get($PRIMARY, TEAL);
@@ -126,10 +134,15 @@
     }
 
     &__logo {
-      width: 60px;
-      opacity: 0.2;
+      @include transition(opacity, PAGE);
       filter: grayscale(100%);
       margin-right: 60px;
+      opacity: 0.2;
+      width: 60px;
+
+      &:hover {
+        opacity: 0.3;
+      }
     }
 
     &__heading {

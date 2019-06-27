@@ -88,7 +88,7 @@ export const faq = [
             {
                 title: 'I still have questions!',
                 content: 'If you have any other questions, feel free to send us a message at \
-                <a href=\'' + email + '\'>' + email + '</a> or shoot us a \
+                <a href=\'mailt:' + email + '\'>' + email + '</a> or shoot us a \
                 message on Facebook here: <a href=\'https://www.facebook.com/HackThe6ix\'>\
                 https://www.facebook.com/HackThe6ix/</a>!'
             }
