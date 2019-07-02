@@ -9,14 +9,14 @@
  * @param {string} query - Key for GraphQL query
  * @param {queryConfig} config - Configuration for query
  */
-export const query = async (query, { variables }) => {
+export const query = async (query, variables = {}) => {
     const token = localStorage.getItem('token');
     const raw = await fetch(
         process.env.GRAPHQL_API,
         {
             headers: {
                 'Content-Type': 'application/json',
-                ...(token ? { 'Authorization': `Bearer ${token}` } : undefined)
+                ...(token ? { 'Authorization': `Bearer ${ token }` } : undefined)
             },
             method: 'POST',
             body: JSON.stringify({ query, variables })

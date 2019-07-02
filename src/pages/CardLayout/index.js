@@ -1,9 +1,5 @@
-import Login from './Login';
-import User from './User';
-import Info from './Info';
+import Apply from './Apply';
 
 export const CardLayout = {
-  Login,
-  User,
-  Info
+  Apply
 };

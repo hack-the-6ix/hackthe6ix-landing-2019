@@ -60,7 +60,7 @@
     },
     methods: {
       apply() {
-        this.$router.push('/register');
+        this.$router.push('/apply');
       },
       close() {
         this.show = false;

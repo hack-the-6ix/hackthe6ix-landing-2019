@@ -16,15 +16,15 @@
   }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
   @import '~@styles/_mixins.scss';
   @import '~@styles/_variables.scss';
 
   .card {
-    box-sizing: border-box;
-    padding: 20px;
-    border-radius: 12px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.15);
     background-color: white;
-    box-shadow: 0 0 5px rgba(0,0,0,0.25);
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding: 30px;
   }
 </style>
