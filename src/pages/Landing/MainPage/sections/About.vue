@@ -57,7 +57,7 @@
   .about {
     color: white;
     flex-direction: column;
-    background: linear-gradient(#85d1af, #63be95);
+    background: linear-gradient(#63be96, #63be95);
 
     &__container {
       padding-bottom: 60px;

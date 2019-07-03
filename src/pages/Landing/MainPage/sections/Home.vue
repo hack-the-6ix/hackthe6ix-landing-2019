@@ -1,6 +1,5 @@
 <template>
   <Container block='home' as='section'>
-    <Blimp class='home__blimp'/>
     <div class='home__content'>
       <h1 class='home__title'>Hack The 6ix</h1>
       <p class='home__text home__text--intact'>
@@ -9,7 +8,7 @@
       <p class='home__text'>August 23-25, 2019</p>
       <p class='home__text'>{{ venue }}</p>
       <div class='home__timer'>
-        <Button class='home__button'>Countdown to Applications</Button>
+        <h2 class='home__timer-title'>Countdown to Applications</h2>
         <div class='home__clock'>
           <div class='home__clock-section'>
             {{ String(time[0]).padStart(2, '0') }}
@@ -32,10 +31,9 @@
 </template>
 
 <script>
-  import { Container, Button } from '@components';
+  import { Container } from '@components';
   import Intact from '@assets/sponsors/intact-insurance.svg';
   import { venue } from '@data';
-  import { Blimp } from '@assets';
 
   const END_TIME = new Date('2019-08-23T04:00:00.000Z');
   const intervals = [ 86400000, 3600000, 60000 ]; // Days, Hours, Minutes
@@ -45,9 +43,7 @@
     path: '#',
     components: {
       Container,
-      Button,
-      Intact,
-      Blimp
+      Intact
     },
     data() {
       return {
@@ -92,25 +88,9 @@
     background-image: url('~@assets/background.svg?file');
 
     &__container {
-      @include flex(center);
+      @include flex(flex-end, flex-start);
       position: relative;
       align-self: stretch;
-    }
-
-    &__blimp {
-      @include position(absolute, 120px 10px auto auto);
-      animation: enter 0.4s ease-in-out backwards, float 5s ease infinite;
-      width: 600px;
-      max-width: 50%;
-      @keyframes enter {
-        from { opacity: 0; } to { opacity: 1; }
-      }
-
-      @keyframes float {
-        0% { transform: translate3d(0, -5px, 0); }
-        50% { transform: translate3d(0, 5px, 0); }
-        100% { transform: translate3d(0, -5px, 0); }
-      }
     }
 
     &__content {
@@ -118,8 +98,8 @@
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
-      margin: auto;
       width: 500px;
+      margin: 220px 0 auto;
       max-width: 100%;
     }
 
@@ -133,7 +113,7 @@
       margin: 8px 0 0;
       &--intact {
         @include flex(center);
-        color: #E31837;
+        color: map-get($PRIMARY, TEAL);
       }
     }
 
@@ -145,23 +125,27 @@
 
     &__timer {
       @include flex(column, center);
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 30px 20px;
+      border-radius: 8px;
       margin-top: 30px;
       max-width: 420px;
       width: 100%;
     }
 
-    &__button {
+    &__timer-title {
       text-transform: uppercase;
+      color: map-get($PRIMARY, TEAL);
       font-weight: bold;
-      font-size: 1.1rem;
-      pointer-events: none;
+      font-size: 1.3rem;
+      margin: 0;
     }
 
     &__clock {
       @include flex(center, flex-start);
       width: 100%;
       font-size: 3.2rem;
-      margin-top: 20px;
+      margin-top: 10px;
 
       &-section {
         @include flex(column, center);
@@ -176,33 +160,22 @@
     }
   }
 
-  @include media(TABLET) {
+  @include media(LAPTOP) {
     .home {
-      &__blimp {
-        max-width: 70%;
-      }
+      @include flex(center);
+      margin-top: -60px;
 
       &__content {
-        margin: 0 auto;
+        margin: 220px auto auto;
       }
     }
   }
 
   @include media(PHONE) {
     .home {
-      padding-top: 70px;
-
-      &__blimp {
-        box-sizing: border-box;
-        margin-right: auto;
-        margin-top: 0;
-        max-width: 100%;
-        width: 100%;
-        padding: 0 15px;
-      }
 
       &__content {
-        margin: 10vh auto auto;
+        margin-top: 200px;
       }
 
       &__logo {
@@ -210,11 +183,11 @@
       }
 
       &__title {
-        font-size: 2.2rem;
+        font-size: 3.2rem;
       }
 
       &__text {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
       }
 
       &__intact {
@@ -222,12 +195,10 @@
         margin-left: 10px;
       }
 
-      &__button {
-        font-size: 0.9rem;
-      }
-
       &__timer {
-        max-width: 300px;
+        max-width: 100%;
+        padding: 50px 20px;
+        box-sizing: border-box;
       }
 
       &__clock {

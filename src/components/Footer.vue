@@ -20,7 +20,7 @@
             item.displayName || item.name
           }}</router-link>
           <li>
-            <Button class='footer__button' :click='apply'>Apply Now</Button>
+            <Button class='footer__button' :click='apply' :disabled='canApply'>Apply Now</Button>
           </li>
         </ul>
       </div>
@@ -81,7 +81,8 @@
       items: {
         type: Array,
         default: () => []
-      }
+      },
+      canApply: Boolean
     }
   }
 </script>
