@@ -20,7 +20,7 @@
             item.displayName || item.name
           }}</router-link>
           <li>
-            <Button class='footer__button' :click='apply' :disabled='canApply'>Apply Now</Button>
+            <Button class='footer__button' :click='apply' :disabled='disableApply'>Apply Now</Button>
           </li>
         </ul>
       </div>
@@ -82,7 +82,7 @@
         type: Array,
         default: () => []
       },
-      canApply: Boolean
+      disableApply: Boolean
     }
   }
 </script>

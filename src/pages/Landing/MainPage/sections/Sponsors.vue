@@ -8,7 +8,7 @@
         v-for='sponsor in category'
         v-bind:key='sponsor.title'
       >
-        <a class='sponsor__link' :href='sponsor.url'>
+        <a class='sponsor__link' :href='sponsor.url' target='_blank'>
           <img
             class='sponsor__image'
             :alt='sponsor.title + " logo"'
@@ -100,18 +100,20 @@
       @include transition(opacity transform, PAGE);
       margin: 0 20px 20px;
       width: fit-content;
-      &:hover {
-        opacity: 0.75;
-      }
     }
 
     &__link {
-      display: block;
       @include flex;
+      display: block;
     }
 
     &__image {
+      @include transition(opacity, SLOW);
       max-width: 100%;
+
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 

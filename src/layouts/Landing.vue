@@ -1,8 +1,8 @@
 <template>
   <div id='app'>
-    <Navigation :items='items' :canApply='apply'/>
+    <Navigation :items='items' :disableApply='disableApply'/>
     <router-view/>
-    <Footer :items='items' :canApply='apply'/>
+    <Footer :items='items' :disableApply='disableApply'/>
   </div>
 </template>
 
@@ -22,7 +22,7 @@
     data() {
       return {
         items,
-        apply: true
+        disableApply: true
       };
     }
   }

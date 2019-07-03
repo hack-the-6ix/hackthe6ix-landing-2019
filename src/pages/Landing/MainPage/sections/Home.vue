@@ -173,6 +173,7 @@
 
   @include media(PHONE) {
     .home {
+      background-image: url('~@assets/background-small.svg?file');
 
       &__content {
         margin-top: 200px;
