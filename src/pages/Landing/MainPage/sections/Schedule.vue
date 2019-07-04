@@ -1,37 +1,33 @@
 <template>
-  <Container
-    id="schedule"
-    block="schedule"
-    as="section"
-    :class="{'schedule--show': animate}"
-  >
-    <h2 class="schedule__title">Schedule</h2>
-    <p class="schedule__soon">Coming soon...</p>
+  <Container id='schedule' block='schedule' as='section' :class='{ "schedule--show": animate }'>
+    <h2 class='schedule__title'>Schedule</h2>
+    <dynamic-schedule :signup_enabled=false></dynamic-schedule>
   </Container>
 </template>
 
 <script>
-import {Container} from '@components';
-import {scroll} from '@utils';
+  import { Container, DynamicSchedule  } from '@components';
+  import { scroll } from '@utils';
 
-export default {
-  name: 'Schedule',
-  path: '/#schedule',
-  components: {
-    Container,
-  },
-  data() {
-    return {
-      animate: false,
-    };
-  },
-  mounted() {
-    scroll.add(this);
-  },
-  beforeDestroy() {
-    scroll.remove(this);
-  },
-};
+  export default {
+    name: 'Schedule',
+    path: '#schedule',
+    components: {
+      Container,
+      DynamicSchedule
+    },
+    data() {
+      return {
+        animate: false
+      };
+    },
+    mounted() {
+      scroll.add(this);
+    },
+    beforeDestroy() {
+      scroll.remove(this);
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
