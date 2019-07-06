@@ -109,6 +109,9 @@
 
   @include media(PHONE) {
     .about {
+      background: linear-gradient(#85d1af, #63be95);
+      padding-top: 20px;
+
       &__title {
         font-size: 2.4rem;
       }

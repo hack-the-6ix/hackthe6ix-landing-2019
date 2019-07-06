@@ -176,7 +176,7 @@
       background-image: url('~@assets/background-small.svg?file');
 
       &__content {
-        margin-top: 200px;
+        margin-top: 110px;
       }
 
       &__logo {
