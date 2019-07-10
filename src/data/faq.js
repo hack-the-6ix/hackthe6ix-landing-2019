@@ -33,7 +33,7 @@ export const faq = [
             },
             {
                 title: 'How do I get to Hack the 6ix?',
-                content: 'This year, we’ll be at ' + venue + '! The venue is accessible by TTC subway via ' + station + ' station. Participants are responsible for their own transportation to and from the venue.'
+                content: 'The venue for this year will be announced soon!'
             },
             {
                 title: 'What should I bring?',
