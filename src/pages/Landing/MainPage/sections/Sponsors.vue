@@ -1,6 +1,7 @@
 <template>
   <Container id='sponsors' block='sponsor' as='section' :class='{ "sponsor--show": animate }'>
-    <h1 class='sponsor__title'>Sponsors</h1>
+    <h2 class='sponsor__title'>Sponsors</h2>
+    <h3 class='sponsor__subtitle'>Our amazing sponsors who make Hack the 6ix possible</h3>
     <ul class='sponsor__items' v-for='(category, i) in categories' v-bind:key='i'>
       <li
         class='sponsor__item'
@@ -18,6 +19,12 @@
         </a>
       </li>
     </ul>
+    <div class='sponsor__footer'>
+      <h3 class='sponsor__subtitle sponsor__subtitle--center'>Interested in being a sponsor?</h3>
+      <p class='sponsor__text'>
+        Please send us a business inquiry at <a href='mailto:sponsors@hackthe6ix.com'>sponsors@hackthe6ix.com</a>
+      </p>
+    </div>
     <template v-slot:before>
       <WaveMask class='sponsor__wave' fill='white'/>
     </template>
@@ -79,7 +86,23 @@
     &__title {
       font-size: 3.4rem;
       text-align: end;
-      margin: 0;
+      margin: 20px 0 0;
+    }
+
+    &__subtitle {
+      text-align: end;
+      margin: 0 0 20px;
+      &--center {
+        text-align: center;
+        font-size: 2.2rem;
+        margin: 0 0 -10px;
+      }
+    }
+
+    &__text {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 40px;
     }
 
     &__wave {
@@ -122,7 +145,7 @@
       opacity: 0;
     }
 
-    &__item {
+    &__item, &__footer {
       transform: scale(0.9);
       opacity: 0;
     }
@@ -133,7 +156,11 @@
         opacity: 1;
       }
 
-      &__item {
+      &__footer {
+        @include transition(opacity transform, PAGE);
+      }
+
+      &__item, &__footer {
         transform: scale(1);
         opacity: 1;
       }
@@ -144,6 +171,12 @@
     .sponsor {
       &__title {
         font-size: 2.4rem;
+      }
+
+      &__subtitle {
+        &--center {
+          font-size: 1.8rem;
+        }
       }
     }
   }

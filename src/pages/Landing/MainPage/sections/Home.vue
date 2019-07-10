@@ -176,7 +176,7 @@
       background-image: url('~@assets/background-small.svg?file');
 
       &__content {
-        margin-top: 110px;
+        margin-top: 100px;
       }
 
       &__logo {
@@ -198,7 +198,7 @@
 
       &__timer {
         max-width: 100%;
-        padding: 50px 20px;
+        padding: 40px 20px;
         box-sizing: border-box;
       }
 
