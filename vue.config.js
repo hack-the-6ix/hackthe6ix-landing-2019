@@ -1,15 +1,16 @@
-const path = require('path');
+const { resolve } = require('path');
 
 module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@assets': path.resolve(__dirname, 'src/assets'),
-        '@components': path.resolve(__dirname, 'src/components'),
-        '@data': path.resolve(__dirname, 'src/data'),
-        '@layouts': path.resolve(__dirname, 'src/layouts'),
-        '@pages': path.resolve(__dirname, 'src/pages'),
-        '@styles': path.resolve(__dirname, 'src/styles')
+        '@assets': resolve(__dirname, 'src/assets'),
+        '@components': resolve(__dirname, 'src/components'),
+        '@data': resolve(__dirname, 'src/data'),
+        '@layouts': resolve(__dirname, 'src/layouts'),
+        '@pages': resolve(__dirname, 'src/pages'),
+        '@styles': resolve(__dirname, 'src/styles'),
+        '@utils': resolve(__dirname, 'src/utils')
       }
     }
   },

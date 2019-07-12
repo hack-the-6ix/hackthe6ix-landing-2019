@@ -1,14 +1,15 @@
 <template>
-  <Container id='sponsors' block='sponsor' as='section'>
-    <h1 class='sponsor__title'>Sponsors</h1>
+  <Container id='sponsors' block='sponsor' as='section' :class='{ "sponsor--show": animate }'>
+    <h2 class='sponsor__title'>Sponsors</h2>
+    <h3 class='sponsor__subtitle'>Our amazing sponsors who make Hack the 6ix possible</h3>
     <ul class='sponsor__items' v-for='(category, i) in categories' v-bind:key='i'>
       <li
         class='sponsor__item'
-        :style='`max-width: ${ 100  - (20 * i) }%`'
+        :style='`max-width: ${ 100  - (20 * i) }%; transition-delay: ${ (i + 1) * 200 }ms`'
         v-for='sponsor in category'
         v-bind:key='sponsor.title'
       >
-        <a class='sponsor__link' :href='sponsor.url'>
+        <a class='sponsor__link' :href='sponsor.url' target='_blank'>
           <img
             class='sponsor__image'
             :alt='sponsor.title + " logo"'
@@ -18,6 +19,12 @@
         </a>
       </li>
     </ul>
+    <div class='sponsor__footer'>
+      <h3 class='sponsor__subtitle sponsor__subtitle--center'>Interested in being a sponsor?</h3>
+      <p class='sponsor__text'>
+        Please send us a business inquiry at <a href='mailto:sponsors@hackthe6ix.com'>sponsors@hackthe6ix.com</a>
+      </p>
+    </div>
     <template v-slot:before>
       <WaveMask class='sponsor__wave' fill='white'/>
     </template>
@@ -28,6 +35,7 @@
   import { Container } from '@components';
   import { WaveMask } from '@assets';
   import { sponsors } from '@data';
+  import { scroll } from '@utils';
 
   export default {
     name: 'Sponsors',
@@ -38,8 +46,15 @@
     },
     data() {
       return {
-        sponsors
+        sponsors,
+        animate: false
       };
+    },
+    mounted() {
+      scroll.add(this);
+    },
+    beforeDestroy() {
+      scroll.remove(this);
     },
     computed: {
       categories() {
@@ -71,7 +86,23 @@
     &__title {
       font-size: 3.4rem;
       text-align: end;
-      margin: 0;
+      margin: 20px 0 0;
+    }
+
+    &__subtitle {
+      text-align: end;
+      margin: 0 0 20px;
+      &--center {
+        text-align: center;
+        font-size: 2.2rem;
+        margin: 0 0 -10px;
+      }
+    }
+
+    &__text {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 40px;
     }
 
     &__wave {
@@ -89,21 +120,50 @@
     }
 
     &__item {
-      @include transition(opacity);
+      @include transition(opacity transform, PAGE);
       margin: 0 20px 20px;
       width: fit-content;
-      &:hover {
-        opacity: 0.85;
-      }
     }
 
     &__link {
-      display: block;
       @include flex;
+      display: block;
     }
 
     &__image {
+      @include transition(opacity, SLOW);
       max-width: 100%;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .sponsor {
+    &__title {
+      opacity: 0;
+    }
+
+    &__item, &__footer {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+
+    &--show & {
+      &__title {
+        @include transition(opacity, PAGE);
+        opacity: 1;
+      }
+
+      &__footer {
+        @include transition(opacity transform, PAGE);
+      }
+
+      &__item, &__footer {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   }
 
@@ -111,6 +171,12 @@
     .sponsor {
       &__title {
         font-size: 2.4rem;
+      }
+
+      &__subtitle {
+        &--center {
+          font-size: 1.8rem;
+        }
       }
     }
   }

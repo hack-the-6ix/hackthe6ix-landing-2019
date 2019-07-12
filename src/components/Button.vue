@@ -27,13 +27,14 @@
   }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
   @import '~@styles/_mixins.scss';
   @import '~@styles/_variables.scss';
 
   .button {
     @include transition(background-color);
     background-color: map-get($PRIMARY, TEAL);
+    font-weight: bold;
     outline: none;
     font-family: $FONT;
     padding: 12px 20px;

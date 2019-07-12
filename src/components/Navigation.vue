@@ -14,7 +14,7 @@
         item.displayName || item.name
       }}</router-link>
       <li>
-        <Button class='nav__button' :click='apply'>Apply Now</Button>
+        <Button class='nav__button' :click='apply' :disabled='disableApply'>Apply Now</Button>
       </li>
     </ul>
     <button class='nav__menu' v-on:click='() => this.show = !this.show'>
@@ -36,7 +36,7 @@
         item.displayName || item.name
       }}</router-link>
       <li>
-        <Button class='nav__mobile-button' :click='apply'>Apply Now</Button>
+        <Button class='nav__mobile-button' :click='apply' :disabled='disableApply'>Apply Now</Button>
       </li>
     </Container>
   </Container>
@@ -60,7 +60,7 @@
     },
     methods: {
       apply() {
-        this.$router.push('/register');
+        this.$router.push('/apply');
       },
       close() {
         this.show = false;
@@ -70,7 +70,8 @@
       items: {
         type: Array,
         default: () => []
-      }
+      },
+      disableApply: Boolean
     }
   }
 </script>

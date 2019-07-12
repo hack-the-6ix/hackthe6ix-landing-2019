@@ -1,17 +1,27 @@
 <template>
-  <Container id='faq' block='faq' as='section'>
+  <Container id='faq' block='faq' as='section' :class='{ "faq--show": animate }'>
     <h2 class='faq__title'>Frequently Asked Questions</h2>
     <div class='faq__content' v-for='section in faq' v-bind:key='section.title'>
       <h3 class='faq__content-title'>{{ section.title }}</h3>
       <div class='faq__questions'>
         <ul class='faq__items faq__items--first'>
-          <li class='faq__item' v-for='q in first(section.items)' v-bind:key='q.title'>
+          <li
+            class='faq__item'
+            v-for='(q, i) in first(section.items)'
+            :style='`transition-delay: ${ (i + 1) * 100 }ms`'
+            v-bind:key='q.title'
+          >
             <h4 class='faq__item-title'>{{ q.title }}</h4>
             <p class='faq__item-content' v-html='q.content'/>
           </li>
         </ul>
         <ul class='faq__items faq__items--second'>
-          <li class='faq__item' v-for='q in second(section.items)' v-bind:key='q.title'>
+          <li
+            class='faq__item'
+            v-for='(q, i) in second(section.items)'
+            :style='`transition-delay: ${ (i + 1) * 200 }ms`'
+            v-bind:key='q.title'
+          >
             <h4 class='faq__item-title'>{{ q.title }}</h4>
             <p class='faq__item-content' v-html='q.content'/>
           </li>
@@ -23,6 +33,7 @@
 
 <script>
   import { Container } from '@components';
+  import { scroll } from '@utils';
   import { faq } from '@data';
   
   export default {
@@ -33,8 +44,15 @@
     },
     data() {
       return {
-        faq
+        faq,
+        animate: false
       };
+    },
+    mounted() {
+      scroll.add(this);
+    },
+    beforeDestroy() {
+      scroll.remove(this);
     },
     methods: {
       first(list) {
@@ -100,6 +118,30 @@
       &-content {
         line-height: 1.7;
         margin: 10px 0;
+      }
+    }
+  }
+
+  .faq {
+    &__title {
+      opacity: 0;
+    }
+
+    &__content-title, &__item {
+      transform: translateY(-40px);
+      opacity: 0;
+    }
+
+    &--show & {
+      &__title {
+        @include transition(opacity, PAGE);
+        opacity: 1;
+      }
+
+      &__content-title, &__item {
+        @include transition(opacity transform, PAGE);
+        transform: translateY(0);
+        opacity: 1;
       }
     }
   }

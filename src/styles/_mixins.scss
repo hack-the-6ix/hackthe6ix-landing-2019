@@ -41,32 +41,32 @@
 }
 
 // Add tranisitions to attributes because im lazy
-@mixin transition($attrs: null, $speed: NORMAL, $ease: NORMAL) {
+@mixin transition($attrs: null, $speed: NORMAL, $ease: NORMAL, $delay: 0ms) {
   $res: '';
 
   // Multiple attributes
   @if type-of($attrs) == list {
     @each $attr in $attrs {
-      $res: #{ $res }, makeTransition($attr, $speed, $ease);
+      $res: #{ $res }, makeTransition($attr, $speed, $ease, $delay);
     }
 
   // Single/no attribute
   } @else {
-    $res: makeTransition($attrs, $speed, $ease);
+    $res: makeTransition($attrs, $speed, $ease, $delay);
   }
 
   transition: $res;
 }
 
 // Builds a transition with given props
-@function makeTransition($attr, $speed, $ease) {
+@function makeTransition($attr, $speed, $ease, $delay) {
 
   // Default (Please never do this)
-  $res: all map-get($SPEED, $speed) map-get($EASE, $ease);
+  $res: all map-get($SPEED, $speed) map-get($EASE, $ease) $delay;
 
   // Attribute with default props
   @if type-of($attr) == string {
-    $res: $attr map-get($SPEED, $speed) map-get($EASE, $ease);
+    $res: $attr map-get($SPEED, $speed) map-get($EASE, $ease) $delay;
   
   // Attribute with custom props
   } @else if type-of($attr) == map {
@@ -74,6 +74,7 @@
       map-get($attr, name)
       if(index($attr, speed) != null, map-get($SPEED, map-get($attr, speed)), map-get($SPEED, $speed))
       if(index($attr, ease) != null, map-get($EASE, map-get($attr, ease)), map-get($EASE, $ease))
+      if(index($attr, delay) != null, map-get($attr, delay), $delay)
     ;
   }
 

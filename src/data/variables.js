@@ -14,5 +14,6 @@ export const social_media = [
 ];
 
 export const venue = 'VENUE TBD';
-export const old_devpost = 'https://hackthe6ix19.devpost.com';
+export const station = '...';
+export const old_devpost = 'https://hackthe6ix2018.devpost.com/';
 export const email = 'hello@hackthe6ix.com';
