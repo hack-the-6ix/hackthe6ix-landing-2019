@@ -4,6 +4,7 @@
     <div class='apply__pages' :style='height && `height: ${ height }px`'>
       <Personal :handler='handler'/>
       <Links :handler='handler'/>
+      <Email :handler='handler'/>
     </div>
     <div class='apply__controls'>
       <Button class='apply__button' :click='back' :disabled='page === 0'>Back</Button>

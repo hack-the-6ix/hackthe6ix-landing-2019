@@ -9,6 +9,14 @@
       :onChange="handler"
       :value="email"
     />
+    <Input 
+      type="checkbox"
+      class="apply__input"
+      name="acceptance"
+      label="I Accept"
+      :onChange="handler"
+      :value="acceptance"
+    />
   </div>
 </template>
 
@@ -27,6 +35,7 @@
     data() {
       return {
         email: '',
+        acceptance: '',
         source: this.$route.query.src
       }
     },

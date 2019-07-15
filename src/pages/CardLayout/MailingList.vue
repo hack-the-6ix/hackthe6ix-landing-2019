@@ -16,7 +16,7 @@
   const end = Math.max(Object.values(Screens).length - 1, 0);
 
   export default {
-    name: 'Info',
+    name: 'MailingList',
     path: '/mailinglist',
     components: {
       ...Screens,
