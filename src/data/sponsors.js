@@ -17,7 +17,7 @@ export const sponsors = [
     {
         title: 'Amazon Web Services',
         url: 'https://aws.amazon.com/',
-        image: images.aws,
+        image: images.aws_cropped,
         size: SIZES.LARGE
     },
 	{

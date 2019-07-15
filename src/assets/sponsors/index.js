@@ -1,3 +1,4 @@
+export { default as aws_cropped } from './amazon-web-services-cropped.svg?file';
 export { default as aws } from './amazon-web-services.svg?file';
 export { default as capitalone } from './capital-one.svg?file';
 export { default as deloitte } from './deloitte.svg?file';
