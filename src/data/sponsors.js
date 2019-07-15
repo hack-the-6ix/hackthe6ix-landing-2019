@@ -24,7 +24,9 @@ export const sponsors = [
         title: 'Microsoft',
         url: 'https://microsoft.com/',
         image: images.microsoft,
-        size: SIZES.LARGE
+        size: SIZES.LARGE,
+        subtext: 'Microsoft Privacy Statement',
+        sublink: 'https://privacy.microsoft.com/en-us/privacystatement'
     },
 	{
         title: "Ontario Teachers' Pension Plan",
