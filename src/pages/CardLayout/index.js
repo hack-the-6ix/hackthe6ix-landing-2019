@@ -1,7 +1,9 @@
 import Apply from './Apply';
-import MailingList from './MailingList';
+import Subscribe from './Subscribe'
+import Unsubscribe from './Unsubscribe';
 
 export const CardLayout = {
   Apply,
-  MailingList
+  Subscribe,
+  Unsubscribe
 };

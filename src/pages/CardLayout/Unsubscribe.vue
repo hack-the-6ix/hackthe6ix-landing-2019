@@ -1,35 +1,48 @@
 <template>
   <Card class='apply'>
     <h1 class='apply__title'>Hack The 6ix</h1>
-    <div class='apply__pages' :style='height && `height: ${ height }px`'>
-      <Email :handler='handler'/>
+      <div class='apply__pages' :style='height && `height: ${ height }px`'>
+        <div class="apply__page">
+          <h2 class="apply__subtitle">:(</h2>
+          <h3 v-html="this.$route.query.email"></h3>
+            <Input 
+              type="checkbox"
+              class="apply__input"
+              name="acceptance"
+              label="Unsubscribe me from News & Promotions"
+              :onChange="handler"
+              :value="acceptance"
+            />
+        </div>
+        <div class="apply__page">
+          <h2 class="apply__subtitle">All Done!</h2>
+        </div>
+      </div>
     </div>
     <div class='apply__controls'>
-      <Button class='apply__button' :click='submit' :disabled='page === end'>Submit</Button>
+      <Button class='apply__button' v-show='page == 0' :click='submit' :disabled='acceptance !== "on"'>Submit</Button>
     </div>
   </Card>
 </template>
 
 <script>
-  import { Card, Button } from '@components';
-  import * as Screens from './screens';
-  const end = Math.max(Object.values(Screens).length - 1, 0);
+  import { Card, Input, Button } from '@components';
+  import axios from 'axios'
 
   export default {
-    name: 'MailingList',
-    path: '/mailinglist',
+    name: 'Unsubscribe',
+    path: '/unsubscribe',
     components: {
-      ...Screens,
+      Input,
       Button,
       Card
     },
     data() {
       return {
-        email: '',
-        source: this.$route.query.src,
+        email: this.$route.query.email,
+        acceptance: "",
         height: 0,
         page: 0,
-        end
       };
     },
     mounted() {
@@ -43,7 +56,8 @@
     },
     methods: {
       handler({ target }) {
-        this[target.name] = target.value;
+        if(target.type === 'checkbox') { this[target.name] = this.acceptance == "on" ? "off" : "on"; }
+        else {  this[target.name] = target.value; }
       },
       pageHeight() {
         this.$nextTick(() => {
@@ -62,8 +76,25 @@
         });
         this.pageHeight();
       },
+      next() {
+        this.page++;
+        this.shiftPages();
+      },
       submit() {
-
+        const query = `
+        mutation {
+          unsubscribeMailingList(email: "${this.email}") {
+            message
+          }
+        }
+      `
+      axios.post('http://localhost:4000/graphql', { query: query }).then((response) => {
+        let message = response.data.data.unsubscribeMailingList.message;
+        this.next();
+        setTimeout(() => {
+          window.location.replace("/");
+        }, 4000);
+      })
       }
     }
   }
