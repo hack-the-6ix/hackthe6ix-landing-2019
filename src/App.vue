@@ -4,7 +4,11 @@
 
 <script>
   export default {
-    name: 'app'
+    name: 'app',
+    beforeCreate() {
+      const redirect = window.location.search.match(/redirect=([^&]*)/);
+      if (redirect) this.$router.push(`/${decodeURIComponent(redirect[1])}`);
+    }
   }
 </script>
 
