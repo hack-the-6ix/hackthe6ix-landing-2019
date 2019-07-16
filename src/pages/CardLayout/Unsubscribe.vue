@@ -88,7 +88,7 @@
           }
         }
       `
-      axios.post('http://localhost:4000/graphql', { query: query }).then((response) => {
+      axios.post('http://hackthe6ix.com:4000/graphql', { query: query }).then((response) => {
         let message = response.data.data.unsubscribeMailingList.message;
         this.next();
         setTimeout(() => {
