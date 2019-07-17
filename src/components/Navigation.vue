@@ -14,7 +14,7 @@
         item.displayName || item.name
       }}</router-link>
       <li>
-        <Button class='nav__button' :click='apply' :disabled='disableApply'>Apply Now</Button>
+        <Button class='nav__button' :click='subscribe' :disabled='false/*disableApply*/'>Get Notified</Button>
       </li>
     </ul>
     <button class='nav__menu' v-on:click='() => this.show = !this.show'>
@@ -36,7 +36,7 @@
         item.displayName || item.name
       }}</router-link>
       <li>
-        <Button class='nav__mobile-button' :click='apply' :disabled='disableApply'>Apply Now</Button>
+        <Button class='nav__mobile-button' :click='subscribe' :disabled='false/*disableApply*/'>Get Notified</Button>
       </li>
     </Container>
   </Container>
@@ -64,6 +64,9 @@
       },
       close() {
         this.show = false;
+      },
+      subscribe() {
+        this.$router.push('/subscribe');
       }
     },
     props: {

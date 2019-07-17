@@ -92,7 +92,7 @@
         let message = response.data.data.unsubscribeMailingList.message;
         this.next();
         setTimeout(() => {
-          window.location.replace("/");
+          this.$router.push('/');
         }, 4000);
       })
       }
