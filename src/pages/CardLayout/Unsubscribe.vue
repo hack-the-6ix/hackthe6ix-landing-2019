@@ -1,39 +1,48 @@
 <template>
   <Card class='apply'>
-    <h1 class='apply__title'>Hack The 6ix Application Form</h1>
-    <div class='apply__pages' :style='height && `height: ${ height }px`'>
-      <Personal :handler='handler'/>
-      <Links :handler='handler'/>
-      <Email :handler='handler'/>
+    <h1 class='apply__title'>Hack The 6ix</h1>
+      <div class='apply__pages' :style='height && `height: ${ height }px`'>
+        <div class="apply__page">
+          <h2 class="apply__subtitle">:(</h2>
+          <h3 v-html="this.$route.query.email"></h3>
+            <Input 
+              type="checkbox"
+              class="apply__input"
+              name="acceptance"
+              label="Unsubscribe me from News & Promotions"
+              :onChange="handler"
+              :value="acceptance"
+            />
+        </div>
+        <div class="apply__page">
+          <h2 class="apply__subtitle">All Done!</h2>
+        </div>
+      </div>
     </div>
     <div class='apply__controls'>
-      <Button class='apply__button' :click='back' :disabled='page === 0'>Back</Button>
-      <Button class='apply__button' :click='next' :disabled='page === end'>Next</Button>
+      <Button class='apply__button' v-show='page == 0' :click='submit' :disabled='acceptance !== "on"'>Submit</Button>
     </div>
   </Card>
 </template>
 
 <script>
-  import { Card, Button } from '@components';
-  import * as Screens from './screens';
-  const end = Math.max(Object.values(Screens).length - 1, 0);
+  import { Card, Input, Button } from '@components';
+  import axios from 'axios'
 
   export default {
-    name: 'Info',
-    path: '/apply',
+    name: 'Unsubscribe',
+    path: '/unsubscribe',
     components: {
-      ...Screens,
+      Input,
       Button,
       Card
     },
     data() {
       return {
-        first_name: '',
-        last_name: '',
-        email: '',
+        email: this.$route.query.email,
+        acceptance: "",
         height: 0,
         page: 0,
-        end
       };
     },
     mounted() {
@@ -47,7 +56,8 @@
     },
     methods: {
       handler({ target }) {
-        this[target.name] = target.value;
+        if(target.type === 'checkbox') { this[target.name] = this.acceptance == "on" ? "off" : "on"; }
+        else {  this[target.name] = target.value; }
       },
       pageHeight() {
         this.$nextTick(() => {
@@ -70,9 +80,21 @@
         this.page++;
         this.shiftPages();
       },
-      back() {
-        this.page--;
-        this.shiftPages();
+      submit() {
+        const query = `
+        mutation {
+          unsubscribeMailingList(email: "${this.email}") {
+            message
+          }
+        }
+      `
+      axios.post('https://api.hackthe6ix.com/graphql', { query: query }).then((response) => {
+        let message = response.data.data.unsubscribeMailingList.message;
+        this.next();
+        setTimeout(() => {
+          window.location.replace("/");
+        }, 4000);
+      })
       }
     }
   }
