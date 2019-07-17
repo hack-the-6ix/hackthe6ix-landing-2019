@@ -102,7 +102,7 @@
           }
         }
       `
-      axios.post('http://hackthe6ix.com:4000/graphql', { query: query }).then((response) => {
+      axios.post('https://api.hackthe6ix.com/graphql', { query: query }).then((response) => {
         let message = response.data.data.subscribeMailingList.message;
         this.next();
         setTimeout(() => {
