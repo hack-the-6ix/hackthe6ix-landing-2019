@@ -4,6 +4,7 @@ import Dashboard from './Dashboard';
 import Subscribe from './Subscribe';
 import Unsubscribe from './Unsubscribe';
 import Scan from './Scan';
+import Print from './Print';
 
 export const CardLayout = {
   Apply,
@@ -11,5 +12,6 @@ export const CardLayout = {
   Dashboard,
   Subscribe,
   Unsubscribe,
-  Scan
+  Scan,
+  Print
 };
