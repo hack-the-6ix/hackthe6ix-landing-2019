@@ -6,4 +6,5 @@ export { default as intact } from './intact-insurance.svg?file';
 export { default as microsoft } from './microsoft.svg?file';
 export { default as otpp } from './otpp.svg?file';
 export { default as rotman } from './rotman.svg?file';
+export { default as codemode } from './codemode.svg?file';
 export { default as bongo } from './test.gif';
