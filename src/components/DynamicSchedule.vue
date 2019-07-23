@@ -11,29 +11,11 @@
         <div class="day sunday">Sunday</div>
       </div>
       <div class="markers">
-        <div class="marker">
-          <div class="m">8PM</div>
-        </div>
-        <div class="marker">
-          <div class="m">9PM</div>
-        </div>
-        <div class="marker">
-          <div class="m">10PM</div>
-        </div>
-        <div class="marker">
-          <div class="m">11PM</div>
-        </div>
-        <div class="marker">
-          <div class="m">12AM</div>
-        </div>
-        <div class="marker">
-          <div class="m">1AM</div>
-        </div>
-        <div class="marker">
-          <div class="m">2AM</div>
+        <div class="marker" v-for="timeslot in timeslots" :key=timeslot.index>
+          <div class="m">{{timeslot.label}}</div>
         </div>
       </div>
-      <div class="row" v-for="event in events" :key=event.location>
+      <div class="row" v-for="event in events" :key=event.location :style="row_style(event.position)">
         <div class="event" v-for="session in event.events" :key=session.id>
           <div class="bubble" :style="session_style(session)">{{session.title}}</div>
         </div>
@@ -57,7 +39,19 @@ import axios from 'axios'
       return {
         events: [],
         locations: [],
+        start_time: new Date('2019-08-23T20:00:00-0400'),
+        end_time: new Date('2019-08-25T14:00:00-0400')
       }
+    },
+    computed: {
+      timeslots() {
+        let time_diff = this.num_hours(this.start_time, this.end_time)
+        return Array(time_diff).fill(0).map((_s, i) => {
+          let start = new Date(this.start_time)
+          let time = new Date(start.setHours(start.getHours() + i))
+          return { label: this.formatTimestamp(time), index: i } 
+        })
+      },
     },
     methods: {
       get_unique_locations(events) {
@@ -66,23 +60,42 @@ import axios from 'axios'
       },
       events_by_location(events) {
         let locations = this.get_unique_locations(events)
-        return locations.map((location) => {
+        return locations.map((location, i) => {
           return { 
             location: location, 
+            position: i,
             events: events.filter((e) => {
               return e.location == location
             })
           }
         })
       },
+      num_hours(start_time, end_time) {
+        let time_diff =  Math.abs(end_time - start_time) / 1000
+        return Math.abs(Math.round(time_diff / (60 * 60)))
+      },
       session_style(event) {
         const x_ratio = 80 / 3600
-        const start_time = new Date('2019-08-23T20:00:00-0400')
+        const start_time = this.start_time
         const event_start = new Date(event.start)
         const event_finish = new Date(event.finish)
         let offset = Math.abs(start_time - event_start) / 1000
         let length = Math.abs(event_finish - event_start) / 1000
         return { 'margin-left': offset * x_ratio + 'px', width: length * x_ratio + 'px' }
+      },
+      row_style(index) {
+        let bg_color = (index % 2 == 0) ? 'rgba(35, 181, 175, 0.1)' : 'rgba(35, 181, 175, 0.0)'
+        return { 
+          width: (this.num_hours(this.start_time, this.end_time) * 80) + 'px', 
+          background: bg_color 
+        }
+      },
+      formatTimestamp(date) {
+        let hours = date.getHours()
+        let ampm = hours >= 12 ? 'pm' : 'am'
+        hours = hours % 12
+        hours = hours ? hours : 12
+        return hours + ' ' + ampm
       }
     },
     created() {
@@ -100,9 +113,9 @@ import axios from 'axios'
       `
       axios.post('http://hackthe6ix.com:4000/graphql', { query: query }).then((response) => {
         response = response.data.data
-        this.events = this.events_by_location(response.events)
-        console.log(this.events_by_location(response.events))
-        this.locations = this.get_unique_locations(response.events)
+        let events = response.events
+        this.events = this.events_by_location(events)
+        this.locations = this.get_unique_locations(events)
       })
     }
   }
@@ -144,10 +157,11 @@ import axios from 'axios'
           line-height: $Y_SCALE / 2;
         }
         .friday { min-width:  ($X_SCALE * 4) - 16px; }
-        .saturday { min-width:  ($X_SCALE * 6) - 16px; }
+        .saturday { min-width:  ($X_SCALE * 24) - 16px; }
         .sunday { min-width:  ($X_SCALE * 4) - 16px; }
       }
       .markers {
+        background: white !important;
         display: flex;
         height: $Y_SCALE / 2;
         .marker { 
