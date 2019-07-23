@@ -58,5 +58,23 @@ export const sponsors = [
         url: 'https://www.codemode.co/',
         image: images.codemode,
         size: SIZES.TINY
+    },
+    {
+        title: 'CloudSploit',
+        url: 'https://cloudsploit.com/',
+        image: images.cloudsploit,
+        size: SIZES.TINY
+    },
+    {
+        title: 'Voiceflow',
+        url: 'https://www.voiceflow.com/',
+        image: images.voiceflow,
+        size: SIZES.TINY
+    },
+    {
+        title: 'Indico',
+        url: 'https://indico.io/',
+        image: images.indico,
+        size: SIZES.TINY
     }
 ];

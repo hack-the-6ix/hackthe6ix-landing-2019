@@ -7,4 +7,7 @@ export { default as microsoft } from './microsoft.svg?file';
 export { default as otpp } from './otpp.svg?file';
 export { default as rotman } from './rotman.svg?file';
 export { default as codemode } from './codemode.svg?file';
+export { default as cloudsploit } from './cloudsploit.svg?file';
+export { default as voiceflow } from './voiceflow.png';
+export { default as indico } from './indico.png';
 export { default as bongo } from './test.gif';
