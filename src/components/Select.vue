@@ -3,8 +3,8 @@
     <label class='select__label' :htmlFor='name'>{{ label }}</label>
     <ul class='select__items'>
       <li
-        :class='"select__item" + (selected === i ? " select__item--active" : "")'
-        v-on:click='el => click(el, i)'
+        :class='"select__item" + (value === i ? " select__item--active" : "")'
+        @click="$emit('click', i)"
         v-for='(option, i) in options'
         :key='i'
       >
@@ -23,6 +23,10 @@
         selected: -1
       };
     },
+    model: {
+      prop: 'value',
+      event: 'click'
+    },
     computed: {
       error() {
         return this.state === false;
@@ -30,7 +34,6 @@
     },
     props: {
       value: Number,
-      onChange: Function,
       options: {
         type: Array,
         default: () => []
@@ -49,13 +52,6 @@
       },
       errorMsg: [ String, Boolean ]
     },
-    methods: {
-      click(el, i) {
-        this.$el.value = i;
-        this.selected = i;
-        this.onChange({ target: this.$el });
-      }
-    }
   }
 </script>
 

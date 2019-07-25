@@ -4,43 +4,54 @@
       <div class='apply__pages' :style='height && `height: ${ height }px`'>
         <div class="apply__page">
           <h2 class="apply__subtitle">:(</h2>
-          <h3 v-html="this.$route.query.email"></h3>
-            <Input 
-              type="checkbox"
-              class="apply__input"
-              name="acceptance"
-              label="Unsubscribe me from News & Promotions"
-              :onChange="handler"
-              :value="acceptance"
-            />
-        </div>
-        <div class="apply__page">
-          <h2 class="apply__subtitle">All Done!</h2>
-        </div>
+          <h3 class='apply__email'>Email: {{ $route.query.email }}</h3>
+          <Checkbox
+            class="apply__input"
+            name="acceptance"
+            label="Unsubscribe me from News & Promotions"
+            v-model="acceptance"
+          />
+      </div>
+      <div class="apply__page">
+        <h2 class="apply__subtitle">All Done!</h2>
       </div>
     </div>
     <div class='apply__controls'>
-      <Button class='apply__button' v-show='page == 0' :click='submit' :disabled='acceptance !== "on"'>Submit</Button>
+      <Button
+        class='apply__button'
+        v-show='!page'
+        :click='submit'
+        :disabled='!(acceptance && $route.query.email)'
+      >
+        Submit
+      </Button>
+      <Button
+        class='apply__button'
+        v-show='page'
+        :click="() => $router.push('/')"
+      >
+        Back to home
+      </Button>
     </div>
   </Card>
 </template>
 
 <script>
-  import { Card, Input, Button } from '@components';
-  import axios from 'axios'
+  import { Card, Checkbox, Button } from '@components';
+  import { query } from '@utils';
 
   export default {
     name: 'Unsubscribe',
     path: '/unsubscribe',
     components: {
-      Input,
+      Checkbox,
       Button,
       Card
     },
     data() {
       return {
         email: this.$route.query.email,
-        acceptance: "",
+        acceptance: false,
         height: 0,
         page: 0,
       };
@@ -80,21 +91,19 @@
         this.page++;
         this.shiftPages();
       },
-      submit() {
-        const query = `
-        mutation {
-          unsubscribeMailingList(email: "${this.email}") {
-            message
-          }
+      async submit() {
+        try {
+          await query(`
+            mutation unsub($email: String!) {
+              unsubscribeMailingList(email: $email) {
+                message
+              }
+            }
+          `, { email: this.email });
+          this.next();
+        } catch (err) {
+          alert(err);
         }
-      `
-      axios.post('http://hackthe6ix.com:4000/graphql', { query: query }).then((response) => {
-        let message = response.data.data.unsubscribeMailingList.message;
-        this.next();
-        setTimeout(() => {
-          window.location.replace("/");
-        }, 4000);
-      })
       }
     }
   }
@@ -113,6 +122,10 @@
 
     &__title {
       margin: 0;
+    }
+
+    &__email {
+      margin-bottom: -10px;
     }
 
     &__pages {
