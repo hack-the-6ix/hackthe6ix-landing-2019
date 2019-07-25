@@ -6,7 +6,7 @@
     <Button class='contact__button' icon='envelope' :click='contact'>Contact Us</Button>
     <div class="contact__map">
       <div class="contact__map-canvas">
-        <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=toronto&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"/>
+        <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=bahencentre,toronto&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"/>
       </div>
     </div>
   </Container>

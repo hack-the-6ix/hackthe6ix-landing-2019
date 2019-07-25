@@ -17,6 +17,7 @@
             :width='sponsor.size'
           />
         </a>
+        <a :href="sponsor.sublink"><h3 style='margin:0;' class='sponsor__text'>{{sponsor.subtext}}</h3></a>
       </li>
     </ul>
     <div class='sponsor__footer'>
