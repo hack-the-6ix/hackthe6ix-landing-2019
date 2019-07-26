@@ -9,6 +9,7 @@
             class="apply__input"
             name="acceptance"
             label="Unsubscribe me from News & Promotions"
+            required
             v-model="acceptance"
           />
       </div>
@@ -58,9 +59,11 @@
     },
     mounted() {
       window.addEventListener('resize', this.pageHeight, { passive: true });
+      window.addEventListener('load', this.pageHeight);
     },
     beforeDestory() {
       window.removeEventListener('resize', this.pageHeight, { passive: true });
+      window.removeEventListener('load', this.pageHeight);
     },
     updated() {
       this.pageHeight();

@@ -10,7 +10,9 @@ import {
   faEnvelope,
   faHeart,
   faArrowUp,
-  faCheck
+  faCheck,
+  faPlus,
+  faTrash
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -30,6 +32,8 @@ library.add(
   faHeart,
   faArrowUp,
   faCheck,
+  faPlus,
+  faTrash,
   faFacebook,
   faTwitter,
   faInstagram

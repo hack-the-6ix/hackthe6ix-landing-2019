@@ -5,7 +5,12 @@
     :disabled='disabled'
     :class='{"button--secondary": secondary, "button--loading": loading}'
   >
-    <icon v-if='!loading && icon' class='button__icon' :icon='icon'/>
+    <icon
+      v-if='!loading && icon'
+      class='button__icon'
+      :class="{'button__icon--only': !$slots.default}" 
+      :icon='icon'
+    />
     <slot v-if='!loading'/>
     <icon v-if='loading' icon='circle-notch' spin/>
   </button>
@@ -69,6 +74,9 @@
 
     &__icon {
       margin-right: 4px;
+      &--only {
+        margin-right: 0;
+      }
     }
 
     &:disabled {

@@ -1,27 +1,29 @@
 <template>
-  <div class='input'>
-    <label v-if='label' class='input__label' :htmlFor='name'>{{ label + (required ? '*' : '') }}</label>
-    <input
-      :class='{"input__form--success": state, "input__form--error": error}'
-      @input="$emit('input', $event.target.value)"
+  <div class='textarea'>
+    <label class='textarea__label' :htmlFor='name'>{{ label + (required ? '*' : '') }}</label>
+    <textarea
+      @input='handler'
       :placeholder='placeholder'
       :aria-errormessage='name'
+      class='textarea__form'
       :aria-invaild='error'
-      :disabled='disabled'
-      class='input__form'
       :value='value'
       :name='name'
-      :type='type'
-      :max='max'
-      :min='min'
+      rows='4'
     />
-    <label :id='name' class='input__error' v-if='error'>{{ errorMsg }}</label>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Input',
+    name: 'Textarea',
+    methods: {
+      handler({ target }) {
+        this.$emit('input', target.value);
+        target.style = 'height: auto; padding: 0';
+        target.style = `height: ${target.scrollHeight}px`;
+      }
+    },
     computed: {
       error() {
         return this.state === false;
@@ -33,22 +35,16 @@
     },
     props: {
       value: [ String, Number ],
-      type: String,
-      disabled: Boolean,
       required: Boolean,
       placeholder: String,
-      label: String,
-      max: [ String, Number ],
-      min: [ String, Number ],
+      label: {
+        type: String,
+        required: true
+      },
       name: {
         type: String,
         required: true
       },
-      state: { // true = success, false = error
-        type: Boolean,
-        default: () => null
-      },
-      errorMsg: String
     }
   }
 </script>
@@ -58,7 +54,7 @@
   @import '~@styles/_mixins.scss';
   @import '~@styles/_variables.scss';
 
-  .input {
+  .textarea {
     @include flex(column);
     margin-bottom: 16px;
     font-weight: bold;
@@ -71,9 +67,11 @@
 
     &__form {
       @include transition(border-color);
+      resize: none;
       border: 1.5px solid #868686;
       font-family: $FONT;
       background-color: transparent;
+      overflow: hidden;
       color: $TEXT;
       outline: none;
       font-size: 0.95rem;
@@ -84,27 +82,6 @@
       &:focus {
         border-color: map-get($PRIMARY, TEAL);
       }
-
-      &:disabled {
-        opacity: 0.6;
-      }
-
-      &--success {
-        &, &:focus {
-          border-color: map-get($STATE, SUCCESS);
-        }
-      }
-
-      &--error {
-        &, &:focus {
-          border-color: map-get($STATE, ERROR);
-        }
-      }
-    }
-
-    &__error {
-      margin-top: 8px;
-      color: map-get($STATE, ERROR);
     }
   }
 </style>

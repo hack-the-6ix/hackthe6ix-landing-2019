@@ -10,7 +10,7 @@
       />
       <icon class='checkbox__icon' :class='{"checkbox__icon--checked": value}' icon='check'/>
     </div>
-    <label class='checkbox__label' :htmlFor='name'>{{ label }}</label>
+    <label class='checkbox__label' :htmlFor='name'>{{ label + (required ? '*' : '') }}</label>
   </div>
 </template>
 
@@ -23,6 +23,7 @@
     },
     props: {
       value: Boolean,
+      required: Boolean,
       label: {
         type: String,
         required: true

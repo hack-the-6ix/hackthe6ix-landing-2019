@@ -1,6 +1,6 @@
 <template>
   <div class='select'>
-    <label class='select__label' :htmlFor='name'>{{ label }}</label>
+    <label class='select__label' :htmlFor='name'>{{ label + (required ? '*' : '') }}</label>
     <ul class='select__items'>
       <li
         :class='"select__item" + (value === i ? " select__item--active" : "")'
@@ -34,6 +34,7 @@
     },
     props: {
       value: Number,
+      required: Boolean,
       options: {
         type: Array,
         default: () => []

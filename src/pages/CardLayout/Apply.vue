@@ -7,12 +7,51 @@
         :last_name.sync='last_name'
         :email.sync='email'
         :gender.sync='gender'
+        :valid.sync='valid'
       />
-      <Links/>
+      <Experience
+        :school.sync='school'
+        :year_of_study.sync='year_of_study'
+        :portfolio.sync='portfolio'
+        :github.sync='github'
+        :valid.sync='valid'
+      />
+      <Hackathon
+        :hack_count.sync='hack_count'
+        :pitch.sync='pitch'
+        :team_members.sync='team_members'
+        :valid.sync='valid'
+      />
+      <Finish/>
     </div>
     <div class='apply__controls'>
-      <Button class='apply__button' :click='back' :disabled='page === 0'>Back</Button>
-      <Button class='apply__button' :click='next' :disabled='page === end'>Next</Button>
+      <Button
+        secondary
+        v-if='page !== end'
+        class='apply__button apply__button--main'
+        :click='back'
+        :disabled='page === 0'
+      >
+        Back
+      </Button>
+
+      <Button
+        v-if='page !== end'
+        class='apply__button'
+        :click='page === (end - 1) ? submit : next'
+        :loading='loading'
+        :disabled='!valid'
+      >
+        {{page === (end - 1) ? 'Submit' : 'Next'}}
+      </Button>
+
+      <Button
+        v-if='page === end'
+        class='apply__button'
+        :click='() => $router.push("/dash")'
+      >
+        Go to Dashboard
+      </Button>
     </div>
   </Card>
 </template>
@@ -32,10 +71,26 @@
     },
     data() {
       return {
+        // Personal
         first_name: '',
         last_name: '',
         email: '',
         gender: -1,
+
+        // Experience
+        school: '',
+        year_of_study: 1,
+        portfolio: '',
+        github: '',
+
+        // Hackathon Information
+        hack_count: 0,
+        pitch: '',
+        team_members: [''],
+
+        // Others
+        loading: false,
+        valid: false,
         height: 0,
         page: 0,
         end
@@ -43,9 +98,11 @@
     },
     mounted() {
       window.addEventListener('resize', this.pageHeight, { passive: true });
+      window.addEventListener('load', this.shiftPages);
     },
     beforeDestory() {
       window.removeEventListener('resize', this.pageHeight, { passive: true });
+      window.removeEventListener('load', this.shiftPages);
     },
     updated() {
       this.pageHeight();
@@ -65,16 +122,31 @@
             `translateX(${ this.page * -100 }%) translateX(${ this.page * -60 }px)`
           );
           page.style.opacity = current ? 1 : 0;
+          page.setAttribute('data-current', current);
+
         });
         this.pageHeight();
       },
       next() {
         this.page++;
+        this.valid = false;
         this.shiftPages();
       },
       back() {
         this.page--;
+        this.valid = true;
         this.shiftPages();
+      },
+      async submit() {
+        this.loading = true;
+        try {
+          window.setTimeout(() => {
+            this.loading = false;
+            this.next();
+          }, 5000);
+        } catch (err) {
+          alert(err);
+        }
       }
     }
   }
@@ -120,6 +192,7 @@
     }
 
     &__controls {
+      @include flex();
       margin-top: 20px;
     }
 
@@ -137,11 +210,16 @@
 
       &__controls {
         margin-top: 5px;
+        flex-direction: column;
       }
 
       &__button {
         width: 100%;
         margin: 10px 0 0;
+
+        &--main {
+          order: 1;
+        }
       }
     }
   }

@@ -10,6 +10,7 @@
             :state="checkEmail()"
             placeholder="e.g. hunter2@hackthe6ix.com"
             errorMsg='Invalid email'
+            required
             label="Email"
             v-model="email"
           />
@@ -17,6 +18,7 @@
             class="apply__input"
             name="acceptance"
             label="I want to receive occasional emails about updates and news"
+            required
             v-model="acceptance"
           />
       </div>
@@ -69,9 +71,11 @@
     },
     mounted() {
       window.addEventListener('resize', this.pageHeight, { passive: true });
+      window.addEventListener('load', this.pageHeight);
     },
     beforeDestory() {
       window.removeEventListener('resize', this.pageHeight, { passive: true });
+      window.removeEventListener('load', this.pageHeight);
     },
     updated() {
       this.pageHeight();
