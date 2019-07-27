@@ -1,4 +1,4 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
+import {library} from '@fortawesome/fontawesome-svg-core';
 import {
   faCircleNotch,
   faFeatherAlt,
@@ -12,12 +12,13 @@ import {
   faArrowUp,
   faCheck,
   faPlus,
-  faTrash
+  faTrash,
+  faHome,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
   faTwitter,
-  faInstagram
+  faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -34,7 +35,8 @@ library.add(
   faCheck,
   faPlus,
   faTrash,
+  faHome,
   faFacebook,
   faTwitter,
-  faInstagram
+  faInstagram,
 );

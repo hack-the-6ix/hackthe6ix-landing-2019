@@ -3,5 +3,5 @@ import Info from './Info';
 
 export const CardLayout = {
   User,
-  Info
+  Info,
 };
