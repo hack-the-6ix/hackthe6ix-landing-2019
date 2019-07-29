@@ -17,7 +17,7 @@ import {query} from '@utils';
 
 export default {
   name: 'Dashboard',
-  path: '/dash',
+  path: '/dash/:id?',
   components: {
     Card,
     ...Screens,
@@ -34,15 +34,14 @@ export default {
     window.addEventListener('resize', this.pageHeight, {passive: true});
     window.addEventListener('load', this.shiftPages);
     try {
-      const id = this.$route.query.id;
+      const id = this.$route.params.id;
       const {token} = await query(AUTHENTICATE, {id});
       const [user] = await query(FETCH_INFO, {id}, token);
+      this.loading = false;
       this.user = user;
     } catch (err) {
       alert(err);
-      this.$rotuer.push('/');
-    } finally {
-      this.loading = false;
+      this.$router.push('/');
     }
   },
   beforeDestory() {
