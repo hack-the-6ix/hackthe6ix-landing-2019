@@ -28,6 +28,8 @@
       <Button class="dash__button" :click="() => to(4)" icon="award" disabled
         >Challenges/Prizes</Button
       >
+      <p class="dash"><b>Got Questions? 👋 hello@hackthe6ix.com</b></p>
+      <p class="dash"><b>Remember to bookmark this page!</b></p>
     </div>
   </div>
 </template>
