@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+   import { query } from '@utils';
   export default {
     name: 'DynamicSchedule',
     props: {
@@ -99,9 +99,8 @@ import axios from 'axios'
       }
     },
     created() {
-      // fetch schedule data
-      const query = `
-        query {
+      query(        
+        `{
           events {
             title
             start
@@ -110,12 +109,8 @@ import axios from 'axios'
             description
           }
         }
-      `
-      axios.post('http://hackthe6ix.com:4000/graphql', { query: query }).then((response) => {
-        response = response.data.data
-        let events = response.events
-        this.events = this.events_by_location(events)
-        this.locations = this.get_unique_locations(events)
+      `, {}).then(() => {
+        console.log('work in progress')
       })
     }
   }
