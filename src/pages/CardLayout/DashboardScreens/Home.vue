@@ -13,7 +13,7 @@
     </div>
     <div class="dash__controls">
       <Button class="dash__button" :click="() => to(1)" icon="compass"
-        >Review Application</Button
+        >Application Status</Button
       >
       <Button class="dash__button" :click="() => to(2)" icon="calendar"
         >Schedule</Button

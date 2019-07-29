@@ -4,7 +4,7 @@
     <Input
       class="apply__input"
       name="first_name"
-      placeholder="e.g. Dennis"
+      placeholder="e.g. John"
       label="First Name"
       v-model="first_name_"
       required
@@ -12,7 +12,7 @@
     <Input
       class="apply__input"
       name="last_name"
-      placeholder="e.g. Lyninx"
+      placeholder="e.g. Doe"
       label="Last Name"
       v-model="last_name_"
       required
@@ -21,7 +21,7 @@
       class="apply__input"
       name="email"
       type="email"
-      placeholder="e.g. hunter2@hackthe6ix.com"
+      placeholder="e.g. john@hackthe6ix.com"
       label="Email"
       v-model="email_"
       :state="validateEmail()"

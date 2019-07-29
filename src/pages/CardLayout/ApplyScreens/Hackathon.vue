@@ -17,7 +17,7 @@
       class="apply__input"
       name="pitch"
       placeholder="Tell us about your thing"
-      label="What type of thing would you like to build at the hackathon?"
+      label="What would you like to build at the 2019 hackathon? (Minimum 50 Characters)"
       v-model="pitch_"
       required
     />

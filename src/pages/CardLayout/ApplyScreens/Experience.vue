@@ -5,7 +5,7 @@
       class="apply__input"
       name="school"
       placeholder="University of The 6ix"
-      label="Name of School"
+      label="School"
       v-model="school_"
       required
     />
