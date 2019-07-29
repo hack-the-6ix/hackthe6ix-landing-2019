@@ -2,7 +2,7 @@
   <Card class="apply">
     <h1 class="apply__title">Hacker Dashboard</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
-      <Home :user="user" :loading="loading" :to="to" />
+      <Home :user="user" :loading="loading" :to="to" :pageHeight="pageHeight"/>
       <Application :user="user" :loading="loading" :to="to" />
       <Schedule :user="user" :loading="loading" :to="to" />
     </div>

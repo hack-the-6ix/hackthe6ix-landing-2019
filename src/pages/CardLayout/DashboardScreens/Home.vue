@@ -5,6 +5,7 @@
       <img
         class="dash__qr"
         src="https://i.ibb.co/Pgpxx43/Clipboard.jpg"
+        @load="pageHeight"
         alt="QR Code"
       />
       <p class="dash__name">{{ user.name }} {{ user.lname }}</p>
@@ -42,6 +43,7 @@ export default {
   props: {
     user: Object,
     loading: Boolean,
+    pageHeight: Function,
     to: Function,
   },
 };
