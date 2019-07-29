@@ -61,6 +61,7 @@ export default {
     pitch: String,
     team_members: Array,
     valid: Boolean,
+    page: Number,
   },
   data() {
     return {
@@ -101,6 +102,11 @@ export default {
     },
     team_members_(val) {
       this.$emit('update:team_members', val);
+    },
+    page() {
+      if (this.$el.getAttribute('data-current') === 'true') {
+        this.check();
+      }
     },
   },
 };

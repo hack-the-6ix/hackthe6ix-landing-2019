@@ -8,6 +8,7 @@
         :email.sync="email"
         :gender.sync="gender"
         :valid.sync="valid"
+        :page="page"
       />
       <Experience
         :school.sync="school"
@@ -15,12 +16,14 @@
         :portfolio.sync="portfolio"
         :github.sync="github"
         :valid.sync="valid"
+        :page="page"
       />
       <Hackathon
         :hack_count.sync="hack_count"
         :pitch.sync="pitch"
         :team_members.sync="team_members"
         :valid.sync="valid"
+        :page="page"
       />
       <Finish :email.sync="email" />
     </div>
@@ -97,7 +100,7 @@ export default {
       team_members: [],
 
       // Others
-      showModal: true,
+      showModal: false,
       loading: false,
       valid: false,
       height: 0,
@@ -136,12 +139,10 @@ export default {
     },
     next() {
       this.page++;
-      this.valid = false;
       this.shiftPages();
     },
     back() {
       this.page--;
-      this.valid = true;
       this.shiftPages();
     },
     async submit() {

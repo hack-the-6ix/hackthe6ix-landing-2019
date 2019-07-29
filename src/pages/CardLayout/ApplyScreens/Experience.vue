@@ -24,7 +24,6 @@
       v-model="portfolio_"
       :state="validateUrl(portfolio_)"
       errorMsg="Please provide a valid http(s) website"
-      required
     />
     <Input
       class="apply__input"
@@ -34,7 +33,6 @@
       v-model="github_"
       :state="validateUrl(github_)"
       errorMsg="Please provide a valid http(s) website"
-      required
     />
   </div>
 </template>
@@ -56,6 +54,7 @@ export default {
     portfolio: String,
     github: String,
     valid: Boolean,
+    page: Number,
   },
   data() {
     return {
@@ -78,13 +77,13 @@ export default {
         Boolean(
           this.school_.length > 0 &&
             this.year_of_study_ > -1 &&
-            validate(this.portfolio_, 'url') &&
-            validate(this.github_, 'url'),
+            this.validateUrl(this.portfolio_, true) &&
+            this.validateUrl(this.github_, true),
         ),
       );
     },
-    validateUrl(url) {
-      return url === '' ? undefined : validate(url, 'url');
+    validateUrl(url, res) {
+      return url === '' ? res : validate(url, 'url');
     },
   },
   watch: {
@@ -99,6 +98,11 @@ export default {
     },
     github_(val) {
       this.$emit('update:github', val);
+    },
+    page() {
+      if (this.$el.getAttribute('data-current') === 'true') {
+        this.check();
+      }
     },
   },
 };

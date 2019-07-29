@@ -55,6 +55,7 @@ export default {
     email: String,
     gender: Number,
     valid: Boolean,
+    page: Number,
   },
   data() {
     return {
@@ -112,6 +113,11 @@ export default {
     },
     gender_(val) {
       this.$emit('update:gender', val);
+    },
+    page() {
+      if (this.$el.getAttribute('data-current') === 'true') {
+        this.check();
+      }
     },
   },
 };
