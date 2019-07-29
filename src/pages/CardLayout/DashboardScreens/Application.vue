@@ -1,10 +1,10 @@
 <template>
   <div class="apply__page">
-    <h2 class="apply__subtitle">Review Application</h2>
+    <h2 class="apply__subtitle">Application Status</h2>
     <div v-if="!loading" class="dash__app">
       <p class="dash__status">Current application status:</p>
       <p class="dash__large">{{ caps }}</p>
-      <p>Come back here later for updates</p>
+      <p>Check here later for updates.</p>
     </div>
     <div class="dash__controls">
       <Button class="dash__button dash__button--full" :click="() => to(0)"
