@@ -59,7 +59,7 @@
 
 <script>
 import {Card, Button} from '@components';
-import * as Screens from './screens';
+import * as Screens from './ApplyScreens';
 import {APPLY, GENDER_ENUM, YEAR_OF_STUDY_ENUM} from '@graphql';
 import {query} from '@utils';
 const end = Math.max(Object.values(Screens).length - 1, 0);
@@ -141,7 +141,7 @@ export default {
     async submit() {
       this.loading = true;
       try {
-        await query(APPLY, {
+        const {user_errors} = await query(APPLY, {
           app: {
             name: this.first_name,
             lname: this.last_name,
@@ -156,7 +156,9 @@ export default {
             team_members: this.team_members,
           },
         });
-        this.next();
+
+        if (user_errors) alert(user_errors);
+        else this.next();
       } catch (err) {
         alert(err);
       }

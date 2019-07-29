@@ -23,7 +23,7 @@ export default {
     secondary: Boolean,
     disabled: Boolean,
     loading: Boolean,
-    icon: String,
+    icon: [String, Array],
     click: {
       type: Function,
       default: () => () => {},
@@ -74,7 +74,7 @@ export default {
   }
 
   &__icon {
-    margin-right: 4px;
+    margin-right: 8px;
     &--only {
       margin-right: 0;
     }

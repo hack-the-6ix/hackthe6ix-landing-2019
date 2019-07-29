@@ -1,12 +1,6 @@
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {
   faCircleNotch,
-  faFeatherAlt,
-  faSignOutAlt,
-  faSave,
-  faQrcode,
-  faArrowLeft,
-  faDoorOpen,
   faEnvelope,
   faHeart,
   faArrowUp,
@@ -14,21 +8,19 @@ import {
   faPlus,
   faTrash,
   faHome,
+  faCompass,
+  faCalendar,
+  faAward,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
   faTwitter,
   faInstagram,
+  faSlack,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
   faCircleNotch,
-  faFeatherAlt,
-  faSignOutAlt,
-  faSave,
-  faQrcode,
-  faArrowLeft,
-  faDoorOpen,
   faEnvelope,
   faHeart,
   faArrowUp,
@@ -36,7 +28,11 @@ library.add(
   faPlus,
   faTrash,
   faHome,
+  faCompass,
+  faCalendar,
+  faAward,
   faFacebook,
   faTwitter,
   faInstagram,
+  faSlack,
 );

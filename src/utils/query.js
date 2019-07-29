@@ -9,12 +9,11 @@
  * @param {string} query - Key for GraphQL query
  * @param {queryConfig} config - Configuration for query
  */
-export const query = async (query, variables = {}) => {
-  const token = localStorage.getItem('token');
+export const query = async (query, variables = {}, token) => {
   const raw = await fetch(process.env.VUE_APP_GRAPHQL, {
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? {Authorization: `Bearer ${token}`} : {}),
+      ...(token ? {'Ht6-Access-Token': token} : {}),
     },
     method: 'POST',
     body: JSON.stringify({query, variables}),
