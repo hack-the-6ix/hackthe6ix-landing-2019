@@ -12,11 +12,11 @@
 export const query = async (query, variables = {}) => {
     const token = localStorage.getItem('token');
     const raw = await fetch(
-        process.env.VUE_APP_GRAPHQL,
+        process.env.GRAPHQL_API,
         {
             headers: {
                 'Content-Type': 'application/json',
-                ...(token ? { 'Authorization': `Bearer ${ token }` } : {})
+                ...(token ? { 'Authorization': `Bearer ${ token }` } : undefined)
             },
             method: 'POST',
             body: JSON.stringify({ query, variables })

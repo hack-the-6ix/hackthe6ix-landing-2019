@@ -1,4 +1,4 @@
-import { email, old_devpost, social_media } from './variables';
+import { venue, station, email, old_devpost, social_media } from './variables';
 
 export const faq = [
     {

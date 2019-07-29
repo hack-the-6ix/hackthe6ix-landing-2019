@@ -4,49 +4,38 @@
       <div class='apply__pages' :style='height && `height: ${ height }px`'>
         <div class="apply__page">
           <h2 class="apply__subtitle">Join our Mailing List</h2>
-          <Input
-            class="apply__input"
-            name="email"
-            :state="checkEmail()"
-            placeholder="e.g. hunter2@hackthe6ix.com"
-            errorMsg='Invalid email'
-            label="Email"
-            v-model="email"
-          />
-          <Checkbox
-            class="apply__input"
-            name="acceptance"
-            label="I want to receive occasional emails about updates and news"
-            v-model="acceptance"
-          />
-      </div>
-      <div class="apply__page">
-        <h2 class="apply__subtitle">Thanks For Signing Up!</h2>
+            <Input
+              class="apply__input"
+              name="email"
+              placeholder="e.g. hunter2@hackthe6ix.com"
+              label="Email"
+              :onChange="handler"
+              :value="email"
+            />
+            <Input 
+              type="checkbox"
+              class="apply__input"
+              name="acceptance"
+              label="I want to receive occasional emails about updates and news"
+              :onChange="handler"
+              :value="acceptance"
+            />
+        </div>
+        <div class="apply__page">
+          <h2 class="apply__subtitle">Thanks For Signing Up!</h2>
+        </div>
       </div>
     </div>
     <div class='apply__controls'>
-      <Button
-        class='apply__button'
-        v-show='!page'
-        :click='submit'
-        :disabled='!(checkEmail() && acceptance)'
-      >
-        Submit
-      </Button>
-      <Button
-        class='apply__button'
-        v-show='page'
-        :click="() => $router.push('/')"
-      >
-        Back to home
-      </Button>
+      <Button class='apply__button' v-show='page == 0' :click='submit' :disabled='(!valid())'>Submit</Button>
     </div>
   </Card>
 </template>
 
 <script>
-  import { Card, Input, Checkbox, Button } from '@components';
-  import { validate, query } from '@utils';
+  import { Card, Input, Button } from '@components';
+  import axios from 'axios';
+  const email_reg_exp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   export default {
     name: 'Subscribe',
@@ -54,14 +43,13 @@
     components: {
       Input,
       Button,
-      Card,
-      Checkbox
+      Card
     },
     data() {
       return {
         email: '',
         source: this.$route.query.src,
-        acceptance: false,
+        acceptance: '',
         confirmation: false,
         height: 0,
         page: 0,
@@ -77,6 +65,10 @@
       this.pageHeight();
     },
     methods: {
+      handler({ target }) {
+        if(target.type === 'checkbox') { this[target.name] = this.acceptance == "on" ? "off" : "on"; }
+        else {  this[target.name] = target.value; }
+      },
       pageHeight() {
         this.$nextTick(() => {
           const page = document.querySelectorAll('.apply__page')[this.page];
@@ -98,22 +90,25 @@
         this.page++;
         this.shiftPages();
       },
-      checkEmail() {
-        return this.email === '' ? undefined : validate(this.email, 'email');
+      valid() {
+        return email_reg_exp.exec(this.email) !== null && this.acceptance === "on";
       },
-      async submit() {
-        try {
-          await query(`
-            mutation sub($email: String!, $source: String) {
-              subscribeMailingList(email: $email, source: $source) {
-                message
-              }
-            }
-          `, { email: this.email, source: this.source });
-          this.next();
-        } catch (err) {
-          alert(err);
+      submit() {
+        if(!this.valid()) { return; }
+        const query = `
+        mutation {
+          subscribeMailingList(email: "${this.email}", source: "${this.source}") {
+            message
+          }
         }
+      `
+      axios.post('https://api.hackthe6ix.com/graphql', { query: query }).then((response) => {
+        let message = response.data.data.subscribeMailingList.message;
+        this.next();
+        setTimeout(() => {
+          this.$router.push('/');
+        }, 4000);
+      })
       }
     }
   }
@@ -125,6 +120,7 @@
   @import '~@styles/_variables.scss';
 
   .apply {
+
     margin-bottom: auto;
     max-width: 500px;
     width: 80%;

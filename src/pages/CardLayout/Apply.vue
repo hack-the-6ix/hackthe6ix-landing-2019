@@ -2,13 +2,9 @@
   <Card class='apply'>
     <h1 class='apply__title'>Hack The 6ix Application Form</h1>
     <div class='apply__pages' :style='height && `height: ${ height }px`'>
-      <Personal
-        :first_name.sync='first_name'
-        :last_name.sync='last_name'
-        :email.sync='email'
-        :gender.sync='gender'
-      />
-      <Links/>
+      <Personal :handler='handler'/>
+      <Links :handler='handler'/>
+      <Email :handler='handler'/>
     </div>
     <div class='apply__controls'>
       <Button class='apply__button' :click='back' :disabled='page === 0'>Back</Button>
@@ -35,7 +31,6 @@
         first_name: '',
         last_name: '',
         email: '',
-        gender: -1,
         height: 0,
         page: 0,
         end
@@ -51,6 +46,9 @@
       this.pageHeight();
     },
     methods: {
+      handler({ target }) {
+        this[target.name] = target.value;
+      },
       pageHeight() {
         this.$nextTick(() => {
           const page = document.querySelectorAll('.apply__page')[this.page];

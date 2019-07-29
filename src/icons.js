@@ -9,8 +9,7 @@ import {
   faDoorOpen,
   faEnvelope,
   faHeart,
-  faArrowUp,
-  faCheck
+  faArrowUp
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -29,7 +28,6 @@ library.add(
   faEnvelope,
   faHeart,
   faArrowUp,
-  faCheck,
   faFacebook,
   faTwitter,
   faInstagram
