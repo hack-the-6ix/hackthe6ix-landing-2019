@@ -6,29 +6,26 @@
       name="first_name"
       placeholder="e.g. Dennis"
       label="First Name"
-      :onChange="handler"
-      :value="first_name"
+      v-model="first_name_"
     />
     <Input
       class="apply__input"
       name="last_name"
       placeholder="e.g. Lyninx"
       label="Last Name"
-      :onChange="handler"
-      :value="last_name"
+      v-model="last_name_"
     />
     <Input
       class="apply__input"
       name="email"
       placeholder="e.g. hunter2@hackthe6ix.com"
       label="Email"
-      :onChange="handler"
-      :value="email"
+      v-model="email_"
     />
     <Select
       label="Gender"
       name="gender"
-      :onChange="handler"
+      v-model="gender_"
       :options='["Male", "Female", "Prefer not to say"]'
     />
   </div>
@@ -43,20 +40,34 @@
       Input,
       Select
     },
-    props: {
-      handler: Function
-    },
     data() {
       return {
-        first_name: '',
-        last_name: '',
-        email: ''
-      }
+        first_name_: this.first_name,
+        last_name_: this.last_name,
+        email_: this.email,
+        gender_: this.gender
+      };
     },
-    methods: {
-      submit() {
-        
-      }
+    watch: {
+      first_name_(val) {
+        this.$emit('update:first_name', val);
+      },
+      last_name_(val) {
+        this.$emit('update:last_name', val);
+      },
+      email_(val) {
+        this.$emit('update:email', val);
+      },
+      gender_(val) {
+        this.$emit('update:gender', val);
+      },
+    },
+    props: {
+      handler: Function,
+      first_name: String,
+      last_name: String,
+      email: String,
+      gender: Number
     }
   }
 </script>

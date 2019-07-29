@@ -3,14 +3,14 @@
     <label class='input__label' :htmlFor='name'>{{ label }}</label>
     <input
       :class='{"input__form--success": state, "input__form--error": error}'
+      @input="$emit('input', $event.target.value)"
       :placeholder='placeholder'
       :aria-errormessage='name'
       :aria-invaild='error'
-      @change='onChange'
+      class='input__form'
+      :value='value'
       :name='name'
       :type='type'
-      class='input__form'
-      v-model='value_'
     />
     <label :id='name' class='input__error' v-if='error'>{{ errorMsg }}</label>
   </div>
@@ -19,18 +19,18 @@
 <script>
   export default {
     name: 'Input',
-    data() {
-      return { value_: this.value };
-    },
     computed: {
       error() {
         return this.state === false;
       }
     },
+    model: {
+      prop: 'value',
+      event: 'input'
+    },
     props: {
       value: String,
       type: String,
-      onChange: Function,
       placeholder: String,
       label: {
         type: String,
@@ -44,7 +44,7 @@
         type: Boolean,
         default: () => null
       },
-      errorMsg: [ String, Boolean ]
+      errorMsg: String
     }
   }
 </script>
