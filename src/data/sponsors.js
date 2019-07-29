@@ -76,5 +76,11 @@ export const sponsors = [
         url: 'https://indico.io/',
         image: images.indico,
         size: SIZES.TINY
+    },
+    {
+        title: 'BrainStation',
+        url: 'https://brainstation.io/',
+        image: images.brainstation,
+        size: SIZES.TINY
     }
 ];
