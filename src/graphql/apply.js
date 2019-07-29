@@ -10,6 +10,12 @@ export const APPLY = `
     }
 `;
 
+export const HAS_EMAIL = `
+    query hasEmail($email: String!) {
+      hasEmail(email: $email)
+    }
+`;
+
 export const GENDER_ENUM = {
   male: 'Male',
   female: 'Female',

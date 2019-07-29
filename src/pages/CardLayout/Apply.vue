@@ -54,11 +54,15 @@
         Back to Home
       </Button>
     </div>
+    <Modal :show="showModal">
+      <h2 class="apply__title">Application Error</h2>
+      <p>Something unexpected happened. Please try again later.</p>
+    </Modal>
   </Card>
 </template>
 
 <script>
-import {Card, Button} from '@components';
+import {Card, Button, Modal} from '@components';
 import * as Screens from './ApplyScreens';
 import {APPLY, GENDER_ENUM, YEAR_OF_STUDY_ENUM} from '@graphql';
 import {query} from '@utils';
@@ -70,6 +74,7 @@ export default {
   components: {
     ...Screens,
     Button,
+    Modal,
     Card,
   },
   data() {
@@ -92,6 +97,7 @@ export default {
       team_members: [],
 
       // Others
+      showModal: true,
       loading: false,
       valid: false,
       height: 0,
@@ -157,10 +163,10 @@ export default {
           },
         });
 
-        if (user_errors) alert(user_errors);
+        if (user_errors) this.showModal = true;
         else this.next();
       } catch (err) {
-        alert(err);
+        this.showModal = true;
       }
     },
   },

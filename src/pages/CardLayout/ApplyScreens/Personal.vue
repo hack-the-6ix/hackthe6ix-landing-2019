@@ -24,8 +24,8 @@
       placeholder="e.g. hunter2@hackthe6ix.com"
       label="Email"
       v-model="email_"
-      :state="validateEmail()"
-      errorMsg="Please provide a valid email"
+      :state="typeof emailError === 'string' ? !Boolean(emailError) : undefined"
+      :errorMsg="emailError"
       required
     />
     <Select
@@ -40,8 +40,8 @@
 
 <script>
 import {Input, Select} from '@components';
-import {GENDER_ENUM} from '@graphql';
-import {validate} from '@utils';
+import {GENDER_ENUM, HAS_EMAIL} from '@graphql';
+import {validate, query} from '@utils';
 
 export default {
   name: 'Personal',
@@ -63,6 +63,7 @@ export default {
       email_: this.email,
       gender_: this.gender,
       genders: Object.values(GENDER_ENUM),
+      emailError: undefined,
     };
   },
   updated() {
@@ -71,21 +72,32 @@ export default {
     }
   },
   methods: {
-    check() {
+    async check() {
       this.$emit(
         'update:valid',
         Boolean(
-          this.first_name_.length > 0 &&
+          (await this.validateEmail()) &&
+            this.first_name_.length > 0 &&
             this.last_name_.length > 0 &&
-            this.validateEmail() &&
             this.gender_ >= 0,
         ),
       );
     },
-    validateEmail() {
-      return this.email_.length === 0
-        ? undefined
-        : validate(this.email_, 'email');
+    async validateEmail() {
+      if (this.email_.length === 0) {
+        this.emailError = undefined;
+        return undefined;
+      }
+
+      if (validate(this.email_, 'email')) {
+        const hasEmail = await query(HAS_EMAIL, {
+          email: this.email,
+        });
+        this.emailError = hasEmail ? 'Email Already in use' : '';
+        return !hasEmail;
+      }
+      this.emailError = 'Please provide a valid email';
+      return false;
     },
   },
   watch: {
