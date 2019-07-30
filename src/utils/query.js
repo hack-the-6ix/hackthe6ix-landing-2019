@@ -10,7 +10,9 @@
  * @param {queryConfig} config - Configuration for query
  */
 export const query = async (query, variables = {}, token) => {
-  const raw = await fetch(process.env.VUE_APP_GRAPHQL, {
+  const api_url =
+    process.env.GRAPHQL_API || 'https://api.hackthe6ix.com/graphql';
+  const raw = await fetch(api_url, {
     headers: {
       'Content-Type': 'application/json',
       ...(token ? {'Ht6-Access-Token': token} : {}),
