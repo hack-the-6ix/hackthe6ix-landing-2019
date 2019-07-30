@@ -6,6 +6,7 @@
         :first_name.sync="first_name"
         :last_name.sync="last_name"
         :email.sync="email"
+        :casl_acceptance.sync="casl_acceptance"
         :gender.sync="gender"
         :valid.sync="valid"
         :page="page"
@@ -14,6 +15,7 @@
         :school.sync="school"
         :year_of_study.sync="year_of_study"
         :resume.sync="resume"
+        :resume_permission.sync="resume_permission"
         :portfolio.sync="portfolio"
         :github.sync="github"
         :valid.sync="valid"
@@ -87,12 +89,14 @@ export default {
       first_name: '',
       last_name: '',
       email: '',
+      casl_acceptance: false,
       gender: -1,
 
       // Experience
       school: '',
       year_of_study: -1,
       resume: null,
+      resume_permission: false,
       portfolio: '',
       github: '',
 
@@ -150,15 +154,18 @@ export default {
     async submit() {
       this.loading = true;
       try {
+        console.log(this)
         const {user_errors, applicant} = await query(APPLY, {
           app: {
             name: this.first_name,
             lname: this.last_name,
             email: this.email,
+            casl_acceptance: this.casl_acceptance,
             gender: Object.keys(GENDER_ENUM)[this.gender],
             school: this.school,
             year_of_study: Object.keys(YEAR_OF_STUDY_ENUM)[this.year_of_study],
             resume: await toBase64(this.resume),
+            resume_permission: this.resume_permission,
             portfolio: this.portfolio,
             github: this.github,
             hack_count: this.hack_count,
