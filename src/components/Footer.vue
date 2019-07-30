@@ -49,10 +49,10 @@
         <icon icon="heart" /> in Toronto
       </p>
       <div class="footer__legal">
-        <a href="https://hackthe6ix.com/privacy" target="_blank"
-          >Privacy Policy</a
-        >
-        |
+        <router-link to="/privacy" target="_blank">
+          Privacy Policy
+        </router-link>
+        {{ ' | ' }}
         <a
           href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
           target="_blank"
