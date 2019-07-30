@@ -13,6 +13,7 @@
       <Experience
         :school.sync="school"
         :year_of_study.sync="year_of_study"
+        :resume.sync="resume"
         :portfolio.sync="portfolio"
         :github.sync="github"
         :valid.sync="valid"
@@ -51,10 +52,10 @@
       <Button
         v-if="page === end"
         class="apply__button"
-        :click="() => $router.push('/')"
-        icon="home"
+        :click="() => $router.push('/dash/' + id)"
+        icon="address-card"
       >
-        Back to Home
+        To Dashboard
       </Button>
     </div>
     <Modal :show="showModal">
@@ -68,7 +69,7 @@
 import {Card, Button, Modal} from '@components';
 import * as Screens from './ApplyScreens';
 import {APPLY, GENDER_ENUM, YEAR_OF_STUDY_ENUM} from '@graphql';
-import {query} from '@utils';
+import {query, toBase64} from '@utils';
 const end = Math.max(Object.values(Screens).length - 1, 0);
 
 export default {
@@ -91,6 +92,7 @@ export default {
       // Experience
       school: '',
       year_of_study: -1,
+      resume: null,
       portfolio: '',
       github: '',
 
@@ -148,7 +150,7 @@ export default {
     async submit() {
       this.loading = true;
       try {
-        const {user_errors} = await query(APPLY, {
+        const {user_errors, applicant} = await query(APPLY, {
           app: {
             name: this.first_name,
             lname: this.last_name,
@@ -156,6 +158,7 @@ export default {
             gender: Object.keys(GENDER_ENUM)[this.gender],
             school: this.school,
             year_of_study: Object.keys(YEAR_OF_STUDY_ENUM)[this.year_of_study],
+            resume: await toBase64(this.resume),
             portfolio: this.portfolio,
             github: this.github,
             hack_count: this.hack_count,
@@ -165,7 +168,10 @@ export default {
         });
 
         if (user_errors) this.showModal = true;
-        else this.next();
+        else {
+          this.id = applicant.id;
+          this.next();
+        }
       } catch (err) {
         this.showModal = true;
       }
@@ -217,8 +223,8 @@ export default {
   }
 
   &__button {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin-right: 15px;
   }
 }

@@ -8,3 +8,4 @@ export {default as Navigation} from './Navigation';
 export {default as Footer} from './Footer';
 export {default as Select} from './Select';
 export {default as Textarea} from './Textarea';
+export {default as UploadFile} from './UploadFile';

@@ -11,6 +11,7 @@ import {
   faCompass,
   faCalendar,
   faAward,
+  faAddressCard,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -31,6 +32,7 @@ library.add(
   faCompass,
   faCalendar,
   faAward,
+  faAddressCard,
   faFacebook,
   faTwitter,
   faInstagram,

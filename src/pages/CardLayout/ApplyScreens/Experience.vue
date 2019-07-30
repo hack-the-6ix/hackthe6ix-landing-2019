@@ -16,6 +16,12 @@
       :options="options"
       required
     />
+    <UploadFile
+      class="apply__input"
+      name="github"
+      label="Upload Resume"
+      v-model="resume_"
+    />
     <Input
       class="apply__input"
       name="portfolio"
@@ -38,7 +44,7 @@
 </template>
 
 <script>
-import {Input, Select} from '@components';
+import {Input, Select, UploadFile} from '@components';
 import {YEAR_OF_STUDY_ENUM} from '@graphql';
 import {validate} from '@utils';
 
@@ -47,10 +53,12 @@ export default {
   components: {
     Input,
     Select,
+    UploadFile,
   },
   props: {
     school: String,
     year_of_study: Number,
+    resume: File,
     portfolio: String,
     github: String,
     valid: Boolean,
@@ -60,6 +68,7 @@ export default {
     return {
       school_: this.school,
       year_of_study_: this.year_of_study,
+      resume_: this.resume,
       portfolio_: this.portfolio,
       github_: this.github,
       options: Object.values(YEAR_OF_STUDY_ENUM),
@@ -92,6 +101,9 @@ export default {
     },
     year_of_study_(val) {
       this.$emit('update:year_of_study', val);
+    },
+    resume_(val) {
+      this.$emit('update:resume', val);
     },
     portfolio_(val) {
       this.$emit('update:portfolio', val);

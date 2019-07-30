@@ -3,6 +3,9 @@ export const APPLY = `
         createApplicant(
             applicant: $app
         ) {
+          applicant {
+            id
+          }
           user_errors {
             message
           }
