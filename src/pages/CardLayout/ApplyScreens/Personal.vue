@@ -94,7 +94,6 @@ export default {
   },
   methods: {
     blur() {
-      console.log(this.$el);
       this.$el.focus();
     },
     async check() {
@@ -139,7 +138,7 @@ export default {
       this.$emit('update:casl_acceptance', val);
     },
     dietary_restrictions_(val) {
-      this.$emit('update:dietary_restrictions', val)
+      this.$emit('update:dietary_restrictions', val);
     },
     gender_(val) {
       this.$emit('update:gender', val);
