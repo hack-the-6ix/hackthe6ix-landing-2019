@@ -4,7 +4,7 @@
     <div v-if="!loading">
       <img
         class="dash__qr"
-        src="https://i.ibb.co/Pgpxx43/Clipboard.jpg"
+        :src="qr"
         @load="pageHeight"
         alt="QR Code"
       />
@@ -36,7 +36,6 @@
 
 <script>
 import {Button} from '@components';
-
 export default {
   name: 'Home',
   components: {
@@ -45,6 +44,7 @@ export default {
   props: {
     user: Object,
     loading: Boolean,
+    qr: String,
     pageHeight: Function,
     to: Function,
   },

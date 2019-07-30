@@ -16,3 +16,9 @@ export const AUTHENTICATE = `
         }
     }
 `;
+
+export const FETCH_QR = `
+    mutation qrcode($id: String!) {
+        qr(code: $id)
+    }
+`

@@ -7,8 +7,8 @@ export const SUBSCRIBE = `
 `;
 
 export const UNSUBSCRIBE = `
-  mutation unsub($email: String!) {
-    unsubscribeMailingList(email: $email) {
+  mutation unsub($id: ID!) {
+    unsubscribeMailingList(id: $id) {
       message
     }
   }
