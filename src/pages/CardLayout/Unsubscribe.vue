@@ -22,7 +22,7 @@
         class="apply__button"
         v-show="!page"
         :click="submit"
-        :disabled="!(acceptance && $route.query.email)"
+        :disabled="!(acceptance && $route.params.id)"
       >
         Submit
       </Button>
@@ -44,7 +44,7 @@ import {query} from '@utils';
 
 export default {
   name: 'Unsubscribe',
-  path: '/unsubscribe',
+  path: '/unsubscribe/:id?',
   components: {
     Checkbox,
     Button,
@@ -52,7 +52,7 @@ export default {
   },
   data() {
     return {
-      email: this.$route.query.email,
+      id: this.$route.params.id,
       acceptance: false,
       height: 0,
       page: 0,
@@ -99,7 +99,7 @@ export default {
     },
     async submit() {
       try {
-        await query(UNSUBSCRIBE, {email: this.email});
+        await query(UNSUBSCRIBE, {id: this.id});
         this.next();
       } catch (err) {
         alert(err);
