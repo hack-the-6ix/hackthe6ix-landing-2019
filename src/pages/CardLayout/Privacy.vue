@@ -16,7 +16,7 @@
     <p>Our Site may use "cookies" to enhance User experience. User's web browser places cookies on their hard drive for record-keeping purposes and sometimes to track information about them. User may choose to set their web browser to refuse cookies, or to alert you when cookies are being sent. If they do so, note that some parts of the Site may not function properly.</p>
 
     <h3>How we use collected information</h3>
-    <p>HackThe6ix may collect and use Users personal information for the following purposes:
+    <p>HackThe6ix may collect and use Users personal information for the following purposes:</p>
     <ul>
       <li>To screen applicants for our event, as well as forward their personal information to third party sponsors.</li>
       <li>To improve customer service Information you provide helps us respond to your customer service requests and support needs more efficiently.</li>
@@ -26,7 +26,6 @@
       <li>To run a promotion, contest, survey or other Site feature To send Users information they agreed to receive about topics we think will be of interest to them.</li>
       <li>To send periodic emails We may use the email address to send User information and updates pertaining to their application status. It may also be used to respond to their inquiries, questions, and/or other requests. If User decides to opt-in to our mailing list, they will receive emails that may include news, updates, related product or service information, etc.</li>
     </ul>
-    </p>
 
     <h3>How we protect your information</h3>
     <p>We adopt appropriate data collection, storage and processing practices and security measures to protect against unauthorized access, alteration, disclosure or destruction of your personal information, username, password, transaction information and data stored on our Site.</p>
