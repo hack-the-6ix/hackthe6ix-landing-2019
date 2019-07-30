@@ -8,8 +8,8 @@
       placeholder="Too many"
       label="How many Hackathons have you attended so far?"
       v-model.number="hack_count_"
-      errorMsg="Pick provide a number"
-      :state="Number.isInteger(hack_count_)"
+      errorMsg="Please provide a valid number"
+      :state="Number.isInteger(hack_count_) && (hack_count_ >= 0)"
       min="0"
       required
     />
@@ -82,6 +82,7 @@ export default {
         Boolean(
           Number.isInteger(this.hack_count_) &&
             this.pitch_.length > 50 &&
+            this.hack_count_ >= 0 &&
             this.team_members_.reduce(
               (acc, curr) => acc && curr.length > 0,
               true,
