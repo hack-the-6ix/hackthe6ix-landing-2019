@@ -15,9 +15,9 @@
       <li>
         <Button
           class="nav__button"
-          :click="subscribe"
-          :disabled="false /*disableApply*/"
-          >Get Notified</Button
+          :click="apply"
+          :disabled="disableApply"
+          >Apply Now</Button
         >
       </li>
     </ul>
