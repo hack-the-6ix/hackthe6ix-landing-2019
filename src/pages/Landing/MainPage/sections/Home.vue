@@ -40,7 +40,7 @@ const intervals = [86400000, 3600000, 60000]; // Days, Hours, Minutes
 
 export default {
   name: 'Home',
-  path: '#',
+  path: '/#',
   components: {
     Container,
     Intact,

@@ -60,7 +60,7 @@ import {scroll} from '@utils';
 
 export default {
   name: 'Sponsors',
-  path: '#sponsors',
+  path: '/#sponsors',
   components: {
     Container,
     WaveMask,

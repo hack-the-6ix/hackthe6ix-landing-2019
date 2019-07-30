@@ -1,6 +1,8 @@
 <template>
   <Container block="nav" as="nav" :class="{'nav--show': this.show}">
-    <Logo class="nav__logo" height="42" />
+    <router-link to="/">
+      <Logo class="nav__logo" height="42" />
+    </router-link>
     <ul class="nav__items">
       <router-link
         tag="li"

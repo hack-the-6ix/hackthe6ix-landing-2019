@@ -16,7 +16,7 @@ import {scroll} from '@utils';
 
 export default {
   name: 'Schedule',
-  path: '#schedule',
+  path: '/#schedule',
   components: {
     Container,
   },

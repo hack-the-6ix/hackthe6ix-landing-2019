@@ -9,7 +9,7 @@
       label="How many Hackathons have you attended so far?"
       v-model.number="hack_count_"
       errorMsg="Please provide a valid number"
-      :state="Number.isInteger(hack_count_) && (hack_count_ >= 0)"
+      :state="Number.isInteger(hack_count_) && hack_count_ >= 0"
       min="0"
       required
     />

@@ -49,9 +49,7 @@
         <icon icon="heart" /> in Toronto
       </p>
       <div class="footer__legal">
-        <router-link to="/privacy" target="_blank">
-          Privacy Policy
-        </router-link>
+        <router-link to="/privacy" target="_blank">Privacy Policy</router-link>
         {{ ' | ' }}
         <a
           href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"

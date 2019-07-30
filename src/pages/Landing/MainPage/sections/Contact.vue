@@ -41,7 +41,7 @@ import {scroll} from '@utils';
 export default {
   name: 'Contact',
   displayName: 'Contact Us',
-  path: '#contact',
+  path: '/#contact',
   components: {
     Container,
     Button,

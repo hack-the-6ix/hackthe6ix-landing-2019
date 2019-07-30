@@ -31,7 +31,7 @@ import {scroll} from '@utils';
 
 export default {
   name: 'About',
-  path: '#about',
+  path: '/#about',
   components: {
     Container,
     WaveMask,

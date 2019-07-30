@@ -38,7 +38,7 @@ import {faq} from '@data';
 
 export default {
   name: 'FAQ',
-  path: '#faq',
+  path: '/#faq',
   components: {
     Container,
   },
