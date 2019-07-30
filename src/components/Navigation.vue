@@ -36,7 +36,12 @@
         item.displayName || item.name
       }}</router-link>
       <li>
-        <Button class='nav__mobile-button' :click='subscribe' :disabled='false/*disableApply*/'>Get Notified</Button>
+        <Button
+          class="nav__mobile-button"
+          :click="subscribe"
+          :disabled="disableApply"
+          >Apply Now</Button
+        >
       </li>
     </Container>
   </Container>
