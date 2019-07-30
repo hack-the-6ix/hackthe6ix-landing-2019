@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     apply() {
-      this.$router.push('/apply');
+      window.location.replace('/apply');
     },
     close() {
       this.show = false;
