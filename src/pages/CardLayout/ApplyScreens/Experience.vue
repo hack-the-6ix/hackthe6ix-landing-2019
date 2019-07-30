@@ -20,6 +20,7 @@
       class="apply__input"
       name="github"
       label="Upload Resume"
+      required
       v-model="resume_"
     />
     <Input
@@ -86,6 +87,7 @@ export default {
         Boolean(
           this.school_.length > 0 &&
             this.year_of_study_ > -1 &&
+            this.resume_ &&
             this.validateUrl(this.portfolio_, true) &&
             this.validateUrl(this.github_, true),
         ),

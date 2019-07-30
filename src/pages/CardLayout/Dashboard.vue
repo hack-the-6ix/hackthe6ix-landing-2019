@@ -2,7 +2,13 @@
   <Card class="apply">
     <h1 class="apply__title">Hacker Dashboard</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
-      <Home :user="user" :loading="loading" :qr="qr" :to="to" :pageHeight="pageHeight" />
+      <Home
+        :user="user"
+        :loading="loading"
+        :qr="qr"
+        :to="to"
+        :pageHeight="pageHeight"
+      />
       <Application :user="user" :loading="loading" :to="to" />
       <Schedule :user="user" :loading="loading" :to="to" />
     </div>
@@ -39,7 +45,7 @@ export default {
       const {token} = await query(AUTHENTICATE, {id});
       const [user] = await query(FETCH_INFO, {id}, token);
       const qr = await query(FETCH_QR, {id});
-      this.qr = qr
+      this.qr = qr;
       this.loading = false;
       this.user = user;
     } catch (err) {
@@ -133,7 +139,7 @@ export default {
   &__controls {
     @include flex(center);
     flex-wrap: wrap;
-    margin-top: 30px;
+    margin: 30px 0 20px;
   }
 
   &__button {
@@ -141,7 +147,27 @@ export default {
     width: calc(50% - 12px);
   }
 
-  &__qr {
+  &__aside {
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
+@include media(PHONE) {
+  .dash {
+    &__controls {
+      flex-direction: column;
+    }
+
+    &__button {
+      width: 100%;
+      margin: 0 0 8px;
+    }
+
+    &__qr {
+      padding: 0 20px;
+    }
   }
 }
 </style>

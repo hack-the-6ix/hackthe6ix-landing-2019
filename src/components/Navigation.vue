@@ -13,10 +13,7 @@
         >{{ item.displayName || item.name }}</router-link
       >
       <li>
-        <Button
-          class="nav__button"
-          :click="apply"
-          :disabled="disableApply"
+        <Button class="nav__button" :click="apply" :disabled="disableApply"
           >Apply Now</Button
         >
       </li>
