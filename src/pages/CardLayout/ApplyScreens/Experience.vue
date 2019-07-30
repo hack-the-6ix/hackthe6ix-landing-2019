@@ -23,6 +23,12 @@
       required
       v-model="resume_"
     />
+    <Checkbox
+      class="apply__input"
+      name="acceptance"
+      label="I allow Hack The 6ix to distribute my resumé to its 2019 event sponsors"
+      v-model="resume_permission_"
+    />
     <Input
       class="apply__input"
       name="portfolio"
@@ -46,7 +52,7 @@
 </template>
 
 <script>
-import {Input, Select, UploadFile} from '@components';
+import {Input, Select, UploadFile, Checkbox} from '@components';
 import {YEAR_OF_STUDY_ENUM} from '@graphql';
 import {validate} from '@utils';
 
@@ -56,11 +62,13 @@ export default {
     Input,
     Select,
     UploadFile,
+    Checkbox,
   },
   props: {
     school: String,
     year_of_study: Number,
     resume: File,
+    resume_permission: Boolean,
     portfolio: String,
     github: String,
     valid: Boolean,
@@ -71,6 +79,7 @@ export default {
       school_: this.school,
       year_of_study_: this.year_of_study,
       resume_: this.resume,
+      resume_permission_: this.resume_permission,
       portfolio_: this.portfolio,
       github_: this.github,
       options: Object.values(YEAR_OF_STUDY_ENUM),
@@ -107,6 +116,9 @@ export default {
     },
     resume_(val) {
       this.$emit('update:resume', val);
+    },
+    resume_permission_(val) {
+      this.$emit('update:resume_permission', val);
     },
     portfolio_(val) {
       this.$emit('update:portfolio', val);
