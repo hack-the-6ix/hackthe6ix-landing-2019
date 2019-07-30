@@ -39,6 +39,7 @@
       label="Github Link"
       v-model="github_"
       :state="validateUrl(github_)"
+      :blur="() => $emit('update:page', page + 1)"
       errorMsg="Please provide a valid http(s) website"
     />
   </div>

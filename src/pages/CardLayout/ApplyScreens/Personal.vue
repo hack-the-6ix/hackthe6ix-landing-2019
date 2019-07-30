@@ -33,6 +33,7 @@
       name="gender"
       v-model="gender_"
       :options="genders"
+      :blur="blur"
       required
     />
   </div>
@@ -73,6 +74,10 @@ export default {
     }
   },
   methods: {
+    blur() {
+      console.log(this.$el);
+      this.$el.focus();
+    },
     async check() {
       this.$emit(
         'update:valid',

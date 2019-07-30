@@ -12,6 +12,7 @@
       :disabled="disabled"
       class="input__form"
       :value="value"
+      tabindex="-1"
       :name="name"
       :type="type"
       :max="max"

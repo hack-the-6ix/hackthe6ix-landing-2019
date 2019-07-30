@@ -6,8 +6,10 @@
     <ul class="select__items">
       <li
         :class="'select__item' + (value === i ? ' select__item--active' : '')"
-        @click="$emit('click', i)"
+        v-on:keydown.enter="$emit('select', i)"
         v-for="(option, i) in options"
+        @click="$emit('select', i)"
+        tabindex="-1"
         :key="i"
       >
         {{ option }}
@@ -27,7 +29,7 @@ export default {
   },
   model: {
     prop: 'value',
-    event: 'click',
+    event: 'select',
   },
   computed: {
     error() {

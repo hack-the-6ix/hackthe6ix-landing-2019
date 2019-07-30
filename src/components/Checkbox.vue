@@ -9,6 +9,7 @@
         @click="$emit('check', !value)"
         type="checkbox"
         :value="value"
+        tabindex="-1"
         :name="name"
       />
       <icon
