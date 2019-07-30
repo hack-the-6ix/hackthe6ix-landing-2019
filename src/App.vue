@@ -1,17 +1,19 @@
 <template>
-  <router-view/>
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'app',
-    beforeCreate() {
-      const redirect = window.location.search.match(/redirect=([^&]*)/);
-      if (redirect) this.$router.push(`/${decodeURIComponent(redirect[1])}`);
-    }
-  }
+export default {
+  name: 'app',
+  beforeCreate() {
+    const redirect = window.location.search.match(/redirect=([^&]*)/);
+    if (redirect) this.$router.push(`/${decodeURIComponent(redirect[1])}`);
+  },
+};
 </script>
 
 <style lang="scss">
-  @import '~@styles/index.scss';
+@import '~@styles/index.scss';
 </style>
