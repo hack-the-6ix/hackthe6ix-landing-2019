@@ -5,6 +5,7 @@
     }}</label>
     <textarea
       @input="handler"
+      tabindex="-1"
       :placeholder="placeholder"
       :aria-errormessage="name"
       class="textarea__form"

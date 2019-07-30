@@ -3,6 +3,7 @@
     class="button"
     @click="click"
     :disabled="disabled"
+    tabindex="-1"
     :class="{'button--secondary': secondary, 'button--loading': loading}"
   >
     <icon

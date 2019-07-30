@@ -10,7 +10,7 @@
         :gender.sync="gender"
         :dietary_restrictions.sync="dietary_restrictions"
         :valid.sync="valid"
-        :page="page"
+        :page.sync="page"
       />
       <Experience
         :school.sync="school"
@@ -20,16 +20,16 @@
         :portfolio.sync="portfolio"
         :github.sync="github"
         :valid.sync="valid"
-        :page="page"
+        :page.sync="page"
       />
       <Hackathon
         :hack_count.sync="hack_count"
         :pitch.sync="pitch"
         :team_members.sync="team_members"
         :valid.sync="valid"
-        :page="page"
+        :page.sync="page"
       />
-      <Finish :email.sync="email" />
+      <Finish :email="email" />
     </div>
     <div class="apply__controls">
       <Button
@@ -184,6 +184,11 @@ export default {
       } catch (err) {
         this.showModal = true;
       }
+    },
+  },
+  watch: {
+    page() {
+      this.shiftPages();
     },
   },
 };

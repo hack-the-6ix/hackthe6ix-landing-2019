@@ -39,6 +39,7 @@
       name="gender"
       v-model="gender_"
       :options="genders"
+      :blur="blur"
       required
     />
     <Textarea
@@ -92,6 +93,9 @@ export default {
     }
   },
   methods: {
+    blur() {
+      this.$el.focus();
+    },
     async check() {
       this.$emit(
         'update:valid',
@@ -134,7 +138,7 @@ export default {
       this.$emit('update:casl_acceptance', val);
     },
     dietary_restrictions_(val) {
-      this.$emit('update:dietary_restrictions', val)
+      this.$emit('update:dietary_restrictions', val);
     },
     gender_(val) {
       this.$emit('update:gender', val);

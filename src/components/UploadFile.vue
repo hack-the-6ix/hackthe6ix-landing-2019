@@ -14,6 +14,7 @@
         :aria-invaild="error"
         :disabled="disabled"
         class="file__input"
+        tabindex="-1"
         :name="name"
         type="file"
       />

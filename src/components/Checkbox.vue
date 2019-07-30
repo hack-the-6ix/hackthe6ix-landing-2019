@@ -9,6 +9,7 @@
         @click="$emit('check', !value)"
         type="checkbox"
         :value="value"
+        tabindex="-1"
         :name="name"
       />
       <icon
@@ -65,6 +66,7 @@ export default {
     @include flex(center);
     margin-right: 10px;
     position: relative;
+    flex-shrink: 0;
     width: 22px;
     height: 22px;
     border-radius: 6px;
