@@ -40,7 +40,7 @@
       <li>
         <Button
           class="nav__mobile-button"
-          :click="subscribe"
+          :click="apply"
           :disabled="disableApply"
           >Apply Now</Button
         >
