@@ -154,7 +154,6 @@ export default {
     async submit() {
       this.loading = true;
       try {
-        console.log(this)
         const {user_errors, applicant} = await query(APPLY, {
           app: {
             name: this.first_name,
