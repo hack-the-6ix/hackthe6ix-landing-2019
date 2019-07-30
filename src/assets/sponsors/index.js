@@ -11,4 +11,5 @@ export { default as cloudsploit } from './cloudsploit.svg?file';
 export { default as voiceflow } from './voiceflow.png';
 export { default as indico } from './indico.png';
 export { default as brainstation } from './brainstation.png';
+export { default as sketch } from './sketch.svg?file';
 export { default as bongo } from './test.gif';

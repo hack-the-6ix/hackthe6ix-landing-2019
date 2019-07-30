@@ -82,5 +82,11 @@ export const sponsors = [
         url: 'https://brainstation.io/',
         image: images.brainstation,
         size: SIZES.TINY
-    }
+    },
+	{
+		title: 'Sketch',
+		url: 'https://www.sketch.com/',
+		image: images.sketch,
+		size: SIZES.TINY
+	},
 ];
