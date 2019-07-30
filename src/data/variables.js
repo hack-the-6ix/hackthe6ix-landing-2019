@@ -1,16 +1,16 @@
 export const social_media = [
-    {
-        icon: 'facebook',
-        link: 'https://www.facebook.com/HackThe6ix'
-    },
-    {
-        icon: 'twitter',
-        link: 'https://twitter.com/HackThe6ix'
-    },
-    {
-        icon: 'instagram',
-        link: 'https://www.instagram.com/hackthe6ix'
-    }
+  {
+    icon: 'facebook',
+    link: 'https://www.facebook.com/HackThe6ix',
+  },
+  {
+    icon: 'twitter',
+    link: 'https://twitter.com/HackThe6ix',
+  },
+  {
+    icon: 'instagram',
+    link: 'https://www.instagram.com/hackthe6ix',
+  },
 ];
 
 export const venue = 'Bahen Centre';
