@@ -49,7 +49,7 @@
         <icon icon="heart" /> in Toronto
       </p>
       <div class="footer__legal">
-        <a href="https://hackthe6ix.com/privacy" target="_blank"
+        <a href="/privacy" target="_blank"
           >Privacy Policy</a
         >
         |
