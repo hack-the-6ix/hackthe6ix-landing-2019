@@ -89,4 +89,10 @@ export const sponsors = [
     image: images.sketch,
     size: SIZES.TINY,
   },
+  {
+    title: 'Balsamiq',
+    url: 'https://balsamiq.com/',
+    image: images.balsamiq,
+    size: SIZES.TINY,
+  },
 ];
