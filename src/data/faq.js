@@ -37,7 +37,7 @@ export const faq = [
       },
       {
         title: 'How do I get to Hack the 6ix?',
-        content: 'The venue for this year will be announced soon!',
+        content: `This year, we’ll be at the Bahen Centre for Information Technology! The venue is accessible by TTC subway via Queen's Park station. Participants are responsible for their own transportation to and from the venue.`,
       },
       {
         title: 'What should I bring?',
