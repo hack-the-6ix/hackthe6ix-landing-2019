@@ -109,8 +109,14 @@
             description
           }
         }
-      `, {}).then(() => {
-        console.log('work in progress')
+      `, {}).then((response) => {
+        let events = response.map((e) => {
+          if(!e.location) { e.location = 'Atrium' }
+          return e
+        })
+        
+        this.events = this.events_by_location(events)
+        this.locations = this.get_unique_locations(events)
       })
     }
   }
