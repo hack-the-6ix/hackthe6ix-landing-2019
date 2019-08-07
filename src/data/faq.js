@@ -9,16 +9,14 @@ export const faq = [
         content: 'No, we are not doing or encouraging illegal activities here.',
       },
       {
-        title: 'So what is a hackathon then?',
+        title: 'What kind of workshops, talks, and activities will there be at Hack The 6ix?',
         content:
           'We’ll be hosting a variety of workshops ranging from introductory subjects, such as Introduction to React, to advanced courses, such as security penetration testing. There will also be interesting tech talks by industry leaders from different tech companies that you may attend to get a break from your monitor. In addition to useful workshops and talks, we have a ton of fun activities planned for you, such as board games, eating contests, and more! Hack the 6ix is much more than just a hackathon – we want it to be an event that you’ll thoroughly enjoy while expanding your skillset and network.',
       },
       {
-        title: 'How much does it cost to attend?',
+        title: 'So what is a hackathon then?',
         content:
-          'Absolutely nothing! Hack the 6ix is a completely free event \
-                run by a non-profit organization. All food, resources, and \
-                accommodations for the entire event will be provided free of charge.',
+          'A hackathon is a live event where “hackers” (participants) design, develop, and pitch a software or hardware project built from scratch over the course of 36 hours. We will provide you with the resources and mentorship needed in order to make this happen!',
       },
       {
         title: 'Can I work on my hack before the event?',
