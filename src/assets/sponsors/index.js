@@ -13,4 +13,6 @@ export {default as indico} from './indico.png';
 export {default as brainstation} from './brainstation.png';
 export {default as sketch} from './sketch.svg?file';
 export {default as balsamiq} from './balsamiq.svg?file';
+export {default as vena} from './vena.svg?file';
+export {default as xyz} from './xyz.svg?file';
 export {default as bongo} from './test.gif';

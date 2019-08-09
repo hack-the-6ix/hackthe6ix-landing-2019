@@ -54,6 +54,12 @@ export const sponsors = [
     size: SIZES.SMALL,
   },
   {
+    title: 'Vena Solutions',
+    url: 'https://venasolutions.com/',
+    image: images.vena,
+    size: SIZES.SMALL,
+  },
+  {
     title: 'Code Mode',
     url: 'https://www.codemode.co/',
     image: images.codemode,
@@ -93,6 +99,12 @@ export const sponsors = [
     title: 'Balsamiq',
     url: 'https://balsamiq.com/',
     image: images.balsamiq,
+    size: SIZES.TINY,
+  },
+  {
+    title: 'Generation.XYZ',
+    url: 'https://gen.xyz',
+    image: images.xyz,
     size: SIZES.TINY,
   },
 ];
