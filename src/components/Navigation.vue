@@ -16,7 +16,7 @@
       >
       <li>
         <Button class="nav__button" :click="apply" :disabled="disableApply"
-          >Apply Now</Button
+          >Applications Closed</Button
         >
       </li>
     </ul>
@@ -42,7 +42,7 @@
           class="nav__mobile-button"
           :click="apply"
           :disabled="disableApply"
-          >Apply Now</Button
+          >Applications Closed</Button
         >
       </li>
     </Container>
