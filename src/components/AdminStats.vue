@@ -39,7 +39,7 @@ export default {
   },
   methods: {},
   created() {
-  	console.log('dashboard')
+
   },
   watch: {
     applicants: {

@@ -9,8 +9,8 @@
 </template>
 <script>
 import {Applicant, AdminStats} from '@components';
-import {query} from '@utils';
-import {APPLICANTS} from '@graphql';
+import {query, auth} from '@utils';
+import {APPLICANTS, AUTH_ADMIN} from '@graphql';
 export default {
   name: 'admin',
   path: '/admin',
@@ -26,10 +26,10 @@ export default {
   methods: {
 
   },
-  created() {
-    console.log('admin')
-    let token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbm5pc0BoYWNrdGhlNml4LmNvbSIsImFjY2Vzc19zY29wZXMiOlsiYXBwbGljYW50IiwiYWRtaW4iXSwiaWF0IjoxNTY1NTU5MzM3LCJleHAiOjE1NjU3MzIxMzcsImF1ZCI6Imh0dHBzOi8vaGFja3RoZTZpeC5jb20iLCJpc3MiOiJIYWNrVGhlNml4Iiwic3ViIjoiZGVubmlzQGhhY2t0aGU2aXguY29tIn0.K3FecZFprU2_r_TIw9rIwTZjltaTiZrtfD8jNz-46YcKKO1sYzMrdslcdoXh7xdtG1pl7yL6qJK2x8VJGsNLdg"
-    query(APPLICANTS, {}, token).then((result) => {
+  async created() {
+    const auth_user = auth.fetch_user()
+    if(!auth.has_admin_access(auth_user)) this.$router.push('/login')
+    await query(APPLICANTS, {}, auth_user.token).then((result) => {
       console.log(result)
       this.applicants = result
     })
