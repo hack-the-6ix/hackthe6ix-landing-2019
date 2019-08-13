@@ -1,6 +1,6 @@
 <template>
   <div class="select">
-    <label class="select__label" :htmlFor="name">{{
+    <label class="select__label" :htmlFor="name" v-show="label">{{
       label + (required ? '*' : '')
     }}</label>
     <ul class="select__items">

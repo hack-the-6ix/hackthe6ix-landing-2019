@@ -19,6 +19,15 @@ export const APPLICANTS = `
   }
 `;
 
+export const AUTH_ADMIN = `
+    mutation auth($email: String!, $password: String!) {
+        authUser(id: $email, password: $password) {
+            access_scopes
+            token
+        }
+    }
+`;
+
 export const RESUME = `
     query applicant($query: ApplicantQuery!) {
       applicants(query: $query) {
@@ -28,3 +37,25 @@ export const RESUME = `
       }
     }
 `;
+
+export const UPDATE_APPLICANT = `
+    mutation update($id: [ID!]!, $applicant: ApplicantInput!) {
+      updateApplicant(id: $id, applicant: $applicant) {
+        success
+        message
+        user_errors {
+          message
+        }
+      }
+    }
+`
+
+export const STATUSES = [
+  'applied',
+  'accepted',
+  'waitlist',
+  'rejected',
+  'invalid',
+  'attending',
+  'not_attending',
+]

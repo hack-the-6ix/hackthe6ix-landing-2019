@@ -31,15 +31,15 @@
 <script>
 export default {
   name: 'AdminStats',
-  props: [
-	'applicants'
-  ],
+  props: {
+		applicants: Array,
+	},
   data () {
     return {}
   },
   methods: {},
   created() {
-  	console.log('dashboard')
+
   },
   watch: {
     applicants: {
@@ -52,37 +52,37 @@ export default {
   computed: {
     validApplicants() {
       const valid = this.applicants.filter((applicant) => {
-        return applicant.accepted_status != 'invalid'
+        return applicant.application_status != 'invalid'
       })
       return valid.length
     },
     acceptedApplicants() {
       const accepted = this.applicants.filter((applicant) => {
-        return applicant.accepted_status == 'accepted'
+        return applicant.application_status == 'accepted'
       })
       return accepted.length
     },
     rejectedApplicants() {
       const rejected = this.applicants.filter((applicant) => {
-        return applicant.accepted_status == 'rejected'
+        return applicant.application_status == 'rejected'
       })
       return rejected.length
     },
     signedInApplicants() {
       const signedIn = this.applicants.filter((applicant) => {
-        return applicant.accepted_status == 'signed-in'
+        return applicant.checked_in == true
       })
       return signedIn.length
     },
     waitlistApplicants() {
       const waitlist = this.applicants.filter((applicant) => {
-        return applicant.accepted_status == 'waitlist'
+        return applicant.application_status == 'waitlist'
       })
       return waitlist.length
     },
     rsvpApplicants() {
       const rsvp = this.applicants.filter((applicant) => {
-        return applicant.rsvp
+        return applicant.application_status == 'attending'
       })
       return rsvp.length
     }

@@ -1,5 +1,7 @@
-import Admin from './Admin';
+import Admin from './Admin'
+import Login from './Login'
 
 export const AdminLayout = {
-  Admin
-};
+  Admin,
+  Login,
+}
