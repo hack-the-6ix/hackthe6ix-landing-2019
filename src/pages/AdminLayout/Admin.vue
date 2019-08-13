@@ -30,7 +30,6 @@ export default {
     const auth_user = auth.fetch_user()
     if(!auth.has_admin_access(auth_user)) this.$router.push('/login')
     await query(APPLICANTS, {}, auth_user.token).then((result) => {
-      console.log(result)
       this.applicants = result
     })
   },

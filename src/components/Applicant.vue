@@ -1,5 +1,5 @@
 <template>
-	<div class="applicant" v-show="valid" v-bind:class="{ accepted: accepted }">
+	<div class="applicant" v-show="valid" v-bind:class="{ accepted: accepted, rejected: rejected, waitlist: waitlist }">
 		<div class="top pad" v-on:click="show = !show"  v-bind:class="{ active: show }">
 			<div class="col name"><b>{{applicant.name}} {{applicant.lname}}</b> ({{applicant.email}})</div>
 			<div class="col status">{{applicant.application_status}}</div>
@@ -65,6 +65,12 @@ export default {
 		},
 		accepted(){
 			return this.applicant.application_status == 'accepted'
+		},
+		rejected(){
+			return this.applicant.application_status == 'rejected'
+		},
+		waitlist(){
+			return this.applicant.application_status == 'waitlist'
 		}
   },
   methods: {
@@ -84,10 +90,8 @@ export default {
 				{ id: this.applicant.id, applicant: { application_status: this.application_status } }, 
 				auth.fetch_user().token
 			).then((result) => {
-				console.log(result)
 				this.applicant.application_status = this.application_status
 			})
-			console.log('saving ' + this.applicant.email)
 		}
   }
 }
@@ -110,14 +114,15 @@ export default {
 		border-left:4px solid rgba(255,255,255,0.4);
 		font-size:110%;
 		line-height: 150%;
+		overflow:hidden;
 	}
 	.accepted {
 		border-left:4px solid #23b5af;
 	}
-	.rsvp {
+	.rejected {
 		border-left:4px solid #E3493B;
 	}
-	.no_rsvp {
+	.waitlist {
 		border-left: 4px solid #f6d049;
 	}
 	.controls {
