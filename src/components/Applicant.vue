@@ -1,7 +1,7 @@
 <template>
 	<div class="applicant" v-show="valid" v-bind:class="{ accepted: accepted, rejected: rejected, waitlist: waitlist }">
 		<div class="top pad" v-on:click="show = !show"  v-bind:class="{ active: show }">
-			<div class="col name"><b>{{applicant.name}} {{applicant.lname}}</b> ({{applicant.email}})</div>
+			<div class="col name"><div class="index">{{index}}</div><b>{{applicant.name}} {{applicant.lname}}</b> ({{applicant.email}})</div>
 			<div class="col status">{{applicant.application_status}}</div>
 		</div>
 		<div class="bottom pad" v-show="show">
@@ -19,6 +19,7 @@
 			<div class="row"><b>Dietary Restriction</b>{{applicant.dietary_restrictions}}</div>
 			<div class="row"><b>Team</b>{{applicant.team_members}}</div>
 			<div class="row double"><b>Project</b>{{applicant.pitch}}</div>
+			<div class="row double"><b>Internal Notes</b><input type="text" v-model="applicant.internal_notes"/></div>
 			<div class="controls double">
 				<div class="left">
 					<Button class="btn" :click="dashboard">Dashboard</Button>
@@ -28,7 +29,7 @@
 					<select v-model="application_status">
 						<option v-for="status in application_statuses" :key="status">{{status}}</option>
 					</select>
-					<Button class="btn" :click="save">Save</Button>
+					<Button class="btn" :click="save" :loading="saving">Save</Button>
 				</div>
 			</div>
 		</div>
@@ -42,6 +43,7 @@ export default {
   name: 'Applicant',
   props: {
 		applicant: Object,
+		index: Number,
 	},
   components: {
 		Button,
@@ -51,6 +53,7 @@ export default {
 			show: false,
 			application_status: "",
 			resume_loading: false,
+			saving: false,
 			application_statuses: STATUSES,
 		}
   },
@@ -83,12 +86,15 @@ export default {
 			})
 		},
 		save() {
+			this.saving = true
 			query(
 				UPDATE_APPLICANT, 
-				{ id: this.applicant.id, applicant: { application_status: this.application_status } }, 
+				{ id: this.applicant.id, applicant: { application_status: this.application_status, internal_notes: this.applicant.internal_notes } }, 
 				auth.fetch_user().token
 			).then(() => {
 				this.applicant.application_status = this.application_status
+				this.show = false
+				this.saving = false
 			})
 		}
   }
@@ -106,6 +112,22 @@ export default {
 		margin: 0;
 		padding:4px 8px;
 		display:block;
+	}
+	input {
+		flex-grow:1;
+		padding:0px;
+		font-size:100%;
+		background: rgba(255,255,255,0);
+		color: #23b5af;
+		font-style:italic;
+		border: 0;
+	}
+	.index {
+		position:absolute;
+		margin-left: -130px;
+		text-align:end;
+		min-width: 100px;
+		color: rgba(255,255,255,0.4);
 	}
 	.applicant {
 		margin-bottom:8px;
@@ -159,9 +181,15 @@ export default {
 		justify-content: space-between;
 		&:hover {
 			background:rgba(255,255,255,0.2);
+			.index {
+				color: rgba(255,255,255,1.0);
+			}
 		}
 		&.active {
 			background:rgba(255,255,255,0.2);
+			.index {
+				color: rgba(255,255,255,1.0);
+			}
 		}
 	}
 	.top:hover {
@@ -171,8 +199,10 @@ export default {
 		flex-basis:50%;
 	}
 	.row {
+		display:flex;
 		b {
 			margin-right: 8px;
+			white-space: nowrap;
 		}
 	}
 	.double {

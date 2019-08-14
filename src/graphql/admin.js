@@ -15,6 +15,7 @@ export const APPLICANTS = `
       dietary_restrictions
       team_members
       pitch
+      internal_notes
     }
   }
 `;
@@ -48,7 +49,7 @@ export const UPDATE_APPLICANT = `
         }
       }
     }
-`
+`;
 
 export const STATUSES = [
   'applied',
@@ -58,4 +59,4 @@ export const STATUSES = [
   'invalid',
   'attending',
   'not_attending',
-]
+];

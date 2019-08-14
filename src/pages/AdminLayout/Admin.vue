@@ -3,7 +3,7 @@
 		<h1 class="title">Admin</h1>
     <admin-stats :applicants="applicants"></admin-stats>
     <div class="applicants">
-      <applicant v-for="applicant in applicants" :applicant="applicant" v-bind:key="applicant.id"></applicant>
+      <applicant v-for="(applicant, index) in applicants" :applicant="applicant" :index="index" v-bind:key="applicant.id"></applicant>
     </div>
 	</div>
 </template>
