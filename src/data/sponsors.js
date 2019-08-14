@@ -107,4 +107,10 @@ export const sponsors = [
     image: images.xyz,
     size: SIZES.TINY,
   },
+  {
+    title: 'RBC Royal Bank of Canada',
+    url: 'https://www.rbcroyalbank.com/',
+    image: images.rbc,
+    size: SIZES.TINY,
+  },
 ];
