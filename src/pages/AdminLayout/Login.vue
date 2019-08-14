@@ -64,7 +64,6 @@ export default {
       } catch(err) {
         this.loading = false
         this.message = err.message
-        console.warn(err.message)
       }
     }
   },

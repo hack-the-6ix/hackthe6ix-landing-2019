@@ -10,7 +10,7 @@
 <script>
 import {Applicant, AdminStats} from '@components';
 import {query, auth} from '@utils';
-import {APPLICANTS, AUTH_ADMIN} from '@graphql';
+import {APPLICANTS} from '@graphql';
 export default {
   name: 'admin',
   path: '/admin',

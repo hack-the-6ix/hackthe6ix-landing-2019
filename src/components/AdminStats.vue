@@ -44,7 +44,6 @@ export default {
   watch: {
     applicants: {
       handler: function() {
-        console.log('dashboard update')
       },
       deep: true
     }

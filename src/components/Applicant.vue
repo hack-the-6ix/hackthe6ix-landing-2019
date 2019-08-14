@@ -35,7 +35,7 @@
 	</div>
 </template>
 <script>
-import {Button, Input, Select} from '@components'
+import {Button} from '@components'
 import {query, auth} from '@utils'
 import {RESUME, STATUSES, UPDATE_APPLICANT} from '@graphql'
 export default {
@@ -45,8 +45,6 @@ export default {
 	},
   components: {
 		Button,
-		Input,
-		Select
   },
   data () {
 		return {
@@ -89,7 +87,7 @@ export default {
 				UPDATE_APPLICANT, 
 				{ id: this.applicant.id, applicant: { application_status: this.application_status } }, 
 				auth.fetch_user().token
-			).then((result) => {
+			).then(() => {
 				this.applicant.application_status = this.application_status
 			})
 		}
