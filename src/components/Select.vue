@@ -43,10 +43,7 @@ export default {
       type: Array,
       default: () => [],
     },
-    label: {
-      type: String,
-      required: true,
-    },
+    label: String,
     name: {
       type: String,
       required: true,
