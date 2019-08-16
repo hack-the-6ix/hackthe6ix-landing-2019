@@ -23,12 +23,13 @@
         <p class="dash__status">Current application status:</p>
         <p class="dash__large">{{ caps }}</p>
         <p>
-          Unfortunately, due to the overwhelming number of applicants we have
-          recieved, we are not able to offer you admission to this year's
+          Unfortunately, due to the overwhelming number of applications that we
+          have received, we are not able to offer you admission to this year's
           hackathon. We would love to be able to accept everyone, but our venue
           space has a fixed capacity limit. If you'd still like to get involved
-          with the event, please consider volunteering at the event by visiting
-          the link below. Thank you for your interest in Hack the 6ix!
+          with the event, please consider volunteering at the event. We will be
+          releasing volunteer signups via social media. Thank you for your
+          interest in Hack the 6ix!
         </p>
       </div>
       <div
