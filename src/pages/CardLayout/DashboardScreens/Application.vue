@@ -12,8 +12,9 @@
           :options="['🎉 Attending 🎉', '😔 Not Attending 😔']"
         />
         <p>
-          Congratulations! You're Invited! Please RSVP for the event and we look
-          forward to seeing you on August 23rd!
+          Congratulations! You're Invited! Please RSVP for the event from your
+          dashboard by August 20th at midnight. We look forward to seeing you on
+          August 23rd!
         </p>
       </div>
       <div
