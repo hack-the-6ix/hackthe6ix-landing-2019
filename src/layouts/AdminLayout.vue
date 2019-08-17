@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="admin">
-    <router-view class="admin-wrap"/>
+    <router-view class="admin-wrap" />
   </div>
 </template>
 
@@ -23,9 +23,8 @@ export default {
 }
 
 .admin-wrap {
-  width:100%;
-  max-width:1200px;
+  width: 100%;
+  max-width: 1200px;
   margin: auto;
 }
-
 </style>

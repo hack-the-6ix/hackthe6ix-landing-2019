@@ -5,17 +5,15 @@
 </template>
 
 <script>
-
 export default {
   name: 'ApplyStub',
   path: '/apply',
-  components: {
-  },
+  components: {},
   data() {
-    return {}
+    return {};
   },
   created() {
-    this.$router.push('/')
+    this.$router.push('/');
   },
 };
 </script>

@@ -22,3 +22,11 @@ export const FETCH_QR = `
         qr(code: $id)
     }
 `;
+
+export const RSVP = `
+    mutation rsvp($id: ID!, $attending: Boolean!) {
+        rsvp(applicant_id: $id, attending: $attending) {
+            success
+        }
+    }
+`;

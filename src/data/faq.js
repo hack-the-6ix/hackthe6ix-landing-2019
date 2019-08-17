@@ -9,7 +9,8 @@ export const faq = [
         content: 'No, we are not doing or encouraging illegal activities here.',
       },
       {
-        title: 'What kind of workshops, talks, and activities will there be at Hack The 6ix?',
+        title:
+          'What kind of workshops, talks, and activities will there be at Hack The 6ix?',
         content:
           'We’ll be hosting a variety of workshops ranging from introductory subjects, such as Introduction to React, to advanced courses, such as security penetration testing. There will also be interesting tech talks by industry leaders from different tech companies that you may attend to get a break from your monitor. In addition to useful workshops and talks, we have a ton of fun activities planned for you, such as board games, eating contests, and more! Hack the 6ix is much more than just a hackathon – we want it to be an event that you’ll thoroughly enjoy while expanding your skillset and network.',
       },

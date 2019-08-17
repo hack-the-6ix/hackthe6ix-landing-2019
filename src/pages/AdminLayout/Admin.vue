@@ -1,11 +1,16 @@
 <template>
-	<div id="admin-dashboard">
-		<h1 class="title">Admin</h1>
+  <div id="admin-dashboard">
+    <h1 class="title">Admin</h1>
     <admin-stats :applicants="applicants"></admin-stats>
     <div class="applicants">
-      <applicant v-for="(applicant, index) in applicants" :applicant="applicant" :index="index" v-bind:key="applicant.id"></applicant>
+      <applicant
+        v-for="(applicant, index) in applicants"
+        :applicant="applicant"
+        :index="index"
+        v-bind:key="applicant.id"
+      ></applicant>
     </div>
-	</div>
+  </div>
 </template>
 <script>
 import {Applicant, AdminStats} from '@components';
@@ -16,31 +21,29 @@ export default {
   path: '/admin',
   components: {
     Applicant,
-    AdminStats
+    AdminStats,
   },
-  data () {
+  data() {
     return {
-    	applicants: [],
-    }
+      applicants: [],
+    };
   },
-  methods: {
-
-  },
+  methods: {},
   async created() {
-    const auth_user = auth.fetch_user()
-    if(!auth.has_admin_access(auth_user)) this.$router.push('/login')
-    await query(APPLICANTS, {}, auth_user.token).then((result) => {
-      this.applicants = result
-    })
+    const auth_user = auth.fetch_user();
+    if (!auth.has_admin_access(auth_user)) this.$router.push('/login');
+    await query(APPLICANTS, {}, auth_user.token).then(result => {
+      this.applicants = result;
+    });
   },
-}	
+};
 </script>
 <style lang="scss">
 @import '~@styles/_mixins.scss';
 @import '~@styles/_variables.scss';
 
 .wrap {
-  padding:40px;
+  padding: 40px;
   margin: auto;
 }
 </style>

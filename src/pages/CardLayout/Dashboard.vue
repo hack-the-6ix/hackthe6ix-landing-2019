@@ -9,7 +9,12 @@
         :to="to"
         :pageHeight="pageHeight"
       />
-      <Application :user="user" :loading="loading" :to="to" />
+      <Application
+        :user.sync="user"
+        :loading="loading"
+        :to="to"
+        :token="token"
+      />
       <Schedule :user="user" :loading="loading" :to="to" />
     </div>
   </Card>
@@ -32,6 +37,7 @@ export default {
     return {
       loading: true,
       user: {},
+      token: '',
       qr: '',
       height: 0,
       page: 0,
@@ -42,12 +48,10 @@ export default {
     window.addEventListener('load', this.shiftPages);
     try {
       const id = this.$route.params.id;
-      const {token} = await query(AUTHENTICATE, {id});
-      const [user] = await query(FETCH_INFO, {id}, token);
-      const qr = await query(FETCH_QR, {id});
-      this.qr = qr;
+      this.token = (await query(AUTHENTICATE, {id})).token;
+      this.user = (await query(FETCH_INFO, {id}, this.token))[0];
+      this.qr = await query(FETCH_QR, {id});
       this.loading = false;
-      this.user = user;
     } catch (err) {
       alert(err);
       this.$router.push('/');
@@ -81,6 +85,11 @@ export default {
     to(page) {
       this.page = page;
       this.shiftPages();
+    },
+  },
+  watch: {
+    user(val) {
+      this.user = val;
     },
   },
 };
@@ -139,7 +148,7 @@ export default {
   &__controls {
     @include flex(center);
     flex-wrap: wrap;
-    margin: 30px 0 20px;
+    margin: 30px 0 10px;
   }
 
   &__button {
