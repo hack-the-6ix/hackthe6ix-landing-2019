@@ -28,9 +28,11 @@
           have received, we are not able to offer you admission to this year's
           hackathon. We would love to be able to accept everyone, but our venue
           space has a fixed capacity limit. If you'd still like to get involved
-          with the event, please consider volunteering at the event. We will be
-          releasing volunteer signups via social media. Thank you for your
-          interest in Hack the 6ix!
+          with the event, please consider
+          <a href="https://forms.gle/menPcPpwi3TE6b1M9"
+            >volunteering at the event.</a
+          >
+          Thank you for your interest in Hack the 6ix!
         </p>
       </div>
       <div
