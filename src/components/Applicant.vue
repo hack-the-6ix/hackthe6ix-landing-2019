@@ -2,7 +2,7 @@
   <div
     class="applicant"
     v-show="valid"
-    v-bind:class="{accepted: accepted, rejected: rejected, waitlist: waitlist}"
+    v-bind:class="{accepted: accepted, rejected: rejected, waitlist: waitlist, attending: attending, not_attending: not_attending}"
   >
     <div
       class="top pad"
@@ -105,6 +105,12 @@ export default {
     },
     waitlist() {
       return this.applicant.application_status == 'waitlist';
+    },
+    attending() {
+      return this.applicant.application_status == 'attending';
+    },
+    not_attending() {
+      return this.applicant.application_status == 'not_attending';
     },
   },
   methods: {
@@ -218,6 +224,12 @@ input {
 }
 .waitlist {
   border-left: 4px solid #f6d049;
+}
+.attending {
+  border-left: 4px solid #54b948;
+}
+.not_attending {
+  border-left: 4px solid #800000;
 }
 .controls {
   width: 100%;
