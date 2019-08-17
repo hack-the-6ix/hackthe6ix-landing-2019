@@ -9,7 +9,7 @@
 
 <script>
 import {QrcodeStream} from 'vue-qrcode-reader';
-import axios from 'axios';
+import {ATTEND} from '@graphql';
 
 export default {
   name: 'Scanner',
@@ -25,63 +25,13 @@ export default {
     handler({target}) {
       this[target.name] = target.value;
     },
-    async onInit(promise) {
+    async onInit() {
       try {
-        await promise;
-        let query = `
-          query {
-            events {
-              id
-              title
-            }
-          }
-        `;
-        axios
-          .post('http://localhost:4000/graphql', {query: query})
-          .then(response => {
-            let events = response.data.data.events;
-            events.forEach(event => {
-              var option = document.createElement('option');
-              option.text = event.title;
-              document.getElementById('events').add(option);
-            });
-          });
       } catch (error) {
         alert(error);
       }
     },
     onDecode(decodedString) {
-      let query = `
-        mutation {
-          scan(code: "${decodedString}") {
-            id
-            email
-            name
-            lname
-          }
-        }
-        `;
-      axios
-        .post('http://localhost:4000/graphql', {query: query})
-        .then(response => {
-          let applicant = response.data.data.scan[0];
-          let query = `
-            mutation {
-                attendEvent(applicant_id: "${applicant.id}", event_id: "5d262776d5d05003b6e825ab") {
-                  success
-                }
-              }
-          `;
-          axios
-            .post('http://localhost:4000/graphql', {query: query})
-            .then(response => {
-              let success = response.data.data.attendEvent.success;
-              let status = success ? 'Registered' : 'Error: Already Registered';
-              document.getElementById(
-                'response',
-              ).innerHTML = `Applicant: ${applicant.name} ${applicant.lname} [${status}]`;
-            });
-        });
     },
   },
 };
