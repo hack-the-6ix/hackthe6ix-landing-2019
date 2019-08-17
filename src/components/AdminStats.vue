@@ -6,6 +6,10 @@
         <div class="value">{{ validApplicants }}</div>
       </div>
       <div class="stat">
+        <label>Attendees</label>
+        <div class="value">{{ acceptedApplicants + rsvpApplicants }}</div>
+      </div>
+      <div class="stat">
         <label>Accepted</label>
         <div class="value">{{ acceptedApplicants }}</div>
       </div>
@@ -18,8 +22,12 @@
         <div class="value">{{ waitlistApplicants }}</div>
       </div>
       <div class="stat">
-        <label>RSVP</label>
+        <label>RSVP+</label>
         <div class="value">{{ rsvpApplicants }}</div>
+      </div>
+      <div class="stat">
+        <label>RSVP-</label>
+        <div class="value">{{ rsvpNotApplicants }}</div>
       </div>
       <div class="stat">
         <label>Signed In</label>
@@ -81,6 +89,12 @@ export default {
         return applicant.application_status == 'attending';
       });
       return rsvp.length;
+    },
+    rsvpNotApplicants() {
+      const rsvpNot = this.applicants.filter(applicant => {
+        return applicant.application_status == 'not_attending';
+      });
+      return rsvpNot.length;
     },
   },
 };
