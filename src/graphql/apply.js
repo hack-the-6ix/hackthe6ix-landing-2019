@@ -1,5 +1,5 @@
 export const APPLY = `
-    mutation create($app: ApplicantInput!) {
+    mutation create($app: ApplicantInputPublic!) {
         createApplicant(
             applicant: $app
         ) {
