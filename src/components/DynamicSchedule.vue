@@ -39,7 +39,7 @@
       return {
         events: [],
         locations: [],
-        start_time: new Date('2019-08-23T20:00:00-0400'),
+        start_time: new Date('2019-08-23T17:00:00-0400'),
         end_time: new Date('2019-08-25T14:00:00-0400')
       }
     },
