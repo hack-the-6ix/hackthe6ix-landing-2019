@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     scanner() {
-      this.$router.push("/scan")
+      this.$router.push('/scan');
     },
   },
   async created() {

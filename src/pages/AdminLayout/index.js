@@ -5,5 +5,5 @@ import Scanner from './Scanner';
 export const AdminLayout = {
   Admin,
   Login,
-  Scanner
+  Scanner,
 };

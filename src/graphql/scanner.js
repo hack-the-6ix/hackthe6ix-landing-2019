@@ -6,12 +6,3 @@ export const ATTEND = `
     }
   }
 `;
-
-export const EVENTS = `
-  query admin_events {
-    events {
-      id
-      title
-    }
-  }
-`;

@@ -9,7 +9,7 @@ export default {
   name: 'scanner',
   path: '/scan',
   components: {
-    Scanner
+    Scanner,
   },
 };
 </script>
