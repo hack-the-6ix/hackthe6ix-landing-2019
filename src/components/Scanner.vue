@@ -77,9 +77,6 @@ export default {
         auth_user.token,
       );
       this.response = message;
-      setTimeout(() => {
-        this.response = 'Ready';
-      }, 5000);
     },
   },
 };
