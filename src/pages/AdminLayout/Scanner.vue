@@ -5,11 +5,16 @@
 </template>
 <script>
 import {Scanner} from '@components';
+import {auth} from '@utils';
 export default {
   name: 'scanner',
   path: '/scan',
   components: {
     Scanner,
+  },
+  async created() {
+    const auth_user = auth.fetch_user();
+    if (!auth.has_admin_access(auth_user)) this.$router.push('/login');
   },
 };
 </script>
