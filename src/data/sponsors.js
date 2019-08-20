@@ -113,4 +113,10 @@ export const sponsors = [
     image: images.rbc,
     size: SIZES.TINY,
   },
+  {
+    title: 'Celo',
+    url: 'https://celo.org/',
+    image: images.celo,
+    size: SIZES.TINY,
+  },
 ];

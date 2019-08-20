@@ -16,4 +16,5 @@ export {default as balsamiq} from './balsamiq.svg?file';
 export {default as vena} from './vena.svg?file';
 export {default as xyz} from './xyz.svg?file';
 export {default as rbc} from './rbc.svg?file';
+export {default as celo} from './celo.svg?file';
 export {default as bongo} from './test.gif';
