@@ -2,7 +2,7 @@
   <div class="wrap">
     Event:
     <select id="events" />
-    <h3 style="background-color:white;color:black" id="response">
+    <h3 :style="{backgroundColor: response_color}" id="response">
       {{ response }}
     </h3>
     <qrcode-stream @decode="onDecode" @init="onInit" />
@@ -23,9 +23,7 @@ export default {
     return {
       response: 'Ready',
       success: true,
-      response_color: '#000000',
-      event_id: 1,
-      events: [],
+      response_color: '#FFFFFF',
     };
   },
   methods: {
@@ -48,7 +46,6 @@ export default {
       `,
           {},
         ).then(result => {
-          this.events = result;
           var select = document.getElementById('events');
           result.forEach(event => {
             var option = document.createElement('option');
@@ -68,7 +65,7 @@ export default {
       let events_select = document.getElementById('events');
       let event_id = events_select.options[events_select.selectedIndex].value;
       const auth_user = auth.fetch_user();
-      const {message} = await query(
+      const {message, success} = await query(
         ATTEND,
         {
           applicant: decodedString,
@@ -77,6 +74,11 @@ export default {
         auth_user.token,
       );
       this.response = message;
+      if (success) {
+        this.response_color = '#00FF00';
+      } else {
+        this.response_color = '#FF0000';
+      }
     },
   },
 };

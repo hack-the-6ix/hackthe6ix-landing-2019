@@ -24,7 +24,10 @@ export default {
 
 .wrap {
   padding: 0px;
-  width: 100%;
   margin: auto;
+}
+#response {
+  padding: 10px;
+  color: black;
 }
 </style>
