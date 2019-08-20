@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap">
     Event:
     <select id="events" />
     <h3 style="background-color:white;color:black" id="response">
@@ -54,7 +54,7 @@ export default {
             var option = document.createElement('option');
             option.textContent = `${event.title} (${
               event.start.split('T')[0]
-            } ${event.start.split('T')[1]})`;
+            })`;
             option.value = event.id;
             select.appendChild(option);
           });

@@ -23,7 +23,8 @@ export default {
 @import '~@styles/_variables.scss';
 
 .wrap {
-  padding: 40px;
+  padding: 0px;
+  width: 100%;
   margin: auto;
 }
 </style>
