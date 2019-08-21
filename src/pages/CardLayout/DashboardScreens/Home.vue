@@ -13,11 +13,7 @@
       <Button class="dash__button" :click="() => to(2)" icon="calendar"
         >Schedule</Button
       >
-      <Button
-        class="dash__button"
-        :click="() => to(3)"
-        :icon="['fab', 'slack']"
-        disabled
+      <Button class="dash__button" :icon="['fab', 'slack']" :click="slackMe"
         >Slack Channel</Button
       >
       <Button class="dash__button" :click="() => to(4)" icon="award" disabled
@@ -44,6 +40,11 @@ export default {
     return {
       email,
     };
+  },
+  methods: {
+    slackMe() {
+      window.open('http://hackthe6ix2019.slack.com', '_blank');
+    },
   },
   props: {
     user: Object,
