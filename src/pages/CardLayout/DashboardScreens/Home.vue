@@ -13,7 +13,7 @@
       <Button class="dash__button" :click="() => to(2)" icon="calendar"
         >Schedule</Button
       >
-      <Button class="dash__button" :icon="['fab', 'slack']" :click="slackMe"
+      <Button class="dash__button" :icon="['fab', 'slack']" :click="slackMe" :disabled="canSlack"
         >Slack Channel</Button
       >
       <Button class="dash__button" :click="() => to(4)" icon="award" disabled
@@ -30,6 +30,7 @@
 <script>
 import {Button} from '@components';
 import {email} from '@data';
+const whiteList = ['accepted', 'attending', 'not_attending'];
 
 export default {
   name: 'Home',
@@ -40,6 +41,11 @@ export default {
     return {
       email,
     };
+  },
+  computed: {
+    canSlack() {
+      return !whiteList.includes(this.user.application_status);
+    }
   },
   methods: {
     slackMe() {
