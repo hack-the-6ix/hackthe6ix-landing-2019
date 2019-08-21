@@ -24,7 +24,7 @@
         :style="row_style(event.position)"
       >
         <div class="event" v-for="session in event.events" :key="session.id">
-          <div class="bubble" :style="session_style(session)">
+          <div class="bubble" :style="session_style(session)" :class="session_type_class(session)">
             {{ session.title }}
           </div>
         </div>
@@ -49,8 +49,8 @@ export default {
       events: [],
       locations: [],
       start_time: new Date('2019-08-23T17:00:00-0400'),
-      end_time: new Date('2019-08-25T14:00:00-0400'),
-    };
+      end_time: new Date('2019-08-25T16:00:00-0400'),
+    }
   },
   computed: {
     timeslots() {
@@ -86,7 +86,7 @@ export default {
       return Math.abs(Math.round(time_diff / (60 * 60)));
     },
     session_style(event) {
-      const x_ratio = 80 / 3600;
+      const x_ratio = 100 / 3600;
       const start_time = this.start_time;
       const event_start = new Date(event.start);
       const event_finish = new Date(event.finish);
@@ -94,14 +94,23 @@ export default {
       let length = Math.abs(event_finish - event_start) / 1000;
       return {
         'margin-left': offset * x_ratio + 'px',
-        width: length * x_ratio + 'px',
+        'min-width': length * x_ratio + 'px',
       };
+    },
+    session_type_class(event) {
+      console.log(JSON.parse(JSON.stringify(event)))
+      if(event.event_type) {
+        let obj = {}
+        obj[event.event_type] = true
+        console.log(obj)
+        return obj
+      }
     },
     row_style(index) {
       let bg_color =
-        index % 2 == 0 ? 'rgba(35, 181, 175, 0.1)' : 'rgba(35, 181, 175, 0.0)';
+        index % 2 == 0 ? 'rgba(35, 181, 175, 0.1)' : 'rgba(35, 181, 175, 0.05)';
       return {
-        width: this.num_hours(this.start_time, this.end_time) * 80 + 'px',
+        width: this.num_hours(this.start_time, this.end_time) * 100 + 'px',
         background: bg_color,
       };
     },
@@ -122,6 +131,7 @@ export default {
             finish
             location
             description
+            event_type
           }
         }
       `,
@@ -129,7 +139,7 @@ export default {
     ).then(response => {
       let events = response.map(e => {
         if (!e.location) {
-          e.location = 'Atrium';
+          e.location = 'Atrium West';
         }
         return e;
       });
@@ -145,7 +155,7 @@ export default {
 @import '~@styles/_mixins.scss';
 @import '~@styles/_variables.scss';
 
-$X_SCALE: 80px; // if this changes, make sure to change the session_style x_ratio as well
+$X_SCALE: 100px; // if this changes, make sure to change the session_style x_ratio as well
 $Y_SCALE: 40px;
 
 .schedule {
@@ -164,7 +174,7 @@ $Y_SCALE: 40px;
       background: rgba(map-get($PRIMARY, TEAL), 0.4);
     }
     .label {
-      min-width: $X_SCALE * 2;
+      min-width: $X_SCALE * 1.5;
       height: $Y_SCALE;
       padding: 0 1rem;
       line-height: $Y_SCALE;
@@ -181,13 +191,13 @@ $Y_SCALE: 40px;
         line-height: $Y_SCALE / 2;
       }
       .friday {
-        min-width: ($X_SCALE * 4) - 16px;
+        min-width: ($X_SCALE * 7) - 16px;
       }
       .saturday {
         min-width: ($X_SCALE * 24) - 16px;
       }
       .sunday {
-        min-width: ($X_SCALE * 4) - 16px;
+        min-width: ($X_SCALE * 7) - 16px;
       }
     }
     .markers {
@@ -217,14 +227,24 @@ $Y_SCALE: 40px;
       height: $Y_SCALE;
       width: 100%;
       .bubble {
+        &.workshop {
+          background: map-get($PRIMARY, PINK);
+        }
+        &.activity {
+          background: map-get($SECONDARY, LIGHT_BLUE);
+        }
+        &.food {
+          background: map-get($PRIMARY, YELLOW);
+        }
         position: absolute;
         white-space: nowrap;
         overflow: hidden;
-        cursor: pointer;
-        background: map-get($PRIMARY, YELLOW);
-        padding: 6px 16px;
-        margin: 4px;
+        z-index: 100;
+        background: map-get($PRIMARY, AQUA);
+        padding: 8px;
+        margin: 5px;
         font-weight: bold;
+        font-size:10px;
         border-radius: 16px;
       }
     }
