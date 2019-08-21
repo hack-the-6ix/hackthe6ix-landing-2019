@@ -13,7 +13,11 @@
       <Button class="dash__button" :click="() => to(2)" icon="calendar"
         >Schedule</Button
       >
-      <Button class="dash__button" :icon="['fab', 'slack']" :click="slackMe" :disabled="canSlack"
+      <Button
+        class="dash__button"
+        :icon="['fab', 'slack']"
+        :click="slackMe"
+        :disabled="canSlack"
         >Slack Channel</Button
       >
       <Button class="dash__button" :click="prizeMe" icon="award"
@@ -45,7 +49,7 @@ export default {
   computed: {
     canSlack() {
       return !whiteList.includes(this.user.application_status);
-    }
+    },
   },
   methods: {
     slackMe() {
