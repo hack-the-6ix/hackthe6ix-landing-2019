@@ -203,7 +203,6 @@ export default {
           alert(error);
         },
       );
-      this.save();
     },
   },
 };
