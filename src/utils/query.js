@@ -9,14 +9,13 @@
  * @param {string} query - Key for GraphQL query
  * @param {queryConfig} config - Configuration for query
  */
-export const query = async (query, variables = {}) => {
-  const token = localStorage.getItem('token');
+export const query = async (query, variables = {}, token) => {
   const api_url =
     process.env.GRAPHQL_API || 'https://api.hackthe6ix.com/graphql';
   const raw = await fetch(api_url, {
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? {Authorization: `Bearer ${token}`} : undefined),
+      ...(token ? {'Ht6-Access-Token': token} : undefined),
     },
     method: 'POST',
     body: JSON.stringify({query, variables}),

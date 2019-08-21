@@ -88,7 +88,7 @@ export default {
     max-width: 600px;
     z-index: 1;
     width: 80%;
-    height: 80%;
+    min-height: 200px;
 
     &--show {
       transform: translateY(0);

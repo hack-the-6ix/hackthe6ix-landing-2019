@@ -28,25 +28,41 @@
             class="bubble"
             :style="session_style(session)"
             :class="session_type_class(session)"
+            v-on:click="select(session)"
           >
             {{ session.title }}
           </div>
         </div>
       </div>
     </div>
+    <Modal :show.sync="showModal" class="modal">
+      <div class="event-type" :class="session_type_class(selected_event)">
+        {{ format_type(selected_event.event_type) }}
+      </div>
+      <h2 style="font-size: 2.4rem;">{{ selected_event.title }}</h2>
+      <div class="host" v-show="selected_event.host">
+        <b>Hosted by </b>{{ selected_event.host }}
+      </div>
+      <div class="date">{{ format_date(selected_event.start) }}</div>
+      <div class="time">
+        {{ format_time(selected_event.start) }} -
+        {{ format_time(selected_event.finish) }}
+      </div>
+      <div class="desc">{{ selected_event.description }}</div>
+    </Modal>
   </div>
 </template>
 
 <script>
+import {Modal} from '@components';
 import {query} from '@utils';
 export default {
   name: 'DynamicSchedule',
   props: {
     signup_enabled: Boolean,
-    click: {
-      type: Function,
-      default: () => () => {},
-    },
+  },
+  components: {
+    Modal,
   },
   data() {
     return {
@@ -54,6 +70,10 @@ export default {
       locations: [],
       start_time: new Date('2019-08-23T17:00:00-0400'),
       end_time: new Date('2019-08-25T16:00:00-0400'),
+      showModal: false,
+      selected_event: {
+        title: '',
+      },
     };
   },
   computed: {
@@ -69,6 +89,31 @@ export default {
     },
   },
   methods: {
+    select(event) {
+      this.selected_event = event;
+      this.showModal = true;
+    },
+    format_type(event_type = '') {
+      return event_type.charAt(0).toUpperCase() + event_type.slice(1);
+    },
+    format_date(date) {
+      let d = new Date(date);
+      return d.toDateString();
+    },
+    format_time(date) {
+      let d = new Date(date);
+      return this.formatAMPM(d);
+    },
+    formatAMPM(date) {
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let ampm = hours >= 12 ? 'pm' : 'am';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return strTime;
+    },
     get_unique_locations(events) {
       let locations = events.map(e => e.location).filter(l => l);
       return Array.from(new Set(locations));
@@ -134,6 +179,7 @@ export default {
             location
             description
             event_type
+            host
           }
         }
       `,
@@ -160,6 +206,40 @@ export default {
 $X_SCALE: 100px; // if this changes, make sure to change the session_style x_ratio as well
 $Y_SCALE: 40px;
 
+.modal {
+  h2 {
+    margin: 0;
+  }
+  line-height: 100%;
+  .host {
+    font-size: 1.2rem;
+  }
+  .date,
+  .time {
+    margin: 8px 0;
+    font-size: 1rem;
+  }
+  .event-type {
+    font-weight: bold;
+    font-size: 1rem;
+    &.workshop {
+      color: map-get($PRIMARY, PINK);
+    }
+    &.activity {
+      color: map-get($SECONDARY, LIGHT_BLUE);
+    }
+    &.food {
+      color: map-get($PRIMARY, YELLOW);
+    }
+    &.misc {
+      color: map-get($PRIMARY, TEAL);
+    }
+  }
+  .desc {
+    font-style: italic;
+  }
+  font-size: 150%;
+}
 .schedule {
   overflow: hidden;
   background: white;
@@ -238,6 +318,10 @@ $Y_SCALE: 40px;
         &.food {
           background: map-get($PRIMARY, YELLOW);
         }
+        &:hover {
+          opacity: 0.8;
+        }
+        cursor: pointer;
         position: absolute;
         white-space: nowrap;
         overflow: hidden;

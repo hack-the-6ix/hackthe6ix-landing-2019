@@ -92,7 +92,7 @@ export default {
 
 .nav {
   @include position(fixed, 0 auto auto, 0, auto, auto);
-  z-index: 99;
+  z-index: 200;
   width: 100%;
   background-color: white;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);

@@ -10,10 +10,7 @@
       <Button class="dash__button" :click="() => to(1)" icon="compass"
         >Application Status</Button
       >
-      <Button
-        class="dash__button"
-        :click="tempSchedule /*() => to(2)*/"
-        icon="calendar"
+      <Button class="dash__button" :click="() => to(2)" icon="calendar"
         >Schedule</Button
       >
       <Button

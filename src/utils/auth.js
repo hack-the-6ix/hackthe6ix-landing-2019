@@ -15,6 +15,9 @@ export const auth = {
     storage.setItem('ht6-token', auth_user.token);
     storage.setItem('ht6-access-scopes', auth_user.access_scopes);
   },
+  clear_user() {
+    storage.clear();
+  },
   has_admin_access(auth_user) {
     return auth_user.access_scopes.includes('admin');
   },
