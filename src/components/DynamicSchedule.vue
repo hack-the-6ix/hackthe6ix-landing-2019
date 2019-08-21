@@ -24,7 +24,11 @@
         :style="row_style(event.position)"
       >
         <div class="event" v-for="session in event.events" :key="session.id">
-          <div class="bubble" :style="session_style(session)" :class="session_type_class(session)">
+          <div
+            class="bubble"
+            :style="session_style(session)"
+            :class="session_type_class(session)"
+          >
             {{ session.title }}
           </div>
         </div>
@@ -50,7 +54,7 @@ export default {
       locations: [],
       start_time: new Date('2019-08-23T17:00:00-0400'),
       end_time: new Date('2019-08-25T16:00:00-0400'),
-    }
+    };
   },
   computed: {
     timeslots() {
@@ -98,12 +102,10 @@ export default {
       };
     },
     session_type_class(event) {
-      console.log(JSON.parse(JSON.stringify(event)))
-      if(event.event_type) {
-        let obj = {}
-        obj[event.event_type] = true
-        console.log(obj)
-        return obj
+      if (event.event_type) {
+        let obj = {};
+        obj[event.event_type] = true;
+        return obj;
       }
     },
     row_style(index) {
@@ -244,7 +246,7 @@ $Y_SCALE: 40px;
         padding: 8px;
         margin: 5px;
         font-weight: bold;
-        font-size:10px;
+        font-size: 10px;
         border-radius: 16px;
       }
     }
