@@ -1,6 +1,7 @@
 <template>
   <div>
     <router-view />
+    <portal-target name="modal" />
   </div>
 </template>
 
