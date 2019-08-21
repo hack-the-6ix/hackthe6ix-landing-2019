@@ -16,7 +16,7 @@
     "circular-json": "^0.5.9",
     "node-sass": "^4.12.0",
     "portal-vue": "^2.1.6",
-    "sass-loader": "^7.2.0",
+    "sass-loader": "^7.3.1",
     "vue": "^2.6.10",
     "vue-qrcode-reader": "^2.0.2",
     "vue-router": "^3.1.2"
@@ -28,7 +28,7 @@
     "@vue/eslint-config-prettier": "^5.0.0",
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.2.3",
     "prettier": "1.18.2",

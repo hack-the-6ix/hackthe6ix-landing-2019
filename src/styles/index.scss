@@ -6,6 +6,9 @@ html, body {
   margin: 0;
   padding: 0;
   color: $TEXT;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $FONT;
   font-size: 0.95rem;
   @include scroll;
 }
@@ -16,10 +19,4 @@ a {
   &:hover {
     color: darken($PRIMARY, TEAL);
   }
-}
-
-#app {
-  font-family: $FONT;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

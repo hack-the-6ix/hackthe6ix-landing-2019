@@ -60,6 +60,12 @@ export const sponsors = [
     size: SIZES.SMALL,
   },
   {
+    title: 'Celo',
+    url: 'https://celo.org/',
+    image: images.celo,
+    size: SIZES.SMALL,
+  },
+  {
     title: 'Code Mode',
     url: 'https://www.codemode.co/',
     image: images.codemode,
@@ -111,12 +117,6 @@ export const sponsors = [
     title: 'RBC Royal Bank of Canada',
     url: 'https://www.rbcroyalbank.com/',
     image: images.rbc,
-    size: SIZES.TINY,
-  },
-  {
-    title: 'Celo',
-    url: 'https://celo.org/',
-    image: images.celo,
     size: SIZES.TINY,
   },
 ];
