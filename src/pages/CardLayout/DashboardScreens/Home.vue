@@ -16,7 +16,7 @@
       <Button class="dash__button" :icon="['fab', 'slack']" :click="slackMe" :disabled="canSlack"
         >Slack Channel</Button
       >
-      <Button class="dash__button" :click="() => to(4)" icon="award" disabled
+      <Button class="dash__button" :click="prizeMe" icon="award"
         >Challenges/Prizes</Button
       >
     </div>
@@ -50,6 +50,9 @@ export default {
   methods: {
     slackMe() {
       window.open('http://hackthe6ix2019.slack.com', '_blank');
+    },
+    prizeMe() {
+      window.open('https://hack-the-6ix-2019.devpost.com/', '_blank');
     },
   },
   props: {
