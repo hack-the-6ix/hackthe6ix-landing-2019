@@ -63,6 +63,9 @@
           >
         </div>
         <div class="right">
+        <Button class="btn" :click="print"
+            >Print</Button
+          >
           <select v-model="application_status">
             <option v-for="status in application_statuses" :key="status">{{
               status
@@ -77,7 +80,7 @@
 <script>
 import {Button} from '@components';
 import {query, auth} from '@utils';
-import {RESUME, STATUSES, UPDATE_APPLICANT} from '@graphql';
+import {RESUME, STATUSES, UPDATE_APPLICANT, PRINT} from '@graphql';
 export default {
   name: 'Applicant',
   props: {
@@ -183,6 +186,18 @@ export default {
         this.saving = false;
       });
     },
+    print() {
+      query(
+        PRINT,
+        {
+          id: this.applicant.id
+        },
+        auth.fetch_user().token,
+      ).then((result) => {
+        console.log(result)
+      });
+      this.save()
+    }
   },
 };
 </script>

@@ -61,3 +61,12 @@ export const STATUSES = [
   'attending',
   'not_attending',
 ];
+
+export const PRINT = `
+  mutation print($id: ID!) {
+    qrPrint(id: $id) {
+      success
+      message
+    }
+  }
+`
