@@ -54,6 +54,7 @@ export const UPDATE_APPLICANT = `
 export const STATUSES = [
   'applied',
   'accepted',
+  'acceptance_expired',
   'waitlist',
   'rejected',
   'invalid',

@@ -36,6 +36,16 @@
         </p>
       </div>
       <div
+        v-else-if="user.application_status === 'acceptance_expired'"
+        class="dash__app-page"
+      >
+        <p class="dash__status">Current application status:</p>
+        <p class="dash__large">{{ caps }}</p>
+        <p>
+          The RSVP window has passed. Please contact us at hello@hackthe6ix.com if you are still interested in attending Hack The 6ix 2019.
+        </p>
+      </div>
+      <div
         v-else-if="user.application_status === 'waitlist'"
         class="dash__app-page"
       >
