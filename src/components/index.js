@@ -11,3 +11,4 @@ export {default as Textarea} from './Textarea';
 export {default as UploadFile} from './UploadFile';
 export {default as Applicant} from './Applicant';
 export {default as AdminStats} from './AdminStats';
+export {default as Scanner} from './Scanner';

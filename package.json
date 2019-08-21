@@ -18,6 +18,7 @@
     "portal-vue": "^2.1.6",
     "sass-loader": "^7.2.0",
     "vue": "^2.6.10",
+    "vue-qrcode-reader": "^2.0.2",
     "vue-router": "^3.1.2"
   },
   "devDependencies": {

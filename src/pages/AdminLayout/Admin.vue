@@ -1,5 +1,6 @@
 <template>
   <div id="admin-dashboard">
+    <Button :click="scanner">Scanner Component</Button>
     <h1 class="title">Admin</h1>
     <admin-stats :applicants="applicants"></admin-stats>
     <div class="applicants">
@@ -13,7 +14,7 @@
   </div>
 </template>
 <script>
-import {Applicant, AdminStats} from '@components';
+import {Applicant, AdminStats, Button} from '@components';
 import {query, auth} from '@utils';
 import {APPLICANTS} from '@graphql';
 export default {
@@ -22,13 +23,18 @@ export default {
   components: {
     Applicant,
     AdminStats,
+    Button,
   },
   data() {
     return {
       applicants: [],
     };
   },
-  methods: {},
+  methods: {
+    scanner() {
+      this.$router.push('/scan');
+    },
+  },
   async created() {
     const auth_user = auth.fetch_user();
     if (!auth.has_admin_access(auth_user)) this.$router.push('/login');
