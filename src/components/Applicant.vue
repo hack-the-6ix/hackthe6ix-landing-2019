@@ -63,9 +63,7 @@
           >
         </div>
         <div class="right">
-        <Button class="btn" :click="print"
-            >Print</Button
-          >
+          <Button class="btn" :click="print">Print</Button>
           <select v-model="application_status">
             <option v-for="status in application_statuses" :key="status">{{
               status
@@ -190,14 +188,23 @@ export default {
       query(
         PRINT,
         {
-          id: this.applicant.id
+          id: this.applicant.id,
         },
         auth.fetch_user().token,
-      ).then((result) => {
-        console.log(result)
-      });
-      this.save()
-    }
+      ).then(
+        result => {
+          if (result.success) {
+            this.save();
+          } else {
+            alert(result.message);
+          }
+        },
+        error => {
+          alert(error);
+        },
+      );
+      this.save();
+    },
   },
 };
 </script>
