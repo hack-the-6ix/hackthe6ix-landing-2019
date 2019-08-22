@@ -96,12 +96,6 @@ export const sponsors = [
     size: SIZES.TINY,
   },
   {
-    title: 'Sketch',
-    url: 'https://www.sketch.com/',
-    image: images.sketch,
-    size: SIZES.TINY,
-  },
-  {
     title: 'Balsamiq',
     url: 'https://balsamiq.com/',
     image: images.balsamiq,
