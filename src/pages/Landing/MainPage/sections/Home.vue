@@ -35,7 +35,7 @@ import {Container} from '@components';
 import Intact from '@assets/sponsors/intact-insurance.svg';
 import {venue} from '@data';
 
-const END_TIME = new Date('2019-08-23T04:00:00.000Z');
+const END_TIME = new Date('2019-08-23T17:00:00-0400');
 const intervals = [86400000, 3600000, 60000]; // Days, Hours, Minutes
 
 export default {
