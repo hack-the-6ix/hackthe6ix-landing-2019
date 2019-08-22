@@ -161,6 +161,8 @@ export default {
     font-weight: bold;
     margin: 0;
   }
+  margin-bottom: auto;
+  width: 80%;
 }
 
 @include media(PHONE) {

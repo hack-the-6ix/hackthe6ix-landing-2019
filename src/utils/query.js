@@ -15,7 +15,7 @@ export const query = async (query, variables = {}, token) => {
   const raw = await fetch(api_url, {
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? {'Ht6-Access-Token': token} : {}),
+      ...(token ? {'Ht6-Access-Token': token} : undefined),
     },
     method: 'POST',
     body: JSON.stringify({query, variables}),

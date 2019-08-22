@@ -6,19 +6,20 @@
     :class="{'schedule--show': animate}"
   >
     <h2 class="schedule__title">Schedule</h2>
-    <p class="schedule__soon">Coming soon...</p>
+    <dynamic-schedule :signup_enabled="false"></dynamic-schedule>
   </Container>
 </template>
 
 <script>
-import {Container} from '@components';
+import {Container, DynamicSchedule} from '@components';
 import {scroll} from '@utils';
 
 export default {
   name: 'Schedule',
-  path: '/#schedule',
+  path: '#schedule',
   components: {
     Container,
+    DynamicSchedule,
   },
   data() {
     return {
