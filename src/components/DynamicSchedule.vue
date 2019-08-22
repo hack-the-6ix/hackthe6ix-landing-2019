@@ -41,7 +41,7 @@
       </div>
       <h2 style="font-size: 2.4rem;">{{ selected_event.title }}</h2>
       <div class="host" v-show="selected_event.host">
-        <b>Hosted by </b>{{ selected_event.host }}
+        Hosted by <b>{{ selected_event.host }}</b>
       </div>
       <div class="date">{{ format_date(selected_event.start) }}</div>
       <div class="time">

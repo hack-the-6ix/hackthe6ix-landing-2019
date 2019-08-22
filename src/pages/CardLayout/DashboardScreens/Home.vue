@@ -61,9 +61,6 @@ export default {
     prizeMe() {
       window.open('https://hack-the-6ix-2019.devpost.com/', '_blank');
     },
-    tempSchedule() {
-      window.open('https://hackthe6ix.com/schedule.png', '_blank');
-    },
   },
   props: {
     user: Object,
