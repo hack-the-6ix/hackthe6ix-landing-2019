@@ -7,8 +7,8 @@
       </p>
       <p class="home__text">August 23-25, 2019</p>
       <p class="home__text">{{ venue }}</p>
-      <div class="home__timer">
-        <!-- <h2 class='home__timer-title'>Countdown to Applications</h2> -->
+      <!--       <div class="home__timer">
+        <h2 class='home__timer-title'>Countdown to Applications</h2>
         <div class="home__clock">
           <div class="home__clock-section">
             {{ String(time[0]).padStart(2, '0') }}
@@ -25,7 +25,7 @@
             <span class="home__clock-text">Minutes</span>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </Container>
 </template>
