@@ -16,6 +16,7 @@ export const APPLICANTS = `
       team_members
       pitch
       internal_notes
+      checked_in
     }
   }
 `;
