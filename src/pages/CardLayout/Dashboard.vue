@@ -1,5 +1,5 @@
 <template>
-  <Card class="apply">
+  <Card class="apply" :class="getPageClass">
     <h1 class="apply__title">Hacker Dashboard</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
       <Home
@@ -64,6 +64,11 @@ export default {
   updated() {
     this.pageHeight();
   },
+  computed: {
+    getPageClass() {
+      return `apply--${Object.keys(Screens)[this.page].toLowerCase()}`;
+    },
+  },
   methods: {
     pageHeight() {
       this.$nextTick(() => {
@@ -90,6 +95,11 @@ export default {
   watch: {
     user(val) {
       this.user = val;
+    },
+    getPageClass() {
+      window.setTimeout(() => {
+        this.pageHeight();
+      }, 260);
     },
   },
 };

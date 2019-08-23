@@ -183,7 +183,6 @@ export default {
           }
         }
       `,
-      {},
     ).then(response => {
       let events = response.map(e => {
         if (!e.location) {
@@ -204,7 +203,7 @@ export default {
 @import '~@styles/_variables.scss';
 
 $X_SCALE: 100px; // if this changes, make sure to change the session_style x_ratio as well
-$Y_SCALE: 40px;
+$Y_SCALE: 50px;
 
 .modal {
   h2 {
@@ -249,6 +248,7 @@ $Y_SCALE: 40px;
   margin-bottom: 60px;
   display: flex;
   .labels {
+    background-color: #e4e4e4;
     :nth-child(odd) {
       background: rgba(map-get($PRIMARY, TEAL), 0.3);
     }
@@ -264,7 +264,8 @@ $Y_SCALE: 40px;
     }
   }
   .timeline {
-    overflow-x: scroll;
+    @include scroll;
+    overflow-x: auto;
     .days {
       display: flex;
       height: $Y_SCALE / 2;
@@ -309,6 +310,7 @@ $Y_SCALE: 40px;
       height: $Y_SCALE;
       width: 100%;
       .bubble {
+        @include flex(flex-start, center);
         &.workshop {
           background: map-get($PRIMARY, PINK);
         }
@@ -326,12 +328,14 @@ $Y_SCALE: 40px;
         white-space: nowrap;
         overflow: hidden;
         z-index: 100;
+        box-sizing: border-box;
+        height: $Y_SCALE - 10px;
         background: map-get($PRIMARY, AQUA);
-        padding: 8px;
+        padding: 0 15px;
         margin: 5px;
         font-weight: bold;
-        font-size: 10px;
-        border-radius: 16px;
+        font-size: 12px;
+        border-radius: 999px;
       }
     }
   }

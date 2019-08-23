@@ -199,6 +199,7 @@ export default {
 @import '~@styles/_variables.scss';
 
 .apply {
+  @include transition(max-width);
   margin-bottom: auto;
   max-width: 500px;
   width: 80%;
