@@ -1,16 +1,9 @@
 <template>
-  <div class="apply__page">
+  <div class="schedule__page">
     <h2 class="apply__subtitle">Schedule</h2>
     <div v-if="!loading">
       <dynamic-schedule :signup_enabled="false"></dynamic-schedule>
-      <a href="https://hackthe6ix.com/schedule.png" target="_blank"
-        >Download Schedule</a
-      >
-    </div>
-    <div class="dash__controls">
-      <Button class="dash__button dash__button--full" :click="() => to(0)"
-        >Back</Button
-      >
+      <Button :click="download">Download Schedule</Button>
     </div>
   </div>
 </template>
@@ -20,6 +13,7 @@ import {Button, DynamicSchedule} from '@components';
 
 export default {
   name: 'Schedule',
+  path: '/schedule',
   components: {
     Button,
     DynamicSchedule,
@@ -28,6 +22,11 @@ export default {
     return {
       showModal: false,
     };
+  },
+  methods: {
+    download() {
+      window.open('https://hackthe6ix.com/schedule.png', '_blank');
+    },
   },
   props: {
     user: Object,
@@ -40,11 +39,14 @@ export default {
 <style lang="scss">
 @import '~@styles/_mixins.scss';
 @import '~@styles/_variables.scss';
-
 .schedule {
-  margin: 0;
-}
-.apply--schedule {
-  max-width: 1000px;
+  $self: &;
+
+  &__page {
+    width: 100%;
+    & #{ $self } {
+      margin-bottom: 20px;
+    }
+  }
 }
 </style>

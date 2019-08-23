@@ -10,7 +10,7 @@
       <Button class="dash__button" :click="() => to(1)" icon="compass"
         >Application Status</Button
       >
-      <Button class="dash__button" :click="() => to(2)" icon="calendar"
+      <Button class="dash__button" :click="scheduleMe" icon="calendar"
         >Schedule</Button
       >
       <Button
@@ -60,6 +60,9 @@ export default {
     },
     prizeMe() {
       window.open('https://hack-the-6ix-2019.devpost.com/', '_blank');
+    },
+    scheduleMe() {
+      window.open('/schedule', '_blank');
     },
   },
   props: {

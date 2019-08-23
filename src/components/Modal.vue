@@ -2,6 +2,7 @@
   <portal to="modal" v-if="show_">
     <div class="modal">
       <Card class="modal__box" :class="{'modal__box--show': !hide}">
+        <button class="modal__close" v-on:click="close" />
         <slot />
       </Card>
       <div
@@ -79,9 +80,49 @@ export default {
     }
   }
 
+  &__close {
+    @include position(absolute, 10px 10px auto auto);
+    @include flex(center);
+    border-radius: 999px;
+    cursor: pointer;
+    z-index: 99;
+    border: none;
+    background: none;
+    padding: 20px;
+    width: 26px;
+    height: 26px;
+
+    &:hover {
+      &::before,
+      &::after {
+        background-color: map-get($PRIMARY, TEAL);
+      }
+    }
+
+    &::before,
+    &::after {
+      @include position(absolute, auto, auto);
+      @include transition(background-color);
+      transform-origin: center;
+      content: '';
+      width: 26px;
+      height: 3px;
+      background-color: $TEXT;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
   &__box {
     @include transition(transform opacity, SLOW);
     @include scroll;
+    position: relative;
     transform: translateY(-80px);
     overflow: auto;
     opacity: 0;
