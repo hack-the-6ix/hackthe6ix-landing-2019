@@ -55,9 +55,17 @@ export default {
             email: this.user,
             password: this.pass,
           });
-          if (result.access_scopes.includes('admin')) {
+          if (
+            result.access_scopes.includes('admin') ||
+            result.access_scopes.includes('volunteer')
+          ) {
             auth.set_user(result);
-            this.$router.push('/admin');
+            if (result.access_scopes.includes('admin')) {
+              this.$router.push('/admin');
+            }
+            if (result.access_scopes.includes('volunteer')) {
+              this.$router.push('/scan');
+            }
           } else {
             this.message = 'Unauthorized.';
           }

@@ -21,4 +21,10 @@ export const auth = {
   has_admin_access(auth_user) {
     return auth_user.access_scopes.includes('admin');
   },
+  has_volunteer_access(auth_user) {
+    return (
+      auth_user.access_scopes.includes('admin') ||
+      auth_user.access_scopes.includes('volunteer')
+    );
+  },
 };

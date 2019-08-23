@@ -12,9 +12,9 @@ export default {
   components: {
     Scanner,
   },
-  async created() {
+  created() {
     const auth_user = auth.fetch_user();
-    if (!auth.has_admin_access(auth_user)) this.$router.push('/login');
+    if (!auth.has_volunteer_access(auth_user)) this.$router.push('/login');
   },
 };
 </script>
