@@ -2,12 +2,20 @@
   <Container block="home" as="section">
     <div class="home__content">
       <h1 class="home__title">Hack The 6ix</h1>
-      <p class="home__text home__text--intact">
+      <p class="home__text">Coming August 2020</p>
+      <br />
+      <Button
+        onclick="window.location.href = 'https://forms.gle/CT4HbgTprXaznPcT7';"
+        class="home__button"
+      >
+        STAY UP TO DATE
+      </Button>
+      <!--<p class="home__text home__text--intact">
         Presented By <Intact class="home__intact" />
       </p>
       <p class="home__text">August 23-25, 2019</p>
       <p class="home__text">{{ venue }}</p>
-      <!--       <div class="home__timer">
+            <div class="home__timer">
         <h2 class='home__timer-title'>Countdown to Applications</h2>
         <div class="home__clock">
           <div class="home__clock-section">
@@ -31,8 +39,8 @@
 </template>
 
 <script>
-import {Container} from '@components';
-import Intact from '@assets/sponsors/intact-insurance.svg';
+import {Container, Button} from '@components';
+//import Intact from '@assets/sponsors/intact-insurance.svg';
 import {venue} from '@data';
 
 const END_TIME = new Date('2019-08-23T17:00:00-0400');
@@ -43,7 +51,7 @@ export default {
   path: '/#',
   components: {
     Container,
-    Intact,
+    Button,
   },
   data() {
     return {

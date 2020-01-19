@@ -8,7 +8,8 @@
 
 <script>
 import {Navigation, Footer} from '@components';
-import * as sections from '@pages/Landing/MainPage/sections';
+import {Home, About} from '@pages/Landing/MainPage/sections';
+const sections = [Home, About];
 const items = Object.values(sections);
 
 export default {

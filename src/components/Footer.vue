@@ -45,7 +45,7 @@
     </div>
     <div class="footer__content footer__content--foot">
       <p class="footer__text">
-        Copyright © 2019 <strong>Hack The 6ix</strong> | Made with
+        Copyright © 2020 <strong>Hack The 6ix</strong> | Made with
         <icon icon="heart" /> in Toronto
       </p>
       <div class="footer__legal">
