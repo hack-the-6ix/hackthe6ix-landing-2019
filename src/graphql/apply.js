@@ -27,11 +27,10 @@ export const GENDER_ENUM = {
 
 export const YEAR_OF_STUDY_ENUM = {
   highschool: 'High School',
-  first_year: 'First Year',
-  second_year: 'Second Year',
-  third_year: 'Third Year',
-  fourth_year: 'Fourth Year',
-  fifth_year: 'Fifth Year',
-  sixth_year: 'Sixth Year',
-  graduated: 'Graduated',
+  ug_first_year: 'Undergraduate Year 1',
+  ug_second_year: 'Undergraduate Year 2',
+  ug_third_year: 'Undergraduate Year 3',
+  ug_fourth_year: 'Undergraduate Year 4+',
+  graduate_school: 'Gradate School',
+  new_grad: 'New Grad',
 };

@@ -10,7 +10,7 @@
       required
     />
     <Select
-      label="Year of Study"
+      label="Year of Study (entering)"
       name="year_of_study"
       v-model="year_of_study_"
       :options="options"
@@ -26,7 +26,7 @@
     <Checkbox
       class="apply__input"
       name="acceptance"
-      label="I allow Hack The 6ix to distribute my resumé to its 2019 event sponsors"
+      label="I allow Hack The 6ix to distribute my resumé to its event sponsors"
       v-model="resume_permission_"
     />
     <Input
@@ -42,7 +42,7 @@
       class="apply__input"
       name="github"
       placeholder="https://github.com/hackerman"
-      label="Github Link"
+      label="GitHub Link"
       v-model="github_"
       :state="validateUrl(github_)"
       :blur="() => $emit('update:page', page + 1)"

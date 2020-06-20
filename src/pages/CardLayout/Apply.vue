@@ -8,7 +8,6 @@
         :email.sync="email"
         :casl_acceptance.sync="casl_acceptance"
         :gender.sync="gender"
-        :dietary_restrictions.sync="dietary_restrictions"
         :valid.sync="valid"
         :page.sync="page"
       />
@@ -92,7 +91,6 @@ export default {
       email: '',
       casl_acceptance: false,
       gender: -1,
-      dietary_restrictions: '',
 
       // Experience
       school: '',
@@ -163,7 +161,6 @@ export default {
             email: this.email,
             casl_acceptance: this.casl_acceptance,
             gender: Object.keys(GENDER_ENUM)[this.gender],
-            dietary_restrictions: this.dietary_restrictions,
             school: this.school,
             year_of_study: Object.keys(YEAR_OF_STUDY_ENUM)[this.year_of_study],
             resume: await toBase64(this.resume),

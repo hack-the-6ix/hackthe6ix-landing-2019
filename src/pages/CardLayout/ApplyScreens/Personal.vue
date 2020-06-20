@@ -31,7 +31,7 @@
     <Checkbox
       class="apply__input"
       name="acceptance"
-      label="I allow Hack The 6ix to send me emails containing information from the 2019 event sponsors."
+      label="I allow Hack The 6ix to send me emails containing information from the event sponsors."
       v-model="casl_acceptance_"
     />
     <Select
@@ -42,18 +42,11 @@
       :blur="blur"
       required
     />
-    <Textarea
-      class="apply__input"
-      name="diet"
-      placeholder="Gluten, Dairy, etc."
-      label="Do you have any dietary restrictions? (Leave blank if none):"
-      v-model="dietary_restrictions_"
-    />
   </div>
 </template>
 
 <script>
-import {Input, Select, Checkbox, Textarea} from '@components';
+import {Input, Select, Checkbox} from '@components';
 import {GENDER_ENUM, HAS_EMAIL} from '@graphql';
 import {validate, query} from '@utils';
 
@@ -63,7 +56,6 @@ export default {
     Input,
     Select,
     Checkbox,
-    Textarea,
   },
   props: {
     first_name: String,
@@ -71,7 +63,6 @@ export default {
     email: String,
     casl_acceptance: Boolean,
     gender: Number,
-    dietary_restrictions: String,
     valid: Boolean,
     page: Number,
   },
@@ -82,7 +73,6 @@ export default {
       email_: this.email,
       casl_acceptance_: this.casl_acceptance,
       gender_: this.gender,
-      dietary_restrictions_: this.dietary_restrictions,
       genders: Object.values(GENDER_ENUM),
       emailError: undefined,
     };
@@ -136,9 +126,6 @@ export default {
     },
     casl_acceptance_(val) {
       this.$emit('update:casl_acceptance', val);
-    },
-    dietary_restrictions_(val) {
-      this.$emit('update:dietary_restrictions', val);
     },
     gender_(val) {
       this.$emit('update:gender', val);

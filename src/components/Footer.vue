@@ -23,7 +23,7 @@
               class="footer__button"
               :click="apply"
               :disabled="disableApply"
-              >Apply Now</Button
+              >{{ disableApply ? 'Applications Closed' : 'Apply Now' }}</Button
             >
           </li>
         </ul>
