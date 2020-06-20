@@ -15,9 +15,9 @@
         >{{ item.displayName || item.name }}</router-link
       >
       <li>
-        <Button class="nav__button" :click="apply" :disabled="disableApply"
-          >Applications Closed</Button
-        >
+        <Button class="nav__button" :click="apply" :disabled="disableApply">
+          {{ disableApply ? 'Applications Closed' : 'Apply' }}
+        </Button>
       </li>
     </ul>
     <button class="nav__menu" v-on:click="() => (this.show = !this.show)">
@@ -42,7 +42,7 @@
           class="nav__mobile-button"
           :click="apply"
           :disabled="disableApply"
-          >Applications Closed</Button
+          >{{ disableApply ? 'Applications Closed' : 'Apply' }}</Button
         >
       </li>
     </Container>
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     apply() {
-      window.location.replace('/apply');
+      this.$router.push('/apply');
     },
     close() {
       this.show = false;

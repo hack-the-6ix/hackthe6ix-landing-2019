@@ -77,7 +77,7 @@ const end = Math.max(Object.values(Screens).length - 1, 0);
 
 export default {
   name: 'Info',
-  path: '/apply-late',
+  path: '/apply',
   components: {
     ...Screens,
     Button,

@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'ApplyStub',
-  path: '/apply',
+  path: '/apply-stub',
   components: {},
   data() {
     return {};
