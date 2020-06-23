@@ -42,17 +42,27 @@
       :blur="blur"
       required
     />
+    <Dropdown
+      label="Timezone"
+      name="timezone"
+      v-model="timezone_"
+      :options="timezones"
+      :blur="blur"
+      required
+    />
+    asd {{ timezone_ }} {{ timezone_.length }}
   </div>
 </template>
 
 <script>
-import {Input, Select, Checkbox} from '@components';
-import {GENDER_ENUM, HAS_EMAIL} from '@graphql';
+import {Input, Select, Checkbox, Dropdown} from '@components';
+import {GENDER_ENUM, HAS_EMAIL, TIMEZONES} from '@graphql';
 import {validate, query} from '@utils';
 
 export default {
   name: 'Personal',
   components: {
+    Dropdown,
     Input,
     Select,
     Checkbox,
@@ -65,6 +75,7 @@ export default {
     gender: Number,
     valid: Boolean,
     page: Number,
+    timezone: String,
   },
   data() {
     return {
@@ -74,6 +85,8 @@ export default {
       casl_acceptance_: this.casl_acceptance,
       gender_: this.gender,
       genders: Object.values(GENDER_ENUM),
+      timezone_: this.timezone,
+      timezones: TIMEZONES,
       emailError: undefined,
     };
   },
@@ -93,7 +106,8 @@ export default {
           (await this.validateEmail()) &&
             this.first_name_.length > 0 &&
             this.last_name_.length > 0 &&
-            this.gender_ >= 0,
+            this.gender_ >= 0 &&
+            this.timezone_.length > 0,
         ),
       );
     },
@@ -129,6 +143,9 @@ export default {
     },
     gender_(val) {
       this.$emit('update:gender', val);
+    },
+    timezone_(val) {
+      this.$emit('update:timezone', val);
     },
     page() {
       if (this.$el.getAttribute('data-current') === 'true') {

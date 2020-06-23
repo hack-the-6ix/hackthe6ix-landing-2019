@@ -64,6 +64,7 @@ export default {
 
 .select {
   font-weight: bold;
+  margin-bottom: 16px;
 
   &__label {
     color: map-get($PRIMARY, TEAL);

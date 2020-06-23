@@ -10,6 +10,7 @@
         :gender.sync="gender"
         :valid.sync="valid"
         :page.sync="page"
+        :timezone.sync="timezone"
       />
       <Experience
         :school.sync="school"
@@ -90,11 +91,20 @@ export default {
       last_name: '',
       email: '',
       casl_acceptance: false,
-      gender: -1,
+      gender: '',
+      timezone: '',
+      address_line_1: '',
+      address_line_2: '',
+      city: '',
+      province: '',
+      postal_code: '',
+      country: '',
 
       // Experience
       school: '',
+      program_of_study: '',
       year_of_study: -1,
+      year_of_graduation: -1,
       resume: null,
       resume_permission: false,
       portfolio: '',
