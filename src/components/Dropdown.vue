@@ -3,16 +3,8 @@
     <label class="dropdown__label" :htmlFor="name" v-show="label">{{
       label + (required ? '*' : '')
     }}</label>
-    <select class="dropdown__selector">
-      <option value="" disabled selected>Select your option</option>
-      <option
-        v-for="(option, i) in options"
-        tabindex="-1"
-        :key="i"
-        v-on:keydown.enter="$emit('dropdownSelect', option)"
-        @click="$emit('dropdownSelect', option)"
-        :selected="value === option"
-      >
+    <select class="dropdown__selector" v-model="value">
+      <option v-for="(option, i) in options" tabindex="-1" :key="i">
         {{ option }}
       </option>
     </select>
@@ -52,6 +44,11 @@ export default {
       default: () => null,
     },
     errorMsg: [String, Boolean],
+  },
+  watch: {
+    value(val) {
+      this.$emit('dropdownSelect:value', val);
+    },
   },
 };
 </script>

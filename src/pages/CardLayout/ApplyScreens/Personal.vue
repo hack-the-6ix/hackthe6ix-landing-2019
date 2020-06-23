@@ -50,13 +50,65 @@
       :blur="blur"
       required
     />
-    asd {{ timezone_ }} {{ timezone_.length }}
+    btw we aren't shipping you stuff if you're not in canada
+    <Dropdown
+      label="Country"
+      name="country"
+      v-model="country_"
+      :options="countries"
+      :blur="blur"
+      required
+    />
+    <div v-if="country_ === 'Canada'">
+      <Input
+        class="apply__input"
+        name="address_line_1"
+        placeholder="123 Hack the 6ix Blvd"
+        label="Address Line 1"
+        v-model="address_line_1_"
+      />
+      <Input
+        class="apply__input"
+        name="address_line_2"
+        placeholder="Unit 6"
+        label="Address Line 2"
+        v-model="address_line_2_"
+      />
+      <Input
+        class="apply__input"
+        name="city"
+        placeholder="Toronto"
+        label="City"
+        v-model="city_"
+      />
+      <Dropdown
+        label="Province"
+        name="province"
+        v-model="province_"
+        :options="provinces"
+        :blur="blur"
+      />
+      <Input
+        class="apply__input"
+        name="postal_code"
+        placeholder="M5S 2E4"
+        label="Postal Code"
+        v-model="postal_code_"
+      />
+    </div>
+    Some timezone debug stuff: {{ timezone_ }} {{ timezone_.length }}
   </div>
 </template>
 
 <script>
 import {Input, Select, Checkbox, Dropdown} from '@components';
-import {GENDER_ENUM, HAS_EMAIL, TIMEZONES} from '@graphql';
+import {
+  GENDER_ENUM,
+  HAS_EMAIL,
+  TIMEZONES,
+  PROVINCES_ENUM,
+  COUNTRIES_ENUM,
+} from '@graphql';
 import {validate, query} from '@utils';
 
 export default {
@@ -76,6 +128,12 @@ export default {
     valid: Boolean,
     page: Number,
     timezone: String,
+    address_line_1: String,
+    address_line_2: String,
+    city: String,
+    province: String,
+    postal_code: String,
+    country: String,
   },
   data() {
     return {
@@ -85,9 +143,17 @@ export default {
       casl_acceptance_: this.casl_acceptance,
       gender_: this.gender,
       genders: Object.values(GENDER_ENUM),
+      countries: Object.values(COUNTRIES_ENUM),
+      provinces: PROVINCES_ENUM,
       timezone_: this.timezone,
       timezones: TIMEZONES,
       emailError: undefined,
+      address_line_1_: this.address_line_1,
+      address_line_2_: this.address_line_2,
+      city_: this.city,
+      province_: this.province,
+      postal_code_: this.postal_code,
+      country_: this.country,
     };
   },
   updated() {

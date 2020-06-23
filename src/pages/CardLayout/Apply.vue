@@ -11,6 +11,12 @@
         :valid.sync="valid"
         :page.sync="page"
         :timezone.sync="timezone"
+        :address_line_1.sync="address_line_1"
+        :address_line_2.sync="address_line_2"
+        :city.sync="city"
+        :province.sync="province"
+        :postal_code.sync="postal_code"
+        :country.sync="country"
       />
       <Experience
         :school.sync="school"
@@ -71,7 +77,7 @@
 <script>
 import {Card, Button, Modal} from '@components';
 import * as Screens from './ApplyScreens';
-import {APPLY, GENDER_ENUM, YEAR_OF_STUDY_ENUM} from '@graphql';
+import {APPLY, YEAR_OF_STUDY_ENUM} from '@graphql';
 import {query, toBase64} from '@utils';
 const end = Math.max(Object.values(Screens).length - 1, 0);
 
@@ -170,9 +176,18 @@ export default {
             lname: this.last_name,
             email: this.email,
             casl_acceptance: this.casl_acceptance,
-            gender: Object.keys(GENDER_ENUM)[this.gender],
+            gender: this.gender,
+            timezone: this.timezone,
+            address_line_1: this.address_line_1,
+            address_line_2: this.address_line_2,
+            city: this.city,
+            province: this.province,
+            postal_code: this.postal_code,
+            country: this.country,
             school: this.school,
+            program_of_study: this.program_of_study,
             year_of_study: Object.keys(YEAR_OF_STUDY_ENUM)[this.year_of_study],
+            year_of_graduation: this.year_of_graduation,
             resume: await toBase64(this.resume),
             resume_permission: this.resume_permission,
             portfolio: this.portfolio,
