@@ -52,7 +52,9 @@
 </template>
 
 <script>
-import {Input, Select, UploadFile, Checkbox} from '@components';
+import Select from '@hackthe6ix/vue-ui/dist/Select';
+import Checkbox from '@hackthe6ix/vue-ui/dist/Checkbox';
+import {Input, UploadFile} from '@components';
 import {YEAR_OF_STUDY_ENUM} from '@graphql';
 import {validate} from '@utils';
 

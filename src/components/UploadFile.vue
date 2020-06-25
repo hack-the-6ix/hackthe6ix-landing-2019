@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Button from './Button';
+import Button from '@hackthe6ix/vue-ui/dist/Button';
 const defaultMsg = 'Drag your file(s) here or click to browse';
 
 export default {

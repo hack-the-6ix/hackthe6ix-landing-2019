@@ -28,7 +28,8 @@
   </div>
 </template>
 <script>
-import {Button, Input} from '@components';
+import Button from '@hackthe6ix/vue-ui/dist/Button';
+import {Input} from '@components';
 import {query, auth} from '@utils';
 import {AUTH_ADMIN} from '@graphql';
 export default {

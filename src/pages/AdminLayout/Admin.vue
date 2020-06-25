@@ -14,7 +14,8 @@
   </div>
 </template>
 <script>
-import {Applicant, AdminStats, Button} from '@components';
+import Button from '@hackthe6ix/vue-ui/dist/Button';
+import {Applicant, AdminStats} from '@components';
 import {query, auth} from '@utils';
 import {APPLICANTS} from '@graphql';
 export default {

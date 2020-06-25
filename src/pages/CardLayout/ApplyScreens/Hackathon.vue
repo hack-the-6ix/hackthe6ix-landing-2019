@@ -47,7 +47,8 @@
 </template>
 
 <script>
-import {Input, Button, Textarea} from '@components';
+import Button from '@hackthe6ix/vue-ui/dist/Button';
+import {Input, Textarea} from '@components';
 
 export default {
   name: 'Hackathon',

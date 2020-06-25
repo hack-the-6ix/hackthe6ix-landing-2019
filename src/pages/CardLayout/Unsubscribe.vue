@@ -38,7 +38,8 @@
 </template>
 
 <script>
-import {Card, Checkbox, Button} from '@components';
+import Button from '@hackthe6ix/vue-ui/dist/Button';
+import {Card, Checkbox} from '@components';
 import {UNSUBSCRIBE} from '@graphql';
 import {query} from '@utils';
 

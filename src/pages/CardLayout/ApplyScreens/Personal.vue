@@ -42,7 +42,7 @@
       :blur="blur"
       required
     />
-    <Dropdown
+    <Select
       label="Timezone"
       name="timezone"
       v-model="timezone_"
@@ -51,7 +51,7 @@
       required
     />
     btw we aren't shipping you stuff if you're not in canada
-    <Dropdown
+    <Select
       label="Country"
       name="country"
       v-model="country_"
@@ -81,7 +81,7 @@
         label="City"
         v-model="city_"
       />
-      <Dropdown
+      <Select
         label="Province"
         name="province"
         v-model="province_"
@@ -101,7 +101,9 @@
 </template>
 
 <script>
-import {Input, Select, Checkbox, Dropdown} from '@components';
+import Checkbox from '@hackthe6ix/vue-ui/dist/Checkbox';
+import Select from '@hackthe6ix/vue-ui/dist/Select';
+import {Input} from '@components';
 import {
   GENDER_ENUM,
   HAS_EMAIL,
@@ -114,7 +116,6 @@ import {validate, query} from '@utils';
 export default {
   name: 'Personal',
   components: {
-    Dropdown,
     Input,
     Select,
     Checkbox,

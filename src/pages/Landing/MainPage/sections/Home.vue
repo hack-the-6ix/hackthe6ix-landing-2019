@@ -39,7 +39,8 @@
 </template>
 
 <script>
-import {Container, Button} from '@components';
+import {Container} from '@components';
+import Button from '@hackthe6ix/vue-ui/dist/Button';
 //import Intact from '@assets/sponsors/intact-insurance.svg';
 import {venue} from '@data';
 
