@@ -52,6 +52,7 @@ export const PROVINCES_ENUM = {
 };
 
 export const COUNTRIES_ENUM = {
+  CA: 'Canada',
   AF: 'Afghanistan',
   AL: 'Albania',
   DZ: 'Algeria',
@@ -89,7 +90,6 @@ export const COUNTRIES_ENUM = {
   BI: 'Burundi',
   KH: 'Cambodia',
   CM: 'Cameroon',
-  CA: 'Canada',
   CV: 'Cape Verde',
   KY: 'Cayman Islands',
   CF: 'Central African Republic',

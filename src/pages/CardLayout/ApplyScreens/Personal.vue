@@ -56,7 +56,7 @@
       class="apply__input"
       label="Country"
       name="country"
-      description="We're only able to ship swag if you live in Canada"
+      description="Note: If you are outside of Canada, we will not be shipping Hack the 6ix swag to your address."
       v-model="country_"
       :options="countries"
       :blur="blur"
@@ -100,7 +100,7 @@
         v-model="postal_code_"
       />
     </div>
-    Some timezone debug stuff: {{ timezone_ }} {{ timezone_.length }}
+    Some timezone debug stuff: {{ timezone_ || 'No timezone data :(' }}
   </div>
 </template>
 
@@ -217,6 +217,21 @@ export default {
     },
     timezone_(val) {
       this.$emit('update:timezone', val);
+    },
+    country_(val) {
+      this.$emit('update:country', val);
+    },
+    address_line_1_(val) {
+      this.$emit('update:address_line_1', val);
+    },
+    address_line_2_(val) {
+      this.$emit('update:address_line_1', val);
+    },
+    city_(val) {
+      this.$emit('update:city', val);
+    },
+    postal_code_(val) {
+      this.$emit('update:postal_code', val);
     },
     page() {
       if (this.$el.getAttribute('data-current') === 'true') {
