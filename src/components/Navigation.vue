@@ -50,7 +50,8 @@
 </template>
 
 <script>
-import {Container, Button} from '.';
+import {Container} from '.';
+import Button from '@hackthe6ix/vue-ui/dist/Button';
 import {Logo} from '@assets';
 
 export default {

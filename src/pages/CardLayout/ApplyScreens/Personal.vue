@@ -35,6 +35,7 @@
       v-model="casl_acceptance_"
     />
     <Select
+      class="apply__input"
       label="Gender"
       name="gender"
       v-model="gender_"
@@ -43,6 +44,7 @@
       required
     />
     <Select
+      class="apply__input"
       label="Timezone"
       name="timezone"
       v-model="timezone_"
@@ -50,10 +52,11 @@
       :blur="blur"
       required
     />
-    btw we aren't shipping you stuff if you're not in canada
     <Select
+      class="apply__input"
       label="Country"
       name="country"
+      description="We're only able to ship swag if you live in Canada"
       v-model="country_"
       :options="countries"
       :blur="blur"
@@ -82,6 +85,7 @@
         v-model="city_"
       />
       <Select
+        class="apply__input"
         label="Province"
         name="province"
         v-model="province_"
@@ -103,7 +107,7 @@
 <script>
 import Checkbox from '@hackthe6ix/vue-ui/dist/Checkbox';
 import Select from '@hackthe6ix/vue-ui/dist/Select';
-import {Input} from '@components';
+import Input from '@hackthe6ix/vue-ui/dist/Input';
 import {
   GENDER_ENUM,
   HAS_EMAIL,

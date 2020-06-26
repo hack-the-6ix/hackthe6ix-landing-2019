@@ -49,7 +49,8 @@
 <script>
 import Button from '@hackthe6ix/vue-ui/dist/Button';
 import Checkbox from '@hackthe6ix/vue-ui/dist/Checkbox';
-import {Card, Input} from '@components';
+import Input from '@hackthe6ix/vue-ui/dist/Input';
+import {Card} from '@components';
 import {validate, query} from '@utils';
 import {SUBSCRIBE} from '@graphql';
 

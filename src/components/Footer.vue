@@ -62,7 +62,8 @@
 </template>
 
 <script>
-import {Container, Button} from '.';
+import Button from '@hackthe6ix/vue-ui/dist/Button';
+import {Container} from '.';
 import {social_media, email} from '@data';
 import {Logo} from '@assets';
 
