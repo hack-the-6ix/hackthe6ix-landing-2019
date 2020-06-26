@@ -143,13 +143,12 @@ export default {
     this.pageHeight();
   },
   methods: {
-    /*
     pageHeight() {
       this.$nextTick(() => {
         const page = document.querySelectorAll('.apply__page')[this.page];
         this.height = page.clientHeight;
       });
-    },*/
+    },
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
       pages.forEach((page, i) => {

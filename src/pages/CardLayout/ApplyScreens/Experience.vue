@@ -1,11 +1,12 @@
 <template>
   <div class="apply__page">
     <h2 class="apply__subtitle">Personal Experience</h2>
-    <Input
+    <Select
       class="apply__input"
       name="school"
       placeholder="University of The 6ix"
       label="School"
+      options="schools"
       v-model="school_"
       required
     />
@@ -56,7 +57,7 @@ import Select from '@hackthe6ix/vue-ui/dist/Select';
 import Checkbox from '@hackthe6ix/vue-ui/dist/Checkbox';
 import Input from '@hackthe6ix/vue-ui/dist/Input';
 import {UploadFile} from '@components';
-import {YEAR_OF_STUDY_ENUM} from '@graphql';
+import {YEAR_OF_STUDY_ENUM, SCHOOLS} from '@graphql';
 import {validate} from '@utils';
 
 export default {
@@ -86,6 +87,7 @@ export default {
       portfolio_: this.portfolio,
       github_: this.github,
       options: Object.values(YEAR_OF_STUDY_ENUM),
+      schools: SCHOOLS,
     };
   },
   updated() {
