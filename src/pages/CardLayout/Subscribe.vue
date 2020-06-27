@@ -30,7 +30,7 @@
       <Button
         class="apply__button"
         v-show="!page"
-        :click="submit"
+        v-on:click.native="submit()"
         :disabled="!(checkEmail() && acceptance)"
       >
         Submit
@@ -38,7 +38,7 @@
       <Button
         class="apply__button"
         v-show="page"
-        :click="() => $router.push('/')"
+        v-on:click.native="$router.push('/')"
       >
         Back to home
       </Button>

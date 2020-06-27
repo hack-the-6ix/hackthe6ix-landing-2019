@@ -3,7 +3,7 @@
     <h2 class="apply__subtitle">Schedule</h2>
     <div v-if="!loading">
       <dynamic-schedule :signup_enabled="false"></dynamic-schedule>
-      <Button :click="download">Download Schedule</Button>
+      <Button v-on:click.native="download()">Download Schedule</Button>
     </div>
   </div>
 </template>

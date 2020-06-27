@@ -15,7 +15,11 @@
         >{{ item.displayName || item.name }}</router-link
       >
       <li>
-        <Button class="nav__button" :click="apply" :disabled="disableApply">
+        <Button
+          class="nav__button"
+          v-on:click.native="apply()"
+          :disabled="disableApply"
+        >
           {{ disableApply ? 'Applications Closed' : 'Apply' }}
         </Button>
       </li>
@@ -40,7 +44,7 @@
       <li>
         <Button
           class="nav__mobile-button"
-          :click="apply"
+          v-on:click.native="apply()"
           :disabled="disableApply"
           >{{ disableApply ? 'Applications Closed' : 'Apply' }}</Button
         >

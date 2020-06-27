@@ -21,7 +21,7 @@
       <Button
         class="apply__button"
         v-show="!page"
-        :click="submit"
+        v-on:click.native="submit()"
         :disabled="!(acceptance && $route.params.id)"
       >
         Submit
@@ -29,7 +29,7 @@
       <Button
         class="apply__button"
         v-show="page"
-        :click="() => $router.push('/')"
+        v-on:click.native="$router.push('/')"
       >
         Back to home
       </Button>

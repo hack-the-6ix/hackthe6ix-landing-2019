@@ -19,7 +19,7 @@
           type="password"
           v-model="pass"
         />
-        <Button :click="login" :loading="loading">Login</Button>
+        <Button v-on:click.native="login()" :loading="loading">Login</Button>
         <div class="error">
           {{ message }}
         </div>

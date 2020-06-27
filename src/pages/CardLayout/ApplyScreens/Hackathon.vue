@@ -35,11 +35,14 @@
         />
         <Button
           icon="trash"
-          :click="() => team_members_.splice(i, 1)"
+          v-on:click.native="team_members_.splice(i, 1)"
           secondary
         />
       </div>
-      <Button icon="plus" :click="add" :disabled="team_members_.length > 2"
+      <Button
+        icon="plus"
+        v-on:click.native="add()"
+        :disabled="team_members_.length > 2"
         >Add a team member</Button
       >
     </div>

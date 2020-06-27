@@ -42,7 +42,7 @@
         secondary
         v-if="page !== end"
         class="apply__button apply__button--main"
-        :click="back"
+        v-on:click.native="back()"
         :disabled="page === 0"
       >
         Back
@@ -51,7 +51,7 @@
       <Button
         v-if="page !== end"
         class="apply__button"
-        :click="page === end - 1 ? submit : next"
+        v-on:click.native="page === end - 1 ? submit() : next()"
         :loading="loading"
         :disabled="!valid"
       >
@@ -61,7 +61,7 @@
       <Button
         v-if="page === end"
         class="apply__button"
-        :click="() => $router.push('/dash/' + id)"
+        v-on:click.native="$router.push('/dash/' + id)"
         icon="address-card"
       >
         To Dashboard

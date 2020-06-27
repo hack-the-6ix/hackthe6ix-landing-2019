@@ -74,14 +74,14 @@
         :loading="submiting"
         :disabled="!dirty"
         v-if="canEdit"
-        :click="submit"
+        v-on:click.native="submit()"
       >
         Save RSVP
       </Button>
       <Button
         class="dash__button dash__button--full"
         :secondary="canEdit"
-        :click="() => to(0)"
+        v-on:click.native="to(0)"
       >
         Back to Home
       </Button>

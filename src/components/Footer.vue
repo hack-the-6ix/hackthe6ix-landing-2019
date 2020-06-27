@@ -21,7 +21,7 @@
           <li>
             <Button
               class="footer__button"
-              :click="apply"
+              v-on:click.native="apply()"
               :disabled="disableApply"
               >{{ disableApply ? 'Applications Closed' : 'Apply Now' }}</Button
             >

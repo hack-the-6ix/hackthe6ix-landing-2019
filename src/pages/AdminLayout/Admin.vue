@@ -1,6 +1,6 @@
 <template>
   <div id="admin-dashboard">
-    <Button :click="scanner">Scanner Component</Button>
+    <Button v-on:click.native="scanner()">Scanner Component</Button>
     <h1 class="title">Admin</h1>
     <admin-stats :applicants="applicants"></admin-stats>
     <div class="applicants">

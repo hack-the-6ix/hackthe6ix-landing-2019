@@ -7,20 +7,23 @@
       <p class="dash__role">Hacker</p>
     </div>
     <div class="dash__controls">
-      <Button class="dash__button" :click="() => to(1)" icon="compass"
+      <Button class="dash__button" v-on:click.native="to(1)" icon="compass"
         >Application Status</Button
       >
-      <Button class="dash__button" :click="scheduleMe" icon="calendar"
+      <Button
+        class="dash__button"
+        v-on:click.native="scheduleMe()"
+        icon="calendar"
         >Schedule</Button
       >
       <Button
         class="dash__button"
         :icon="['fab', 'slack']"
-        :click="slackMe"
+        v-on:click.native="slackMe()"
         :disabled="canSlack"
         >Slack Channel</Button
       >
-      <Button class="dash__button" :click="prizeMe" icon="award"
+      <Button class="dash__button" v-on:click.native="prizeMe()" icon="award"
         >Challenges/Prizes</Button
       >
     </div>

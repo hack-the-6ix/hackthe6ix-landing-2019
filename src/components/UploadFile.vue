@@ -21,7 +21,7 @@
     </div>
     <Button
       :disabled="!value"
-      :click="() => $emit('input')"
+      v-on:click.native="$emit('input')"
       secondary
       icon="trash"
     />

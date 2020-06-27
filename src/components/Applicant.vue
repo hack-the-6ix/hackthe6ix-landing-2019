@@ -57,19 +57,24 @@
       </div>
       <div class="controls double">
         <div class="left">
-          <Button class="btn" :click="dashboard">Dashboard</Button>
-          <Button class="btn" :click="resume" :loading="resume_loading"
+          <Button class="btn" v-on:click.native="dashboard()">Dashboard</Button>
+          <Button
+            class="btn"
+            v-on:click.native="resume()"
+            :loading="resume_loading"
             >Resume</Button
           >
         </div>
         <div class="right">
-          <Button class="btn" :click="print">Print</Button>
+          <Button class="btn" v-on:click.native="print()">Print</Button>
           <select v-model="application_status">
             <option v-for="status in application_statuses" :key="status">{{
               status
             }}</option>
           </select>
-          <Button class="btn" :click="save" :loading="saving">Save</Button>
+          <Button class="btn" v-on:click.native="save()" :loading="saving">
+            Save
+          </Button>
         </div>
       </div>
     </div>
