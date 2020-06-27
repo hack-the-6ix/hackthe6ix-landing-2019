@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/dist/Button';
+import Button from '@hackthe6ix/vue-ui/Button';
 import {DynamicSchedule} from '@components';
 
 export default {

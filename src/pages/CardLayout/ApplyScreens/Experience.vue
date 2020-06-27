@@ -53,9 +53,9 @@
 </template>
 
 <script>
-import Select from '@hackthe6ix/vue-ui/dist/Select';
-import Checkbox from '@hackthe6ix/vue-ui/dist/Checkbox';
-import Input from '@hackthe6ix/vue-ui/dist/Input';
+import Select from '@hackthe6ix/vue-ui/Select';
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
+import Input from '@hackthe6ix/vue-ui/Input';
 import {UploadFile} from '@components';
 import {YEAR_OF_STUDY_ENUM, SCHOOLS} from '@graphql';
 import {validate} from '@utils';

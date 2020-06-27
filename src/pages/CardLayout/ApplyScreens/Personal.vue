@@ -105,9 +105,9 @@
 </template>
 
 <script>
-import Checkbox from '@hackthe6ix/vue-ui/dist/Checkbox';
-import Select from '@hackthe6ix/vue-ui/dist/Select';
-import Input from '@hackthe6ix/vue-ui/dist/Input';
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
+import Select from '@hackthe6ix/vue-ui/Select';
+import Input from '@hackthe6ix/vue-ui/Input';
 import {
   GENDER_ENUM,
   HAS_EMAIL,

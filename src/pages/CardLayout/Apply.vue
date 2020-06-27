@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/dist/Button';
+import Button from '@hackthe6ix/vue-ui/Button';
 import {Card, Modal} from '@components';
 import * as Screens from './ApplyScreens';
 import {APPLY, YEAR_OF_STUDY_ENUM} from '@graphql';

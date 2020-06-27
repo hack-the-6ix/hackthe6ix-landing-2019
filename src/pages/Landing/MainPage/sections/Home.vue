@@ -40,7 +40,7 @@
 
 <script>
 import {Container} from '@components';
-import Button from '@hackthe6ix/vue-ui/dist/Button';
+import Button from '@hackthe6ix/vue-ui/Button';
 //import Intact from '@assets/sponsors/intact-insurance.svg';
 import {venue} from '@data';
 

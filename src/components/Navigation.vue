@@ -51,7 +51,7 @@
 
 <script>
 import {Container} from '.';
-import Button from '@hackthe6ix/vue-ui/dist/Button';
+import Button from '@hackthe6ix/vue-ui/Button';
 import {Logo} from '@assets';
 
 export default {
