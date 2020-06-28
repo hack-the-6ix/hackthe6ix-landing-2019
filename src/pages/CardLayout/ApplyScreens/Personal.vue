@@ -6,6 +6,9 @@
       name="first_name"
       placeholder="e.g. John"
       label="First Name"
+      :validate="
+        value => (value && value.length > 0) || 'First name is required'
+      "
       required
     />
     <Input
@@ -13,6 +16,9 @@
       name="last_name"
       placeholder="e.g. Doe"
       label="Last Name"
+      :validate="
+        value => (value && value.length > 0) || 'Last name is required'
+      "
       required
     />
     <Input
@@ -22,7 +28,8 @@
       placeholder="e.g. john@hackthe6ix.com"
       label="Email"
       :state="typeof emailError === 'string' ? !Boolean(emailError) : undefined"
-      :errorMsg="emailError"
+      :error="form_errors.email"
+      :validate="validateEmail"
       required
     />
     <Checkbox
@@ -30,12 +37,13 @@
       name="casl_acceptance"
       label="I allow Hack The 6ix to send me emails containing information from the event sponsors."
     />
-    {{/*<Select
+    <Select
       class="apply__input"
       label="Gender"
       name="gender"
       :options="genders"
       :blur="blur"
+      :validate="value => value >= 0 || 'Gender is required'"
       required
     />
     <Select
@@ -55,7 +63,7 @@
       :blur="blur"
       required
     />
-    <div v-if="country_ === 'Canada'">
+    <div v-if="countries[form_data.country] === 'Canada'">
       <Input
         class="apply__input"
         name="address_line_1"
@@ -87,8 +95,7 @@
         placeholder="M5S 2E4"
         label="Postal Code"
       />
-    </div>*/}}
-    Some timezone debug stuff: {{ timezone_ || 'No timezone data :(' }}
+    </div>
   </div>
 </template>
 
@@ -108,20 +115,45 @@ import {validate, query} from '@utils';
 
 export default {
   name: 'Personal',
+  inject: ['form_data', 'form_errors'],
   components: {
     Input,
     Select,
     Checkbox,
+  },
+  data() {
+    return {
+      genders: Object.values(GENDER_ENUM),
+      countries: Object.values(COUNTRIES_ENUM),
+      provinces: PROVINCES_ENUM,
+      timezones: TIMEZONES,
+    };
   },
   methods: {
     blur() {
       this.$el.focus();
     },
     async check() {
-      this.$emit(
-        'update:valid',
-        true,
-      );
+      this.$emit('update:valid', true);
+    },
+    async validateEmail(email) {
+      if (email.length > 0 && validate(email, 'email')) {
+        const hasEmail = await query(HAS_EMAIL, {
+          email: email,
+        });
+        return !hasEmail || 'Email Already in use';
+      }
+      return 'Please provide a valid email';
+    },
+  },
+  watch: {
+    form_errors(val) {
+      // eslint-disable-next-line
+      console.log('errors', val);
+    },
+    form_data(val) {
+      // eslint-disable-next-line
+      console.log('lol', val);
     },
   },
 };

@@ -3,23 +3,8 @@
     <h1 class="apply__title">Hack The 6ix Application Form</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
       <Personal />
-      {{/*<Experience
-        :school.sync="school"
-        :year_of_study.sync="year_of_study"
-        :resume.sync="resume"
-        :resume_permission.sync="resume_permission"
-        :portfolio.sync="portfolio"
-        :github.sync="github"
-        :valid.sync="valid"
-        :page.sync="page"
-      />
-      <Hackathon
-        :hack_count.sync="hack_count"
-        :pitch.sync="pitch"
-        :team_members.sync="team_members"
-        :valid.sync="valid"
-        :page.sync="page"
-      />
+      <Experience />
+      <Hackathon />
       <Finish :email="email" />
     </div>
     <div class="apply__controls">
@@ -50,7 +35,7 @@
         icon="address-card"
       >
         To Dashboard
-      </Button>*/}}
+      </Button>
     </div>
     <Modal :show="showModal">
       <h2 class="apply__title">Application Error</h2>
@@ -64,16 +49,24 @@ import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 import Button from '@hackthe6ix/vue-ui/Button';
 import {Card, Modal} from '@components';
 import * as Screens from './ApplyScreens';
-import {APPLY, YEAR_OF_STUDY_ENUM} from '@graphql';
 import {query, toBase64} from '@utils';
 const end = Math.max(Object.values(Screens).length - 1, 0);
+
+import {
+  APPLY,
+  YEAR_OF_STUDY_ENUM,
+  GENDER_ENUM,
+  TIMEZONES,
+  PROVINCES_ENUM,
+  COUNTRIES_ENUM,
+} from '@graphql';
 
 export default {
   name: 'Info',
   path: '/apply',
   mixins: [
     formProvider({
-      first_name: 'aaaa',
+      first_name: '',
       last_name: '',
       email: '',
       casl_acceptance: false,
@@ -117,6 +110,11 @@ export default {
       height: 0,
       page: 0,
       end,
+
+      genders: Object.values(GENDER_ENUM),
+      countries: Object.values(COUNTRIES_ENUM),
+      provinces: Object.keys(PROVINCES_ENUM),
+      timezones: Object.values(TIMEZONES),
     };
   },
   mounted() {
@@ -131,14 +129,16 @@ export default {
     this.pageHeight();
   },
   methods: {
+    /*
     pageHeight() {
       this.$nextTick(() => {
         const page = document.querySelectorAll('.apply__page')[this.page];
         this.height = page.clientHeight;
       });
-    },
+    },*/
     onUpdate(...args) {
-      console.log(args);
+      // eslint-disable-next-line
+      console.log('on update!', args);
     },
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
@@ -168,12 +168,12 @@ export default {
             lname: this.last_name,
             email: this.email,
             casl_acceptance: this.casl_acceptance,
-            gender: this.gender,
-            timezone: this.timezone,
+            gender: this.genders[this.gender],
+            timezone: this.timezones[this.timezone],
             address_line_1: this.address_line_1,
             address_line_2: this.address_line_2,
             city: this.city,
-            province: this.province,
+            province: this.provinces[this.province],
             postal_code: this.postal_code,
             country: this.country,
             school: this.school,
