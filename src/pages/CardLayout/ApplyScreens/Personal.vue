@@ -141,9 +141,6 @@ export default {
       }
       return 'Please provide a valid email';
     },
-    async check() {
-
-    }
   },
   watch: {
     form_errors(val) {

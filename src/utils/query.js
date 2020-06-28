@@ -1,5 +1,5 @@
 /**
- * queryConfig hook options
+ * queryConfig hook yearsOfStudy
  * @typedef {Object} queryConfig
  * @property {object} variables - Query variables
  */

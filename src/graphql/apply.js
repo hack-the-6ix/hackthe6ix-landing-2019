@@ -25,6 +25,10 @@ export const GENDER_ENUM = {
   prefer_not_to_say: 'Prefer not to say',
 };
 
+export const PROGRAMS = ['Computer Science'];
+
+export const GRADUATION_YEARS = [2020, 2021, 2022, 2023, 2024, 2025];
+
 export const YEAR_OF_STUDY_ENUM = {
   highschool: 'High School',
   first_year: 'Undergraduate Year 1',

@@ -64,7 +64,8 @@ export default {
     async onDecode(decodedString) {
       if (decodedString == '') return;
       let events_select = document.getElementById('events');
-      let event_id = events_select.options[events_select.selectedIndex].value;
+      let event_id =
+        events_select.yearsOfStudy[events_select.selectedIndex].value;
       const auth_user = auth.fetch_user();
       const {message, success} = await query(
         ATTEND,

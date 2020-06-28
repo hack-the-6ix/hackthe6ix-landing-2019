@@ -79,6 +79,14 @@ export default {
       province: '',
       postal_code: '',
       country: '',
+      school: '',
+      program_of_study: '',
+      year_of_study: -1,
+      year_of_graduation: -1,
+      resume: null,
+      resume_permission: false,
+      portfolio: '',
+      github: '',
     }),
   ],
   components: {
@@ -89,16 +97,6 @@ export default {
   },
   data() {
     return {
-      // Experience
-      school: '',
-      program_of_study: '',
-      year_of_study: -1,
-      year_of_graduation: -1,
-      resume: null,
-      resume_permission: false,
-      portfolio: '',
-      github: '',
-
       // Hackathon Information
       hack_count: 0,
       pitch: '',
@@ -179,7 +177,9 @@ export default {
             country: this.form_data.country,
             school: this.form_data.school,
             program_of_study: this.form_data.program_of_study,
-            year_of_study: Object.keys(YEAR_OF_STUDY_ENUM)[this.form_data.year_of_study],
+            year_of_study: Object.keys(YEAR_OF_STUDY_ENUM)[
+              this.form_data.year_of_study
+            ],
             year_of_graduation: this.form_data.year_of_graduation,
             resume: await toBase64(this.resume),
             resume_permission: this.form_data.resume_permission,
