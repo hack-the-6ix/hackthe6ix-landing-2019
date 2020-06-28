@@ -27,7 +27,6 @@
       type="email"
       placeholder="e.g. john@hackthe6ix.com"
       label="Email"
-      :state="typeof emailError === 'string' ? !Boolean(emailError) : undefined"
       :error="form_errors.email"
       :validate="validateEmail"
       required
@@ -67,19 +66,19 @@
       <Input
         class="apply__input"
         name="address_line_1"
-        placeholder="123 Hack the 6ix Blvd"
+        placeholder="e.g. 123 Hack the 6ix Blvd"
         label="Address Line 1"
       />
       <Input
         class="apply__input"
         name="address_line_2"
-        placeholder="Unit 6"
+        placeholder="e.g. Unit 6"
         label="Address Line 2"
       />
       <Input
         class="apply__input"
         name="city"
-        placeholder="Toronto"
+        placeholder="e.g. The 6ix"
         label="City"
       />
       <Select
@@ -92,7 +91,7 @@
       <Input
         class="apply__input"
         name="postal_code"
-        placeholder="M5S 2E4"
+        placeholder="e.g. M5S 2E4"
         label="Postal Code"
       />
     </div>
@@ -133,9 +132,6 @@ export default {
     blur() {
       this.$el.focus();
     },
-    async check() {
-      this.$emit('update:valid', true);
-    },
     async validateEmail(email) {
       if (email.length > 0 && validate(email, 'email')) {
         const hasEmail = await query(HAS_EMAIL, {
@@ -145,11 +141,16 @@ export default {
       }
       return 'Please provide a valid email';
     },
+    async check() {
+
+    }
   },
   watch: {
     form_errors(val) {
       // eslint-disable-next-line
       console.log('errors', val);
+
+      this.$emit('update:valid', val.length === 0);
     },
     form_data(val) {
       // eslint-disable-next-line
