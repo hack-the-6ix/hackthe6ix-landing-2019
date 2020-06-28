@@ -55,10 +55,11 @@ const end = Math.max(Object.values(Screens).length - 1, 0);
 import {
   APPLY,
   YEAR_OF_STUDY_ENUM,
-  GENDER_ENUM,
+  GENDERS,
   TIMEZONES,
   PROVINCES_ENUM,
-  COUNTRIES_ENUM,
+  COUNTRIES,
+  GRADUATION_YEARS,
 } from '@graphql';
 
 export default {
@@ -87,6 +88,9 @@ export default {
       resume_permission: false,
       portfolio: '',
       github: '',
+      hack_count: 0,
+      pitch: '',
+      team_members: [],
     }),
   ],
   components: {
@@ -97,11 +101,6 @@ export default {
   },
   data() {
     return {
-      // Hackathon Information
-      hack_count: 0,
-      pitch: '',
-      team_members: [],
-
       // Others
       showModal: false,
       loading: false,
@@ -110,10 +109,9 @@ export default {
       page: 0,
       end,
 
-      genders: Object.values(GENDER_ENUM),
-      countries: Object.values(COUNTRIES_ENUM),
       provinces: Object.keys(PROVINCES_ENUM),
-      timezones: Object.values(TIMEZONES),
+      yearsOfStudy: Object.keys(YEAR_OF_STUDY_ENUM),
+      graduationYears: GRADUATION_YEARS,
     };
   },
   mounted() {
@@ -167,20 +165,20 @@ export default {
             lname: this.form_data.last_name,
             email: this.form_data.email,
             casl_acceptance: this.form_data.casl_acceptance,
-            gender: this.genders[this.form_data.gender],
-            timezone: this.timezones[this.form_data.timezone],
+            gender: GENDERS[this.form_data.gender],
+            timezone: TIMEZONES[this.form_data.timezone],
             address_line_1: this.form_data.address_line_1,
             address_line_2: this.form_data.address_line_2,
+            country: COUNTRIES[this.form_data.country],
             city: this.form_data.city,
             province: this.provinces[this.form_data.province],
             postal_code: this.form_data.postal_code,
-            country: this.form_data.country,
             school: this.form_data.school,
             program_of_study: this.form_data.program_of_study,
-            year_of_study: Object.keys(YEAR_OF_STUDY_ENUM)[
-              this.form_data.year_of_study
+            year_of_study: this.yearsOfStudy[this.form_data.year_of_study],
+            year_of_graduation: this.graduationYears[
+              this.form_data.year_of_graduation
             ],
-            year_of_graduation: this.form_data.year_of_graduation,
             resume: await toBase64(this.resume),
             resume_permission: this.form_data.resume_permission,
             portfolio: this.form_data.portfolio,

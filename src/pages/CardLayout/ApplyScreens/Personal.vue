@@ -40,7 +40,7 @@
       class="apply__input"
       label="Gender"
       name="gender"
-      :options="genders"
+      :options="GENDERS"
       :blur="blur"
       :validate="value => value >= 0 || 'Gender is required'"
       required
@@ -104,11 +104,11 @@ import Select from '@hackthe6ix/vue-ui/Select';
 import Input from '@hackthe6ix/vue-ui/Input';
 
 import {
-  GENDER_ENUM,
+  GENDERS,
   HAS_EMAIL,
   TIMEZONES,
   PROVINCES_ENUM,
-  COUNTRIES_ENUM,
+  COUNTRIES,
 } from '@graphql';
 import {validate, query} from '@utils';
 
@@ -122,8 +122,8 @@ export default {
   },
   data() {
     return {
-      genders: Object.values(GENDER_ENUM),
-      countries: Object.values(COUNTRIES_ENUM),
+      genders: GENDERS,
+      countries: COUNTRIES,
       provinces: PROVINCES_ENUM,
       timezones: TIMEZONES,
     };

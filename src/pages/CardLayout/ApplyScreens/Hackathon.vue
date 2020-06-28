@@ -7,9 +7,6 @@
       type="number"
       placeholder="Too many"
       label="How many Hackathons have you attended so far?"
-      v-model.number="hack_count_"
-      errorMsg="Please provide a valid number"
-      :state="Number.isInteger(hack_count_) && hack_count_ >= 0"
       min="0"
       required
     />
@@ -18,7 +15,6 @@
       name="pitch"
       placeholder="Tell us about your thing"
       label="What would you like to build at the hackathon? (Minimum 50 Characters)"
-      v-model="pitch_"
       required
     />
     <div class="hack__team">
