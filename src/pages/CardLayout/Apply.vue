@@ -2,23 +2,8 @@
   <Card class="apply">
     <h1 class="apply__title">Hack The 6ix Application Form</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
-      <Personal
-        :first_name.sync="first_name"
-        :last_name.sync="last_name"
-        :email.sync="email"
-        :casl_acceptance.sync="casl_acceptance"
-        :gender.sync="gender"
-        :valid.sync="valid"
-        :page.sync="page"
-        :timezone.sync="timezone"
-        :address_line_1.sync="address_line_1"
-        :address_line_2.sync="address_line_2"
-        :city.sync="city"
-        :province.sync="province"
-        :postal_code.sync="postal_code"
-        :country.sync="country"
-      />
-      <Experience
+      <Personal />
+      {{/*<Experience
         :school.sync="school"
         :year_of_study.sync="year_of_study"
         :resume.sync="resume"
@@ -65,7 +50,7 @@
         icon="address-card"
       >
         To Dashboard
-      </Button>
+      </Button>*/}}
     </div>
     <Modal :show="showModal">
       <h2 class="apply__title">Application Error</h2>
@@ -75,6 +60,7 @@
 </template>
 
 <script>
+import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 import Button from '@hackthe6ix/vue-ui/Button';
 import {Card, Modal} from '@components';
 import * as Screens from './ApplyScreens';
@@ -85,16 +71,9 @@ const end = Math.max(Object.values(Screens).length - 1, 0);
 export default {
   name: 'Info',
   path: '/apply',
-  components: {
-    ...Screens,
-    Button,
-    Modal,
-    Card,
-  },
-  data() {
-    return {
-      // Personal
-      first_name: '',
+  mixins: [
+    formProvider({
+      first_name: 'aaaa',
       last_name: '',
       email: '',
       casl_acceptance: false,
@@ -106,7 +85,16 @@ export default {
       province: '',
       postal_code: '',
       country: '',
-
+    }),
+  ],
+  components: {
+    ...Screens,
+    Button,
+    Modal,
+    Card,
+  },
+  data() {
+    return {
       // Experience
       school: '',
       program_of_study: '',
@@ -148,6 +136,9 @@ export default {
         const page = document.querySelectorAll('.apply__page')[this.page];
         this.height = page.clientHeight;
       });
+    },
+    onUpdate(...args) {
+      console.log(args);
     },
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
