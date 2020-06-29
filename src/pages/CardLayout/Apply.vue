@@ -111,9 +111,88 @@ export default {
 
       // Fields to watch for validation
       validationFields: [
-        ['first_name', 'last_name', 'email', 'gender', 'timezone', 'country'],
-        ['school', 'program_of_study', 'year_of_study', 'year_of_graduation'],
-        ['pitch'],
+        [
+          {
+            name: 'first_name',
+            required: true,
+          },
+          {
+            name: 'last_name',
+            required: true,
+          },
+          {
+            name: 'email',
+            required: true,
+          },
+          {
+            name: 'gender',
+            required: true,
+          },
+          {
+            name: 'timezone',
+            required: true,
+          },
+          {
+            name: 'country',
+            required: true,
+          },
+          {
+            name: 'address_line_1',
+            required: false,
+          },
+          {
+            name: 'address_line_2',
+            required: false,
+          },
+          {
+            name: 'city',
+            required: false,
+          },
+          {
+            name: 'province',
+            required: false,
+          },
+          {
+            name: 'postal_code',
+            required: false,
+          },
+        ],
+        [
+          {
+            name: 'school',
+            required: true,
+          },
+          {
+            name: 'program_of_study',
+            required: true,
+          },
+          {
+            name: 'year_of_study',
+            required: true,
+          },
+          {
+            name: 'year_of_graduation',
+            required: true,
+          },
+          {
+            name: 'portfolio',
+            required: false,
+          },
+          {
+            name: 'github',
+            required: false,
+          },
+        ],
+        [
+          {
+            name: 'pitch',
+            required: true,
+          },
+          {
+            name: 'hack_count',
+            required: true,
+          }
+        ],
       ],
 
       yearsOfStudy: Object.keys(YEAR_OF_STUDY_ENUM),
@@ -229,8 +308,15 @@ export default {
       const fields = this.validationFields[this.page];
 
       for (let i = 0; i < fields.length; i++) {
-        if (this.form_errors[fields[i]] !== true) {
-          return false;
+        const required = fields[i].required;
+        if (required) {
+          if (this.form_errors[fields[i].name] !== true) {
+            return false;
+          }
+        } else {
+          if (typeof this.form_errors[fields[i].name] === 'string') {
+            return false;
+          }
         }
       }
 

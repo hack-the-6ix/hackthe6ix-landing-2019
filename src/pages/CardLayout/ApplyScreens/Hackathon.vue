@@ -8,6 +8,7 @@
       placeholder="Too many"
       label="How many Hackathons have you attended so far?"
       min="0"
+      :validate="value => value >= 0 || 'This field must be non-negative'"
       required
     />
     <Textarea
