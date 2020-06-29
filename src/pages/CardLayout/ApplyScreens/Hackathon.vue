@@ -15,8 +15,14 @@
       name="pitch"
       placeholder="Tell us about your thing"
       label="What would you like to build at the hackathon? (Minimum 50 Characters)"
+      :validation="
+        value =>
+          (value && value.length >= 50) ||
+          'You must have at least 50 characters'
+      "
       required
     />
+    {{(form_data.pitch && form_data.pitch.length) || 0}}
     <!--
     <div class="hack__team">
       <label class="hack__label"
@@ -47,32 +53,19 @@
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/src/Button';
-import Input from '@hackthe6ix/vue-ui/src/Input';
+import Button from '@hackthe6ix/vue-ui/Button';
+import Input from '@hackthe6ix/vue-ui/Input';
 import {Textarea} from '@components';
 
 export default {
   name: 'Hackathon',
+  inject: ['form_data'],
   components: {
     Input,
     Button,
     Textarea,
   },
   methods: {
-    check() {
-      this.$emit(
-        'update:valid',
-        Boolean(
-          Number.isInteger(this.hack_count_) &&
-            this.pitch_.length > 50 &&
-            this.hack_count_ >= 0 &&
-            this.team_members_.reduce(
-              (acc, curr) => acc && curr.length > 0,
-              true,
-            ),
-        ),
-      );
-    },
     add() {
       this.team_members_.push('');
     },

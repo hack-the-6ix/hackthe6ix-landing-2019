@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/src/Button';
-import Checkbox from '@hackthe6ix/vue-ui/src/Checkbox';
+import Button from '@hackthe6ix/vue-ui/Button';
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
 import {Card} from '@components';
 import {UNSUBSCRIBE} from '@graphql';
 import {query} from '@utils';

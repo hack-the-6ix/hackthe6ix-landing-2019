@@ -81,7 +81,7 @@
   </div>
 </template>
 <script>
-import Button from '@hackthe6ix/vue-ui/src/Button';
+import Button from '@hackthe6ix/vue-ui/Button';
 import {query, auth} from '@utils';
 import {RESUME, STATUSES, UPDATE_APPLICANT, PRINT} from '@graphql';
 export default {

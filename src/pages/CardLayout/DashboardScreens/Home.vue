@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/src/Button';
+import Button from '@hackthe6ix/vue-ui/Button';
 import {email} from '@data';
 const whiteList = ['accepted', 'attending', 'not_attending'];
 

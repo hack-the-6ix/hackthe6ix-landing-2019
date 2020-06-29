@@ -2,10 +2,10 @@
   <Card class="apply">
     <h1 class="apply__title">Hack The 6ix Application Form</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
-      <Personal />
+      <Personal valid.sync="valid" />
       <Experience />
       <Hackathon />
-      <Finish :email="email" />
+      <Finish :email="form_data.email" />
     </div>
     <div class="apply__controls">
       <Button
@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import formProvider from '@hackthe6ix/vue-ui/src/utils/mixins/formProvider';
-import Button from '@hackthe6ix/vue-ui/src/Button';
+import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
+import Button from '@hackthe6ix/vue-ui/Button';
 import {Card, Modal} from '@components';
 import * as Screens from './ApplyScreens';
 import {query, toBase64} from '@utils';
@@ -103,10 +103,16 @@ export default {
       // Others
       showModal: false,
       loading: false,
-      valid: true,
       height: 0,
       page: 0,
       end,
+
+      // Fields to watch for validation
+      validationFields: [
+        ['first_name', 'last_name', 'email', 'gender', 'timezone', 'country'],
+        ['school', 'program_of_study', 'year_of_study', 'year_of_graduation'],
+        ['pitch'],
+      ],
 
       yearsOfStudy: Object.keys(YEAR_OF_STUDY_ENUM),
       graduationYears: GRADUATION_YEARS,
@@ -131,10 +137,6 @@ export default {
         this.height = page.clientHeight;
       });
     },*/
-    onUpdate(...args) {
-      // eslint-disable-next-line
-      console.log('on update!', args);
-    },
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
       pages.forEach((page, i) => {
@@ -201,6 +203,19 @@ export default {
   watch: {
     page() {
       this.shiftPages();
+    },
+  },
+  computed: {
+    valid: function() {
+      const fields = this.validationFields[this.page];
+
+      for (let i = 0; i < fields.length; i++) {
+        if (this.form_errors[fields[i]] !== true) {
+          return false;
+        }
+      }
+
+      return true;
     },
   },
 };

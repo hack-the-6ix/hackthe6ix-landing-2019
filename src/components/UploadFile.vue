@@ -20,17 +20,17 @@
       />
     </div>
     <Button
-      :disabled="!value"
+      :disabled="false"
       v-on:click.native="$emit('input')"
       secondary
-      icon="trash"
+      :icon="['trash']"
     />
     <label :id="name" class="file__error" v-if="error">{{ errorMsg }}</label>
   </div>
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/src/Button';
+import Button from '@hackthe6ix/vue-ui/Button';
 const defaultMsg = 'Drag your file(s) here or click to browse';
 
 export default {

@@ -26,7 +26,9 @@
       label="Year of Study (entering)"
       name="year_of_study"
       :options="yearsOfStudy"
-      :validate="value => value >= 0 || 'Year of study is required'"
+      :validate="
+        value => (value && value.length > 0) || 'Year of study is required'
+      "
       required
     />
     <Select
@@ -74,10 +76,10 @@
 </template>
 
 <script>
-import Select from '@hackthe6ix/vue-ui/src/Select';
-import Checkbox from '@hackthe6ix/vue-ui/src/Checkbox';
-import ComboBox from '@hackthe6ix/vue-ui/src/ComboBox';
-import Input from '@hackthe6ix/vue-ui/src/Input';
+import Select from '@hackthe6ix/vue-ui/Select';
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
+import ComboBox from '@hackthe6ix/vue-ui/ComboBox';
+import Input from '@hackthe6ix/vue-ui/Input';
 import {UploadFile} from '@components';
 import {
   YEAR_OF_STUDY_ENUM,
@@ -105,9 +107,6 @@ export default {
     };
   },
   methods: {
-    check() {
-      this.$emit('update:valid', true);
-    },
     validateUrl(url, res) {
       return url === '' ? res : validate(url, 'url');
     },

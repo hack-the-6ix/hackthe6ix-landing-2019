@@ -50,6 +50,7 @@
       label="Timezone"
       name="timezone"
       :options="timezones"
+      :validate="value => value >= 0 || 'Timezone is required'"
       :blur="blur"
       required
     />
@@ -58,6 +59,7 @@
       label="Country"
       name="country"
       description="Note: If you are outside of Canada, we will not be shipping Hack the 6ix swag to your address."
+      :validate="value => value >= 0 || 'Country is required'"
       :options="countries"
       :blur="blur"
       required
@@ -99,9 +101,9 @@
 </template>
 
 <script>
-import Checkbox from '@hackthe6ix/vue-ui/src/Checkbox';
-import Select from '@hackthe6ix/vue-ui/src/Select';
-import Input from '@hackthe6ix/vue-ui/src/Input';
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
+import Select from '@hackthe6ix/vue-ui/Select';
+import Input from '@hackthe6ix/vue-ui/Input';
 
 import {
   GENDERS,
@@ -140,18 +142,6 @@ export default {
         return !hasEmail || 'Email Already in use';
       }
       return 'Please provide a valid email';
-    },
-  },
-  watch: {
-    form_errors(val) {
-      // eslint-disable-next-line
-      console.log('errors', val);
-
-      this.$emit('update:valid', val.length === 0);
-    },
-    form_data(val) {
-      // eslint-disable-next-line
-      console.log('lol', val);
     },
   },
 };

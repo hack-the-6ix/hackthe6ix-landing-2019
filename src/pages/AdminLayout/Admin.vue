@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import Button from '@hackthe6ix/vue-ui/src/Button';
+import Button from '@hackthe6ix/vue-ui/Button';
 import {Applicant, AdminStats} from '@components';
 import {query, auth} from '@utils';
 import {APPLICANTS} from '@graphql';
