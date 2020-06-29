@@ -40,7 +40,7 @@
     <Modal :show.sync="showModal">
       <h2 class="apply__title">Application Error</h2>
       <p>Something unexpected happened. Please try again later.</p>
-      <p>{{error}}</p>
+      <p>{{ error }}</p>
     </Modal>
   </Card>
 </template>
@@ -191,7 +191,7 @@ export default {
           {
             name: 'hack_count',
             required: true,
-          }
+          },
         ],
       ],
 
@@ -248,7 +248,7 @@ export default {
             casl_acceptance: this.form_data.casl_acceptance,
             gender: GENDERS[this.form_data.gender],
             timezone: TIMEZONES[this.form_data.timezone],
-            country: this.form_data.country,
+            country: COUNTRIES[this.form_data.country],
             school: this.form_data.school,
             program_of_study: this.form_data.program_of_study,
             year_of_study: this.form_data.year_of_study,
@@ -278,7 +278,6 @@ export default {
         for (let i = 0; i < Object.keys(address).length; i++) {
           const entry = address[Object.keys(address)[i]];
           if (entry && entry.length > 0) {
-            console.log('Including address');
             submission.app.address = address;
             break;
           }
