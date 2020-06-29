@@ -69,6 +69,10 @@
         class="apply__input"
         name="address_line_1"
         placeholder="e.g. 123 Hack the 6ix Blvd"
+        :validate="
+          value =>
+            !addressActive || value.length > 0 || 'Address line 1 is required'
+        "
         label="Address Line 1"
       />
       <Input
@@ -81,6 +85,9 @@
         class="apply__input"
         name="city"
         placeholder="e.g. The 6ix"
+        :validate="
+          value => !addressActive || value.length > 0 || 'City is required'
+        "
         label="City"
       />
       <Select
@@ -88,12 +95,19 @@
         label="Province"
         name="province"
         :options="provinces"
+        :validate="
+          value => !addressActive || value.length > 0 || 'Province is required'
+        "
         @blur="blur"
       />
       <Input
         class="apply__input"
         name="postal_code"
         placeholder="e.g. M5S 2E4"
+        :validate="
+          value =>
+            !addressActive || value.length > 0 || 'Postal code is required'
+        "
         label="Postal Code"
       />
     </div>
@@ -142,6 +156,28 @@ export default {
         return !hasEmail || 'Email Already in use';
       }
       return 'Please provide a valid email';
+    },
+  },
+  computed: {
+    addressActive() {
+      const addressFields = [
+        'address_line_1',
+        'address_line_2',
+        'city',
+        'province',
+        'postal_code',
+      ];
+
+      for (let i = 0; i < addressFields.length; i++) {
+        if (
+          this.form_data[addressFields[i]] &&
+          this.form_data[addressFields[i]].length > 0
+        ) {
+          return true;
+        }
+      }
+
+      return false;
     },
   },
 };
