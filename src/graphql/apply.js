@@ -1,7 +1,7 @@
 export const APPLY = `
-    mutation create($aApplicantInputPublic!) {
+    mutation create($app: ApplicantInputPublic!) {
         createApplicant(
-            applica$app
+            applicant: $app
         ) {
           applicant {
             id
@@ -14,14 +14,62 @@ export const APPLY = `
 `;
 
 export const HAS_EMAIL = `
-    query hasEmail($emaString!) {
-      hasEmail(ema$email)
+    query hasEmail($email: String!) {
+      hasEmail(email: $email)
     }
 `;
 
-export const GENDERS = ['Male', 'Female', 'Prefer not to say'];
+export const GENDERS = ['Male', 'Female', 'Other', 'Prefer not to say'];
 
-export const PROGRAMS = ['Computer Science'];
+export const PROGRAMS = [
+  'Agricultural Sciences',
+  'Anthropology and Sociology',
+  'Architecture',
+  'Art',
+  'Arts Management',
+  'Biology',
+  'Building and Construction',
+  'Business and Management',
+  'Chemistry',
+  'Communications',
+  'Computer Science',
+  'Criminal Justice',
+  'Culinary Arts',
+  'Data Science',
+  'Dental Studies',
+  'Design',
+  'Geomatics',
+  'Economics',
+  'Education',
+  'Engineering',
+  'Engineering Technicians',
+  'English',
+  'Environmental Science',
+  'Film and Photography',
+  'Finance and Accounting',
+  'Food and Nutrition',
+  'Foreign Languages',
+  'Health Professions',
+  'History',
+  'Information Technology',
+  'International Relations',
+  'Kinesiology and Physical Therapy',
+  'Legal Studies',
+  'Math',
+  'Music',
+  'Nursing',
+  'Performing Arts',
+  'Pharmacy',
+  'Philosophy',
+  'Physics',
+  'Political Science',
+  'Protective Services',
+  'Psychology',
+  'Religious Studies',
+  'Statistics',
+  'Trades and Personal Services',
+  'Veterinary Studies',
+];
 
 export const GRADUATION_YEARS = [2020, 2021, 2022, 2023, 2024, 2025];
 

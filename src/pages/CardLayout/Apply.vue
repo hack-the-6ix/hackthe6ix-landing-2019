@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
-import Button from '@hackthe6ix/vue-ui/Button';
+import formProvider from '@hackthe6ix/vue-ui/src/utils/mixins/formProvider';
+import Button from '@hackthe6ix/vue-ui/src/Button';
 import {Card, Modal} from '@components';
 import * as Screens from './ApplyScreens';
 import {query, toBase64} from '@utils';
@@ -57,7 +57,6 @@ import {
   YEAR_OF_STUDY_ENUM,
   GENDERS,
   TIMEZONES,
-  PROVINCES_ENUM,
   COUNTRIES,
   GRADUATION_YEARS,
 } from '@graphql';
@@ -109,7 +108,6 @@ export default {
       page: 0,
       end,
 
-      provinces: Object.keys(PROVINCES_ENUM),
       yearsOfStudy: Object.keys(YEAR_OF_STUDY_ENUM),
       graduationYears: GRADUATION_YEARS,
     };
@@ -167,15 +165,16 @@ export default {
             casl_acceptance: this.form_data.casl_acceptance,
             gender: GENDERS[this.form_data.gender],
             timezone: TIMEZONES[this.form_data.timezone],
-            address_line_1: this.form_data.address_line_1,
-            address_line_2: this.form_data.address_line_2,
-            country: COUNTRIES[this.form_data.country],
-            city: this.form_data.city,
-            province: this.provinces[this.form_data.province],
-            postal_code: this.form_data.postal_code,
+            address: {
+              address_line_1: this.form_data.address_line_1,
+              address_line_2: this.form_data.address_line_2,
+              city: this.form_data.city,
+              province: this.form_data.province,
+              postal_code: this.form_data.postal_code,
+            },
             school: this.form_data.school,
             program_of_study: this.form_data.program_of_study,
-            year_of_study: this.yearsOfStudy[this.form_data.year_of_study],
+            year_of_study: this.form_data.year_of_study,
             year_of_graduation: this.graduationYears[
               this.form_data.year_of_graduation
             ],

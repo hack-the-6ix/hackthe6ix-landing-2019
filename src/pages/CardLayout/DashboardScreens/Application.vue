@@ -90,8 +90,8 @@
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/Button';
-import Select from '@hackthe6ix/vue-ui/Select';
+import Button from '@hackthe6ix/vue-ui/src/Button';
+import Select from '@hackthe6ix/vue-ui/src/Select';
 import {RSVP} from '@graphql';
 import {query} from '@utils';
 const canEdit = ['accepted', 'attending', 'not_attending'];

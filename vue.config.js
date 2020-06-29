@@ -26,7 +26,7 @@ module.exports = {
       .resourceQuery(/file/)
       .use('file-loader')
       .loader('file-loader')
-      .yearsOfStudy({
+      .options({
         name: 'img/[name].[hash:8].[ext]',
       })
       .end()

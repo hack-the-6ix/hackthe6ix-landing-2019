@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/Button';
+import Button from '@hackthe6ix/vue-ui/src/Button';
 import {Container} from '@components';
 import {venue} from '@data';
 import {scroll} from '@utils';

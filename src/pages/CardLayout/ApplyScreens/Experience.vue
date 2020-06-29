@@ -74,10 +74,10 @@
 </template>
 
 <script>
-import Select from '@hackthe6ix/vue-ui/Select';
-import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
-import ComboBox from '@hackthe6ix/vue-ui/ComboBox';
-import Input from '@hackthe6ix/vue-ui/Input';
+import Select from '@hackthe6ix/vue-ui/src/Select';
+import Checkbox from '@hackthe6ix/vue-ui/src/Checkbox';
+import ComboBox from '@hackthe6ix/vue-ui/src/ComboBox';
+import Input from '@hackthe6ix/vue-ui/src/Input';
 import {UploadFile} from '@components';
 import {
   YEAR_OF_STUDY_ENUM,
@@ -98,7 +98,7 @@ export default {
   },
   data() {
     return {
-      yearsOfStudy: Object.values(YEAR_OF_STUDY_ENUM),
+      yearsOfStudy: YEAR_OF_STUDY_ENUM,
       schools: SCHOOLS,
       graduationYears: GRADUATION_YEARS,
       programsOfStudy: PROGRAMS,

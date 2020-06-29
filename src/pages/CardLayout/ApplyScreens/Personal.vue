@@ -40,7 +40,7 @@
       class="apply__input"
       label="Gender"
       name="gender"
-      :options="GENDERS"
+      :options="genders"
       :blur="blur"
       :validate="value => value >= 0 || 'Gender is required'"
       required
@@ -99,9 +99,9 @@
 </template>
 
 <script>
-import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
-import Select from '@hackthe6ix/vue-ui/Select';
-import Input from '@hackthe6ix/vue-ui/Input';
+import Checkbox from '@hackthe6ix/vue-ui/src/Checkbox';
+import Select from '@hackthe6ix/vue-ui/src/Select';
+import Input from '@hackthe6ix/vue-ui/src/Input';
 
 import {
   GENDERS,
@@ -133,7 +133,7 @@ export default {
       this.$el.focus();
     },
     async validateEmail(email) {
-      if (email.length > 0 && validate(email, 'email')) {
+      if (email && email.length > 0 && validate(email, 'email')) {
         const hasEmail = await query(HAS_EMAIL, {
           email: email,
         });

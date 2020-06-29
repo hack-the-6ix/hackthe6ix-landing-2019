@@ -17,6 +17,7 @@
       label="What would you like to build at the hackathon? (Minimum 50 Characters)"
       required
     />
+    <!--
     <div class="hack__team">
       <label class="hack__label"
         >List of preferred team members (Up to 4)</label
@@ -41,13 +42,13 @@
         :disabled="team_members_.length > 2"
         >Add a team member</Button
       >
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/Button';
-import Input from '@hackthe6ix/vue-ui/Input';
+import Button from '@hackthe6ix/vue-ui/src/Button';
+import Input from '@hackthe6ix/vue-ui/src/Input';
 import {Textarea} from '@components';
 
 export default {
@@ -56,25 +57,6 @@ export default {
     Input,
     Button,
     Textarea,
-  },
-  props: {
-    hack_count: Number,
-    pitch: String,
-    team_members: Array,
-    valid: Boolean,
-    page: Number,
-  },
-  data() {
-    return {
-      hack_count_: this.hack_count,
-      pitch_: this.pitch,
-      team_members_: this.team_members,
-    };
-  },
-  updated() {
-    if (this.$el.getAttribute('data-current') === 'true') {
-      this.check();
-    }
   },
   methods: {
     check() {
@@ -96,15 +78,6 @@ export default {
     },
   },
   watch: {
-    hack_count_(val) {
-      this.$emit('update:hack_count', val);
-    },
-    pitch_(val) {
-      this.$emit('update:pitch', val);
-    },
-    team_members_(val) {
-      this.$emit('update:team_members', val);
-    },
     page() {
       if (this.$el.getAttribute('data-current') === 'true') {
         this.check();
