@@ -337,6 +337,7 @@ export default {
 
   &__title {
     margin: 0;
+    color: $TEXT;
   }
 
   &__pages {

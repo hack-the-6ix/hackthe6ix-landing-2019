@@ -71,6 +71,7 @@ export default {
   &__title {
     font-size: 3.4rem;
     margin: 0;
+    color: white;
   }
 
   &__text {
