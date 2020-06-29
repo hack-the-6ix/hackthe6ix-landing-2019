@@ -37,9 +37,10 @@
         To Dashboard
       </Button>
     </div>
-    <Modal :show="showModal">
+    <Modal :show.sync="showModal">
       <h2 class="apply__title">Application Error</h2>
       <p>Something unexpected happened. Please try again later.</p>
+      <p>{{error}}</p>
     </Modal>
   </Card>
 </template>
@@ -105,6 +106,7 @@ export default {
       loading: false,
       height: 0,
       page: 0,
+      error: '',
       end,
 
       // Fields to watch for validation
@@ -159,7 +161,7 @@ export default {
     async submit() {
       this.loading = true;
       try {
-        const {user_errors, applicant} = await query(APPLY, {
+        let submission = {
           app: {
             name: this.form_data.first_name,
             lname: this.form_data.last_name,
@@ -167,13 +169,7 @@ export default {
             casl_acceptance: this.form_data.casl_acceptance,
             gender: GENDERS[this.form_data.gender],
             timezone: TIMEZONES[this.form_data.timezone],
-            address: {
-              address_line_1: this.form_data.address_line_1,
-              address_line_2: this.form_data.address_line_2,
-              city: this.form_data.city,
-              province: this.form_data.province,
-              postal_code: this.form_data.postal_code,
-            },
+            country: this.form_data.country,
             school: this.form_data.school,
             program_of_study: this.form_data.program_of_study,
             year_of_study: this.form_data.year_of_study,
@@ -188,14 +184,37 @@ export default {
             pitch: this.form_data.pitch,
             team_members: this.form_data.team_members,
           },
-        });
+        };
 
-        if (user_errors) this.showModal = true;
-        else {
+        const address = {
+          address_line_1: this.form_data.address_line_1,
+          address_line_2: this.form_data.address_line_2,
+          city: this.form_data.city,
+          province: this.form_data.province,
+          postal_code: this.form_data.postal_code,
+        };
+
+        // If any address fields are not empty, include it with the submission.
+        // Any errors will be handled by the API
+        for (let i = 0; i < Object.keys(address).length; i++) {
+          const entry = address[Object.keys(address)[i]];
+          if (entry && entry.length > 0) {
+            console.log('Including address');
+            submission.app.address = address;
+            break;
+          }
+        }
+        const {user_errors, applicant} = await query(APPLY, submission);
+
+        if (user_errors) {
+          this.error = user_errors;
+          this.showModal = true;
+        } else {
           this.id = applicant.id;
           this.next();
         }
       } catch (err) {
+        this.error = err;
         this.showModal = true;
       }
     },
