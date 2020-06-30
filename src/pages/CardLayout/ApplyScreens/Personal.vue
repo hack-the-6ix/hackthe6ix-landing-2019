@@ -7,7 +7,7 @@
       placeholder="e.g. John"
       label="First Name"
       :validate="
-        value => (value && value.length > 0) || 'First name is required'
+        value => !(value && value.length > 0) && 'First name is required'
       "
       required
     />
@@ -17,7 +17,7 @@
       placeholder="e.g. Doe"
       label="Last Name"
       :validate="
-        value => (value && value.length > 0) || 'Last name is required'
+        value => !(value && value.length > 0) && 'Last name is required'
       "
       required
     />
@@ -42,7 +42,7 @@
       name="gender"
       :options="genders"
       :blur="blur"
-      :validate="value => value >= 0 || 'Gender is required'"
+      :validate="value => !(value && value.length > 0) && 'Gender is required'"
       required
     />
     <Select
@@ -50,7 +50,9 @@
       label="Timezone"
       name="timezone"
       :options="timezones"
-      :validate="value => value >= 0 || 'Timezone is required'"
+      :validate="
+        value => !(value && value.length > 0) && 'Timezone is required'
+      "
       :blur="blur"
       required
     />
@@ -59,7 +61,7 @@
       label="Country"
       name="country"
       description="Note: If you are outside of Canada, we will not be shipping Hack the 6ix swag to your address."
-      :validate="value => value >= 0 || 'Country is required'"
+      :validate="value => !(value && value.length > 0) && 'Country is required'"
       :options="countries"
       :blur="blur"
       required
@@ -71,7 +73,9 @@
         placeholder="e.g. 123 Hack the 6ix Blvd"
         :validate="
           value =>
-            !addressActive || value.length > 0 || 'Address line 1 is required'
+            !addressActive &&
+            !(value && value.length > 0) &&
+            'Address line 1 is required'
         "
         label="Address Line 1"
       />
@@ -86,7 +90,8 @@
         name="city"
         placeholder="e.g. The 6ix"
         :validate="
-          value => !addressActive || value.length > 0 || 'City is required'
+          value =>
+            !addressActive && !(value && value.length > 0) && 'City is required'
         "
         label="City"
       />
@@ -96,7 +101,10 @@
         name="province"
         :options="provinces"
         :validate="
-          value => !addressActive || value.length > 0 || 'Province is required'
+          value =>
+            !addressActive &&
+            !(value && value.length > 0) &&
+            'Province is required'
         "
         @blur="blur"
       />
@@ -106,7 +114,9 @@
         placeholder="e.g. M5S 2E4"
         :validate="
           value =>
-            !addressActive || value.length > 0 || 'Postal code is required'
+            !addressActive &&
+            !(value && value.length > 0) &&
+            'Postal code is required'
         "
         label="Postal Code"
       />
@@ -153,7 +163,7 @@ export default {
         const hasEmail = await query(HAS_EMAIL, {
           email: email,
         });
-        return !hasEmail || 'Email Already in use';
+        return hasEmail && 'Email Already in use';
       }
       return 'Please provide a valid email';
     },

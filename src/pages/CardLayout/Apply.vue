@@ -309,7 +309,7 @@ export default {
       for (let i = 0; i < fields.length; i++) {
         const required = fields[i].required;
         if (required) {
-          if (this.form_errors[fields[i].name] !== true) {
+          if (this.form_errors[fields[i].name] !== false) {
             return false;
           }
         } else {

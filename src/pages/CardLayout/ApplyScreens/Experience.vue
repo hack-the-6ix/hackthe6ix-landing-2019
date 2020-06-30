@@ -7,7 +7,7 @@
       placeholder="e.g. University of The 6ix"
       label="School"
       :options="schools"
-      :validate="value => (value && value.length > 0) || 'School is required'"
+      :validate="value => !(value && value.length > 0) && 'School is required'"
       required
     />
     <ComboBox
@@ -17,7 +17,7 @@
       label="Program of Study"
       :options="programsOfStudy"
       :validate="
-        value => (value && value.length > 0) || 'Program of study is required'
+        value => !(value && value.length > 0) && 'Program of study is required'
       "
       required
     />
@@ -27,7 +27,7 @@
       name="year_of_study"
       :options="yearsOfStudy"
       :validate="
-        value => (value && value.length > 0) || 'Year of study is required'
+        value => !(value && value.length > 0) && 'Year of study is required'
       "
       required
     />
@@ -36,7 +36,10 @@
       label="Projected Graduating Year"
       name="year_of_graduation"
       :options="graduationYears"
-      :validate="value => value >= 0 || 'Year of graduation is required'"
+      :validate="
+        value =>
+          !(value && value.length > 0) && 'Year of graduation is required'
+      "
       required
     />
     <UploadFile
@@ -58,7 +61,7 @@
       label="Portfolio Link"
       :validate="
         value =>
-          validateUrl(value, true) || 'Please provide a valid http(s) website'
+          !validateUrl(value, true) && 'Please provide a valid http(s) website'
       "
     />
     <Input
@@ -68,7 +71,7 @@
       label="GitHub Link"
       :validate="
         value =>
-          validateUrl(value, true) || 'Please provide a valid http(s) website'
+          !validateUrl(value, true) && 'Please provide a valid http(s) website'
       "
       :blur="() => $emit('update:page', page + 1)"
     />
