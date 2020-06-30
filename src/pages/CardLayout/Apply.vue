@@ -225,7 +225,7 @@ export default {
         page.style.transform = `translateX(${this.page *
           -100}%) translateX(${this.page * -60}px)`;
         page.style.opacity = current ? 1 : 0;
-        page.setAttribute('data-current', current);
+        page.style.height = current ? '100%' : 0;
       });
       this.pageHeight();
     },
