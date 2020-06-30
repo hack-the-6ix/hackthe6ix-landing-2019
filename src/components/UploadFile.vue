@@ -14,7 +14,7 @@
         :aria-invaild="error"
         :disabled="disabled"
         class="file__input"
-        tabindex="-1"
+        :tabindex="tabindex"
         :name="name"
         type="file"
       />
@@ -23,6 +23,7 @@
       :disabled="false"
       v-on:click.native="$emit('input')"
       secondary
+      :tabindex="tabindex"
       :icon="['trash']"
     />
     <label :id="name" class="file__error" v-if="error">{{ errorMsg }}</label>
@@ -62,6 +63,7 @@ export default {
       required: true,
     },
     errorMsg: String,
+    tabindex: Number,
   },
   watch: {
     value(val) {

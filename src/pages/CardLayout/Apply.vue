@@ -2,9 +2,9 @@
   <Card class="apply">
     <h1 class="apply__title">Hack The 6ix Application Form</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
-      <Personal valid.sync="valid" />
-      <Experience />
-      <Hackathon />
+      <Personal valid.sync="valid" :current="page === 0" />
+      <Experience :current="page === 1"/>
+      <Hackathon :current="page === 2"/>
       <Finish :email="form_data.email" />
     </div>
     <div class="apply__controls">

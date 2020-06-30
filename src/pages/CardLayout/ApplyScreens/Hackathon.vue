@@ -8,6 +8,7 @@
       placeholder="Too many"
       label="How many Hackathons have you attended so far?"
       min="0"
+      :tabindex="current ? undefined : -1"
       :validate="
         value =>
           !(value && value.length > 0 && value >= 0) &&
@@ -20,6 +21,7 @@
       name="pitch"
       placeholder="Tell us about your thing"
       label="What would you like to build at the hackathon? (Minimum 50 Characters)"
+      :tabindex="current ? undefined : -1"
       :validate="
         value =>
           !(value && value.length >= 50) &&
@@ -39,10 +41,12 @@
           class="hack__member hack__member--item"
           placeholder="Shia LaBeouf"
           v-model="team_members_[i]"
+          :tabindex="current ? undefined : -1"
           :name="'member-' + i"
         />
         <Button
           icon="trash"
+          :tabindex="current ? undefined : -1"
           v-on:click.native="team_members_.splice(i, 1)"
           secondary
         />
@@ -50,6 +54,7 @@
       <Button
         icon="plus"
         v-on:click.native="add()"
+        :tabindex="current ? undefined : -1"
         :disabled="team_members_.length > 2"
         >Add a team member</Button
       >
@@ -75,12 +80,8 @@ export default {
       this.team_members_.push('');
     },
   },
-  watch: {
-    page() {
-      if (this.$el.getAttribute('data-current') === 'true') {
-        this.check();
-      }
-    },
+  props: {
+    current: Boolean,
   },
 };
 </script>

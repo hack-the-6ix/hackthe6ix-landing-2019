@@ -6,6 +6,7 @@
       name="first_name"
       placeholder="e.g. John"
       label="First Name"
+      :tabindex="current ? undefined : -1"
       :validate="
         value => !(value && value.length > 0) && 'First name is required'
       "
@@ -27,6 +28,7 @@
       type="email"
       placeholder="e.g. john@hackthe6ix.com"
       label="Email"
+      :tabindex="current ? undefined : -1"
       :error="form_errors.email"
       :validate="validateEmail"
       required
@@ -34,12 +36,14 @@
     <Checkbox
       class="apply__input"
       name="casl_acceptance"
+      :tabindex="current ? undefined : -1"
       label="I allow Hack The 6ix to send me emails containing information from the event sponsors."
     />
     <Select
       class="apply__input"
       label="Gender"
       name="gender"
+      :tabindex="current ? undefined : -1"
       :options="genders"
       :blur="blur"
       :validate="value => !(value && value.length > 0) && 'Gender is required'"
@@ -49,6 +53,7 @@
       class="apply__input"
       label="Timezone"
       name="timezone"
+      :tabindex="current ? undefined : -1"
       :options="timezones"
       :validate="
         value => !(value && value.length > 0) && 'Timezone is required'
@@ -62,15 +67,17 @@
       name="country"
       description="Note: If you are outside of Canada, we will not be shipping Hack the 6ix swag to your address."
       :validate="value => !(value && value.length > 0) && 'Country is required'"
+      :tabindex="current ? undefined : -1"
       :options="countries"
       :blur="blur"
       required
     />
-    <div v-if="countries[form_data.country] === 'Canada'">
+    <div v-if="addressVisible">
       <Input
         class="apply__input"
         name="address_line_1"
         placeholder="e.g. 123 Hack the 6ix Blvd"
+        :tabindex="addressVisible && current ? undefined : -1"
         :error="
           addressActive &&
             !(
@@ -85,11 +92,13 @@
         name="address_line_2"
         placeholder="e.g. Unit 6"
         label="Address Line 2"
+        :tabindex="addressVisible && current ? undefined : -1"
       />
       <Input
         class="apply__input"
         name="city"
         placeholder="e.g. The 6ix"
+        :tabindex="addressVisible && current ? undefined : -1"
         :error="
           addressActive &&
             !(form_data.city && form_data.city.length > 0) &&
@@ -101,6 +110,7 @@
         class="apply__input"
         label="Province"
         name="province"
+        :tabindex="addressVisible && current ? undefined : -1"
         :options="provinces"
         :error="
           addressActive &&
@@ -113,6 +123,7 @@
         class="apply__input"
         name="postal_code"
         placeholder="e.g. M5S 2E4"
+        :tabindex="addressVisible && current ? undefined : -1"
         :error="
           addressActive &&
             !(form_data.postal_code && form_data.postal_code.length > 0) &&
@@ -154,6 +165,9 @@ export default {
       timezones: TIMEZONES,
     };
   },
+  props: {
+    current: Boolean,
+  },
   methods: {
     blur() {
       this.$el.focus();
@@ -188,6 +202,9 @@ export default {
       }
 
       return false;
+    },
+    addressVisible() {
+      return this.countries[this.form_data.country] === 'Canada';
     },
   },
 };

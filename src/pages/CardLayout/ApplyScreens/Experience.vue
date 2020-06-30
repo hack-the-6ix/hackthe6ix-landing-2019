@@ -6,6 +6,7 @@
       name="school"
       placeholder="e.g. University of The 6ix"
       label="School"
+      :tabindex="current ? undefined : -1"
       :options="schools"
       :validate="value => !(value && value.length > 0) && 'School is required'"
       required
@@ -15,6 +16,7 @@
       name="program_of_study"
       placeholder="e.g. 6ixology"
       label="Program of Study"
+      :tabindex="current ? undefined : -1"
       :options="programsOfStudy"
       :validate="
         value => !(value && value.length > 0) && 'Program of study is required'
@@ -25,6 +27,7 @@
       class="apply__input"
       label="Year of Study (entering)"
       name="year_of_study"
+      :tabindex="current ? undefined : -1"
       :options="yearsOfStudy"
       :validate="
         value => !(value && value.length > 0) && 'Year of study is required'
@@ -35,6 +38,7 @@
       class="apply__input"
       label="Projected Graduating Year"
       name="year_of_graduation"
+      :tabindex="current ? undefined : -1"
       :options="graduationYears"
       :validate="
         value =>
@@ -46,12 +50,14 @@
       class="apply__input"
       name="github"
       label="Upload Resume"
+      :tabindex="current ? undefined : -1"
       :validate="value => !!value"
       required
     />
     <Checkbox
       class="apply__input"
       name="acceptance"
+      :tabindex="current ? undefined : -1"
       label="I allow Hack The 6ix to distribute my resumé to its event sponsors"
     />
     <Input
@@ -59,6 +65,7 @@
       name="portfolio"
       placeholder="https://hackthe6ix.com"
       label="Portfolio Link"
+      :tabindex="current ? undefined : -1"
       :validate="
         value =>
           !validateUrl(value, true) && 'Please provide a valid http(s) website'
@@ -69,6 +76,7 @@
       name="github"
       placeholder="https://github.com/hackerman"
       label="GitHub Link"
+      :tabindex="current ? undefined : -1"
       :validate="
         value =>
           !validateUrl(value, true) && 'Please provide a valid http(s) website'
@@ -101,6 +109,9 @@ export default {
     UploadFile,
     Checkbox,
   },
+  props: {
+    current: Boolean,
+  },
   data() {
     return {
       yearsOfStudy: YEAR_OF_STUDY_ENUM,
@@ -112,13 +123,6 @@ export default {
   methods: {
     validateUrl(url, res) {
       return url === '' ? res : validate(url, 'url');
-    },
-  },
-  watch: {
-    page() {
-      if (this.$el.getAttribute('data-current') === 'true') {
-        this.check();
-      }
     },
   },
 };
