@@ -20,7 +20,7 @@ export default {
 
 .background {
   background-image: url('~@assets/background.svg?file');
-  background-position: right center;
+  background-position: center center;
   background-size: cover;
   position: fixed;
   top: 0;

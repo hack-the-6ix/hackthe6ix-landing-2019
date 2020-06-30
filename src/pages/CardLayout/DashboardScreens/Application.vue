@@ -1,7 +1,6 @@
 <template>
   <div class="apply__page">
-    <h2 class="apply__subtitle">Application Status</h2>
-    <div v-if="!loading" class="dash__app">
+    <div class="dash__app">
       <div v-if="canEdit" class="dash__app-page">
         <p class="dash__status">Current application status:</p>
         <p class="dash__large">{{ caps }}</p>
@@ -68,22 +67,14 @@
         <p>Check here later for updates.</p>
       </div>
     </div>
-    <div class="dash__controls">
+    <div class="dash__controls" v-if="canEdit">
       <Button
         class="dash__button dash__button--full"
         :loading="submiting"
         :disabled="!dirty"
-        v-if="canEdit"
         v-on:click.native="submit()"
       >
         Save RSVP
-      </Button>
-      <Button
-        class="dash__button dash__button--full"
-        :secondary="canEdit"
-        v-on:click.native="to(0)"
-      >
-        Back to Home
       </Button>
     </div>
   </div>
@@ -111,8 +102,6 @@ export default {
   },
   props: {
     user: Object,
-    loading: Boolean,
-    to: Function,
     token: String,
   },
   methods: {
@@ -168,7 +157,8 @@ export default {
 
 .dash__app {
   &-select {
-    margin: 30px 0 -10px;
+    width: calc(100% - 18px);
+    margin: 30px 12px -10px;
 
     & .select__items {
       justify-content: center;
