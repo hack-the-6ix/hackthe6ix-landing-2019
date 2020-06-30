@@ -84,6 +84,7 @@ export const YEAR_OF_STUDY_ENUM = {
 };
 
 export const PROVINCES_ENUM = {
+  '': '',
   AB: 'Alberta',
   BC: 'British Columbia',
   MB: 'Manitoba',

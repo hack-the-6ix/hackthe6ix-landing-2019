@@ -71,10 +71,11 @@
         class="apply__input"
         name="address_line_1"
         placeholder="e.g. 123 Hack the 6ix Blvd"
-        :validate="
-          value =>
-            !addressActive &&
-            !(value && value.length > 0) &&
+        :error="
+          addressActive &&
+            !(
+              form_data.address_line_1 && form_data.address_line_1.length > 0
+            ) &&
             'Address line 1 is required'
         "
         label="Address Line 1"
@@ -89,9 +90,10 @@
         class="apply__input"
         name="city"
         placeholder="e.g. The 6ix"
-        :validate="
-          value =>
-            !addressActive && !(value && value.length > 0) && 'City is required'
+        :error="
+          addressActive &&
+            !(form_data.city && form_data.city.length > 0) &&
+            'City is required to complete address'
         "
         label="City"
       />
@@ -100,11 +102,10 @@
         label="Province"
         name="province"
         :options="provinces"
-        :validate="
-          value =>
-            !addressActive &&
-            !(value && value.length > 0) &&
-            'Province is required'
+        :error="
+          addressActive &&
+            !(form_data.province && form_data.province.length > 0) &&
+            'Province is required to complete address'
         "
         @blur="blur"
       />
@@ -112,11 +113,10 @@
         class="apply__input"
         name="postal_code"
         placeholder="e.g. M5S 2E4"
-        :validate="
-          value =>
-            !addressActive &&
-            !(value && value.length > 0) &&
-            'Postal code is required'
+        :error="
+          addressActive &&
+            !(form_data.postal_code && form_data.postal_code.length > 0) &&
+            'Postal code is required to complete address'
         "
         label="Postal Code"
       />

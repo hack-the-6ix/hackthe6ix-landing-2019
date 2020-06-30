@@ -308,14 +308,10 @@ export default {
 
       for (let i = 0; i < fields.length; i++) {
         const required = fields[i].required;
-        if (required) {
-          if (this.form_errors[fields[i].name] !== false) {
-            return false;
-          }
-        } else {
-          if (typeof this.form_errors[fields[i].name] === 'string') {
-            return false;
-          }
+        const error = this.form_errors[fields[i].name];
+
+        if (error !== false && (required || error !== undefined)) {
+          return false;
         }
       }
 
