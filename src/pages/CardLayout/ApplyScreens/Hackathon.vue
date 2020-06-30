@@ -15,14 +15,14 @@
       "
       required
     />
-    <Textarea
+    <Input
       class="apply__input"
       name="pitch"
       placeholder="Tell us about your thing"
       label="What would you like to build at the hackathon? (Minimum 50 Characters)"
-      :validation="
+      :validate="
         value =>
-          (value && value.length >= 50) ||
+          !(value && value.length >= 50) &&
           'You must have at least 50 characters'
       "
       required
