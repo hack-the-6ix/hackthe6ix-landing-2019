@@ -3,7 +3,6 @@ export {default as Container} from './Container';
 export {default as Modal} from './Modal';
 export {default as Navigation} from './Navigation';
 export {default as Footer} from './Footer';
-export {default as UploadFile} from './UploadFile';
 export {default as Applicant} from './Applicant';
 export {default as AdminStats} from './AdminStats';
 export {default as Scanner} from './Scanner';

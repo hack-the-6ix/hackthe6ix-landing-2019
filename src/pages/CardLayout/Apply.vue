@@ -3,9 +3,10 @@
     <h1 class="apply__title">Hack The 6ix Application Form</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
       <Personal valid.sync="valid" :current="page === 0" />
-      <Experience :current="page === 1" />
-      <Hackathon :current="page === 2" />
-      <Finish :email="form_data.email" />
+      <!-- Height is initially 0 to ensure card height is correct -->
+      <Experience :current="page === 1" style="height: 0" />
+      <Hackathon :current="page === 2" style="height: 0" />
+      <Finish :email="form_data.email" style="height: 0" />
     </div>
     <div class="apply__controls">
       <Button
@@ -168,6 +169,10 @@ export default {
             required: true,
           },
           {
+            name: 'resume',
+            required: true,
+          },
+          {
             name: 'portfolio',
             required: false,
           },
@@ -235,7 +240,7 @@ export default {
             year_of_graduation: this.graduationYears[
               this.form_data.year_of_graduation
             ],
-            resume: await toBase64(this.resume),
+            resume: await toBase64(this.form_data.resume),
             resume_permission: this.form_data.resume_permission,
             portfolio: this.form_data.portfolio,
             github: this.form_data.github,

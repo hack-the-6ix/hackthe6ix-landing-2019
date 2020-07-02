@@ -6,6 +6,7 @@
       name="school"
       placeholder="e.g. University of The 6ix"
       label="School"
+      :allow-free="true"
       :tabindex="current ? undefined : -1"
       :options="schools"
       :validate="value => !(value && value.length > 0) && 'School is required'"
@@ -16,6 +17,7 @@
       name="program_of_study"
       placeholder="e.g. 6ixology"
       label="Program of Study"
+      :allow-free="true"
       :tabindex="current ? undefined : -1"
       :options="programsOfStudy"
       :validate="
@@ -46,12 +48,12 @@
       "
       required
     />
-    <UploadFile
+    <Upload
       class="apply__input"
-      name="github"
+      name="resume"
       label="Upload Resume"
       :tabindex="current ? undefined : -1"
-      :validate="value => !!value"
+      :validate="value => !value"
       required
     />
     <Checkbox
@@ -91,7 +93,8 @@ import Select from '@hackthe6ix/vue-ui/Select';
 import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
 import ComboBox from '@hackthe6ix/vue-ui/ComboBox';
 import Input from '@hackthe6ix/vue-ui/Input';
-import {UploadFile} from '@components';
+import Upload from '@hackthe6ix/vue-ui/Upload';
+
 import {
   YEAR_OF_STUDY_ENUM,
   SCHOOLS,
@@ -106,7 +109,7 @@ export default {
     ComboBox,
     Input,
     Select,
-    UploadFile,
+    Upload,
     Checkbox,
   },
   props: {
