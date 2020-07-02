@@ -29,7 +29,7 @@
       "
       required
     />
-    {{(form_data.pitch && form_data.pitch.length) || 0}}
+    {{ (form_data.pitch && form_data.pitch.length) || 0 }}
     <!--
     <div class="hack__team">
       <label class="hack__label"

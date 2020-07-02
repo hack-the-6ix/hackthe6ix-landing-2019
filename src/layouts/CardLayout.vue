@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="background"/>
+    <div class="background" />
     <div class="dashboard">
       <router-view />
     </div>

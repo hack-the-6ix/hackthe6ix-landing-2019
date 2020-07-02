@@ -2,7 +2,7 @@
   <Card class="apply">
     <h1 class="apply__title">Hack The 6ix Application Form</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
-      <Personal valid.sync="valid" :current="page === 0" />
+      <Personal :current="page === 0" />
       <!-- Height is initially 0 to ensure card height is correct -->
       <Experience :current="page === 1" style="height: 0" />
       <Hackathon :current="page === 2" style="height: 0" />
@@ -53,6 +53,7 @@ import {Card, Modal} from '@components';
 import * as Screens from './ApplyScreens';
 import {query, toBase64} from '@utils';
 const end = Math.max(Object.values(Screens).length - 1, 0);
+import Vue from 'vue';
 
 import {APPLY, YEAR_OF_STUDY_ENUM, GENDERS, GRADUATION_YEARS} from '@graphql';
 
@@ -193,6 +194,37 @@ export default {
         ],
       ],
 
+      addressValidationFields: [
+        {
+          name: 'address_line_1',
+          required: true,
+        },
+        {
+          name: 'address_line_2',
+          required: false,
+        },
+        {
+          name: 'city',
+          required: true,
+        },
+        {
+          name: 'province',
+          required: true,
+        },
+        {
+          name: 'postal_code',
+          required: true,
+        },
+      ],
+
+      addressLabelLookup: {
+        address_line_1: 'Address Line 1',
+        address_line_2: 'Address Line 2',
+        city: 'City',
+        province: 'Province',
+        postal_code: 'Postal Code',
+      },
+
       yearsOfStudy: Object.keys(YEAR_OF_STUDY_ENUM),
       graduationYears: GRADUATION_YEARS,
     };
@@ -221,6 +253,26 @@ export default {
     back() {
       this.page--;
       this.shiftPages();
+    },
+    validateAddress() {
+      for (let i = 0; i < this.addressValidationFields.length; i++) {
+        const fieldName = this.addressValidationFields[i].name;
+        const formattedName = this.addressLabelLookup[fieldName] || fieldName;
+        const fieldEmpty =
+          !this.form_data[fieldName] || this.form_data[fieldName].length === 0;
+
+        if (
+          this.addressActive &&
+          this.addressValidationFields[i].required &&
+          fieldEmpty
+        ) {
+          const errorMsg = `${formattedName} is required to complete address`;
+
+          Vue.set(this.form_errors, fieldName, errorMsg);
+        } else {
+          Vue.set(this.form_errors, fieldName, false);
+        }
+      }
     },
     async submit() {
       this.loading = true;
@@ -289,6 +341,8 @@ export default {
   },
   computed: {
     valid: function() {
+      this.validateAddress();
+
       const fields = this.validationFields[this.page];
 
       for (let i = 0; i < fields.length; i++) {
@@ -301,6 +355,18 @@ export default {
       }
 
       return true;
+    },
+    addressActive: function() {
+      for (let i = 0; i < this.addressValidationFields.length; i++) {
+        if (
+          this.form_data[this.addressValidationFields[i].name] &&
+          this.form_data[this.addressValidationFields[i].name].length > 0
+        ) {
+          return true;
+        }
+      }
+
+      return false;
     },
   },
 };

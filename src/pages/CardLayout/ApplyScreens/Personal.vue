@@ -73,18 +73,12 @@
       required
     />
     <div v-if="addressVisible">
+      <!-- Validation for these fields are a bit more complicated and are handled in Apply.vue -->
       <Input
         class="apply__input"
         name="address_line_1"
         placeholder="e.g. 123 Hack the 6ix Blvd"
         :tabindex="addressVisible && current ? undefined : -1"
-        :error="
-          addressActive &&
-            !(
-              form_data.address_line_1 && form_data.address_line_1.length > 0
-            ) &&
-            'Address line 1 is required'
-        "
         label="Address Line 1"
       />
       <Input
@@ -99,11 +93,6 @@
         name="city"
         placeholder="e.g. The 6ix"
         :tabindex="addressVisible && current ? undefined : -1"
-        :error="
-          addressActive &&
-            !(form_data.city && form_data.city.length > 0) &&
-            'City is required to complete address'
-        "
         label="City"
       />
       <Select
@@ -112,11 +101,6 @@
         name="province"
         :tabindex="addressVisible && current ? undefined : -1"
         :options="provinces"
-        :error="
-          addressActive &&
-            !(form_data.province && form_data.province.length > 0) &&
-            'Province is required to complete address'
-        "
         @blur="blur"
       />
       <Input
@@ -124,11 +108,6 @@
         name="postal_code"
         placeholder="e.g. M5S 2E4"
         :tabindex="addressVisible && current ? undefined : -1"
-        :error="
-          addressActive &&
-            !(form_data.postal_code && form_data.postal_code.length > 0) &&
-            'Postal code is required to complete address'
-        "
         label="Postal Code"
       />
     </div>
@@ -185,26 +164,6 @@ export default {
     },
   },
   computed: {
-    addressActive() {
-      const addressFields = [
-        'address_line_1',
-        'address_line_2',
-        'city',
-        'province',
-        'postal_code',
-      ];
-
-      for (let i = 0; i < addressFields.length; i++) {
-        if (
-          this.form_data[addressFields[i]] &&
-          this.form_data[addressFields[i]].length > 0
-        ) {
-          return true;
-        }
-      }
-
-      return false;
-    },
     addressVisible() {
       return this.form_data.country === 'Canada';
     },
