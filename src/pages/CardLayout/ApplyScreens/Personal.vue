@@ -49,7 +49,7 @@
       :validate="value => !(value && value.length > 0) && 'Gender is required'"
       required
     />
-    <Select
+    <ComboBox
       class="apply__input"
       label="Timezone"
       name="timezone"
@@ -61,7 +61,7 @@
       :blur="blur"
       required
     />
-    <Select
+    <ComboBox
       class="apply__input"
       label="Country"
       name="country"
@@ -137,6 +137,7 @@
 
 <script>
 import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
+import ComboBox from '@hackthe6ix/vue-ui/ComboBox';
 import Select from '@hackthe6ix/vue-ui/Select';
 import Input from '@hackthe6ix/vue-ui/Input';
 
@@ -153,6 +154,7 @@ export default {
   name: 'Personal',
   inject: ['form_data', 'form_errors'],
   components: {
+    ComboBox,
     Input,
     Select,
     Checkbox,
@@ -204,7 +206,7 @@ export default {
       return false;
     },
     addressVisible() {
-      return this.countries[this.form_data.country] === 'Canada';
+      return this.form_data.country === 'Canada';
     },
   },
 };

@@ -16,7 +16,7 @@
       "
       required
     />
-    <Input
+    <Textarea
       class="apply__input"
       name="pitch"
       placeholder="Tell us about your thing"
@@ -65,7 +65,7 @@
 <script>
 import Button from '@hackthe6ix/vue-ui/Button';
 import Input from '@hackthe6ix/vue-ui/Input';
-import {Textarea} from '@components';
+import Textarea from '@hackthe6ix/vue-ui/Textarea';
 
 export default {
   name: 'Hackathon',

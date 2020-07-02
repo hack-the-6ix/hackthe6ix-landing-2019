@@ -3,8 +3,8 @@
     <h1 class="apply__title">Hack The 6ix Application Form</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
       <Personal valid.sync="valid" :current="page === 0" />
-      <Experience :current="page === 1"/>
-      <Hackathon :current="page === 2"/>
+      <Experience :current="page === 1" />
+      <Hackathon :current="page === 2" />
       <Finish :email="form_data.email" />
     </div>
     <div class="apply__controls">
@@ -53,14 +53,7 @@ import * as Screens from './ApplyScreens';
 import {query, toBase64} from '@utils';
 const end = Math.max(Object.values(Screens).length - 1, 0);
 
-import {
-  APPLY,
-  YEAR_OF_STUDY_ENUM,
-  GENDERS,
-  TIMEZONES,
-  COUNTRIES,
-  GRADUATION_YEARS,
-} from '@graphql';
+import {APPLY, YEAR_OF_STUDY_ENUM, GENDERS, GRADUATION_YEARS} from '@graphql';
 
 export default {
   name: 'Info',
@@ -200,24 +193,12 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener('resize', this.pageHeight, {passive: true});
     window.addEventListener('load', this.shiftPages);
   },
   beforeDestory() {
-    window.removeEventListener('resize', this.pageHeight, {passive: true});
     window.removeEventListener('load', this.shiftPages);
   },
-  updated() {
-    this.pageHeight();
-  },
   methods: {
-    /*
-    pageHeight() {
-      this.$nextTick(() => {
-        const page = document.querySelectorAll('.apply__page')[this.page];
-        this.height = page.clientHeight;
-      });
-    },*/
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
       pages.forEach((page, i) => {
@@ -227,7 +208,6 @@ export default {
         page.style.opacity = current ? 1 : 0;
         page.style.height = current ? '100%' : 0;
       });
-      this.pageHeight();
     },
     next() {
       this.page++;
@@ -247,8 +227,8 @@ export default {
             email: this.form_data.email,
             casl_acceptance: this.form_data.casl_acceptance,
             gender: GENDERS[this.form_data.gender],
-            timezone: TIMEZONES[this.form_data.timezone],
-            country: COUNTRIES[this.form_data.country],
+            timezone: this.form_data.timezone,
+            country: this.form_data.country,
             school: this.form_data.school,
             program_of_study: this.form_data.program_of_study,
             year_of_study: this.form_data.year_of_study,
