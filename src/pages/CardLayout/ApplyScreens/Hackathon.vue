@@ -22,6 +22,10 @@
       placeholder="Tell us about your thing"
       label="What would you like to build at the hackathon? (Minimum 50 Characters)"
       :tabindex="current ? undefined : -1"
+      :description="
+        'Current character count: ' +
+          ((form_data.pitch && form_data.pitch.length) || 0)
+      "
       :validate="
         value =>
           !(value && value.length >= 50) &&
@@ -29,25 +33,22 @@
       "
       required
     />
-    {{ (form_data.pitch && form_data.pitch.length) || 0 }}
-    <!--
-    <div class="hack__team">
+    <div class="apply__input hack__team">
       <label class="hack__label"
         >List of preferred team members (Up to 4)</label
       >
-      <Input class="hack__member" placeholder="You" name="you" disabled />
-      <div v-for="(member, i) in team_members_" class="hack__item" :key="i">
+      <Input class="hack__member hack__item" placeholder="You" name="you" disabled />
+      <div v-for="(member, i) in form_data.team_members" class="hack__item" :key="i">
         <Input
           class="hack__member hack__member--item"
           placeholder="Shia LaBeouf"
-          v-model="team_members_[i]"
           :tabindex="current ? undefined : -1"
           :name="'member-' + i"
         />
         <Button
           icon="trash"
           :tabindex="current ? undefined : -1"
-          v-on:click.native="team_members_.splice(i, 1)"
+          v-on:click.native="form_data.team_members.splice(i, 1)"
           secondary
         />
       </div>
@@ -55,10 +56,10 @@
         icon="plus"
         v-on:click.native="add()"
         :tabindex="current ? undefined : -1"
-        :disabled="team_members_.length > 2"
+        :disabled="form_data.team_members.length > 2"
         >Add a team member</Button
       >
-    </div>-->
+    </div>
   </div>
 </template>
 
@@ -77,7 +78,7 @@ export default {
   },
   methods: {
     add() {
-      this.team_members_.push('');
+      this.form_data.team_members.push('');
     },
   },
   props: {

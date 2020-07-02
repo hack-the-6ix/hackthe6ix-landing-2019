@@ -191,6 +191,10 @@ export default {
             name: 'hack_count',
             required: true,
           },
+          {
+            name: 'team_members',
+            required: false,
+          },
         ],
       ],
 
