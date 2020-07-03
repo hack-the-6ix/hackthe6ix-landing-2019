@@ -19,7 +19,7 @@
           type="password"
           v-model="pass"
         />
-        <Button :click="login" :loading="loading">Login</Button>
+        <Button v-on:click.native="login()" :loading="loading">Login</Button>
         <div class="error">
           {{ message }}
         </div>
@@ -28,7 +28,8 @@
   </div>
 </template>
 <script>
-import {Button, Input} from '@components';
+import Button from '@hackthe6ix/vue-ui/Button';
+import Input from '@hackthe6ix/vue-ui/Input';
 import {query, auth} from '@utils';
 import {AUTH_ADMIN} from '@graphql';
 export default {

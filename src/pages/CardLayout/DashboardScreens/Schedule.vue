@@ -8,7 +8,7 @@
       >
     </div>
     <div class="dash__controls">
-      <Button class="dash__button dash__button--full" :click="() => to(0)"
+      <Button class="dash__button dash__button--full" v-on:click.native="to(0)"
         >Back</Button
       >
     </div>
@@ -16,7 +16,8 @@
 </template>
 
 <script>
-import {Button, DynamicSchedule} from '@components';
+import Button from '@hackthe6ix/vue-ui/Button';
+import {DynamicSchedule} from '@components';
 
 export default {
   name: 'Schedule',

@@ -3,13 +3,14 @@
     <h2 class="apply__subtitle">Schedule</h2>
     <div v-if="!loading">
       <dynamic-schedule :signup_enabled="false"></dynamic-schedule>
-      <Button :click="download">Download Schedule</Button>
+      <Button v-on:click.native="download()">Download Schedule</Button>
     </div>
   </div>
 </template>
 
 <script>
-import {Button, DynamicSchedule} from '@components';
+import Button from '@hackthe6ix/vue-ui/Button';
+import {DynamicSchedule} from '@components';
 
 export default {
   name: 'Schedule',

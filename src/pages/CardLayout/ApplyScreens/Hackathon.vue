@@ -7,108 +7,68 @@
       type="number"
       placeholder="Too many"
       label="How many Hackathons have you attended so far?"
-      v-model.number="hack_count_"
-      errorMsg="Please provide a valid number"
-      :state="Number.isInteger(hack_count_) && hack_count_ >= 0"
       min="0"
+      :tabindex="current ? undefined : -1"
+      :validate="
+        value =>
+          !(value && value.length > 0 && value >= 0) &&
+          'This field must be non-negative'
+      "
       required
     />
     <Textarea
       class="apply__input"
       name="pitch"
       placeholder="Tell us about your thing"
-      label="What would you like to build at the 2019 hackathon? (Minimum 50 Characters)"
-      v-model="pitch_"
+      label="What would you like to build at the hackathon?"
+      :tabindex="current ? undefined : -1"
+      :maxlength="1500"
+      :description="
+        '(50-1500 Characters) Current count: ' +
+          ((form_data.pitch && form_data.pitch.length) || 0)
+      "
+      :validate="
+        value =>
+          !(value && value.length >= 50 && value.length <= 1500) &&
+          'You must have at least 50 characters'
+      "
       required
     />
-    <div class="hack__team">
-      <label class="hack__label"
-        >List of preferred team members (Up to 4)</label
-      >
-      <Input class="hack__member" placeholder="You" name="you" disabled />
-      <div v-for="(member, i) in team_members_" class="hack__item" :key="i">
-        <Input
-          class="hack__member hack__member--item"
-          placeholder="Shia LaBeouf"
-          v-model="team_members_[i]"
-          :name="'member-' + i"
-        />
-        <Button
-          icon="trash"
-          :click="() => team_members_.splice(i, 1)"
-          secondary
-        />
-      </div>
-      <Button icon="plus" :click="add" :disabled="team_members_.length > 2"
-        >Add a team member</Button
-      >
-    </div>
+    <ListInput
+      class="apply__input"
+      name="team_members"
+      label="List of preferred team members (Up to 4)"
+      :limit="3"
+      :maxlength="128"
+      :validate="value => value.length > 3 && 'Teams have a max of 4 members'"
+      :placeholderItems="[
+        `${form_data.first_name} ${form_data.last_name} (You)`,
+      ]"
+      placeholder="Elon Musk"
+    />
   </div>
 </template>
 
 <script>
-import {Input, Button, Textarea} from '@components';
+import Input from '@hackthe6ix/vue-ui/Input';
+import Textarea from '@hackthe6ix/vue-ui/Textarea';
+import ListInput from '@hackthe6ix/vue-ui/ListInput';
 
 export default {
   name: 'Hackathon',
+  inject: ['form_data'],
   components: {
     Input,
-    Button,
     Textarea,
-  },
-  props: {
-    hack_count: Number,
-    pitch: String,
-    team_members: Array,
-    valid: Boolean,
-    page: Number,
-  },
-  data() {
-    return {
-      hack_count_: this.hack_count,
-      pitch_: this.pitch,
-      team_members_: this.team_members,
-    };
-  },
-  updated() {
-    if (this.$el.getAttribute('data-current') === 'true') {
-      this.check();
-    }
+    ListInput,
   },
   methods: {
-    check() {
-      this.$emit(
-        'update:valid',
-        Boolean(
-          Number.isInteger(this.hack_count_) &&
-            this.pitch_.length > 50 &&
-            this.hack_count_ >= 0 &&
-            this.team_members_.reduce(
-              (acc, curr) => acc && curr.length > 0,
-              true,
-            ),
-        ),
-      );
-    },
     add() {
-      this.team_members_.push('');
+      this.form_data.team_members.push('');
     },
   },
-  watch: {
-    hack_count_(val) {
-      this.$emit('update:hack_count', val);
-    },
-    pitch_(val) {
-      this.$emit('update:pitch', val);
-    },
-    team_members_(val) {
-      this.$emit('update:team_members', val);
-    },
-    page() {
-      if (this.$el.getAttribute('data-current') === 'true') {
-        this.check();
-      }
-    },
+  props: {
+    current: Boolean,
   },
 };
 </script>

@@ -6,7 +6,11 @@
       name="first_name"
       placeholder="e.g. John"
       label="First Name"
-      v-model="first_name_"
+      :maxlength="128"
+      :tabindex="current ? undefined : -1"
+      :validate="
+        value => !(value && value.length > 0) && 'First name is required'
+      "
       required
     />
     <Input
@@ -14,7 +18,10 @@
       name="last_name"
       placeholder="e.g. Doe"
       label="Last Name"
-      v-model="last_name_"
+      :maxlength="128"
+      :validate="
+        value => !(value && value.length > 0) && 'Last name is required'
+      "
       required
     />
     <Input
@@ -23,130 +30,152 @@
       type="email"
       placeholder="e.g. john@hackthe6ix.com"
       label="Email"
-      v-model="email_"
-      :state="typeof emailError === 'string' ? !Boolean(emailError) : undefined"
-      :errorMsg="emailError"
+      :maxlength="128"
+      :tabindex="current ? undefined : -1"
+      :error="form_errors.email"
+      :validate="validateEmail"
       required
     />
     <Checkbox
       class="apply__input"
-      name="acceptance"
-      label="I allow Hack The 6ix to send me emails containing information from the 2019 event sponsors."
-      v-model="casl_acceptance_"
+      name="casl_acceptance"
+      :tabindex="current ? undefined : -1"
+      label="I allow Hack The 6ix to send me emails containing information from the event sponsors."
     />
     <Select
+      class="apply__input"
       label="Gender"
       name="gender"
-      v-model="gender_"
+      :tabindex="current ? undefined : -1"
       :options="genders"
+      :blur="blur"
+      :validate="value => !(value && value.length > 0) && 'Gender is required'"
+      required
+    />
+    <ComboBox
+      class="apply__input"
+      label="Timezone"
+      name="timezone"
+      :maxlength="128"
+      :tabindex="current ? undefined : -1"
+      :options="timezones"
+      :validate="
+        value => !(value && value.length > 0) && 'Timezone is required'
+      "
       :blur="blur"
       required
     />
-    <Textarea
+    <ComboBox
       class="apply__input"
-      name="diet"
-      placeholder="Gluten, Dairy, etc."
-      label="Do you have any dietary restrictions? (Leave blank if none):"
-      v-model="dietary_restrictions_"
+      label="Country"
+      name="country"
+      :maxlength="128"
+      description="Note: If you are outside of Canada, we will not be shipping Hack the 6ix swag to your address."
+      :validate="value => !(value && value.length > 0) && 'Country is required'"
+      :tabindex="current ? undefined : -1"
+      :options="countries"
+      :blur="blur"
+      required
     />
+    <div v-if="addressVisible">
+      <!-- Validation for these fields are a bit more complicated and are handled in Apply.vue -->
+      <Input
+        class="apply__input"
+        name="address_line_1"
+        :maxlength="128"
+        placeholder="e.g. 123 Hack the 6ix Blvd"
+        :tabindex="addressVisible && current ? undefined : -1"
+        label="Address Line 1"
+      />
+      <Input
+        class="apply__input"
+        name="address_line_2"
+        :maxlength="128"
+        placeholder="e.g. Unit 6"
+        label="Address Line 2"
+        :tabindex="addressVisible && current ? undefined : -1"
+      />
+      <Input
+        class="apply__input"
+        name="city"
+        :maxlength="128"
+        placeholder="e.g. The 6ix"
+        :tabindex="addressVisible && current ? undefined : -1"
+        label="City"
+      />
+      <Select
+        class="apply__input"
+        label="Province"
+        name="province"
+        :maxlength="128"
+        :tabindex="addressVisible && current ? undefined : -1"
+        :options="provinces"
+        @blur="blur"
+      />
+      <Input
+        class="apply__input"
+        name="postal_code"
+        :maxlength="7"
+        placeholder="e.g. M5S 2E4"
+        :tabindex="addressVisible && current ? undefined : -1"
+        label="Postal Code"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import {Input, Select, Checkbox, Textarea} from '@components';
-import {GENDER_ENUM, HAS_EMAIL} from '@graphql';
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
+import ComboBox from '@hackthe6ix/vue-ui/ComboBox';
+import Select from '@hackthe6ix/vue-ui/Select';
+import Input from '@hackthe6ix/vue-ui/Input';
+
+import {
+  GENDERS,
+  HAS_EMAIL,
+  TIMEZONES,
+  PROVINCES_ENUM,
+  COUNTRIES,
+} from '@graphql';
 import {validate, query} from '@utils';
 
 export default {
   name: 'Personal',
+  inject: ['form_data', 'form_errors'],
   components: {
+    ComboBox,
     Input,
     Select,
     Checkbox,
-    Textarea,
-  },
-  props: {
-    first_name: String,
-    last_name: String,
-    email: String,
-    casl_acceptance: Boolean,
-    gender: Number,
-    dietary_restrictions: String,
-    valid: Boolean,
-    page: Number,
   },
   data() {
     return {
-      first_name_: this.first_name,
-      last_name_: this.last_name,
-      email_: this.email,
-      casl_acceptance_: this.casl_acceptance,
-      gender_: this.gender,
-      dietary_restrictions_: this.dietary_restrictions,
-      genders: Object.values(GENDER_ENUM),
-      emailError: undefined,
+      genders: GENDERS,
+      countries: COUNTRIES,
+      provinces: PROVINCES_ENUM,
+      timezones: TIMEZONES,
     };
   },
-  updated() {
-    if (this.$el.getAttribute('data-current') === 'true') {
-      this.check();
-    }
+  props: {
+    current: Boolean,
   },
   methods: {
     blur() {
       this.$el.focus();
     },
-    async check() {
-      this.$emit(
-        'update:valid',
-        Boolean(
-          (await this.validateEmail()) &&
-            this.first_name_.length > 0 &&
-            this.last_name_.length > 0 &&
-            this.gender_ >= 0,
-        ),
-      );
-    },
-    async validateEmail() {
-      if (this.email_.length === 0) {
-        this.emailError = undefined;
-        return undefined;
-      }
-
-      if (validate(this.email_, 'email')) {
+    async validateEmail(email) {
+      if (email && email.length > 0 && validate(email, 'email')) {
         const hasEmail = await query(HAS_EMAIL, {
-          email: this.email,
+          email: email,
         });
-        this.emailError = hasEmail ? 'Email Already in use' : '';
-        return !hasEmail;
+        return hasEmail && 'Email Already in use';
       }
-      this.emailError = 'Please provide a valid email';
-      return false;
+      return 'Please provide a valid email';
     },
   },
-  watch: {
-    first_name_(val) {
-      this.$emit('update:first_name', val);
-    },
-    last_name_(val) {
-      this.$emit('update:last_name', val);
-    },
-    email_(val) {
-      this.$emit('update:email', val);
-    },
-    casl_acceptance_(val) {
-      this.$emit('update:casl_acceptance', val);
-    },
-    dietary_restrictions_(val) {
-      this.$emit('update:dietary_restrictions', val);
-    },
-    gender_(val) {
-      this.$emit('update:gender', val);
-    },
-    page() {
-      if (this.$el.getAttribute('data-current') === 'true') {
-        this.check();
-      }
+  computed: {
+    addressVisible() {
+      return this.form_data.country === 'Canada';
     },
   },
 };

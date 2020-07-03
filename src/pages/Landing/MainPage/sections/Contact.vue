@@ -13,7 +13,10 @@
       Hack the 6ix 2019 will be held at {{ venue }} in downtown Toronto from
       August 23-25, 2019.
     </p>
-    <Button class="contact__button" icon="envelope" :click="contact"
+    <Button
+      class="contact__button"
+      icon="envelope"
+      v-on:click.native="contact()"
       >Contact Us</Button
     >
     <div class="contact__map">
@@ -34,7 +37,8 @@
 </template>
 
 <script>
-import {Container, Button} from '@components';
+import Button from '@hackthe6ix/vue-ui/Button';
+import {Container} from '@components';
 import {venue} from '@data';
 import {scroll} from '@utils';
 

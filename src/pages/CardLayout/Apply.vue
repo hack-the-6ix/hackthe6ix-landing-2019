@@ -2,41 +2,18 @@
   <Card class="apply">
     <h1 class="apply__title">Hack The 6ix Application Form</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
-      <Personal
-        :first_name.sync="first_name"
-        :last_name.sync="last_name"
-        :email.sync="email"
-        :casl_acceptance.sync="casl_acceptance"
-        :gender.sync="gender"
-        :dietary_restrictions.sync="dietary_restrictions"
-        :valid.sync="valid"
-        :page.sync="page"
-      />
-      <Experience
-        :school.sync="school"
-        :year_of_study.sync="year_of_study"
-        :resume.sync="resume"
-        :resume_permission.sync="resume_permission"
-        :portfolio.sync="portfolio"
-        :github.sync="github"
-        :valid.sync="valid"
-        :page.sync="page"
-      />
-      <Hackathon
-        :hack_count.sync="hack_count"
-        :pitch.sync="pitch"
-        :team_members.sync="team_members"
-        :valid.sync="valid"
-        :page.sync="page"
-      />
-      <Finish :email="email" />
+      <Personal :current="page === 0" />
+      <!-- Height is initially 0 to ensure card height is correct -->
+      <Experience :current="page === 1" style="height: 0" />
+      <Hackathon :current="page === 2" style="height: 0" />
+      <Finish :email="form_data.email" style="height: 0" />
     </div>
     <div class="apply__controls">
       <Button
         secondary
         v-if="page !== end"
         class="apply__button apply__button--main"
-        :click="back"
+        v-on:click.native="back()"
         :disabled="page === 0"
       >
         Back
@@ -45,7 +22,7 @@
       <Button
         v-if="page !== end"
         class="apply__button"
-        :click="page === end - 1 ? submit : next"
+        v-on:click.native="page === end - 1 ? submit() : next()"
         :loading="loading"
         :disabled="!valid"
       >
@@ -55,29 +32,62 @@
       <Button
         v-if="page === end"
         class="apply__button"
-        :click="() => $router.push('/dash/' + id)"
+        v-on:click.native="$router.push('/dash/' + id)"
         icon="address-card"
       >
         To Dashboard
       </Button>
     </div>
-    <Modal :show="showModal">
+    <Modal :show.sync="showModal">
       <h2 class="apply__title">Application Error</h2>
       <p>Something unexpected happened. Please try again later.</p>
+      <p>{{ error }}</p>
     </Modal>
   </Card>
 </template>
 
 <script>
-import {Card, Button, Modal} from '@components';
+import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
+import Button from '@hackthe6ix/vue-ui/Button';
+import {Card, Modal} from '@components';
 import * as Screens from './ApplyScreens';
-import {APPLY, GENDER_ENUM, YEAR_OF_STUDY_ENUM} from '@graphql';
 import {query, toBase64} from '@utils';
 const end = Math.max(Object.values(Screens).length - 1, 0);
+import Vue from 'vue';
+
+import {APPLY, YEAR_OF_STUDY_ENUM, GENDERS, GRADUATION_YEARS} from '@graphql';
 
 export default {
   name: 'Info',
-  path: '/apply-late',
+  path: '/apply',
+  inject: ['form_data', 'form_errors'],
+  mixins: [
+    formProvider({
+      first_name: '',
+      last_name: '',
+      email: '',
+      casl_acceptance: false,
+      gender: '',
+      timezone: '',
+      address_line_1: '',
+      address_line_2: '',
+      city: '',
+      province: '',
+      postal_code: '',
+      country: '',
+      school: '',
+      program_of_study: '',
+      year_of_study: -1,
+      year_of_graduation: -1,
+      resume: null,
+      resume_permission: false,
+      portfolio: '',
+      github: '',
+      hack_count: '',
+      pitch: '',
+      team_members: [],
+    }),
+  ],
   components: {
     ...Screens,
     Button,
@@ -86,54 +96,150 @@ export default {
   },
   data() {
     return {
-      // Personal
-      first_name: '',
-      last_name: '',
-      email: '',
-      casl_acceptance: false,
-      gender: -1,
-      dietary_restrictions: '',
-
-      // Experience
-      school: '',
-      year_of_study: -1,
-      resume: null,
-      resume_permission: false,
-      portfolio: '',
-      github: '',
-
-      // Hackathon Information
-      hack_count: 0,
-      pitch: '',
-      team_members: [],
-
       // Others
       showModal: false,
       loading: false,
-      valid: false,
       height: 0,
       page: 0,
+      error: '',
       end,
+
+      // Fields to watch for validation
+      validationFields: [
+        [
+          {
+            name: 'first_name',
+            required: true,
+          },
+          {
+            name: 'last_name',
+            required: true,
+          },
+          {
+            name: 'email',
+            required: true,
+          },
+          {
+            name: 'gender',
+            required: true,
+          },
+          {
+            name: 'timezone',
+            required: true,
+          },
+          {
+            name: 'country',
+            required: true,
+          },
+          {
+            name: 'address_line_1',
+            required: false,
+          },
+          {
+            name: 'address_line_2',
+            required: false,
+          },
+          {
+            name: 'city',
+            required: false,
+          },
+          {
+            name: 'province',
+            required: false,
+          },
+          {
+            name: 'postal_code',
+            required: false,
+          },
+        ],
+        [
+          {
+            name: 'school',
+            required: true,
+          },
+          {
+            name: 'program_of_study',
+            required: true,
+          },
+          {
+            name: 'year_of_study',
+            required: true,
+          },
+          {
+            name: 'year_of_graduation',
+            required: true,
+          },
+          {
+            name: 'resume',
+            required: true,
+          },
+          {
+            name: 'portfolio',
+            required: false,
+          },
+          {
+            name: 'github',
+            required: false,
+          },
+        ],
+        [
+          {
+            name: 'pitch',
+            required: true,
+          },
+          {
+            name: 'hack_count',
+            required: true,
+          },
+          {
+            name: 'team_members',
+            required: false,
+          },
+        ],
+      ],
+
+      addressValidationFields: [
+        {
+          name: 'address_line_1',
+          required: true,
+        },
+        {
+          name: 'address_line_2',
+          required: false,
+        },
+        {
+          name: 'city',
+          required: true,
+        },
+        {
+          name: 'province',
+          required: true,
+        },
+        {
+          name: 'postal_code',
+          required: true,
+        },
+      ],
+
+      addressLabelLookup: {
+        address_line_1: 'Address Line 1',
+        address_line_2: 'Address Line 2',
+        city: 'City',
+        province: 'Province',
+        postal_code: 'Postal Code',
+      },
+
+      yearsOfStudy: Object.keys(YEAR_OF_STUDY_ENUM),
+      graduationYears: GRADUATION_YEARS,
     };
   },
   mounted() {
-    window.addEventListener('resize', this.pageHeight, {passive: true});
     window.addEventListener('load', this.shiftPages);
   },
   beforeDestory() {
-    window.removeEventListener('resize', this.pageHeight, {passive: true});
     window.removeEventListener('load', this.shiftPages);
   },
-  updated() {
-    this.pageHeight();
-  },
   methods: {
-    pageHeight() {
-      this.$nextTick(() => {
-        const page = document.querySelectorAll('.apply__page')[this.page];
-        this.height = page.clientHeight;
-      });
-    },
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
       pages.forEach((page, i) => {
@@ -141,9 +247,8 @@ export default {
         page.style.transform = `translateX(${this.page *
           -100}%) translateX(${this.page * -60}px)`;
         page.style.opacity = current ? 1 : 0;
-        page.setAttribute('data-current', current);
+        page.style.height = current ? '100%' : 0;
       });
-      this.pageHeight();
     },
     next() {
       this.page++;
@@ -153,35 +258,82 @@ export default {
       this.page--;
       this.shiftPages();
     },
+    validateAddress() {
+      for (let i = 0; i < this.addressValidationFields.length; i++) {
+        const fieldName = this.addressValidationFields[i].name;
+        const formattedName = this.addressLabelLookup[fieldName] || fieldName;
+        const fieldEmpty =
+          !this.form_data[fieldName] || this.form_data[fieldName].length === 0;
+
+        if (
+          this.addressActive &&
+          this.addressValidationFields[i].required &&
+          fieldEmpty
+        ) {
+          const errorMsg = `${formattedName} is required to complete address`;
+
+          Vue.set(this.form_errors, fieldName, errorMsg);
+        } else {
+          Vue.set(this.form_errors, fieldName, false);
+        }
+      }
+    },
     async submit() {
       this.loading = true;
       try {
-        const {user_errors, applicant} = await query(APPLY, {
+        let submission = {
           app: {
-            name: this.first_name,
-            lname: this.last_name,
-            email: this.email,
-            casl_acceptance: this.casl_acceptance,
-            gender: Object.keys(GENDER_ENUM)[this.gender],
-            dietary_restrictions: this.dietary_restrictions,
-            school: this.school,
-            year_of_study: Object.keys(YEAR_OF_STUDY_ENUM)[this.year_of_study],
-            resume: await toBase64(this.resume),
-            resume_permission: this.resume_permission,
-            portfolio: this.portfolio,
-            github: this.github,
-            hack_count: this.hack_count,
-            pitch: this.pitch,
-            team_members: this.team_members,
+            name: this.form_data.first_name,
+            lname: this.form_data.last_name,
+            email: this.form_data.email,
+            casl_acceptance: this.form_data.casl_acceptance,
+            gender: GENDERS[this.form_data.gender],
+            timezone: this.form_data.timezone,
+            country: this.form_data.country,
+            school: this.form_data.school,
+            program_of_study: this.form_data.program_of_study,
+            year_of_study: this.form_data.year_of_study,
+            year_of_graduation: this.graduationYears[
+              this.form_data.year_of_graduation
+            ],
+            resume: await toBase64(this.form_data.resume),
+            resume_permission: this.form_data.resume_permission,
+            portfolio: this.form_data.portfolio,
+            github: this.form_data.github,
+            hack_count: parseInt(this.form_data.hack_count),
+            pitch: this.form_data.pitch,
+            team_members: this.form_data.team_members,
           },
-        });
+        };
 
-        if (user_errors) this.showModal = true;
-        else {
+        const address = {
+          address_line_1: this.form_data.address_line_1,
+          address_line_2: this.form_data.address_line_2,
+          city: this.form_data.city,
+          province: this.form_data.province,
+          postal_code: this.form_data.postal_code,
+        };
+
+        // If any address fields are not empty, include it with the submission.
+        // Any errors will be handled by the API
+        for (let i = 0; i < Object.keys(address).length; i++) {
+          const entry = address[Object.keys(address)[i]];
+          if (entry && entry.length > 0) {
+            submission.app.address = address;
+            break;
+          }
+        }
+        const {user_errors, applicant} = await query(APPLY, submission);
+
+        if (user_errors) {
+          this.error = user_errors;
+          this.showModal = true;
+        } else {
           this.id = applicant.id;
           this.next();
         }
       } catch (err) {
+        this.error = err;
         this.showModal = true;
       }
     },
@@ -189,6 +341,36 @@ export default {
   watch: {
     page() {
       this.shiftPages();
+    },
+  },
+  computed: {
+    valid: function() {
+      this.validateAddress();
+
+      const fields = this.validationFields[this.page];
+
+      for (let i = 0; i < fields.length; i++) {
+        const required = fields[i].required;
+        const error = this.form_errors[fields[i].name];
+
+        if (error !== false && (required || error !== undefined)) {
+          return false;
+        }
+      }
+
+      return true;
+    },
+    addressActive: function() {
+      for (let i = 0; i < this.addressValidationFields.length; i++) {
+        if (
+          this.form_data[this.addressValidationFields[i].name] &&
+          this.form_data[this.addressValidationFields[i].name].length > 0
+        ) {
+          return true;
+        }
+      }
+
+      return false;
     },
   },
 };
@@ -206,6 +388,7 @@ export default {
 
   &__title {
     margin: 0;
+    color: $TEXT;
   }
 
   &__pages {

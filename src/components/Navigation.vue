@@ -15,9 +15,13 @@
         >{{ item.displayName || item.name }}</router-link
       >
       <li>
-        <Button class="nav__button" :click="apply" :disabled="disableApply"
-          >Applications Closed</Button
+        <Button
+          class="nav__button"
+          v-on:click.native="apply()"
+          :disabled="disableApply"
         >
+          {{ disableApply ? 'Applications Closed' : 'Apply' }}
+        </Button>
       </li>
     </ul>
     <button class="nav__menu" v-on:click="() => (this.show = !this.show)">
@@ -40,9 +44,9 @@
       <li>
         <Button
           class="nav__mobile-button"
-          :click="apply"
+          v-on:click.native="apply()"
           :disabled="disableApply"
-          >Applications Closed</Button
+          >{{ disableApply ? 'Applications Closed' : 'Apply' }}</Button
         >
       </li>
     </Container>
@@ -50,7 +54,8 @@
 </template>
 
 <script>
-import {Container, Button} from '.';
+import {Container} from '.';
+import Button from '@hackthe6ix/vue-ui/Button';
 import {Logo} from '@assets';
 
 export default {
@@ -67,7 +72,7 @@ export default {
   },
   methods: {
     apply() {
-      window.location.replace('/apply');
+      this.$router.push('/apply');
     },
     close() {
       this.show = false;

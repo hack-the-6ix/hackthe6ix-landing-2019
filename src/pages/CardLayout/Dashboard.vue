@@ -2,19 +2,7 @@
   <Card class="apply" :class="getPageClass">
     <h1 class="apply__title">Hacker Dashboard</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
-      <Home
-        :user="user"
-        :loading="loading"
-        :qr="qr"
-        :to="to"
-        :pageHeight="pageHeight"
-      />
-      <Application
-        :user.sync="user"
-        :loading="loading"
-        :to="to"
-        :token="token"
-      />
+      <Home :user="user" :loading="loading" :to="to" :pageHeight="pageHeight" />
       <Schedule :user="user" :loading="loading" :to="to" />
     </div>
   </Card>
@@ -22,7 +10,7 @@
 
 <script>
 import * as Screens from './DashboardScreens';
-import {AUTHENTICATE, FETCH_INFO, FETCH_QR} from '@graphql';
+import {AUTHENTICATE, FETCH_INFO} from '@graphql';
 import {Card} from '@components';
 import {query} from '@utils';
 
@@ -50,7 +38,6 @@ export default {
       const id = this.$route.params.id;
       this.token = (await query(AUTHENTICATE, {id})).token;
       this.user = (await query(FETCH_INFO, {id}, this.token))[0];
-      this.qr = await query(FETCH_QR, {id});
       this.loading = false;
     } catch (err) {
       alert(err);
@@ -164,6 +151,10 @@ export default {
   &__button {
     margin: 0 3px 6px;
     width: calc(50% - 12px);
+  }
+
+  &__button--full {
+    width: calc(100% - 18px);
   }
 
   &__aside {

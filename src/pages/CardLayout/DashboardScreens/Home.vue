@@ -2,25 +2,18 @@
   <div class="apply__page">
     <h2 class="apply__subtitle">Home</h2>
     <div v-if="!loading">
-      <img class="dash__qr" :src="qr" @load="pageHeight" alt="QR Code" />
       <p class="dash__name">{{ user.name }} {{ user.lname }}</p>
       <p class="dash__role">Hacker</p>
+      <Application :user.sync="user" :token="token" />
     </div>
     <div class="dash__controls">
-      <Button class="dash__button" :click="() => to(1)" icon="compass"
-        >Application Status</Button
-      >
-      <Button class="dash__button" :click="scheduleMe" icon="calendar"
-        >Schedule</Button
-      >
       <Button
         class="dash__button"
-        :icon="['fab', 'slack']"
-        :click="slackMe"
-        :disabled="canSlack"
-        >Slack Channel</Button
+        v-on:click.native="scheduleMe()"
+        icon="calendar"
+        >Schedule</Button
       >
-      <Button class="dash__button" :click="prizeMe" icon="award"
+      <Button class="dash__button" v-on:click.native="prizeMe()" icon="award"
         >Challenges/Prizes</Button
       >
     </div>
@@ -32,7 +25,8 @@
 </template>
 
 <script>
-import {Button} from '@components';
+import {default as Application} from './Application';
+import Button from '@hackthe6ix/vue-ui/Button';
 import {email} from '@data';
 const whiteList = ['accepted', 'attending', 'not_attending'];
 
@@ -40,6 +34,7 @@ export default {
   name: 'Home',
   components: {
     Button,
+    Application,
   },
   data() {
     return {
@@ -68,7 +63,6 @@ export default {
   props: {
     user: Object,
     loading: Boolean,
-    qr: String,
     pageHeight: Function,
     to: Function,
   },

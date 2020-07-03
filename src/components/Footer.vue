@@ -21,9 +21,9 @@
           <li>
             <Button
               class="footer__button"
-              :click="apply"
+              v-on:click.native="apply()"
               :disabled="disableApply"
-              >Apply Now</Button
+              >{{ disableApply ? 'Applications Closed' : 'Apply Now' }}</Button
             >
           </li>
         </ul>
@@ -62,7 +62,8 @@
 </template>
 
 <script>
-import {Container, Button} from '.';
+import Button from '@hackthe6ix/vue-ui/Button';
+import {Container} from '.';
 import {social_media, email} from '@data';
 import {Logo} from '@assets';
 

@@ -1,5 +1,5 @@
 /**
- * queryConfig hook options
+ * queryConfig hook yearsOfStudy
  * @typedef {Object} queryConfig
  * @property {object} variables - Query variables
  */
@@ -11,7 +11,7 @@
  */
 export const query = async (query, variables = {}, token) => {
   const api_url =
-    process.env.GRAPHQL_API || 'https://api.hackthe6ix.com/graphql';
+    process.env.VUE_APP_GRAPHQL_API || 'https://api.hackthe6ix.com/graphql';
   const raw = await fetch(api_url, {
     headers: {
       'Content-Type': 'application/json',

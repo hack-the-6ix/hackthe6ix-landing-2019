@@ -30,7 +30,7 @@
       <Button
         class="apply__button"
         v-show="!page"
-        :click="submit"
+        v-on:click.native="submit()"
         :disabled="!(checkEmail() && acceptance)"
       >
         Submit
@@ -38,7 +38,7 @@
       <Button
         class="apply__button"
         v-show="page"
-        :click="() => $router.push('/')"
+        v-on:click.native="$router.push('/')"
       >
         Back to home
       </Button>
@@ -47,7 +47,10 @@
 </template>
 
 <script>
-import {Card, Input, Checkbox, Button} from '@components';
+import Button from '@hackthe6ix/vue-ui/Button';
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
+import Input from '@hackthe6ix/vue-ui/Input';
+import {Card} from '@components';
 import {validate, query} from '@utils';
 import {SUBSCRIBE} from '@graphql';
 

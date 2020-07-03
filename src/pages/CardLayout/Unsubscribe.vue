@@ -21,7 +21,7 @@
       <Button
         class="apply__button"
         v-show="!page"
-        :click="submit"
+        v-on:click.native="submit()"
         :disabled="!(acceptance && $route.params.id)"
       >
         Submit
@@ -29,7 +29,7 @@
       <Button
         class="apply__button"
         v-show="page"
-        :click="() => $router.push('/')"
+        v-on:click.native="$router.push('/')"
       >
         Back to home
       </Button>
@@ -38,7 +38,9 @@
 </template>
 
 <script>
-import {Card, Checkbox, Button} from '@components';
+import Button from '@hackthe6ix/vue-ui/Button';
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
+import {Card} from '@components';
 import {UNSUBSCRIBE} from '@graphql';
 import {query} from '@utils';
 

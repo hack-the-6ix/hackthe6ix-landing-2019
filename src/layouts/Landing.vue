@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       items,
-      disableApply: true,
+      disableApply: false,
     };
   },
 };
