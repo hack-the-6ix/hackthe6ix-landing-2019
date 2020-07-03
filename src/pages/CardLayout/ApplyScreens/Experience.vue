@@ -9,6 +9,7 @@
       :allow-free="true"
       :tabindex="current ? undefined : -1"
       :options="schools"
+      :maxlength="128"
       :validate="value => !(value && value.length > 0) && 'School is required'"
       required
     />
@@ -20,6 +21,7 @@
       :allow-free="true"
       :tabindex="current ? undefined : -1"
       :options="programsOfStudy"
+      :maxlength="128"
       :validate="
         value => !(value && value.length > 0) && 'Program of study is required'
       "
@@ -53,7 +55,11 @@
       name="resume"
       label="Upload Resume"
       :tabindex="current ? undefined : -1"
-      :validate="value => !value"
+      :validate="
+        value =>
+          (!value && 'Resume is required') ||
+          (value.size >= 5000000 && 'File must be less than 5MB')
+      "
       required
     />
     <Checkbox
@@ -67,6 +73,7 @@
       name="portfolio"
       placeholder="https://hackthe6ix.com"
       label="Portfolio Link"
+      :maxlength="128"
       :tabindex="current ? undefined : -1"
       :validate="
         value =>
@@ -78,6 +85,7 @@
       name="github"
       placeholder="https://github.com/hackerman"
       label="GitHub Link"
+      :maxlength="128"
       :tabindex="current ? undefined : -1"
       :validate="
         value =>

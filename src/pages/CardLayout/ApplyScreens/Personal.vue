@@ -6,6 +6,7 @@
       name="first_name"
       placeholder="e.g. John"
       label="First Name"
+      :maxlength="128"
       :tabindex="current ? undefined : -1"
       :validate="
         value => !(value && value.length > 0) && 'First name is required'
@@ -17,6 +18,7 @@
       name="last_name"
       placeholder="e.g. Doe"
       label="Last Name"
+      :maxlength="128"
       :validate="
         value => !(value && value.length > 0) && 'Last name is required'
       "
@@ -28,6 +30,7 @@
       type="email"
       placeholder="e.g. john@hackthe6ix.com"
       label="Email"
+      :maxlength="128"
       :tabindex="current ? undefined : -1"
       :error="form_errors.email"
       :validate="validateEmail"
@@ -53,6 +56,7 @@
       class="apply__input"
       label="Timezone"
       name="timezone"
+      :maxlength="128"
       :tabindex="current ? undefined : -1"
       :options="timezones"
       :validate="
@@ -65,6 +69,7 @@
       class="apply__input"
       label="Country"
       name="country"
+      :maxlength="128"
       description="Note: If you are outside of Canada, we will not be shipping Hack the 6ix swag to your address."
       :validate="value => !(value && value.length > 0) && 'Country is required'"
       :tabindex="current ? undefined : -1"
@@ -77,6 +82,7 @@
       <Input
         class="apply__input"
         name="address_line_1"
+        :maxlength="128"
         placeholder="e.g. 123 Hack the 6ix Blvd"
         :tabindex="addressVisible && current ? undefined : -1"
         label="Address Line 1"
@@ -84,6 +90,7 @@
       <Input
         class="apply__input"
         name="address_line_2"
+        :maxlength="128"
         placeholder="e.g. Unit 6"
         label="Address Line 2"
         :tabindex="addressVisible && current ? undefined : -1"
@@ -91,6 +98,7 @@
       <Input
         class="apply__input"
         name="city"
+        :maxlength="128"
         placeholder="e.g. The 6ix"
         :tabindex="addressVisible && current ? undefined : -1"
         label="City"
@@ -99,6 +107,7 @@
         class="apply__input"
         label="Province"
         name="province"
+        :maxlength="128"
         :tabindex="addressVisible && current ? undefined : -1"
         :options="provinces"
         @blur="blur"
@@ -106,6 +115,7 @@
       <Input
         class="apply__input"
         name="postal_code"
+        :maxlength="128"
         placeholder="e.g. M5S 2E4"
         :tabindex="addressVisible && current ? undefined : -1"
         label="Postal Code"

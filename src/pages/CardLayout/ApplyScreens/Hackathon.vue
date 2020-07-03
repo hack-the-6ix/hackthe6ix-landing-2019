@@ -20,15 +20,16 @@
       class="apply__input"
       name="pitch"
       placeholder="Tell us about your thing"
-      label="What would you like to build at the hackathon? (Minimum 50 Characters)"
+      label="What would you like to build at the hackathon?"
       :tabindex="current ? undefined : -1"
+      :maxlength="1500"
       :description="
-        'Current character count: ' +
+        '(50-1500 Characters) Current count: ' +
           ((form_data.pitch && form_data.pitch.length) || 0)
       "
       :validate="
         value =>
-          !(value && value.length >= 50) &&
+          !(value && value.length >= 50 && value.length <= 1500) &&
           'You must have at least 50 characters'
       "
       required
@@ -38,14 +39,16 @@
       name="team_members"
       label="List of preferred team members (Up to 4)"
       :limit="3"
-      :placeholderItems="[`${form_data.first_name} ${form_data.last_name} (You)`]"
+      :maxlength="128"
+      :placeholderItems="[
+        `${form_data.first_name} ${form_data.last_name} (You)`,
+      ]"
       placeholder="Elon Musk"
     />
   </div>
 </template>
 
 <script>
-import Button from '@hackthe6ix/vue-ui/Button';
 import Input from '@hackthe6ix/vue-ui/Input';
 import Textarea from '@hackthe6ix/vue-ui/Textarea';
 import ListInput from '@hackthe6ix/vue-ui/ListInput';
@@ -55,7 +58,6 @@ export default {
   inject: ['form_data'],
   components: {
     Input,
-    Button,
     Textarea,
     ListInput,
   },
