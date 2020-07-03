@@ -40,6 +40,7 @@
       label="List of preferred team members (Up to 4)"
       :limit="3"
       :maxlength="128"
+      :validate="value => value.length > 3 && 'Teams have a max of 4 members'"
       :placeholderItems="[
         `${form_data.first_name} ${form_data.last_name} (You)`,
       ]"

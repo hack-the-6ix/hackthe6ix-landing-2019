@@ -115,7 +115,7 @@
       <Input
         class="apply__input"
         name="postal_code"
-        :maxlength="128"
+        :maxlength="7"
         placeholder="e.g. M5S 2E4"
         :tabindex="addressVisible && current ? undefined : -1"
         label="Postal Code"
