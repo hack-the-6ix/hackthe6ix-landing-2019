@@ -6,7 +6,7 @@
       name="hack_count"
       type="number"
       placeholder="Too many"
-      label="How many Hackathons have you attended so far?"
+      label="How many hackathons have you attended so far?"
       min="0"
       :tabindex="current ? undefined : -1"
       :validate="

@@ -11,9 +11,14 @@
         class="dash__button"
         v-on:click.native="scheduleMe()"
         icon="calendar"
+        :disabled="true"
         >Schedule</Button
       >
-      <Button class="dash__button" v-on:click.native="prizeMe()" icon="award"
+      <Button
+        class="dash__button"
+        v-on:click.native="prizeMe()"
+        icon="award"
+        :disabled="true"
         >Challenges/Prizes</Button
       >
     </div>

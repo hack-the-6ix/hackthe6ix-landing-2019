@@ -79,8 +79,8 @@ export const YEAR_OF_STUDY_ENUM = {
   second_year: 'Undergraduate Year 2',
   third_year: 'Undergraduate Year 3',
   fourth_year: 'Undergraduate Year 4+',
-  graduate_school: 'Gradate School',
-  new_grad: 'New Grad',
+  graduate_school: 'Graduate School',
+  new_grad: 'Recent Grad',
 };
 
 export const PROVINCES_ENUM = {

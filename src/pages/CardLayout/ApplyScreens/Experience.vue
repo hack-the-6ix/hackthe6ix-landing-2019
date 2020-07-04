@@ -75,10 +75,6 @@
       label="Portfolio Link"
       :maxlength="128"
       :tabindex="current ? undefined : -1"
-      :validate="
-        value =>
-          !validateUrl(value, true) && 'Please provide a valid http(s) website'
-      "
     />
     <Input
       class="apply__input"
@@ -87,10 +83,6 @@
       label="GitHub Link"
       :maxlength="128"
       :tabindex="current ? undefined : -1"
-      :validate="
-        value =>
-          !validateUrl(value, true) && 'Please provide a valid http(s) website'
-      "
       :blur="() => $emit('update:page', page + 1)"
     />
   </div>
@@ -109,7 +101,6 @@ import {
   GRADUATION_YEARS,
   PROGRAMS,
 } from '@graphql';
-import {validate} from '@utils';
 
 export default {
   name: 'Experience',
@@ -130,11 +121,6 @@ export default {
       graduationYears: GRADUATION_YEARS,
       programsOfStudy: PROGRAMS,
     };
-  },
-  methods: {
-    validateUrl(url, res) {
-      return url === '' ? res : validate(url, 'url');
-    },
   },
 };
 </script>
