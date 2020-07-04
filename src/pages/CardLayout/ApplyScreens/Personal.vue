@@ -55,29 +55,16 @@
       :validate="value => !(value && value.length > 0) && 'Gender is required'"
       required
     />
-    <ComboBox
+    <Select
       class="apply__input"
       label="Timezone"
       name="timezone"
-      :maxlength="128"
       :tabindex="current ? undefined : -1"
       :options="timezones"
       :validate="
         value => !(value && value.length > 0) && 'Timezone is required'
       "
       autocomplete="country-name"
-      :blur="blur"
-      required
-    />
-    <ComboBox
-      class="apply__input"
-      label="Country"
-      name="country"
-      :maxlength="128"
-      description="Note: If you are outside of Canada, we will not be shipping Hack the 6ix swag to your address."
-      :validate="value => !(value && value.length > 0) && 'Country is required'"
-      :tabindex="current ? undefined : -1"
-      :options="countries"
       :blur="blur"
       required
     />
@@ -129,6 +116,18 @@
         label="Postal Code"
       />
     </div>
+    <ComboBox
+      class="apply__input"
+      label="Country"
+      name="country"
+      :maxlength="128"
+      description="Note: If you are outside of Canada, we will not be shipping Hack the 6ix swag to your address."
+      :validate="value => !(value && value.length > 0) && 'Country is required'"
+      :tabindex="current ? undefined : -1"
+      :options="countries"
+      :blur="blur"
+      required
+    />
   </div>
 </template>
 
