@@ -266,6 +266,7 @@ export default {
           !this.form_data[fieldName] || this.form_data[fieldName].length === 0;
 
         if (
+          this.form_data.country === 'Canada' &&
           this.addressActive &&
           this.addressValidationFields[i].required &&
           fieldEmpty
