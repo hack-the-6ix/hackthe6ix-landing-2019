@@ -3,6 +3,7 @@ import ApplyStub from './ApplyStub';
 import Dashboard from './Dashboard';
 import Subscribe from './Subscribe';
 import Unsubscribe from './Unsubscribe';
+import PageNotFound from './PageNotFound';
 
 export const CardLayout = {
   Apply,
@@ -10,4 +11,5 @@ export const CardLayout = {
   Dashboard,
   Subscribe,
   Unsubscribe,
+  PageNotFound,
 };
