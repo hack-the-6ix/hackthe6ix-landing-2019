@@ -6,6 +6,7 @@
       name="first_name"
       placeholder="e.g. John"
       label="First Name"
+      autocomplete="given-name"
       :maxlength="128"
       :tabindex="current ? undefined : -1"
       :validate="
@@ -18,6 +19,7 @@
       name="last_name"
       placeholder="e.g. Doe"
       label="Last Name"
+      autocomplete="last-name"
       :maxlength="128"
       :validate="
         value => !(value && value.length > 0) && 'Last name is required'
@@ -28,6 +30,7 @@
       class="apply__input"
       name="email"
       type="email"
+      autocomplete="email"
       placeholder="e.g. john@hackthe6ix.com"
       label="Email"
       :maxlength="128"
@@ -62,6 +65,7 @@
       :validate="
         value => !(value && value.length > 0) && 'Timezone is required'
       "
+      autocomplete="country-name"
       :blur="blur"
       required
     />
@@ -85,6 +89,7 @@
         :maxlength="128"
         placeholder="e.g. 123 Hack the 6ix Blvd"
         :tabindex="addressVisible && current ? undefined : -1"
+        autocomplete="address-line1"
         label="Address Line 1"
       />
       <Input
@@ -93,6 +98,7 @@
         :maxlength="128"
         placeholder="e.g. Unit 6"
         label="Address Line 2"
+        autocomplete="address-line2"
         :tabindex="addressVisible && current ? undefined : -1"
       />
       <Input
@@ -100,6 +106,7 @@
         name="city"
         :maxlength="128"
         placeholder="e.g. The 6ix"
+        autocomplete="address-level2"
         :tabindex="addressVisible && current ? undefined : -1"
         label="City"
       />
@@ -116,6 +123,7 @@
         class="apply__input"
         name="postal_code"
         :maxlength="7"
+        autocomplete="postal-code"
         placeholder="e.g. M5S 2E4"
         :tabindex="addressVisible && current ? undefined : -1"
         label="Postal Code"
