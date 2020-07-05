@@ -62,7 +62,7 @@
         label="Postal Code"
       />
     </div>
-    <ComboBox
+    <Select
       class="apply__input"
       label="Country"
       name="country"
@@ -79,7 +79,6 @@
 </template>
 
 <script>
-import ComboBox from '@hackthe6ix/vue-ui/ComboBox';
 import Select from '@hackthe6ix/vue-ui/Select';
 import Input from '@hackthe6ix/vue-ui/Input';
 
@@ -96,7 +95,6 @@ export default {
   name: 'Location',
   inject: ['form_data', 'form_errors'],
   components: {
-    ComboBox,
     Input,
     Select,
   },
@@ -127,7 +125,7 @@ export default {
   },
   computed: {
     addressVisible() {
-      return this.form_data.country === 'Canada';
+      return COUNTRIES[this.form_data.country] === 'Canada';
     },
   },
 };

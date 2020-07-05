@@ -62,6 +62,7 @@ import {
   GENDERS,
   GRADUATION_YEARS,
   TIMEZONES,
+  COUNTRIES,
 } from '@graphql';
 
 export default {
@@ -292,7 +293,10 @@ export default {
         const fieldEmpty =
           !this.form_data[fieldName] || this.form_data[fieldName].length === 0;
 
-        if (this.form_data.country === 'Canada' && this.addressActive) {
+        if (
+          COUNTRIES[this.form_data.country] === 'Canada' &&
+          this.addressActive
+        ) {
           // Special case for postal code
           if (
             fieldName === 'postal_code' &&
@@ -322,7 +326,7 @@ export default {
             casl_acceptance: this.form_data.casl_acceptance,
             gender: GENDERS[this.form_data.gender],
             timezone: TIMEZONES[this.form_data.timezone],
-            country: this.form_data.country,
+            country: COUNTRIES[this.form_data.country],
             school: this.form_data.school,
             phone: this.form_data.phone,
             program_of_study: this.form_data.program_of_study,
@@ -351,11 +355,13 @@ export default {
 
         // If any address fields are not empty, include it with the submission.
         // Any errors will be handled by the API
-        for (let i = 0; i < Object.keys(address).length; i++) {
-          const entry = address[Object.keys(address)[i]];
-          if (entry && entry.length > 0) {
-            submission.app.address = address;
-            break;
+        if (COUNTRIES[this.form_data.country] === 'Canada') {
+          for (let i = 0; i < Object.keys(address).length; i++) {
+            const entry = address[Object.keys(address)[i]];
+            if (entry && entry.length > 0) {
+              submission.app.address = address;
+              break;
+            }
           }
         }
         const {user_errors, applicant} = await query(APPLY, submission);
