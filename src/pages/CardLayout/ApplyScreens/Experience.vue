@@ -44,6 +44,7 @@
       class="apply__input"
       label="Projected Graduating Year"
       name="year_of_graduation"
+      v-if="form_data.year_of_study !== 'new_grad'"
       :tabindex="current ? undefined : -1"
       :options="graduationYears"
       :validate="
@@ -113,6 +114,7 @@ import {
 
 export default {
   name: 'Experience',
+  inject: ['form_data'],
   components: {
     ComboBox,
     Input,

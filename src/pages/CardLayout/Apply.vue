@@ -184,6 +184,7 @@ export default {
           {
             name: 'year_of_graduation',
             required: true,
+            exception: data => data.year_of_study === 'new_grad',
           },
           {
             name: 'resume',
@@ -331,9 +332,6 @@ export default {
             phone: this.form_data.phone,
             program_of_study: this.form_data.program_of_study,
             year_of_study: this.form_data.year_of_study,
-            year_of_graduation: this.graduationYears[
-              this.form_data.year_of_graduation
-            ],
             resume: await toBase64(this.form_data.resume),
             resume_permission: this.form_data.resume_permission,
             portfolio: this.form_data.portfolio,
@@ -352,6 +350,12 @@ export default {
           province: this.form_data.province,
           postal_code: this.form_data.postal_code,
         };
+
+        if (this.form_data.year_of_study !== 'new_grad') {
+          submission.app.year_of_graduation = this.graduationYears[
+            this.form_data.year_of_graduation
+          ];
+        }
 
         // If any address fields are not empty, include it with the submission.
         // Any errors will be handled by the API
@@ -392,9 +396,15 @@ export default {
 
       for (let i = 0; i < fields.length; i++) {
         const required = fields[i].required;
+        const exception = fields[i].exception;
         const error = this.form_errors[fields[i].name];
 
-        if (error !== false && (required || error !== undefined)) {
+        // exception is true when form validaton can be ignored
+        if (
+          error !== false &&
+          (required || error !== undefined) &&
+          (!exception || !exception(this.form_data))
+        ) {
           return false;
         }
       }
