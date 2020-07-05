@@ -2,20 +2,24 @@
   <Container block="home" as="section">
     <div class="home__content">
       <h1 class="home__title">Hack The 6ix</h1>
-      <p class="home__text">Coming August 2020</p>
       <br />
+      <!--
+
+      <p class="home__text">Coming August 2020</p>
       <Button
         onclick="window.location.href = 'https://forms.gle/CT4HbgTprXaznPcT7';"
         class="home__button"
       >
         STAY UP TO DATE
-      </Button>
+      </Button>-->
       <!--
       <p class="home__text home__text--intact">
         Presented By <Intact class="home__intact" />
-      </p>
-      <p class="home__text">August 23-25, 2019</p>
-      <p class="home__text">{{ venue }}</p>-->
+      </p>-->
+      <p class="home__text">August 21-23, 2020</p>
+      <!--
+      <p class="home__text">{{ venue }}</p>
+      -->
       <div class="home__timer">
         <h2 class="home__timer-title">Countdown to Applications</h2>
         <div class="home__clock">
@@ -46,7 +50,6 @@
 
 <script>
 import {Container} from '@components';
-import Button from '@hackthe6ix/vue-ui/Button';
 //import Intact from '@assets/sponsors/intact-insurance.svg';
 import {venue} from '@data';
 
@@ -58,7 +61,6 @@ export default {
   path: '/#',
   components: {
     Container,
-    Button,
   },
   data() {
     return {

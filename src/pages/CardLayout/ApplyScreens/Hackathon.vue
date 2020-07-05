@@ -24,7 +24,7 @@
       :tabindex="current ? undefined : -1"
       :maxlength="1500"
       :description="
-        '(50-1500 Characters) Current count: ' +
+        '(50-1500 chars) Current count: ' +
           ((form_data.pitch && form_data.pitch.length) || 0)
       "
       :validate="
@@ -33,6 +33,22 @@
           'You must have at least 50 characters'
       "
       required
+    />
+    <Textarea
+      class="apply__input"
+      name="topics"
+      placeholder="How to go to mars? Why tabs are better than spaces?"
+      label="What skills or topics are you interested in learning more about during the hackathon?"
+      :tabindex="current ? undefined : -1"
+      :maxlength="1000"
+      :description="
+        '(1000 chars max) Current count: ' +
+          ((form_data.topics && form_data.topics.length) || 0)
+      "
+      :validate="
+        value =>
+          !(value.length <= 1000) && 'You can\'t have more than 1000 chars'
+      "
     />
     <ListInput
       class="apply__input"

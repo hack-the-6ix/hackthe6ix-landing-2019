@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import '@styles/pages/Landing/MainPage.scss';
-import {Home, About} from './sections';
-const components = [Home, About];
+import {Home, About, Faq, Contact} from './sections';
+const components = [Home, About, Faq, Contact];
 
 const sections = Object.values(components);
 export default Vue.component('MainPage', {

@@ -9,14 +9,14 @@
     <p class="about__text">
       Hack the 6ix is Toronto’s largest summer hackathon. Every year, we bring
       together 400 of the best and brightest hackers amongst thousands of
-      applicants from across North America for 36 hours of coding, binging, and
+      applicants from across North America for 36 hours of coding, learning, and
       jam-packed fun!
     </p>
     <p class="about__text about__text--second">
-      We’ll provide you with all the resources, mentorship, and food to do your
-      thing; all you need to bring is your creativity and ideas! Take a break
-      during the weekend to attend workshops and tech talks, or talk with the
-      mentors and representatives from top companies in North America.
+      We’ll provide you with all the resources, mentorship, and support to do
+      your thing; all you need to bring is your creativity and ideas! Take a
+      break during the weekend to attend workshops and tech talks, or speak with
+      the mentors and representatives from top companies in North America.
     </p>
     <template v-slot:after>
       <WaveMask class="about__wave" fill="white" />

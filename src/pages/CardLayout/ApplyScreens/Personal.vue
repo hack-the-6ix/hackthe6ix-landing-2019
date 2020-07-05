@@ -39,6 +39,18 @@
       :validate="validateEmail"
       required
     />
+    <Input
+      class="apply__input"
+      name="phone"
+      placeholder="(555) 024 9669"
+      label="Phone number"
+      autocomplete="tel"
+      :maxlength="15"
+      :validate="
+        value => !(value && value.length > 0) && 'Phone number is required'
+      "
+      required
+    />
     <Checkbox
       class="apply__input"
       name="casl_acceptance"

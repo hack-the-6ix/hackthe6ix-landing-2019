@@ -8,8 +8,8 @@
 
 <script>
 import {Navigation, Footer} from '@components';
-import {Home, About} from '@pages/Landing/MainPage/sections';
-const sections = [Home, About];
+import {Home, About, Faq, Contact} from '@pages/Landing/MainPage/sections';
+const sections = [Home, About, Faq, Contact];
 const items = Object.values(sections);
 import {disableApply} from '@data';
 

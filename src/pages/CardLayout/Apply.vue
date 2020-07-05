@@ -78,6 +78,7 @@ export default {
       timezone: '',
       address_line_1: '',
       address_line_2: '',
+      phone: '',
       city: '',
       province: '',
       postal_code: '',
@@ -92,6 +93,7 @@ export default {
       github: '',
       hack_count: '',
       pitch: '',
+      topics: '',
       team_members: [],
     }),
   ],
@@ -124,6 +126,10 @@ export default {
           },
           {
             name: 'email',
+            required: true,
+          },
+          {
+            name: 'phone',
             required: true,
           },
           {
@@ -195,6 +201,10 @@ export default {
           {
             name: 'pitch',
             required: true,
+          },
+          {
+            name: 'topics',
+            required: false,
           },
           {
             name: 'hack_count',
@@ -314,6 +324,7 @@ export default {
             timezone: TIMEZONES[this.form_data.timezone],
             country: this.form_data.country,
             school: this.form_data.school,
+            phone: this.form_data.phone,
             program_of_study: this.form_data.program_of_study,
             year_of_study: this.form_data.year_of_study,
             year_of_graduation: this.graduationYears[
@@ -325,6 +336,7 @@ export default {
             github: this.form_data.github,
             hack_count: parseInt(this.form_data.hack_count),
             pitch: this.form_data.pitch,
+            topics: this.form_data.topics,
             team_members: this.form_data.team_members,
           },
         };
