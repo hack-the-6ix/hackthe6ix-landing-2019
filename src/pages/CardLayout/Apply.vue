@@ -4,8 +4,9 @@
     <div class="apply__pages" :style="height && `height: ${height}px`">
       <Personal :current="page === 0" />
       <!-- Height is initially 0 to ensure card height is correct -->
-      <Experience :current="page === 1" style="height: 0" />
-      <Hackathon :current="page === 2" style="height: 0" />
+      <Location :current="page === 1" style="height: 0" />
+      <Experience :current="page === 2" style="height: 0" />
+      <Hackathon :current="page === 3" style="height: 0" />
       <Finish :email="form_data.email" style="height: 0" />
     </div>
     <div class="apply__controls">
@@ -55,7 +56,13 @@ import {query, toBase64} from '@utils';
 const end = Math.max(Object.values(Screens).length - 1, 0);
 import Vue from 'vue';
 
-import {APPLY, YEAR_OF_STUDY_ENUM, GENDERS, GRADUATION_YEARS} from '@graphql';
+import {
+  APPLY,
+  YEAR_OF_STUDY_ENUM,
+  GENDERS,
+  GRADUATION_YEARS,
+  TIMEZONES,
+} from '@graphql';
 
 export default {
   name: 'Info',
@@ -123,6 +130,8 @@ export default {
             name: 'gender',
             required: true,
           },
+        ],
+        [
           {
             name: 'timezone',
             required: true,
@@ -289,7 +298,7 @@ export default {
             email: this.form_data.email,
             casl_acceptance: this.form_data.casl_acceptance,
             gender: GENDERS[this.form_data.gender],
-            timezone: this.form_data.timezone,
+            timezone: TIMEZONES[this.form_data.timezone],
             country: this.form_data.country,
             school: this.form_data.school,
             program_of_study: this.form_data.program_of_study,
