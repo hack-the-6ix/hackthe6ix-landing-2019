@@ -39,6 +39,12 @@
       :validate="validateEmail"
       required
     />
+    <Checkbox
+      class="apply__input"
+      name="casl_acceptance"
+      :tabindex="current ? undefined : -1"
+      label="I allow Hack The 6ix to send me emails containing information from the event sponsors."
+    />
     <Input
       class="apply__input"
       name="phone"
@@ -50,12 +56,6 @@
         value => !(value && value.length > 0) && 'Phone number is required'
       "
       required
-    />
-    <Checkbox
-      class="apply__input"
-      name="casl_acceptance"
-      :tabindex="current ? undefined : -1"
-      label="I allow Hack The 6ix to send me emails containing information from the event sponsors."
     />
     <Select
       class="apply__input"

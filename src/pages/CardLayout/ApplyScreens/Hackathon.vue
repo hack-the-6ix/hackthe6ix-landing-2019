@@ -11,8 +11,8 @@
       :tabindex="current ? undefined : -1"
       :validate="
         value =>
-          !(value && value.length > 0 && value >= 0) &&
-          'This field must be non-negative'
+          (!(value && value.length > 0) && 'This field is required') ||
+          (value < 0 && 'This field must be non-negative')
       "
       required
     />
