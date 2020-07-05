@@ -70,7 +70,7 @@ export default {
       locations: [],
       start_time: new Date('2019-08-23T17:00:00-0400'),
       end_time: new Date('2019-08-25T16:00:00-0400'),
-      showModal: false,
+      showErrorModal: false,
       selected_event: {
         title: '',
       },

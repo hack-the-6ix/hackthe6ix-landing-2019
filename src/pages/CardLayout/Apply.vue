@@ -9,40 +9,73 @@
       <Hackathon :current="page === 3" style="height: 0" />
       <Finish :email="form_data.email" style="height: 0" />
     </div>
-    <div class="apply__controls">
-      <Button
-        secondary
-        v-if="page !== end"
-        class="apply__button apply__button--main apply_button--right"
-        v-on:click.native="back()"
-        :disabled="page === 0"
-      >
-        Back
-      </Button>
+    <div class="apply__controls apply__flexAlign">
+      <div class="apply__cancel-group">
+        <Button
+          secondary
+          class="apply__button apply__button--left"
+          color="error"
+          v-on:click.native="showQuitModal = true"
+        >
+          Quit
+        </Button>
+      </div>
+      <div class="apply__main-group">
+        <Button
+          secondary
+          v-if="page !== end"
+          class="apply__button apply__button--main"
+          v-on:click.native="back()"
+          :disabled="page === 0"
+        >
+          Back
+        </Button>
 
-      <Button
-        v-if="page !== end"
-        class="apply__button apply_button--right"
-        v-on:click.native="page === end - 1 ? submit() : next()"
-        :loading="loading"
-        :disabled="!valid"
-      >
-        {{ page === end - 1 ? 'Submit' : 'Next' }}
-      </Button>
+        <Button
+          v-if="page !== end"
+          class="apply__button"
+          v-on:click.native="page === end - 1 ? submit() : next()"
+          :loading="loading"
+          :disabled="!valid"
+        >
+          {{ page === end - 1 ? 'Submit' : 'Next' }}
+        </Button>
 
-      <Button
-        v-if="page === end"
-        class="apply__button"
-        v-on:click.native="$router.push('/dash/' + id)"
-        icon="address-card"
-      >
-        To Dashboard
-      </Button>
+        <Button
+          v-if="page === end"
+          class="apply__button"
+          v-on:click.native="$router.push('/dash/' + id)"
+          icon="address-card"
+        >
+          To Dashboard
+        </Button>
+      </div>
     </div>
-    <Modal :show.sync="showModal">
+    <Modal :show.sync="showErrorModal">
       <h2 class="apply__title">Application Error</h2>
       <p>Something unexpected happened. Please try again later.</p>
       <p>{{ error }}</p>
+    </Modal>
+    <Modal :show.sync="showQuitModal">
+      <h2 class="apply__title">Hey!</h2>
+      <p>Are you sure you quit? You'll lose any progress you've made.</p>
+      <div class="apply__rightAlign">
+        <Button
+          class="apply__button"
+          v-on:click.native="showQuitModal = false"
+          icon="address-card"
+        >
+          No
+        </Button>
+        <Button
+          class="apply__button"
+          color="error"
+          v-on:click.native="$router.push('/')"
+          icon="address-card"
+        >
+          Yes
+        </Button>
+      </div>
     </Modal>
   </Card>
 </template>
@@ -107,7 +140,8 @@ export default {
   data() {
     return {
       // Others
-      showModal: false,
+      showErrorModal: false,
+      showQuitModal: false,
       loading: false,
       height: 0,
       page: 0,
@@ -373,14 +407,14 @@ export default {
 
         if (user_errors) {
           this.error = user_errors;
-          this.showModal = true;
+          this.showErrorModal = true;
         } else {
           this.id = applicant.id;
           this.next();
         }
       } catch (err) {
         this.error = err;
-        this.showModal = true;
+        this.showErrorModal = true;
       }
     },
   },
@@ -472,13 +506,23 @@ export default {
     margin-top: 20px;
   }
 
+  &__rightAlign {
+    float: right;
+  }
+
+  &__flexAlign {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__button {
     padding-left: 30px;
     padding-right: 30px;
-    margin-right: 15px;
 
-    &--right {
-      float: right;
+    margin-left: 15px;
+
+    &--left {
+      margin-left: 0;
     }
   }
 }
@@ -487,6 +531,10 @@ export default {
   .apply {
     border-radius: 0;
     width: 100%;
+
+    &__rightAlign {
+      float: none;
+    }
 
     &__controls {
       margin-top: 5px;
@@ -500,6 +548,14 @@ export default {
       &--main {
         order: 1;
       }
+    }
+
+    &__main-group {
+      order: 1;
+    }
+    &__cancel-group {
+      margin-top: 8px;
+      order: 2;
     }
   }
 }

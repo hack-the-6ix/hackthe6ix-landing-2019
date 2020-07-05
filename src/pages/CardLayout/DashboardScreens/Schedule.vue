@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      showModal: false,
+      showErrorModal: false,
     };
   },
   props: {
