@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     contact() {
-      window.open('mailto:sponsors@hackthe6ix.com');
+      window.open('mailto:hello@hackthe6ix.com');
     },
   },
 };
