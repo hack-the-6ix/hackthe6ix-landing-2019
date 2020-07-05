@@ -54,12 +54,19 @@
       class="apply__input"
       name="resume"
       label="Upload Resume"
+      description="Resume should be in pdf format"
       :tabindex="current ? undefined : -1"
       :validate="
         value =>
           (!value && 'Resume is required') ||
-          (value.size >= 5000000 && 'File must be less than 5MB')
+          (value.size >= 5000000 && 'File must be less than 5MB') ||
+          (value.name
+            .split('.')
+            .pop()
+            .toLowerCase() !== 'pdf' &&
+            'File must be a pdf')
       "
+      accept="application/pdf"
       required
     />
     <Checkbox
