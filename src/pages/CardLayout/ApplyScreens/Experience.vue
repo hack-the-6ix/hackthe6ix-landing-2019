@@ -57,7 +57,7 @@
       class="apply__input"
       name="resume"
       label="Upload Resume"
-      description="Resume should be in pdf format"
+      description="Resume should be in PDF format"
       :tabindex="current ? undefined : -1"
       :validate="
         value =>
