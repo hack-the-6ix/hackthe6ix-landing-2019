@@ -1,7 +1,7 @@
 <template>
   <Container block="home" as="section">
     <div class="home__content">
-      <h1 class="home__title">Hack The 6ix</h1>
+      <h1 class="home__title">Hack the 6ix</h1>
       <!--
 
       <p class="home__text">Coming August 2020</p>

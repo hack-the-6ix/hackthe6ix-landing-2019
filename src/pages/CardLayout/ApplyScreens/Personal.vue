@@ -43,7 +43,7 @@
       class="apply__input"
       name="casl_acceptance"
       :tabindex="current ? undefined : -1"
-      label="I allow Hack The 6ix to send me emails containing information from the event sponsors."
+      label="I allow Hack the 6ix to send me emails containing information from the event sponsors."
     />
     <Input
       class="apply__input"

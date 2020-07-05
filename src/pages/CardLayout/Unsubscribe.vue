@@ -1,6 +1,6 @@
 <template>
   <Card class="apply">
-    <h1 class="apply__title">Hack The 6ix</h1>
+    <h1 class="apply__title">Hack the 6ix</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
       <div class="apply__page">
         <h2 class="apply__subtitle">:(</h2>

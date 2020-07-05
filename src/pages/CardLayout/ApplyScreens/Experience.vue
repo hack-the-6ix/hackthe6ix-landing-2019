@@ -76,7 +76,7 @@
       class="apply__input"
       name="acceptance"
       :tabindex="current ? undefined : -1"
-      label="I allow Hack The 6ix to distribute my resumé to its event sponsors"
+      label="I allow Hack the 6ix to distribute my resumé to its event sponsors"
     />
     <Input
       class="apply__input"

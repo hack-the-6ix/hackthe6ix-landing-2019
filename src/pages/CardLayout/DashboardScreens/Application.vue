@@ -42,7 +42,7 @@
         <p class="dash__large">{{ caps }}</p>
         <p>
           The RSVP window has passed. Please contact us at hello@hackthe6ix.com
-          if you are still interested in attending Hack The 6ix 2019.
+          if you are still interested in attending Hack the 6ix 2019.
         </p>
       </div>
       <div

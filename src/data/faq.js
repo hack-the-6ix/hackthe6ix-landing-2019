@@ -10,7 +10,7 @@ export const faq = [
       },
       {
         title:
-          'What kind of workshops, talks, and activities will there be at Hack The 6ix?',
+          'What kind of workshops, talks, and activities will there be at Hack the 6ix?',
         content:
           'We’ll be hosting a variety of workshops ranging from introductory to advanced topics facilitated by our amazing sponsors and mentors. There will also be interesting tech talks by industry leaders from different companies that you may attend to get a break from your project grind. In addition to useful workshops and talks, we have a ton of fun activities planned for you, such as games, contests, and more! Hack the 6ix is much more than just a hackathon – we want it to be an event that you’ll thoroughly enjoy while expanding your skillset and network.',
       },

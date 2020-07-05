@@ -1,6 +1,6 @@
 <template>
   <Card class="apply">
-    <h1 class="apply__title">Hack The 6ix Application Form</h1>
+    <h1 class="apply__title">Hack the 6ix Application Form</h1>
     <div class="apply__pages" :style="height && `height: ${height}px`">
       <Personal :current="page === 0" />
       <!-- Height is initially 0 to ensure card height is correct -->
