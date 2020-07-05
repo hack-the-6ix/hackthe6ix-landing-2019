@@ -10,13 +10,14 @@
       >
         STAY UP TO DATE
       </Button>
-      <!--<p class="home__text home__text--intact">
+      <!--
+      <p class="home__text home__text--intact">
         Presented By <Intact class="home__intact" />
       </p>
       <p class="home__text">August 23-25, 2019</p>
-      <p class="home__text">{{ venue }}</p>
-            <div class="home__timer">
-        <h2 class='home__timer-title'>Countdown to Applications</h2>
+      <p class="home__text">{{ venue }}</p>-->
+      <div class="home__timer">
+        <h2 class="home__timer-title">Countdown to Applications</h2>
         <div class="home__clock">
           <div class="home__clock-section">
             {{ String(time[0]).padStart(2, '0') }}
@@ -32,8 +33,13 @@
             {{ String(time[2]).padStart(2, '0') }}
             <span class="home__clock-text">Minutes</span>
           </div>
+          :
+          <div class="home__clock-section">
+            {{ String(time[3]).padStart(2, '0') }}
+            <span class="home__clock-text">Seconds</span>
+          </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </Container>
 </template>
@@ -44,8 +50,8 @@ import Button from '@hackthe6ix/vue-ui/Button';
 //import Intact from '@assets/sponsors/intact-insurance.svg';
 import {venue} from '@data';
 
-const END_TIME = new Date('2019-08-23T17:00:00-0400');
-const intervals = [86400000, 3600000, 60000]; // Days, Hours, Minutes
+const END_TIME = new Date('2020-07-10T17:00:00-0400');
+const intervals = [86400000, 3600000, 60000, 1000]; // Days, Hours, Minutes, Seconds
 
 export default {
   name: 'Home',
@@ -74,7 +80,7 @@ export default {
   mounted() {
     this._timer = window.setTimeout(() => {
       this.timer();
-    }, 15000);
+    }, 1000);
     this.timer();
   },
   destroyed() {

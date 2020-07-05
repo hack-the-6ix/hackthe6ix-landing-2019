@@ -11,6 +11,7 @@ import {Navigation, Footer} from '@components';
 import {Home, About} from '@pages/Landing/MainPage/sections';
 const sections = [Home, About];
 const items = Object.values(sections);
+import {disableApply} from '@data';
 
 export default {
   name: 'Landing',
@@ -23,7 +24,7 @@ export default {
   data() {
     return {
       items,
-      disableApply: false,
+      disableApply: disableApply,
     };
   },
 };

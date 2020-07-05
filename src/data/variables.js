@@ -17,3 +17,4 @@ export const venue = 'Bahen Centre';
 export const station = '...';
 export const old_devpost = 'https://hackthe6ix2018.devpost.com/';
 export const email = 'hello@hackthe6ix.com';
+export const disableApply = false;
