@@ -351,6 +351,7 @@ export default {
           postal_code: this.form_data.postal_code,
         };
 
+        // Year of grad is only applicable when the hacker has not graduated
         if (this.form_data.year_of_study !== 'new_grad') {
           submission.app.year_of_graduation = this.graduationYears[
             this.form_data.year_of_graduation
