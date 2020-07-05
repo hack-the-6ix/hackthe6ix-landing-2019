@@ -5,12 +5,13 @@ const components = [Home, About, Faq, Contact];
 
 const sections = Object.values(components);
 export default Vue.component('MainPage', {
-  render: h =>
+  render: (h, context) =>
     h(
       'main',
       {
         style: 'margin-top: 73px;',
       },
-      sections.map(section => h(section)),
+      sections.map(section => h(section, {props: context.props})),
     ),
+  functional: true,
 });

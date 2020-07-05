@@ -23,7 +23,7 @@
               class="footer__button"
               v-on:click.native="apply()"
               :disabled="disableApply"
-              >{{ disableApply ? 'Applications Closed' : 'Apply Now' }}</Button
+              >{{ applyButtonMessage }}</Button
             >
           </li>
         </ul>
@@ -94,6 +94,7 @@ export default {
       default: () => [],
     },
     disableApply: Boolean,
+    applyButtonMessage: String,
   },
 };
 </script>

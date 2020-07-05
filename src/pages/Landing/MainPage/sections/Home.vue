@@ -2,7 +2,6 @@
   <Container block="home" as="section">
     <div class="home__content">
       <h1 class="home__title">Hack The 6ix</h1>
-      <br />
       <!--
 
       <p class="home__text">Coming August 2020</p>
@@ -20,7 +19,7 @@
       <!--
       <p class="home__text">{{ venue }}</p>
       -->
-      <div class="home__timer">
+      <div class="home__timer" v-if="diff >= 0">
         <h2 class="home__timer-title">Countdown to Applications</h2>
         <div class="home__clock">
           <div class="home__clock-section">
@@ -44,16 +43,27 @@
           </div>
         </div>
       </div>
+      <div class="home__timer" v-else>
+        <h2 class="home__timer-title">Applications open!</h2>
+        <br />
+        <Button
+          class="nav__button"
+          v-on:click.native="apply()"
+          :disabled="disableApply"
+        >
+          {{ applyButtonMessage }}
+        </Button>
+      </div>
     </div>
   </Container>
 </template>
 
 <script>
 import {Container} from '@components';
+import Button from '@hackthe6ix/vue-ui/Button';
 //import Intact from '@assets/sponsors/intact-insurance.svg';
-import {venue} from '@data';
+import {venue, APPS_OPEN_TIME} from '@data';
 
-const END_TIME = new Date('2020-07-10T17:00:00-0400');
 const intervals = [86400000, 3600000, 60000, 1000]; // Days, Hours, Minutes, Seconds
 
 export default {
@@ -61,32 +71,46 @@ export default {
   path: '/#',
   components: {
     Container,
+    Button,
   },
   data() {
     return {
       time: [0, 0, 0],
       venue,
+      diff: 0,
     };
   },
   methods: {
+    apply() {
+      this.$router.push('/apply');
+    },
     timer() {
-      let diff = END_TIME - new Date();
+      this.diff = APPS_OPEN_TIME - new Date();
+      let tempDiff = this.diff;
       this.time = intervals.reduce((acc, curr) => {
-        const i = Math.floor(diff / curr);
-        diff -= i * curr;
+        const i = Math.floor(tempDiff / curr);
+        tempDiff -= i * curr;
         acc.push(i);
         return acc;
       }, []);
+
+      if (this.diff < 0) {
+        clearInterval(this._timer);
+      }
     },
   },
   mounted() {
-    this._timer = window.setTimeout(() => {
+    this._timer = window.setInterval(() => {
       this.timer();
     }, 1000);
     this.timer();
   },
   destroyed() {
     clearInterval(this._timer);
+  },
+  props: {
+    disableApply: Boolean,
+    applyButtonMessage: String,
   },
 };
 </script>
@@ -120,13 +144,14 @@ export default {
   }
 
   &__title {
+    color: $TEXT;
     font-size: 4rem;
     margin: 30px 0 0;
   }
 
   &__text {
     font-size: 1.6rem;
-    margin: 8px 0 0;
+    margin: 0;
     &--intact {
       @include flex(center);
       color: map-get($PRIMARY, TEAL);
