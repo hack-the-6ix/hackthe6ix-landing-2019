@@ -15,6 +15,6 @@ export const social_media = [
 
 export const venue = 'The interwebz';
 export const station = '...';
-export const old_devpost = 'https://hackthe6ix2018.devpost.com/';
+export const old_devpost = 'https://hack-the-6ix-2019.devpost.com/';
 export const email = 'hello@hackthe6ix.com';
 export const disableApply = false;
