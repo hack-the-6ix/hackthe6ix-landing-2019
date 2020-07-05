@@ -7,11 +7,10 @@
   >
     <h2 class="contact__title">Contact</h2>
     <p class="contact__text contact__text--bold">
-      When and where is Hack the 6ix in 2019?
+      When and where is Hack the 6ix?
     </p>
     <p class="contact__text">
-      Hack the 6ix 2019 will be held at {{ venue }} in downtown Toronto from
-      August 23-25, 2019.
+      Hack the 6ix 2020 will be held online from Aug 21-23 2020.
     </p>
     <Button
       class="contact__button"
@@ -19,6 +18,7 @@
       v-on:click.native="contact()"
       >Contact Us</Button
     >
+    <!--
     <div class="contact__map">
       <div class="contact__map-canvas">
         <iframe
@@ -32,7 +32,7 @@
           marginwidth="0"
         />
       </div>
-    </div>
+    </div>-->
   </Container>
 </template>
 

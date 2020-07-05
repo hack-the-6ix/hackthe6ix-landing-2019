@@ -11,6 +11,10 @@ export const social_media = [
     icon: 'instagram',
     link: 'https://www.instagram.com/hackthe6ix',
   },
+  {
+    icon: 'linkedin',
+    link: 'https://linkedin.com/company/hackthe6ixofficial',
+  },
 ];
 
 export const venue = 'The interwebz';

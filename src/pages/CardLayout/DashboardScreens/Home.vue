@@ -52,14 +52,8 @@ export default {
     },
   },
   methods: {
-    slackMe() {
-      window.open(
-        'https://join.slack.com/t/hackthe6ix2019/shared_invite/enQtNzMyMTYzODU2NTUxLTljOTA4Y2Q5NTg0MzRlODFhMGVkMjcxZDg0Y2UwNjc5OTgwZDY0YTk3MjNhYWMwZWRkMzJjM2JiNzNjZjhlODk',
-        '_blank',
-      );
-    },
     prizeMe() {
-      window.open('https://hack-the-6ix-2019.devpost.com/', '_blank');
+      window.open('https://hackthe6ix2020.devpost.com/', '_blank');
     },
     scheduleMe() {
       window.open('/schedule', '_blank');
