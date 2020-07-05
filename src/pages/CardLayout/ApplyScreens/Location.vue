@@ -67,7 +67,7 @@
       label="Country"
       name="country"
       :maxlength="128"
-      description="Note: If you are outside of Canada, we will not be shipping Hack the 6ix swag to your address."
+      description="Note: We will only be shipping swag to hackers residing in Canada"
       :validate="value => !(value && value.length > 0) && 'Country is required'"
       :tabindex="current ? undefined : -1"
       :options="countries"

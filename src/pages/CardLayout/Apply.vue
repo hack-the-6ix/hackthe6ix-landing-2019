@@ -240,6 +240,11 @@ export default {
 
       yearsOfStudy: Object.keys(YEAR_OF_STUDY_ENUM),
       graduationYears: GRADUATION_YEARS,
+
+      // Courtesy of https://gist.github.com/nery/9118763
+      postalRegex: new RegExp(
+        /^\s*[a-ceghj-npr-tvxy]\d[a-ceghj-npr-tv-z](\s)?\d[a-ceghj-npr-tv-z]\d\s*$/i,
+      ),
     };
   },
   mounted() {
@@ -274,15 +279,20 @@ export default {
         const fieldEmpty =
           !this.form_data[fieldName] || this.form_data[fieldName].length === 0;
 
-        if (
-          this.form_data.country === 'Canada' &&
-          this.addressActive &&
-          this.addressValidationFields[i].required &&
-          fieldEmpty
-        ) {
-          const errorMsg = `${formattedName} is required to complete address`;
+        if (this.form_data.country === 'Canada' && this.addressActive) {
+          // Special case for postal code
+          if (
+            fieldName === 'postal_code' &&
+            !this.postalRegex.test(this.form_data['postal_code'])
+          ) {
+            Vue.set(this.form_errors, fieldName, 'Postal Code is invalid');
+          } else if (this.addressValidationFields[i].required && fieldEmpty) {
+            const errorMsg = `${formattedName} is required to complete address`;
 
-          Vue.set(this.form_errors, fieldName, errorMsg);
+            Vue.set(this.form_errors, fieldName, errorMsg);
+          } else {
+            Vue.set(this.form_errors, fieldName, false);
+          }
         } else {
           Vue.set(this.form_errors, fieldName, false);
         }
