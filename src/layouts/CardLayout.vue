@@ -35,7 +35,7 @@ export default {
   @include flex(center, flex-start);
   background: none;
   box-sizing: border-box;
-  padding: 10% 0 60px;
+  padding: 10vh 0 60px;
   min-height: 100vh;
   width: 100%;
 }
