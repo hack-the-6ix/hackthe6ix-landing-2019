@@ -1,7 +1,7 @@
 <template>
   <Card class="apply" :class="getPageClass">
     <h1 class="apply__title">Hacker Dashboard</h1>
-    <div class="apply__pages" :style="height && `height: ${height}px`">
+    <div class="apply__pages">
       <Home :user="user" :loading="loading" :to="to" :pageHeight="pageHeight" />
       <Schedule :user="user" :loading="loading" :to="to" />
     </div>
@@ -27,12 +27,10 @@ export default {
       user: {},
       token: '',
       qr: '',
-      height: 0,
       page: 0,
     };
   },
   async mounted() {
-    window.addEventListener('resize', this.pageHeight, {passive: true});
     window.addEventListener('load', this.shiftPages);
     try {
       const id = this.$route.params.id;
@@ -45,7 +43,6 @@ export default {
     }
   },
   beforeDestory() {
-    window.removeEventListener('resize', this.pageHeight, {passive: true});
     window.removeEventListener('load', this.shiftPages);
   },
   updated() {
@@ -57,12 +54,6 @@ export default {
     },
   },
   methods: {
-    pageHeight() {
-      this.$nextTick(() => {
-        const page = document.querySelectorAll('.apply__page')[this.page];
-        this.height = page.clientHeight;
-      });
-    },
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
       pages.forEach((page, i) => {
@@ -72,7 +63,6 @@ export default {
         page.style.opacity = current ? 1 : 0;
         page.setAttribute('data-current', current);
       });
-      this.pageHeight();
     },
     to(page) {
       this.page = page;

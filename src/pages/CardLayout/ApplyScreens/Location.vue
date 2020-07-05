@@ -67,6 +67,7 @@
       label="Country"
       name="country"
       :maxlength="128"
+      :limit="5"
       description="Note: We will only be shipping swag to hackers residing in Canada"
       :validate="value => !(value && value.length > 0) && 'Country is required'"
       :tabindex="current ? undefined : -1"

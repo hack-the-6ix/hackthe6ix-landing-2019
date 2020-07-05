@@ -13,7 +13,7 @@
       <Button
         secondary
         v-if="page !== end"
-        class="apply__button apply__button--main"
+        class="apply__button apply__button--main apply_button--right"
         v-on:click.native="back()"
         :disabled="page === 0"
       >
@@ -22,7 +22,7 @@
 
       <Button
         v-if="page !== end"
-        class="apply__button"
+        class="apply__button apply_button--right"
         v-on:click.native="page === end - 1 ? submit() : next()"
         :loading="loading"
         :disabled="!valid"
@@ -254,6 +254,9 @@ export default {
     window.removeEventListener('load', this.shiftPages);
   },
   methods: {
+    confirmHome() {
+      alert('why u wanna leave?');
+    },
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
       pages.forEach((page, i) => {
@@ -444,6 +447,10 @@ export default {
     padding-left: 30px;
     padding-right: 30px;
     margin-right: 15px;
+
+    &--right {
+      float: right;
+    }
   }
 }
 
