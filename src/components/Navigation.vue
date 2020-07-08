@@ -46,7 +46,7 @@
           class="nav__mobile-button"
           v-on:click.native="apply()"
           :disabled="disableApply"
-          >{{ disableApply ? 'Applications Closed' : 'Apply' }}</Button
+          >{{ applyButtonMessage }}</Button
         >
       </li>
     </Container>
