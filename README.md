@@ -1,5 +1,14 @@
 # Hack the 6ix
 
+## Statuses
+
+| Environment | Status |
+| --- | --- |
+| **Production** | ![Production deploy CI](https://github.com/hack-the-6ix/hackthe6ix/workflows/Production%20deploy%20CI/badge.svg) |
+| **Development** | [![Netlify Status](https://api.netlify.com/api/v1/badges/e68a418d-7653-488c-8a81-570515f89439/deploy-status)](https://app.netlify.com/sites/ht6-dev/deploys) |
+
+### 
+
 ## File structure
 
 ### /assets
