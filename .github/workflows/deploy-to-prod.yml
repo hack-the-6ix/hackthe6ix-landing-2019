@@ -1,0 +1,39 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Production deploy CI
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: '14'
+  
+    - name: Cache node
+      uses: actions/cache@v2
+      with:
+        key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+            ${{ runner.os }}-
+        path: |
+          ~/.npm
+
+    - name: Dry run build
+      run: |
+        npm ci
+        npm run build
+    
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        script: export NODE_ENV=production; bash -i -c "sh /web/hackthe6ix.sh"
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+    
