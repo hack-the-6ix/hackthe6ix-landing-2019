@@ -20,7 +20,7 @@ jobs:
       with:
         key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-            ${{ runner.os }}-
+            ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
         path: |
           ~/.npm
 
@@ -32,7 +32,7 @@ jobs:
     - name: Deploy
       uses: appleboy/ssh-action@master
       with:
-        script: export NODE_ENV=production; bash -i -c "sh /web/hackthe6ix.sh"
+        script: bash -i -c "sh /web/hackthe6ix.sh"
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
