@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import * as Sentry from '@sentry/browser';
+import {Vue as VueIntegration} from '@sentry/integrations';
 import PortalVue from 'portal-vue';
 import VueRouter from 'vue-router';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
@@ -6,6 +8,11 @@ import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import App from './App.vue';
 import {routes} from '@pages';
 import './icons';
+
+Sentry.init({
+  dsn: process.env.VUE_APP_SENTRY,
+  integrations: [new VueIntegration({Vue, attachProps: true})],
+});
 
 Vue.use(PortalVue);
 Vue.use(VueRouter);

@@ -82,14 +82,7 @@
 import Select from '@hackthe6ix/vue-ui/Select';
 import Input from '@hackthe6ix/vue-ui/Input';
 
-import {
-  GENDERS,
-  HAS_EMAIL,
-  TIMEZONES,
-  PROVINCES_ENUM,
-  COUNTRIES,
-} from '@graphql';
-import {validate, query} from '@utils';
+import {GENDERS, TIMEZONES, PROVINCES_ENUM, COUNTRIES} from '@graphql';
 
 export default {
   name: 'Location',
@@ -112,15 +105,6 @@ export default {
   methods: {
     blur() {
       this.$el.focus();
-    },
-    async validateEmail(email) {
-      if (email && email.length > 0 && validate(email, 'email')) {
-        const hasEmail = await query(HAS_EMAIL, {
-          email: email,
-        });
-        return hasEmail && 'Email Already in use';
-      }
-      return 'Please provide a valid email';
     },
   },
   computed: {

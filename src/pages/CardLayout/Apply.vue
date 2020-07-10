@@ -87,6 +87,7 @@ import {Card, Modal} from '@components';
 import * as Screens from './ApplyScreens';
 import {query, toBase64} from '@utils';
 const end = Math.max(Object.values(Screens).length - 1, 0);
+import * as Sentry from '@sentry/browser';
 import Vue from 'vue';
 
 import {
@@ -406,6 +407,7 @@ export default {
         const {user_errors, applicant} = await query(APPLY, submission);
 
         if (user_errors) {
+          Sentry.captureException(user_errors);
           this.error = user_errors;
           this.showErrorModal = true;
         } else {
@@ -413,6 +415,7 @@ export default {
           this.next();
         }
       } catch (err) {
+        Sentry.captureException(err);
         this.error = err;
         this.showErrorModal = true;
       }
