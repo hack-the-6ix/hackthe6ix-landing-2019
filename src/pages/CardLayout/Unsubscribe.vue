@@ -47,7 +47,6 @@ import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 export default {
   name: 'Unsubscribe',
   path: '/unsubscribe/:id?',
-  inject: ['form_data', 'form_errors'],
   mixins: [
     formProvider({
       acceptance: false,

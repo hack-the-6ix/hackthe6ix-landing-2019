@@ -55,7 +55,6 @@ import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 export default {
   name: 'Subscribe',
   path: '/subscribe',
-  inject: ['form_data', 'form_errors'],
   mixins: [
     formProvider({
       email: '',
