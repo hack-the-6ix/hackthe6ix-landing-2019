@@ -10,8 +10,7 @@ import {routes} from '@pages';
 import './icons';
 
 Sentry.init({
-  dsn:
-    'https://f92b29c910ce42189733ccdb2600dff2@o418830.ingest.sentry.io/5324513',
+  dsn: process.env.VUE_APP_SENTRY,
   integrations: [new VueIntegration({Vue, attachProps: true})],
 });
 
