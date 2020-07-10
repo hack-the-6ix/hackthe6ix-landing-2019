@@ -13,6 +13,8 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@hackthe6ix/vue-ui": "0.0.34",
+    "@sentry/browser": "^5.19.1",
+    "@sentry/integrations": "^5.19.1",
     "circular-json": "^0.5.9",
     "portal-vue": "^2.1.7",
     "sass": "^1.26.9",

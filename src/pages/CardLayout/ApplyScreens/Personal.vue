@@ -117,10 +117,5 @@ export default {
       return 'Please provide a valid email';
     },
   },
-  computed: {
-    addressVisible() {
-      return this.form_data.country === 'Canada';
-    },
-  },
 };
 </script>
