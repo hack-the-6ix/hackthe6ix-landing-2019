@@ -10,7 +10,6 @@
           name="acceptance"
           label="Unsubscribe me from News & Promotions"
           required
-          v-model="acceptance"
         />
       </div>
       <div class="apply__page">
@@ -22,7 +21,7 @@
         class="apply__button"
         v-show="!page"
         v-on:click.native="submit()"
-        :disabled="!(acceptance && $route.params.id)"
+        :disabled="!(form_data.acceptance && $route.params.id)"
       >
         Submit
       </Button>
@@ -43,10 +42,16 @@ import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
 import {Card} from '@components';
 import {UNSUBSCRIBE} from '@graphql';
 import {query} from '@utils';
+import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 
 export default {
   name: 'Unsubscribe',
   path: '/unsubscribe/:id?',
+  mixins: [
+    formProvider({
+      acceptance: false,
+    }),
+  ],
   components: {
     Checkbox,
     Button,
@@ -55,7 +60,6 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      acceptance: false,
       height: 0,
       page: 0,
     };
@@ -63,6 +67,13 @@ export default {
   mounted() {
     window.addEventListener('resize', this.pageHeight, {passive: true});
     window.addEventListener('load', this.pageHeight);
+
+    if (!this.id) {
+      alert(
+        'Sorry, that token is invalid! Please contact us at hello@hackthe6ix.com is you need assistance.',
+      );
+      this.$router.replace('/');
+    }
   },
   beforeDestory() {
     window.removeEventListener('resize', this.pageHeight, {passive: true});
@@ -72,13 +83,6 @@ export default {
     this.pageHeight();
   },
   methods: {
-    handler({target}) {
-      if (target.type === 'checkbox') {
-        this[target.name] = this.acceptance == 'on' ? 'off' : 'on';
-      } else {
-        this[target.name] = target.value;
-      }
-    },
     pageHeight() {
       this.$nextTick(() => {
         const page = document.querySelectorAll('.apply__page')[this.page];

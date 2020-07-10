@@ -7,19 +7,16 @@
         <Input
           class="apply__input"
           name="email"
-          :state="checkEmail()"
+          :validate="val => checkEmail(val)"
           placeholder="e.g. hunter2@hackthe6ix.com"
-          errorMsg="Invalid email"
           required
           label="Email"
-          v-model="email"
         />
         <Checkbox
           class="apply__input"
           name="acceptance"
           label="I want to receive occasional emails about updates and news"
           required
-          v-model="acceptance"
         />
       </div>
       <div class="apply__page">
@@ -31,7 +28,7 @@
         class="apply__button"
         v-show="!page"
         v-on:click.native="submit()"
-        :disabled="!(checkEmail() && acceptance)"
+        :disabled="!(form_errors['email'] === false && form_data.acceptance)"
       >
         Submit
       </Button>
@@ -53,10 +50,17 @@ import Input from '@hackthe6ix/vue-ui/Input';
 import {Card} from '@components';
 import {validate, query} from '@utils';
 import {SUBSCRIBE} from '@graphql';
+import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 
 export default {
   name: 'Subscribe',
   path: '/subscribe',
+  mixins: [
+    formProvider({
+      email: '',
+      acceptance: false,
+    }),
+  ],
   components: {
     Input,
     Button,
@@ -65,10 +69,7 @@ export default {
   },
   data() {
     return {
-      email: '',
       source: this.$route.query.src,
-      acceptance: false,
-      confirmation: false,
       height: 0,
       page: 0,
     };
@@ -105,12 +106,18 @@ export default {
       this.page++;
       this.shiftPages();
     },
-    checkEmail() {
-      return this.email === '' ? undefined : validate(this.email, 'email');
+    checkEmail(email) {
+      return (
+        (email === '' && 'You must provide your email!') ||
+        (!validate(email, 'email') && 'Invalid email!')
+      );
     },
     async submit() {
       try {
-        await query(SUBSCRIBE, {email: this.email, source: this.source});
+        await query(SUBSCRIBE, {
+          email: this.form_data.email,
+          source: this.source,
+        });
         this.next();
       } catch (err) {
         alert(err);
