@@ -52,7 +52,7 @@ export const faq = [
       {
         title: 'Am I eligible to participate?',
         content:
-          'Any post-secondary students or recent graduates are eligible to participate in our event.',
+          'Any secondary or post-secondary students or recent graduates are eligible to participate in our event.',
       },
       {
         title: 'Do I need to know how to code?',
