@@ -419,7 +419,7 @@ export default {
         }
       } catch (err) {
         Sentry.captureException(err);
-        this.error = err;
+        this.error = err.message;
         this.showErrorModal = true;
       }
     },
