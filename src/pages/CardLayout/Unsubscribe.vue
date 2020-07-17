@@ -68,7 +68,7 @@ export default {
       alert(
         'Sorry, that token is invalid! Please contact us at hello@hackthe6ix.com is you need assistance.',
       );
-      this.$router.replace('/');
+      window.location.href = '/';
     }
   },
   beforeDestory() {
@@ -100,7 +100,7 @@ export default {
       this.shiftPages();
     },
     home() {
-      window.location.href = 'https://hackthe6ix.com';
+      window.location.href = '/';
     },
     async submit() {
       try {

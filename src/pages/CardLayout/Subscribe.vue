@@ -109,7 +109,7 @@ export default {
       );
     },
     home() {
-      window.location.href = 'https://hackthe6ix.com';
+      window.location.href = '/';
     },
     async submit() {
       try {

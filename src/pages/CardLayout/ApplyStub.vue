@@ -13,7 +13,7 @@ export default {
     return {};
   },
   created() {
-    window.location.href = 'https://hackthe6ix.com';
+    window.location.href = '/';
   },
 };
 </script>

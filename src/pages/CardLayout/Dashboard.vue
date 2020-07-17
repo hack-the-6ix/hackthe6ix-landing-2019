@@ -39,7 +39,7 @@ export default {
       this.loading = false;
     } catch (err) {
       alert(err);
-      window.location.href = 'https://hackthe6ix.com';
+      window.location.href = '/';
     }
   },
   beforeDestory() {
