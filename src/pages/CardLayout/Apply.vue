@@ -70,7 +70,7 @@
         <Button
           class="apply__button"
           color="error"
-          v-on:click.native="$router.push('/')"
+          v-on:click.native="home()"
           icon="address-card"
         >
           Yes
@@ -303,6 +303,9 @@ export default {
   methods: {
     confirmHome() {
       alert('why u wanna leave?');
+    },
+    home() {
+      window.location.href = 'https://hackthe6ix.com';
     },
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
