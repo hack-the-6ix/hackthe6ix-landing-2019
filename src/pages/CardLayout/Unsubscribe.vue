@@ -25,11 +25,7 @@
       >
         Submit
       </Button>
-      <Button
-        class="apply__button"
-        v-show="page"
-        v-on:click.native="$router.push('/')"
-      >
+      <Button class="apply__button" v-show="page" v-on:click.native="home()">
         Back to home
       </Button>
     </div>
@@ -102,6 +98,9 @@ export default {
     next() {
       this.page++;
       this.shiftPages();
+    },
+    home() {
+      window.location.href = 'https://hackthe6ix.com';
     },
     async submit() {
       try {

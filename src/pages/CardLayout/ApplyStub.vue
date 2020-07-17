@@ -13,7 +13,7 @@ export default {
     return {};
   },
   created() {
-    this.$router.push('/');
+    window.location.href = 'https://hackthe6ix.com';
   },
 };
 </script>

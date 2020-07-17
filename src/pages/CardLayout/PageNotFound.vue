@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     home() {
-      this.$router.push('/');
+      window.location.href = 'https://hackthe6ix.com';
     },
   },
 };
