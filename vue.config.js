@@ -1,6 +1,8 @@
 const {resolve} = require('path');
+require('dotenv').config();
 
 module.exports = {
+  publicPath: '/apply',
   configureWebpack: {
     resolve: {
       alias: {
