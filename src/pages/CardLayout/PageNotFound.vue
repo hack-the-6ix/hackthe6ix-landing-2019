@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     home() {
-      window.location.href = 'https://hackthe6ix.com';
+      window.location.href = '/';
     },
   },
 };

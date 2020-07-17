@@ -305,7 +305,7 @@ export default {
       alert('why u wanna leave?');
     },
     home() {
-      window.location.href = 'https://hackthe6ix.com';
+      window.location.href = '/';
     },
     shiftPages() {
       const pages = Array.from(document.querySelectorAll('.apply__page'));
