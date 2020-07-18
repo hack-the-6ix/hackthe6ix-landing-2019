@@ -36,4 +36,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         source: "dist/*"
-        target: "/web/hackthe6ix/dist"
+        target: "/web/hackthe6ix"
