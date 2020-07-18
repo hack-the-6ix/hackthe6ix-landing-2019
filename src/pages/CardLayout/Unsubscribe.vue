@@ -66,7 +66,7 @@ export default {
 
     if (!this.id) {
       alert(
-        'Sorry, that token is invalid! Please contact us at hello@hackthe6ix.com is you need assistance.',
+        'Sorry, that token is invalid! Please contact us at hello@hackthe6ix.com if you need assistance.',
       );
       window.location.href = '/';
     }
