@@ -25,6 +25,9 @@ jobs:
           ~/.npm
 
     - name: Dry run build
+      env:
+        VUE_APP_GRAPHQL_API: ${{ secrets.VUE_APP_GRAPHQL_API }}
+        VUE_APP_SENTRY: ${{ secrets.VUE_APP_SENTRY }}
       run: |
         npm ci
         npm run build
