@@ -410,17 +410,17 @@ export default {
         const {user_errors, applicant} = await query(APPLY, submission);
 
         if (user_errors) {
-          Sentry.captureException(user_errors);
           this.error = user_errors;
           this.showErrorModal = true;
+          Sentry.captureException([user_errors, this.form_data]);
         } else {
           this.id = applicant.id;
           this.next();
         }
       } catch (err) {
-        Sentry.captureException(err);
         this.error = err;
         this.showErrorModal = true;
+        Sentry.captureException([err, this.form_data]);
       }
     },
   },
