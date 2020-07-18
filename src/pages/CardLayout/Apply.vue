@@ -412,15 +412,15 @@ export default {
         if (user_errors) {
           this.error = user_errors;
           this.showErrorModal = true;
-          Sentry.captureException([user_errors, this.form_data]);
+          Sentry.captureException([user_errors.message, this.form_data]);
         } else {
           this.id = applicant.id;
           this.next();
         }
       } catch (err) {
-        this.error = err;
+        this.error = err.message;
         this.showErrorModal = true;
-        Sentry.captureException([err, this.form_data]);
+        Sentry.captureException([err.message, this.form_data]);
       }
     },
   },
