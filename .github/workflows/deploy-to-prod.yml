@@ -14,7 +14,7 @@ jobs:
       uses: actions/setup-node@v2-beta
       with:
         node-version: '14'
-  
+
     - name: Cache node
       uses: actions/cache@v2
       with:
@@ -30,13 +30,25 @@ jobs:
         VUE_APP_SENTRY: ${{ secrets.VUE_APP_SENTRY }}
       run: |
         npm ci
-        npm run build
-    
-    - name: Deploy
+        npm run build --report
+        mv ./dist/report.html ./report.html
+
+    - name: Upload to server
       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
+        host: ${{ secrets.HOST }}
         key: ${{ secrets.KEY }}
+        target: "/web/hackthe6ix/${{ GITHUB_SHA }}"
         source: "dist/*"
-        target: "/web/hackthe6ix"
+        strip_components: 1
+
+    - name: Deploy artifact
+      uses: appleboy/ssh-action@master
+      with:
+        username: ${{ secrets.USERNAME }}
+        host: ${{ secrets.HOST }}
+        key: ${{ secrets.KEY }}
+        script: |
+          cd /web/production
+          ln -s ../hackthe6ix/${{ GITHUB_SHA }} hackthe6ix
