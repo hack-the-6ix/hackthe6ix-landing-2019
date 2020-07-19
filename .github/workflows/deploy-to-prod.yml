@@ -39,7 +39,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.KEY }}
-        target: "/web/hackthe6ix/${{ GITHUB_SHA }}"
+        target: /web/hackthe6ix/${{ GITHUB_SHA }}
         source: "dist/*"
         strip_components: 1
 
