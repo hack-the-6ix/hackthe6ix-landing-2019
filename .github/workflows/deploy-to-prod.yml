@@ -39,14 +39,14 @@ jobs:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.KEY }}
-        target: ${{ format("/web/hackthe6ix/{0}", GITHUB_SHA) }}
+        target: ${{ format("/web/hackthe6ix/{0}", github.sha) }}
         source: "dist/*"
         strip_components: 1
 
     - name: Deploy artifact
       uses: appleboy/ssh-action@master
       env:
-          HASH: ${{ GITHUB_SHA }}
+          HASH: ${{ github.sha }}
       with:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
