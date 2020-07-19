@@ -30,7 +30,7 @@ jobs:
         VUE_APP_SENTRY: ${{ secrets.VUE_APP_SENTRY }}
       run: |
         npm ci
-        npm run build --report
+        npm run build -- --report
         mv ./dist/report.html ./report.html
 
     - name: Upload to server
