@@ -39,16 +39,19 @@ jobs:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.KEY }}
-        target: /web/hackthe6ix/${{ GITHUB_SHA }}
+        target: ${{ format("/web/hackthe6ix/{0}", GITHUB_SHA) }}
         source: "dist/*"
         strip_components: 1
 
     - name: Deploy artifact
       uses: appleboy/ssh-action@master
+      env:
+          HASH: ${{ GITHUB_SHA }}
       with:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.KEY }}
+        envs: HASH
         script: |
           cd /web/production
-          ln -s ../hackthe6ix/${{ GITHUB_SHA }} hackthe6ix
+          ln -s ../hackthe6ix/$HASH hackthe6ix
