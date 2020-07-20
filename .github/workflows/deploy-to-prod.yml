@@ -43,7 +43,7 @@ jobs:
         source: "dist/*"
         strip_components: 1
 
-    - name: Deploy artifact
+    - name: Deploy dist
       uses: appleboy/ssh-action@master
       env:
           HASH: ${{ github.sha }}
@@ -55,3 +55,9 @@ jobs:
         script: |
           cd /web/production
           ln -fs ../hackthe6ix/$HASH hackthe6ix
+
+    - name: Create Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: report
+        path: report.html
