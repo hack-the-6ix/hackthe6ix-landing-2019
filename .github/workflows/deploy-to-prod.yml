@@ -54,7 +54,7 @@ jobs:
         envs: HASH
         script: |
           cd /web/production
-          ln -fs ../hackthe6ix/$HASH hackthe6ix
+          ln -fns ../hackthe6ix/$HASH hackthe6ix
 
     - name: Create Report
       uses: actions/upload-artifact@v2
