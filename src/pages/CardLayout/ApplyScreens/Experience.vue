@@ -74,7 +74,7 @@
     />
     <Checkbox
       class="apply__input"
-      name="acceptance"
+      name="resume_permission"
       :tabindex="current ? undefined : -1"
       label="I allow Hack the 6ix to distribute my resume to its event sponsors"
     />
