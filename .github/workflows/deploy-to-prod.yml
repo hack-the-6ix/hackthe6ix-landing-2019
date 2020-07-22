@@ -14,7 +14,7 @@ jobs:
       uses: actions/setup-node@v2-beta
       with:
         node-version: '14'
-  
+
     - name: Cache node
       uses: actions/cache@v2
       with:
@@ -25,15 +25,39 @@ jobs:
           ~/.npm
 
     - name: Dry run build
+      env:
+        VUE_APP_GRAPHQL_API: ${{ secrets.VUE_APP_GRAPHQL_API }}
+        VUE_APP_SENTRY: ${{ secrets.VUE_APP_SENTRY }}
       run: |
         npm ci
-        npm run build
-    
-    - name: Deploy
+        npm run build -- --report
+        mv ./dist/report.html ./report.html
+
+    - name: Upload to server
       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
+        host: ${{ secrets.HOST }}
         key: ${{ secrets.KEY }}
+        target: "/web/hackthe6ix/${{ github.sha }}"
         source: "dist/*"
-        target: "web/hackthe6ix/dist"
+        strip_components: 1
+
+    - name: Deploy dist
+      uses: appleboy/ssh-action@master
+      env:
+          HASH: ${{ github.sha }}
+      with:
+        username: ${{ secrets.USERNAME }}
+        host: ${{ secrets.HOST }}
+        key: ${{ secrets.KEY }}
+        envs: HASH
+        script: |
+          cd /web/production
+          ln -fns ../hackthe6ix/$HASH hackthe6ix
+
+    - name: Create Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: report
+        path: report.html
