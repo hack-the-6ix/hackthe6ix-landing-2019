@@ -1,18 +1,18 @@
 <template>
   <div class="apply__page">
     <div class="dash__app">
-      <div v-if="canEdit" class="dash__app-page">
+      <div v-if="accepted || attending" class="dash__app-page">
         <p class="dash__status">Current application status:</p>
         <p class="dash__large">{{ caps }}</p>
-        <Select
-          class="dash__app-select"
-          name="rsvp"
-          :options="['🎉 Attending 🎉', '😔 Not Attending 😔']"
-        />
         <p>
-          Congratulations! You're Invited! Please RSVP for the event from your
-          dashboard by August 10th at midnight. We look forward to seeing you on
-          August 21st!
+          Congratulations! You're Invited to Hack the 6ix!<br /><br />
+          <b>
+            Please RSVP for the event from your dashboard by August 10th at
+            midnight.
+          </b>
+          <br /><br />
+          We look forward to seeing you on August 21st! Remember to join our
+          <b>Discord</b> by clicking the button below and verifying!
         </p>
       </div>
       <div
@@ -76,14 +76,23 @@
         <p>Check here later for updates.</p>
       </div>
     </div>
-    <div class="dash__controls" v-if="canEdit">
+    <div class="dash__controls" v-if="accepted || attending">
       <Button
-        class="dash__button dash__button--full"
+        class="dash__button"
         :loading="submitting"
-        :disabled="form_data.rsvp.length === 0"
-        v-on:click.native="submit()"
+        color="success"
+        v-if="accepted"
+        v-on:click.native="submit(true)"
       >
-        Save RSVP
+        Attending 🎉
+      </Button>
+      <Button
+        :class="['dash__button', attending && 'dash__button--full']"
+        :loading="submitting"
+        color="error"
+        v-on:click.native="submit(false)"
+      >
+        Not Attending 😔
       </Button>
     </div>
   </div>
@@ -91,22 +100,13 @@
 
 <script>
 import Button from '@hackthe6ix/vue-ui/Button';
-import Select from '@hackthe6ix/vue-ui/Select';
 import {RSVP} from '@graphql';
 import {query} from '@utils';
-const canEdit = ['accepted', 'attending'];
-import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 
 export default {
   name: 'Application',
-  mixins: [
-    formProvider({
-      rsvp: '0',
-    }),
-  ],
   components: {
     Button,
-    Select,
   },
   data() {
     return {
@@ -118,14 +118,14 @@ export default {
     token: String,
   },
   methods: {
-    async submit() {
+    async submit(status) {
       this.submitting = true;
       try {
         const {success} = await query(
           RSVP,
           {
             id: this.user.id,
-            attending: !parseInt(this.form_data.rsvp),
+            attending: status,
           },
           this.token,
         );
@@ -144,8 +144,11 @@ export default {
         s => ' ' + s.slice(1).toUpperCase(),
       );
     },
-    canEdit() {
-      return canEdit.includes(this.user.application_status);
+    accepted() {
+      return this.user.application_status === 'accepted';
+    },
+    attending() {
+      return this.user.application_status === 'attending';
     },
   },
 };
