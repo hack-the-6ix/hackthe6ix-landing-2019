@@ -10,7 +10,27 @@
             Please RSVP for the event from your dashboard by August 10th at
             midnight.
           </b>
-          <br /><br />
+        </p>
+        <div class="dash__controls">
+          <Button
+            class="dash__button"
+            :loading="submitting"
+            color="success"
+            v-if="accepted"
+            v-on:click.native="submit(true)"
+          >
+            Accept Invitation
+          </Button>
+          <Button
+            :class="['dash__button', attending && 'dash__button--full']"
+            :loading="submitting"
+            color="error"
+            v-on:click.native="showDeclineModal = true"
+          >
+            Decline Invitation
+          </Button>
+        </div>
+        <p>
           We look forward to seeing you on August 21st! Remember to join our
           <b>Discord</b> by clicking the button below and verifying!
         </p>
@@ -63,11 +83,10 @@
         <p>
           Thank you for your application for Hack the 6ix. We were very
           impressed with your application, resume, and accomplishments. However,
-          due to the immense number of applications that we received this year
-          and our physical venue constraints, we are only able to offer you a
-          conditional waitlist acceptance at this time. We would love to see you
-          at our event and you will be notified via e-mail as soon as more space
-          opens up!
+          due to the immense number of applications that we received this year,
+          we are only able to offer you a conditional waitlist acceptance at
+          this time. We would love to see you at our event and you will be
+          notified via e-mail as soon as more space opens up!
         </p>
       </div>
       <div v-else class="dash__app-page">
@@ -76,25 +95,27 @@
         <p>Check here later for updates.</p>
       </div>
     </div>
-    <div class="dash__controls" v-if="accepted || attending">
-      <Button
-        class="dash__button"
-        :loading="submitting"
-        color="success"
-        v-if="accepted"
-        v-on:click.native="submit(true)"
-      >
-        Attending 🎉
-      </Button>
-      <Button
-        :class="['dash__button', attending && 'dash__button--full']"
-        :loading="submitting"
-        color="error"
-        v-on:click.native="submit(false)"
-      >
-        Not Attending 😔
-      </Button>
-    </div>
+    <Modal :show.sync="showDeclineModal">
+      <h2 class="apply__title">Hey!</h2>
+      <p>Are you sure you want to <b>decline</b> your invitation?</p>
+      <div class="apply__rightAlign">
+        <Button
+          class="apply__button"
+          v-on:click.native="showDeclineModal = false"
+          icon="address-card"
+        >
+          No
+        </Button>
+        <Button
+          class="apply__button"
+          color="error"
+          v-on:click.native="submit(false)"
+          icon="address-card"
+        >
+          Yes
+        </Button>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -102,15 +123,18 @@
 import Button from '@hackthe6ix/vue-ui/Button';
 import {RSVP} from '@graphql';
 import {query} from '@utils';
+import {Modal} from '@components';
 
 export default {
   name: 'Application',
   components: {
     Button,
+    Modal,
   },
   data() {
     return {
       submitting: false,
+      showDeclineModal: false,
     };
   },
   props: {
