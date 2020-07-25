@@ -41,6 +41,20 @@
         </p>
       </div>
       <div
+        v-else-if="user.application_status === 'not_attending'"
+        class="dash__app-page"
+      >
+        <p class="dash__status">Current application status:</p>
+        <p class="dash__large">{{ caps }}</p>
+        <p>
+          We're sorry to hear that you aren't able to attend Hack the 6ix this
+          year. Thank you for applying and we hope to see you again next
+          year!<br /><br />
+          If you would like to change your decision, please contact us at
+          hello@hackthe6ix.com
+        </p>
+      </div>
+      <div
         v-else-if="user.application_status === 'waitlist'"
         class="dash__app-page"
       >
@@ -80,14 +94,14 @@ import Button from '@hackthe6ix/vue-ui/Button';
 import Select from '@hackthe6ix/vue-ui/Select';
 import {RSVP} from '@graphql';
 import {query} from '@utils';
-const canEdit = ['accepted', 'attending', 'not_attending'];
+const canEdit = ['accepted', 'attending'];
 import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 
 export default {
   name: 'Application',
   mixins: [
     formProvider({
-      rsvp: '',
+      rsvp: '0',
     }),
   ],
   components: {
@@ -132,11 +146,6 @@ export default {
     },
     canEdit() {
       return canEdit.includes(this.user.application_status);
-    },
-  },
-  watch: {
-    user(val) {
-      this.form_data.rsvp = canEdit.indexOf(val.application_status) - 1;
     },
   },
 };
