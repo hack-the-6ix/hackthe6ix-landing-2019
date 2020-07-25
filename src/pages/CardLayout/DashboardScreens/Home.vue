@@ -9,6 +9,26 @@
     <div class="dash__controls">
       <Button
         class="dash__button"
+        v-on:click.native="discordMe()"
+        icon="calendar"
+        v-if="
+          user.application_status === 'attending' ||
+            user.application_status === 'accepted'
+        "
+        >Discord</Button
+      >
+      <Button
+        class="dash__button"
+        v-on:click.native="liveMe()"
+        icon="calendar"
+        v-if="
+          user.application_status === 'attending' ||
+            user.application_status === 'accepted'
+        "
+        >Live Site</Button
+      >
+      <Button
+        class="dash__button"
         v-on:click.native="scheduleMe()"
         icon="calendar"
         :disabled="true"
@@ -58,12 +78,19 @@ export default {
     scheduleMe() {
       window.open('/schedule', '_blank');
     },
+    discordMe() {
+      window.open('https://discord.gg/gSK62av', '_blank');
+    },
+    liveMe() {
+      //window.open('', '_blank');
+    },
   },
   props: {
     user: Object,
     loading: Boolean,
     pageHeight: Function,
     to: Function,
+    token: String,
   },
 };
 </script>

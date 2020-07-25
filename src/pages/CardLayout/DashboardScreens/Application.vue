@@ -1,19 +1,38 @@
 <template>
   <div class="apply__page">
     <div class="dash__app">
-      <div v-if="canEdit" class="dash__app-page">
+      <div v-if="accepted || attending" class="dash__app-page">
         <p class="dash__status">Current application status:</p>
         <p class="dash__large">{{ caps }}</p>
-        <Select
-          class="dash__app-select"
-          name="rsvp"
-          v-model="rsvp"
-          :options="['🎉 Attending 🎉', '😔 Not Attending 😔']"
-        />
         <p>
-          Congratulations! You're Invited! Please RSVP for the event from your
-          dashboard by August 10th at midnight. We look forward to seeing you on
-          August 21st!
+          Congratulations! You're Invited to Hack the 6ix!<br /><br />
+          <b>
+            Please RSVP for the event from your dashboard by August 10th at
+            midnight.
+          </b>
+        </p>
+        <div class="dash__controls">
+          <Button
+            class="dash__button"
+            :loading="submitting"
+            color="success"
+            v-if="accepted"
+            v-on:click.native="submit(true)"
+          >
+            Accept Invitation
+          </Button>
+          <Button
+            :class="['dash__button', attending && 'dash__button--full']"
+            :loading="submitting"
+            color="error"
+            v-on:click.native="showDeclineModal = true"
+          >
+            Decline Invitation
+          </Button>
+        </div>
+        <p>
+          We look forward to seeing you on August 21st! Remember to join our
+          <b>Discord</b> by clicking the button below and verifying!
         </p>
       </div>
       <div
@@ -42,6 +61,20 @@
         </p>
       </div>
       <div
+        v-else-if="user.application_status === 'not_attending'"
+        class="dash__app-page"
+      >
+        <p class="dash__status">Current application status:</p>
+        <p class="dash__large">{{ caps }}</p>
+        <p>
+          We're sorry to hear that you aren't able to attend Hack the 6ix this
+          year. Thank you for applying and we hope to see you again next
+          year!<br /><br />
+          If you would like to change your decision, please contact us at
+          hello@hackthe6ix.com
+        </p>
+      </div>
+      <div
         v-else-if="user.application_status === 'waitlist'"
         class="dash__app-page"
       >
@@ -50,11 +83,10 @@
         <p>
           Thank you for your application for Hack the 6ix. We were very
           impressed with your application, resume, and accomplishments. However,
-          due to the immense number of applications that we received this year
-          and our physical venue constraints, we are only able to offer you a
-          conditional waitlist acceptance at this time. We would love to see you
-          at our event and you will be notified via e-mail as soon as more space
-          opens up!
+          due to the immense number of applications that we received this year,
+          we are only able to offer you a conditional waitlist acceptance at
+          this time. We would love to see you at our event and you will be
+          notified via e-mail as soon as more space opens up!
         </p>
       </div>
       <div v-else class="dash__app-page">
@@ -63,37 +95,46 @@
         <p>Check here later for updates.</p>
       </div>
     </div>
-    <div class="dash__controls" v-if="canEdit">
-      <Button
-        class="dash__button dash__button--full"
-        :loading="submiting"
-        :disabled="!dirty"
-        v-on:click.native="submit()"
-      >
-        Save RSVP
-      </Button>
-    </div>
+    <Modal :show.sync="showDeclineModal">
+      <h2 class="apply__title">Hey!</h2>
+      <p>Are you sure you want to <b>decline</b> your invitation?</p>
+      <div class="apply__rightAlign">
+        <Button
+          class="apply__button"
+          v-on:click.native="showDeclineModal = false"
+          icon="address-card"
+        >
+          No
+        </Button>
+        <Button
+          class="apply__button"
+          color="error"
+          v-on:click.native="submit(false)"
+          icon="address-card"
+        >
+          Yes
+        </Button>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
 import Button from '@hackthe6ix/vue-ui/Button';
-import Select from '@hackthe6ix/vue-ui/Select';
 import {RSVP} from '@graphql';
 import {query} from '@utils';
-const canEdit = ['accepted', 'attending', 'not_attending'];
+import {Modal} from '@components';
 
 export default {
   name: 'Application',
   components: {
     Button,
-    Select,
+    Modal,
   },
   data() {
     return {
-      rsvp: -1,
-      submiting: false,
-      dirty: false,
+      submitting: false,
+      showDeclineModal: false,
     };
   },
   props: {
@@ -101,27 +142,22 @@ export default {
     token: String,
   },
   methods: {
-    async submit() {
-      this.submiting = true;
+    async submit(status) {
+      this.submitting = true;
       try {
         const {success} = await query(
           RSVP,
           {
             id: this.user.id,
-            attending: !this.rsvp,
+            attending: status,
           },
           this.token,
         );
         if (!success) throw new Error('Unable to update status.');
-        this.dirty = false;
-        this.$emit('update:user', {
-          ...this.user,
-          application_status: canEdit[this.rsvp + 1],
-        });
+        window.location.reload();
       } catch (err) {
         alert(err);
       }
-      this.submiting = false;
     },
   },
   computed: {
@@ -132,16 +168,11 @@ export default {
         s => ' ' + s.slice(1).toUpperCase(),
       );
     },
-    canEdit() {
-      return canEdit.includes(this.user.application_status);
+    accepted() {
+      return this.user.application_status === 'accepted';
     },
-  },
-  watch: {
-    rsvp(val, old) {
-      if (val !== old) this.dirty = true;
-    },
-    user(val) {
-      this.rsvp = canEdit.indexOf(val.application_status) - 1;
+    attending() {
+      return this.user.application_status === 'attending';
     },
   },
 };
