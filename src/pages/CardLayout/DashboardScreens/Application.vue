@@ -12,7 +12,7 @@
         />
         <p>
           Congratulations! You're Invited! Please RSVP for the event from your
-          dashboard by August 20th at midnight. We look forward to seeing you on
+          dashboard by August 10th at midnight. We look forward to seeing you on
           August 21st!
         </p>
       </div>
