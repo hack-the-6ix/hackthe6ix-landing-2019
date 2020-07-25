@@ -2,7 +2,13 @@
   <Card class="apply" :class="getPageClass">
     <h1 class="apply__title">Hacker Dashboard</h1>
     <div class="apply__pages">
-      <Home :user="user" :loading="loading" :to="to" :pageHeight="pageHeight" />
+      <Home
+        :user="user"
+        :loading="loading"
+        :token="token"
+        :to="to"
+        :pageHeight="pageHeight"
+      />
       <Schedule :user="user" :loading="loading" :to="to" />
     </div>
   </Card>

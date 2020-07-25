@@ -7,7 +7,6 @@
         <Select
           class="dash__app-select"
           name="rsvp"
-          v-model="rsvp"
           :options="['🎉 Attending 🎉', '😔 Not Attending 😔']"
         />
         <p>
@@ -66,8 +65,8 @@
     <div class="dash__controls" v-if="canEdit">
       <Button
         class="dash__button dash__button--full"
-        :loading="submiting"
-        :disabled="!dirty"
+        :loading="submitting"
+        :disabled="form_data.rsvp.length === 0"
         v-on:click.native="submit()"
       >
         Save RSVP
@@ -82,18 +81,22 @@ import Select from '@hackthe6ix/vue-ui/Select';
 import {RSVP} from '@graphql';
 import {query} from '@utils';
 const canEdit = ['accepted', 'attending', 'not_attending'];
+import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 
 export default {
   name: 'Application',
+  mixins: [
+    formProvider({
+      rsvp: '',
+    }),
+  ],
   components: {
     Button,
     Select,
   },
   data() {
     return {
-      rsvp: -1,
-      submiting: false,
-      dirty: false,
+      submitting: false,
     };
   },
   props: {
@@ -102,26 +105,21 @@ export default {
   },
   methods: {
     async submit() {
-      this.submiting = true;
+      this.submitting = true;
       try {
         const {success} = await query(
           RSVP,
           {
             id: this.user.id,
-            attending: !this.rsvp,
+            attending: !parseInt(this.form_data.rsvp),
           },
           this.token,
         );
         if (!success) throw new Error('Unable to update status.');
-        this.dirty = false;
-        this.$emit('update:user', {
-          ...this.user,
-          application_status: canEdit[this.rsvp + 1],
-        });
+        window.location.reload();
       } catch (err) {
         alert(err);
       }
-      this.submiting = false;
     },
   },
   computed: {
@@ -137,11 +135,8 @@ export default {
     },
   },
   watch: {
-    rsvp(val, old) {
-      if (val !== old) this.dirty = true;
-    },
     user(val) {
-      this.rsvp = canEdit.indexOf(val.application_status) - 1;
+      this.form_data.rsvp = canEdit.indexOf(val.application_status) - 1;
     },
   },
 };

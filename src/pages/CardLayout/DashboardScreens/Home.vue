@@ -64,6 +64,7 @@ export default {
     loading: Boolean,
     pageHeight: Function,
     to: Function,
+    token: String,
   },
 };
 </script>
