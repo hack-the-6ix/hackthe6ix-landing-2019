@@ -12,8 +12,8 @@
         />
         <p>
           Congratulations! You're Invited! Please RSVP for the event from your
-          dashboard by August 22th at midnight. We look forward to seeing you on
-          August 23rd!
+          dashboard by August 20th at midnight. We look forward to seeing you on
+          August 21st!
         </p>
       </div>
       <div
@@ -25,13 +25,9 @@
         <p>
           Unfortunately, due to the overwhelming number of applications that we
           have received, we are not able to offer you admission to this year's
-          hackathon. We would love to be able to accept everyone, but our venue
-          space has a fixed capacity limit. If you'd still like to get involved
-          with the event, please consider
-          <a href="https://forms.gle/menPcPpwi3TE6b1M9"
-            >volunteering at the event.</a
-          >
-          Thank you for your interest in Hack the 6ix!
+          hackathon. We would love to be able to accept everyone, but we have a
+          fixed amount of resources. Thank you for your interest in Hack the
+          6ix!
         </p>
       </div>
       <div
@@ -42,7 +38,7 @@
         <p class="dash__large">{{ caps }}</p>
         <p>
           The RSVP window has passed. Please contact us at hello@hackthe6ix.com
-          if you are still interested in attending Hack the 6ix 2019.
+          if you are still interested in attending Hack the 6ix.
         </p>
       </div>
       <div
@@ -52,7 +48,7 @@
         <p class="dash__status">Current application status:</p>
         <p class="dash__large">{{ caps }}</p>
         <p>
-          Thank you for your application for Hack the 6ix 2019. We were very
+          Thank you for your application for Hack the 6ix. We were very
           impressed with your application, resume, and accomplishments. However,
           due to the immense number of applications that we received this year
           and our physical venue constraints, we are only able to offer you a
