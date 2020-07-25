@@ -32,7 +32,7 @@
         </div>
         <p>
           We look forward to seeing you on August 21st! Remember to join our
-          <b>Discord</b> by clicking the button below and verifying!
+          <b>Discord</b> by clicking the button below!
         </p>
       </div>
       <div
