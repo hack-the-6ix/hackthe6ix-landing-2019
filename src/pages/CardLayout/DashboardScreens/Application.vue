@@ -17,7 +17,7 @@
             :loading="submitting"
             color="success"
             v-if="accepted"
-            v-on:click.native="submit(true)"
+            v-on:click.native="showAcceptModal = true"
           >
             Accept Invitation
           </Button>
@@ -97,7 +97,9 @@
     </div>
     <Modal :show.sync="showDeclineModal">
       <h2 class="apply__title">Hey!</h2>
-      <p>Are you sure you want to <b>decline</b> your invitation?</p>
+      <p>
+        Are you sure you want to <b>decline</b> your invitation to Hack the 6ix?
+      </p>
       <div class="apply__rightAlign">
         <Button
           class="apply__button"
@@ -116,25 +118,87 @@
         </Button>
       </div>
     </Modal>
+    <Modal :show.sync="showAcceptModal">
+      <h2 class="apply__title">Some legal stuff</h2>
+
+      <p>We're almost there! We just need a bit more information.</p>
+      <div class="dash__checkboxes" v-if="accepted">
+        <Checkbox
+          name="casl_acceptance"
+          label="I allow Hack the 6ix to send me emails containing information from the event sponsors."
+          class="dash__checkboxes--box"
+        />
+        <Checkbox
+          name="resume_permission"
+          label="I allow Hack the 6ix to distribute my resume to its event sponsors"
+          class="dash__checkboxes--box"
+        />
+        <br />
+        <p>You <b>must</b> agree to these terms to attend Hack the 6ix:</p>
+        <Checkbox
+          name="mlh_coc"
+          label="I agree to the MLH Code of Conduct"
+          class="dash__checkboxes--box"
+          required
+        />
+        <Checkbox
+          name="privacy"
+          label="I agree to the Hack the 6ix privacy policy"
+          class="dash__checkboxes--box"
+          required
+        />.
+      </div>
+      <div class="apply__rightAlign">
+        <Button
+          class="apply__button"
+          color="error"
+          v-on:click.native="showAcceptModal = false"
+          icon="address-card"
+        >
+          Cancel
+        </Button>
+        <Button
+          class="apply__button"
+          color="success"
+          v-on:click.native="submit(true)"
+          :disabled="!form_data.mlh_coc || !form_data.privacy"
+          icon="address-card"
+        >
+          Accept Invitation
+        </Button>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
 import Button from '@hackthe6ix/vue-ui/Button';
 import {RSVP} from '@graphql';
 import {query} from '@utils';
 import {Modal} from '@components';
+import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 
 export default {
   name: 'Application',
   components: {
     Button,
     Modal,
+    Checkbox,
   },
+  mixins: [
+    formProvider({
+      casl_acceptance: false,
+      resume_permission: false,
+      mlh_coc: false,
+      privacy: false,
+    }),
+  ],
   data() {
     return {
       submitting: false,
       showDeclineModal: false,
+      showAcceptModal: false,
     };
   },
   props: {
@@ -150,6 +214,10 @@ export default {
           {
             id: this.user.id,
             attending: status,
+            casl_acceptance: this.form_data.casl_acceptance,
+            resume_permission: this.form_data.resume_permission,
+            mlh_coc: this.form_data.mlh_coc,
+            privacy: this.form_data.privacy,
           },
           this.token,
         );
@@ -195,6 +263,16 @@ export default {
       margin: 5px;
       width: calc(50% - 70px);
     }
+  }
+}
+
+.dash__checkboxes {
+  text-align: left;
+
+  margin-bottom: 12px;
+
+  &--box {
+    margin-bottom: 8px;
   }
 }
 
