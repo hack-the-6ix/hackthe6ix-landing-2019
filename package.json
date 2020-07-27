@@ -12,7 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@hackthe6ix/vue-ui": "^0.2.8",
+    "@hackthe6ix/vue-ui": "^0.2.14",
     "@sentry/browser": "^5.20.1",
     "@sentry/integrations": "^5.20.1",
     "circular-json": "^0.5.9",
