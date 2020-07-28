@@ -5,6 +5,7 @@ export const FETCH_INFO = `
             application_status
             lname
             name
+            email
         }
     }
 `;

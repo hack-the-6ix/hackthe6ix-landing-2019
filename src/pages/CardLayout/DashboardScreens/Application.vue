@@ -33,6 +33,13 @@
           We look forward to seeing you on August 21st! Remember to join our
           <b>Discord</b> by clicking the button below!
         </p>
+        <p>
+          Issue this command in the
+          <b>#verification</b> channel to get started:
+        </p>
+        <p class="apply__verification">
+          <b>!verify {{ user.email }}</b>
+        </p>
       </div>
       <div
         v-else-if="user.application_status === 'rejected'"
@@ -100,7 +107,11 @@
         Congratulations, you've successfully confirmed your attendance for Hack
         the 6ix!<br /><br />
         Join our Discord server to get access to access the latest updates and
-        meet fellow hackers!
+        meet fellow hackers! Issue this command in the
+        <b>#verification</b> channel to get started:
+      </p>
+      <p class="apply__verification">
+        <b>!verify {{ user.email }}</b>
       </p>
       <div class="apply__rightAlign">
         <Button
@@ -160,7 +171,7 @@
         />
         <br />
         <p>You <b>must</b> agree to these terms to attend Hack the 6ix:</p>
-        <Checkbox name="mlh_coc_a" class="dash__checkboxes--box" required>
+        <Checkbox name="mlh_a" class="dash__checkboxes--box" required>
           <template v-slot:label>
             I have read and agree to the
             <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
@@ -175,7 +186,7 @@
             <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
           </template>
         </Checkbox>
-        <Checkbox name="mlh_coc_b" class="dash__checkboxes--box" required>
+        <Checkbox name="mlh_b" class="dash__checkboxes--box" required>
           <template v-slot:label>
             I authorize you to share my application/registration information
             with Major League Hacking for event administration, ranking, and MLH
@@ -184,7 +195,7 @@
           </template>
         </Checkbox>
         <Checkbox
-          name="mlh_coc_c"
+          name="mlh_c"
           label="I authorize Major League Hacking to send me occasional messages about hackathons including pre- and post-event informational emails."
           class="dash__checkboxes--box"
           required
@@ -232,8 +243,9 @@ export default {
     formProvider({
       casl_acceptance: false,
       resume_permission: false,
-      mlh_coc: false,
-      privacy: false,
+      mlh_a: false,
+      mlh_b: false,
+      mlh_c: false,
     }),
   ],
   data() {
@@ -260,11 +272,16 @@ export default {
             attending: status,
             casl_acceptance: this.form_data.casl_acceptance,
             resume_permission: this.form_data.resume_permission,
-            mlh_coc: this.form_data.mlh_coc,
-            privacy: this.form_data.privacy,
+            mlh_policy:
+              this.form_data.mlh_a &&
+              this.form_data.mlh_b &&
+              this.form_data.mlh_c,
           },
           this.token,
         );
+
+        this.submitting = false;
+
         if (!success) throw new Error('Unable to update status.');
 
         this.$emit('update:user', {
@@ -273,6 +290,7 @@ export default {
         });
 
         if (status === true) {
+          this.showAcceptModal = false;
           this.showDiscordModal = true;
         }
       } catch (err) {

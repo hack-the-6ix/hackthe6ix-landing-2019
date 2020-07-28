@@ -478,6 +478,13 @@ export default {
   max-width: 500px;
   width: 80%;
 
+  &__verification {
+    text-align: center;
+    background-color: #eeeeee;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
   &__title {
     margin: 0;
     color: $TEXT;
