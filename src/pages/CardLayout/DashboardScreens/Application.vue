@@ -102,7 +102,7 @@
       </div>
     </div>
     <Modal :show.sync="showDiscordModal">
-      <h2 class="apply__title">Invitation Accepted</h2>
+      <h2 class="apply__title">Join our Discord</h2>
       <p>
         Congratulations, you've successfully confirmed your attendance for Hack
         the 6ix!<br /><br />
@@ -120,7 +120,7 @@
           v-on:click.native="showDiscordModal = false"
           icon="address-card"
         >
-          Maybe later
+          Close
         </Button>
         <Button
           class="apply__button"
@@ -227,7 +227,7 @@
           class="apply__button"
           color="success"
           v-on:click.native="submit(true)"
-          :disabled="!mlhAccepted"
+          :disabled="!mlh_acceptance"
           icon="address-card"
         >
           Accept Invitation
@@ -273,17 +273,18 @@ export default {
     async submit(status) {
       this.submitting = true;
       try {
-        const {success} = await query(
-          RSVP,
-          {
-            id: this.user.id,
-            attending: status,
-            casl_acceptance: this.casl_acceptance,
-            resume_permission: this.resume_permission,
-            mlh_policy: this.mlhAccepted,
-          },
-          this.token,
-        );
+        let mutation = {
+          id: this.user.id,
+          attending: status,
+        };
+
+        if (status) {
+          mutation.casl_acceptance = this.casl_acceptance;
+          mutation.resume_permission = this.resume_permission;
+          mutation.mlh_acceptance = this.mlh_acceptance;
+        }
+
+        const {success} = await query(RSVP, mutation, this.token);
 
         this.submitting = false;
 
@@ -295,8 +296,10 @@ export default {
         });
 
         if (status === true) {
-          this.showAcceptModal = false;
           this.showDiscordModal = true;
+          this.showAcceptModal = false;
+        } else {
+          this.showDeclineModal = false;
         }
       } catch (err) {
         alert(err);
@@ -317,7 +320,7 @@ export default {
     attending() {
       return this.user.application_status === 'attending';
     },
-    mlhAccepted() {
+    mlh_acceptance() {
       return this.mlh_a && this.mlh_b && this.mlh_c;
     },
   },
