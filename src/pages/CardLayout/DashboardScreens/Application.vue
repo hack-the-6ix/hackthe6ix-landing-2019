@@ -160,18 +160,29 @@
         />
         <br />
         <p>You <b>must</b> agree to these terms to attend Hack the 6ix:</p>
-        <Checkbox
-          name="mlh_coc_a"
-          label="I have read and agree to the MLH Code of Conduct. I further agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy."
-          class="dash__checkboxes--box"
-          required
-        />
-        <Checkbox
-          name="mlh_coc_b"
-          label="I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy."
-          class="dash__checkboxes--box"
-          required
-        />
+        <Checkbox name="mlh_coc_a" class="dash__checkboxes--box" required>
+          <template v-slot:label>
+            I have read and agree to the
+            <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
+              MLH Code of Conduct</a
+            >. I further agree to the terms of both the
+            <a
+              href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
+            >
+              MLH Contest Terms</a
+            >
+            and Conditions and the
+            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
+          </template>
+        </Checkbox>
+        <Checkbox name="mlh_coc_b" class="dash__checkboxes--box" required>
+          <template v-slot:label>
+            I authorize you to share my application/registration information
+            with Major League Hacking for event administration, ranking, and MLH
+            administration in-line with the
+            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
+          </template>
+        </Checkbox>
         <Checkbox
           name="mlh_coc_c"
           label="I authorize Major League Hacking to send me occasional messages about hackathons including pre- and post-event informational emails."
