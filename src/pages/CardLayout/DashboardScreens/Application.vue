@@ -108,8 +108,8 @@
       <p>
         Congratulations, you've successfully confirmed your attendance for Hack
         the 6ix!<br /><br />
-        Join our Discord server to get access to access the latest updates and
-        meet fellow hackers! Issue this command in the
+        Join our Discord server to get access to the latest updates and meet
+        fellow hackers! Issue this command in the
         <b>#verification</b> channel to get started:
       </p>
       <p class="apply__verification">

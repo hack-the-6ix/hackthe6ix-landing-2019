@@ -130,6 +130,7 @@ export default {
     z-index: 1;
     width: 80%;
     min-height: 200px;
+    max-height: 95vh;
 
     &--show {
       transform: translateY(0);
