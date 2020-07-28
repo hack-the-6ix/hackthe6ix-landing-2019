@@ -4,27 +4,22 @@
     <div v-if="!loading">
       <p class="dash__name">{{ user.name }} {{ user.lname }}</p>
       <p class="dash__role">Hacker</p>
-      <Application :user.sync="user" :token="token" />
+      <Application :user.sync="user" :token="token" :discord-me="discordMe" />
     </div>
     <div class="dash__controls">
       <Button
         class="dash__button"
         v-on:click.native="discordMe()"
         icon="calendar"
-        v-if="
-          user.application_status === 'attending' ||
-            user.application_status === 'accepted'
-        "
-        >Discord</Button
+        v-if="user.application_status === 'attending'"
+        >Join Discord</Button
       >
       <Button
         class="dash__button"
         v-on:click.native="liveMe()"
         icon="calendar"
-        v-if="
-          user.application_status === 'attending' ||
-            user.application_status === 'accepted'
-        "
+        :disabled="true"
+        v-if="user.application_status === 'attending'"
         >Live Site</Button
       >
       <Button
@@ -53,7 +48,6 @@
 import {default as Application} from './Application';
 import Button from '@hackthe6ix/vue-ui/Button';
 import {email} from '@data';
-const whiteList = ['accepted', 'attending', 'not_attending'];
 
 export default {
   name: 'Home',
@@ -65,11 +59,6 @@ export default {
     return {
       email,
     };
-  },
-  computed: {
-    canSlack() {
-      return !whiteList.includes(this.user.application_status);
-    },
   },
   methods: {
     prizeMe() {

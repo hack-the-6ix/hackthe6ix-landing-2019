@@ -7,8 +7,7 @@
         <p>
           Congratulations! You're Invited to Hack the 6ix!<br /><br />
           <b>
-            Please RSVP for the event from your dashboard by August 10th at
-            midnight.
+            Please RSVP for the event from by August 10th at 11:59 PM
           </b>
         </p>
         <div class="dash__controls">
@@ -30,7 +29,7 @@
             Decline Invitation
           </Button>
         </div>
-        <p>
+        <p v-if="user.application_status === 'attending'">
           We look forward to seeing you on August 21st! Remember to join our
           <b>Discord</b> by clicking the button below!
         </p>
@@ -95,6 +94,32 @@
         <p>Check here later for updates.</p>
       </div>
     </div>
+    <Modal :show.sync="showDiscordModal">
+      <h2 class="apply__title">Invitation Accepted</h2>
+      <p>
+        Congratulations, you've successfully confirmed your attendance for Hack
+        the 6ix!<br /><br />
+        Join our Discord server to get access to access the latest updates and
+        meet fellow hackers!
+      </p>
+      <div class="apply__rightAlign">
+        <Button
+          class="apply__button"
+          color="grey"
+          v-on:click.native="showDiscordModal = false"
+          icon="address-card"
+        >
+          Maybe later
+        </Button>
+        <Button
+          class="apply__button"
+          v-on:click.native="discordMe()"
+          icon="address-card"
+        >
+          Join Discord
+        </Button>
+      </div>
+    </Modal>
     <Modal :show.sync="showDeclineModal">
       <h2 class="apply__title">Hey!</h2>
       <p>
@@ -136,17 +161,23 @@
         <br />
         <p>You <b>must</b> agree to these terms to attend Hack the 6ix:</p>
         <Checkbox
-          name="mlh_coc"
-          label="I agree to the MLH Code of Conduct"
+          name="mlh_coc_a"
+          label="I have read and agree to the MLH Code of Conduct. I further agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy."
           class="dash__checkboxes--box"
           required
         />
         <Checkbox
-          name="privacy"
-          label="I agree to the Hack the 6ix privacy policy"
+          name="mlh_coc_b"
+          label="I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy."
           class="dash__checkboxes--box"
           required
-        />.
+        />
+        <Checkbox
+          name="mlh_coc_c"
+          label="I authorize Major League Hacking to send me occasional messages about hackathons including pre- and post-event informational emails."
+          class="dash__checkboxes--box"
+          required
+        />
       </div>
       <div class="apply__rightAlign">
         <Button
@@ -199,11 +230,13 @@ export default {
       submitting: false,
       showDeclineModal: false,
       showAcceptModal: false,
+      showDiscordModal: false,
     };
   },
   props: {
     user: Object,
     token: String,
+    discordMe: Function,
   },
   methods: {
     async submit(status) {
@@ -222,7 +255,15 @@ export default {
           this.token,
         );
         if (!success) throw new Error('Unable to update status.');
-        window.location.reload();
+
+        this.$emit('update:user', {
+          ...this.user,
+          application_status: status ? 'attending' : 'not_attending',
+        });
+
+        if (status === true) {
+          this.showDiscordModal = true;
+        }
       } catch (err) {
         alert(err);
       }
