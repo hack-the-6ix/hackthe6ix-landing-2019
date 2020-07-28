@@ -7,8 +7,7 @@
         <p>
           Congratulations! You're Invited to Hack the 6ix!<br /><br />
           <b>
-            Please RSVP for the event from your dashboard by August 10th at
-            midnight.
+            Please RSVP for the event from by August 10th at 11:59 PM
           </b>
         </p>
         <div class="dash__controls">
@@ -17,7 +16,7 @@
             :loading="submitting"
             color="success"
             v-if="accepted"
-            v-on:click.native="submit(true)"
+            v-on:click.native="showAcceptModal = true"
           >
             Accept Invitation
           </Button>
@@ -30,9 +29,16 @@
             Decline Invitation
           </Button>
         </div>
-        <p>
+        <p v-if="user.application_status === 'attending'">
           We look forward to seeing you on August 21st! Remember to join our
           <b>Discord</b> by clicking the button below!
+        </p>
+        <p>
+          Issue this command in the
+          <b>#verification</b> channel to get started:
+        </p>
+        <p class="apply__verification">
+          <b>!verify {{ user.email }}</b>
         </p>
       </div>
       <div
@@ -95,9 +101,41 @@
         <p>Check here later for updates.</p>
       </div>
     </div>
+    <Modal :show.sync="showDiscordModal">
+      <h2 class="apply__title">Join our Discord</h2>
+      <p>
+        Congratulations, you've successfully confirmed your attendance for Hack
+        the 6ix!<br /><br />
+        Join our Discord server to get access to access the latest updates and
+        meet fellow hackers! Issue this command in the
+        <b>#verification</b> channel to get started:
+      </p>
+      <p class="apply__verification">
+        <b>!verify {{ user.email }}</b>
+      </p>
+      <div class="apply__rightAlign">
+        <Button
+          class="apply__button"
+          color="grey"
+          v-on:click.native="showDiscordModal = false"
+          icon="address-card"
+        >
+          Close
+        </Button>
+        <Button
+          class="apply__button"
+          v-on:click.native="discordMe()"
+          icon="address-card"
+        >
+          Join Discord
+        </Button>
+      </div>
+    </Modal>
     <Modal :show.sync="showDeclineModal">
       <h2 class="apply__title">Hey!</h2>
-      <p>Are you sure you want to <b>decline</b> your invitation?</p>
+      <p>
+        Are you sure you want to <b>decline</b> your invitation to Hack the 6ix?
+      </p>
       <div class="apply__rightAlign">
         <Button
           class="apply__button"
@@ -116,10 +154,91 @@
         </Button>
       </div>
     </Modal>
+    <Modal :show.sync="showAcceptModal">
+      <h2 class="apply__title">Some legal stuff</h2>
+
+      <p>We're almost there! We just need a bit more information.</p>
+      <div class="dash__checkboxes" v-if="accepted">
+        <Checkbox
+          name="casl_acceptance"
+          v-model="casl_acceptance"
+          label="I allow Hack the 6ix to send me emails containing information from the event sponsors."
+          class="dash__checkboxes--box"
+        />
+        <Checkbox
+          name="resume_permission"
+          v-model="resume_permission"
+          label="I allow Hack the 6ix to distribute my resume to its event sponsors"
+          class="dash__checkboxes--box"
+        />
+        <br />
+        <p>You <b>must</b> agree to these terms to attend Hack the 6ix:</p>
+        <Checkbox
+          name="mlh_a"
+          v-model="mlh_a"
+          class="dash__checkboxes--box"
+          required
+        >
+          <template v-slot:label>
+            I have read and agree to the
+            <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
+              MLH Code of Conduct</a
+            >. I further agree to the terms of both the
+            <a
+              href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
+            >
+              MLH Contest Terms</a
+            >
+            and Conditions and the
+            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
+          </template>
+        </Checkbox>
+        <Checkbox
+          name="mlh_b"
+          v-model="mlh_b"
+          class="dash__checkboxes--box"
+          required
+        >
+          <template v-slot:label>
+            I authorize you to share my application/registration information
+            with Major League Hacking for event administration, ranking, and MLH
+            administration in-line with the
+            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
+          </template>
+        </Checkbox>
+        <Checkbox
+          name="mlh_c"
+          v-model="mlh_c"
+          label="I authorize Major League Hacking to send me occasional messages about hackathons including pre- and post-event informational emails."
+          class="dash__checkboxes--box"
+          required
+        />
+      </div>
+      <div class="apply__rightAlign">
+        <Button
+          class="apply__button"
+          color="error"
+          v-on:click.native="showAcceptModal = false"
+          icon="address-card"
+        >
+          Cancel
+        </Button>
+        <Button
+          class="apply__button"
+          color="success"
+          v-on:click.native="submit(true)"
+          :disabled="!mlh_acceptance"
+          icon="address-card"
+        >
+          Accept Invitation
+        </Button>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Checkbox from '@hackthe6ix/vue-ui/Checkbox';
 import Button from '@hackthe6ix/vue-ui/Button';
 import {RSVP} from '@graphql';
 import {query} from '@utils';
@@ -130,31 +249,58 @@ export default {
   components: {
     Button,
     Modal,
+    Checkbox,
   },
   data() {
     return {
       submitting: false,
       showDeclineModal: false,
+      showAcceptModal: false,
+      showDiscordModal: false,
+      casl_acceptance: false,
+      resume_permission: false,
+      mlh_a: false,
+      mlh_b: false,
+      mlh_c: false,
     };
   },
   props: {
     user: Object,
     token: String,
+    discordMe: Function,
   },
   methods: {
     async submit(status) {
       this.submitting = true;
       try {
-        const {success} = await query(
-          RSVP,
-          {
-            id: this.user.id,
-            attending: status,
-          },
-          this.token,
-        );
+        let mutation = {
+          id: this.user.id,
+          attending: status,
+        };
+
+        if (status) {
+          mutation.casl_acceptance = this.casl_acceptance;
+          mutation.resume_permission = this.resume_permission;
+          mutation.mlh_acceptance = this.mlh_acceptance;
+        }
+
+        const {success} = await query(RSVP, mutation, this.token);
+
+        this.submitting = false;
+
         if (!success) throw new Error('Unable to update status.');
-        window.location.reload();
+
+        this.$emit('update:user', {
+          ...this.user,
+          application_status: status ? 'attending' : 'not_attending',
+        });
+
+        if (status === true) {
+          this.showDiscordModal = true;
+          this.showAcceptModal = false;
+        } else {
+          this.showDeclineModal = false;
+        }
       } catch (err) {
         alert(err);
       }
@@ -173,6 +319,9 @@ export default {
     },
     attending() {
       return this.user.application_status === 'attending';
+    },
+    mlh_acceptance() {
+      return this.mlh_a && this.mlh_b && this.mlh_c;
     },
   },
 };
@@ -195,6 +344,16 @@ export default {
       margin: 5px;
       width: calc(50% - 70px);
     }
+  }
+}
+
+.dash__checkboxes {
+  text-align: left;
+
+  margin-bottom: 12px;
+
+  &--box {
+    margin-bottom: 8px;
   }
 }
 

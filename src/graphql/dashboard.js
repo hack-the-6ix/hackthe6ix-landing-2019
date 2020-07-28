@@ -5,6 +5,7 @@ export const FETCH_INFO = `
             application_status
             lname
             name
+            email
         }
     }
 `;
@@ -24,8 +25,8 @@ export const FETCH_QR = `
 `;
 
 export const RSVP = `
-    mutation rsvp($id: ID!, $attending: Boolean!) {
-        rsvp(applicant_id: $id, attending: $attending) {
+    mutation rsvp($id: ID!, $attending: Boolean!, $casl_acceptance: Boolean, $resume_permission: Boolean, $mlh_acceptance: Boolean) {
+        rsvp(applicant_id: $id, attending: $attending, casl_acceptance: $casl_acceptance, resume_permission: $resume_permission, mlh_acceptance: $mlh_acceptance) {
             success
         }
     }
