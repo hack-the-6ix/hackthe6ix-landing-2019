@@ -29,17 +29,19 @@
             Decline Invitation
           </Button>
         </div>
-        <p v-if="user.application_status === 'attending'">
-          We look forward to seeing you on August 21st! Remember to join our
-          <b>Discord</b> by clicking the button below!
-        </p>
-        <p>
-          Issue this command in the
-          <b>#verification</b> channel to get started:
-        </p>
-        <p class="apply__verification">
-          <b>!verify {{ user.email }}</b>
-        </p>
+        <div v-if="user.application_status === 'attending'">
+          <p>
+            We look forward to seeing you on August 21st! Remember to join our
+            <b>Discord</b> by clicking the button below!
+          </p>
+          <p>
+            Issue this command in the
+            <b>#verification</b> channel to get started:
+          </p>
+          <p class="apply__verification">
+            <b>!verify {{ user.email }}</b>
+          </p>
+        </div>
       </div>
       <div
         v-else-if="user.application_status === 'rejected'"
