@@ -483,6 +483,7 @@ export default {
     background-color: #eeeeee;
     padding-top: 4px;
     padding-bottom: 4px;
+    border-radius: 1rem;
   }
 
   &__title {

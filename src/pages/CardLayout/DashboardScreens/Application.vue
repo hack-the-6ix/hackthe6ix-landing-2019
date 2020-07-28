@@ -161,17 +161,24 @@
       <div class="dash__checkboxes" v-if="accepted">
         <Checkbox
           name="casl_acceptance"
+          v-model="casl_acceptance"
           label="I allow Hack the 6ix to send me emails containing information from the event sponsors."
           class="dash__checkboxes--box"
         />
         <Checkbox
           name="resume_permission"
+          v-model="resume_permission"
           label="I allow Hack the 6ix to distribute my resume to its event sponsors"
           class="dash__checkboxes--box"
         />
         <br />
         <p>You <b>must</b> agree to these terms to attend Hack the 6ix:</p>
-        <Checkbox name="mlh_a" class="dash__checkboxes--box" required>
+        <Checkbox
+          name="mlh_a"
+          v-model="mlh_a"
+          class="dash__checkboxes--box"
+          required
+        >
           <template v-slot:label>
             I have read and agree to the
             <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
@@ -186,7 +193,12 @@
             <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
           </template>
         </Checkbox>
-        <Checkbox name="mlh_b" class="dash__checkboxes--box" required>
+        <Checkbox
+          name="mlh_b"
+          v-model="mlh_b"
+          class="dash__checkboxes--box"
+          required
+        >
           <template v-slot:label>
             I authorize you to share my application/registration information
             with Major League Hacking for event administration, ranking, and MLH
@@ -196,6 +208,7 @@
         </Checkbox>
         <Checkbox
           name="mlh_c"
+          v-model="mlh_c"
           label="I authorize Major League Hacking to send me occasional messages about hackathons including pre- and post-event informational emails."
           class="dash__checkboxes--box"
           required
@@ -214,7 +227,7 @@
           class="apply__button"
           color="success"
           v-on:click.native="submit(true)"
-          :disabled="!form_data.mlh_coc || !form_data.privacy"
+          :disabled="!mlhAccepted"
           icon="address-card"
         >
           Accept Invitation
@@ -230,7 +243,6 @@ import Button from '@hackthe6ix/vue-ui/Button';
 import {RSVP} from '@graphql';
 import {query} from '@utils';
 import {Modal} from '@components';
-import formProvider from '@hackthe6ix/vue-ui/utils/mixins/formProvider';
 
 export default {
   name: 'Application',
@@ -239,21 +251,17 @@ export default {
     Modal,
     Checkbox,
   },
-  mixins: [
-    formProvider({
-      casl_acceptance: false,
-      resume_permission: false,
-      mlh_a: false,
-      mlh_b: false,
-      mlh_c: false,
-    }),
-  ],
   data() {
     return {
       submitting: false,
       showDeclineModal: false,
       showAcceptModal: false,
       showDiscordModal: false,
+      casl_acceptance: false,
+      resume_permission: false,
+      mlh_a: false,
+      mlh_b: false,
+      mlh_c: false,
     };
   },
   props: {
@@ -270,12 +278,9 @@ export default {
           {
             id: this.user.id,
             attending: status,
-            casl_acceptance: this.form_data.casl_acceptance,
-            resume_permission: this.form_data.resume_permission,
-            mlh_policy:
-              this.form_data.mlh_a &&
-              this.form_data.mlh_b &&
-              this.form_data.mlh_c,
+            casl_acceptance: this.casl_acceptance,
+            resume_permission: this.resume_permission,
+            mlh_policy: this.mlhAccepted,
           },
           this.token,
         );
@@ -311,6 +316,9 @@ export default {
     },
     attending() {
       return this.user.application_status === 'attending';
+    },
+    mlhAccepted() {
+      return this.mlh_a && this.mlh_b && this.mlh_c;
     },
   },
 };
