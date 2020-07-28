@@ -37,7 +37,6 @@ export default {
     };
   },
   async mounted() {
-    window.addEventListener('load', this.shiftPages);
     try {
       const id = this.$route.params.id;
       this.token = (await query(AUTHENTICATE, {id})).token;
@@ -57,22 +56,6 @@ export default {
   computed: {
     getPageClass() {
       return `apply--${Object.keys(Screens)[this.page].toLowerCase()}`;
-    },
-  },
-  methods: {
-    shiftPages() {
-      const pages = Array.from(document.querySelectorAll('.apply__page'));
-      pages.forEach((page, i) => {
-        const current = this.page === i;
-        page.style.transform = `translateX(${this.page *
-          -100}%) translateX(${this.page * -60}px)`;
-        page.style.opacity = current ? 1 : 0;
-        page.setAttribute('data-current', current);
-      });
-    },
-    to(page) {
-      this.page = page;
-      this.shiftPages();
     },
   },
   watch: {
