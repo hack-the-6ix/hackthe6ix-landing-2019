@@ -78,7 +78,6 @@ export default {
     user: Object,
     loading: Boolean,
     pageHeight: Function,
-    to: Function,
     token: String,
   },
 };

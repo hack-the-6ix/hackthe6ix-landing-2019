@@ -6,10 +6,8 @@
         :user="user"
         :loading="loading"
         :token="token"
-        :to="to"
         :pageHeight="pageHeight"
       />
-      <Schedule :user="user" :loading="loading" :to="to" />
     </div>
   </Card>
 </template>
