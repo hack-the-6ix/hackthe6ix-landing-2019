@@ -174,10 +174,30 @@
           class="dash__checkboxes--box"
         />
         <br />
-        <p>You <b>must</b> agree to these terms to attend Hack the 6ix:</p>
+        <Checkbox
+          name="mlh_b"
+          v-model="mlh_privacy"
+          class="dash__checkboxes--box"
+        >
+          <template v-slot:label>
+            I authorize you to share my application/registration information
+            with Major League Hacking for event administration, ranking, and MLH
+            administration in-line with the
+            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
+          </template>
+        </Checkbox>
+        <Checkbox
+          name="mlh_c"
+          v-model="mlh_messages"
+          label="I authorize Major League Hacking to send me occasional messages about hackathons including pre- and post-event informational emails."
+          class="dash__checkboxes--box"
+        />
+        <p>
+          You <b>must</b> agree the MLH Code of Conduct to attend Hack the 6ix:
+        </p>
         <Checkbox
           name="mlh_a"
-          v-model="mlh_a"
+          v-model="mlh_acceptance"
           class="dash__checkboxes--box"
           required
         >
@@ -195,26 +215,7 @@
             <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
           </template>
         </Checkbox>
-        <Checkbox
-          name="mlh_b"
-          v-model="mlh_b"
-          class="dash__checkboxes--box"
-          required
-        >
-          <template v-slot:label>
-            I authorize you to share my application/registration information
-            with Major League Hacking for event administration, ranking, and MLH
-            administration in-line with the
-            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
-          </template>
-        </Checkbox>
-        <Checkbox
-          name="mlh_c"
-          v-model="mlh_c"
-          label="I authorize Major League Hacking to send me occasional messages about hackathons including pre- and post-event informational emails."
-          class="dash__checkboxes--box"
-          required
-        />
+        <br />
       </div>
       <div class="apply__rightAlign">
         <Button
@@ -261,9 +262,9 @@ export default {
       showDiscordModal: false,
       casl_acceptance: false,
       resume_permission: false,
-      mlh_a: false,
-      mlh_b: false,
-      mlh_c: false,
+      mlh_acceptance: false,
+      mlh_privacy: false,
+      mlh_messages: false,
     };
   },
   props: {
@@ -284,6 +285,8 @@ export default {
           mutation.casl_acceptance = this.casl_acceptance;
           mutation.resume_permission = this.resume_permission;
           mutation.mlh_acceptance = this.mlh_acceptance;
+          mutation.mlh_privacy = this.mlh_privacy;
+          mutation.mlh_messages = this.mlh_messages;
         }
 
         const {success} = await query(RSVP, mutation, this.token);
@@ -321,9 +324,6 @@ export default {
     },
     attending() {
       return this.user.application_status === 'attending';
-    },
-    mlh_acceptance() {
-      return this.mlh_a && this.mlh_b && this.mlh_c;
     },
   },
 };
