@@ -1,13 +1,13 @@
 <template>
   <div>
-    hewwo
+    Redirecting...
   </div>
 </template>
 
 <script>
 export default {
   name: 'ApplyStub',
-  path: '/apply-stub',
+  path: '/apply',
   components: {},
   data() {
     return {};

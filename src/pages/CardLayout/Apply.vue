@@ -101,7 +101,7 @@ import {
 
 export default {
   name: 'Info',
-  path: '/apply',
+  path: '/apply-late',
   inject: ['form_data', 'form_errors'],
   mixins: [
     formProvider({
