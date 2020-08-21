@@ -65,7 +65,7 @@ export default {
       window.open('https://discord.gg/gSK62av', '_blank');
     },
     remoMe() {
-      window.open('https://events.hackthe6ix.com', '_blank');
+      window.open('https://events.hackthe6ix.com/e/hack-the-6ix-2020', '_blank');
     },
   },
   props: {
