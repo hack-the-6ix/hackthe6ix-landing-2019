@@ -8,11 +8,18 @@
     </div>
     <div class="dash__controls">
       <Button
-        class="dash__button dash__button--full"
+        class="dash__button"
         v-on:click.native="discordMe()"
         icon="calendar"
         v-if="user.application_status === 'attending'"
         >Join Discord</Button
+      >
+      <Button
+        class="dash__button"
+        v-on:click.native="remoMe()"
+        icon="calendar"
+        v-if="user.application_status === 'attending'"
+        >Join Remo</Button
       >
       <Button
         class="dash__button"
@@ -57,8 +64,8 @@ export default {
     discordMe() {
       window.open('https://discord.gg/gSK62av', '_blank');
     },
-    liveMe() {
-      //window.open('', '_blank');
+    remoMe() {
+      window.open('https://events.hackthe6ix.com', '_blank');
     },
   },
   props: {
