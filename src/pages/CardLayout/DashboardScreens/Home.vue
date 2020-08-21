@@ -8,7 +8,7 @@
     </div>
     <div class="dash__controls">
       <Button
-        class="dash__button"
+        class="dash__button dash__button--full"
         v-on:click.native="discordMe()"
         icon="calendar"
         v-if="user.application_status === 'attending'"
@@ -16,24 +16,11 @@
       >
       <Button
         class="dash__button"
-        v-on:click.native="liveMe()"
-        icon="calendar"
-        :disabled="true"
-        v-if="user.application_status === 'attending'"
-        >Live Site</Button
-      >
-      <Button
-        class="dash__button"
         v-on:click.native="scheduleMe()"
         icon="calendar"
-        :disabled="true"
         >Schedule</Button
       >
-      <Button
-        class="dash__button"
-        v-on:click.native="prizeMe()"
-        icon="award"
-        :disabled="true"
+      <Button class="dash__button" v-on:click.native="prizeMe()" icon="award"
         >Challenges/Prizes</Button
       >
     </div>
@@ -65,7 +52,7 @@ export default {
       window.open('https://hackthe6ix2020.devpost.com/', '_blank');
     },
     scheduleMe() {
-      window.open('/schedule', '_blank');
+      window.open('https://hackthe6ix.com/#schedule', '_blank');
     },
     discordMe() {
       window.open('https://discord.gg/gSK62av', '_blank');

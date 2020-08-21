@@ -7,7 +7,8 @@
         <p>
           Congratulations! You're Invited to Hack the 6ix!<br /><br />
           <b v-if="accepted">
-            Please RSVP for the event from by Thursday August 13th at 11:59 PM EST
+            Please RSVP for the event from by Thursday August 13th at 11:59 PM
+            EST
           </b>
         </p>
         <div class="dash__controls">
